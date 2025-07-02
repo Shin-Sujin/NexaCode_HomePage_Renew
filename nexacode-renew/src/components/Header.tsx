@@ -9,7 +9,7 @@ export default function Header() {
       style={{
         width: "100%",
         maxWidth: "107.875rem",
-        height: "6.25rem",
+        height: "5.25rem",
         flexShrink: 0,
         margin: "0 auto",
         background: "#fff",
@@ -17,92 +17,26 @@ export default function Header() {
     >
       {/* 로고 */}
       <div className="flex items-center">
-        <Image src="/images/siteLogo.png" alt="logo" width={160} height={48} />
+        <Image src="/images/siteLogo.png" alt="logo" width={120} height={36} />
       </div>
       {/* 네비게이션 */}
       <nav className="flex items-center gap-10">
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           DEMOS
         </a>
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           ABOUT
         </a>
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem", // 16px
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           PORTFOLIO
         </a>
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           PAGES
         </a>
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           BLOG
         </a>
-        <a
-          href="#"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "1rem",
-            textTransform: "uppercase",
-          }}
-        >
+        <a href="#" className="nav-link">
           CONTACT
         </a>
       </nav>
@@ -115,7 +49,7 @@ export default function Header() {
           fontFamily: "Kanit",
           fontSize: "0.875rem",
           fontStyle: "normal",
-          fontWeight: 500,
+          fontWeight: 800,
           lineHeight: "0.875rem",
           borderBottom: "2px solid #121212",
           paddingBottom: 2,
