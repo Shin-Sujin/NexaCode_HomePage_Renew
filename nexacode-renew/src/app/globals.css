@@ -24,4 +24,11 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .font-kanit {
+    font-family: "Kanit", sans-serif;
+  }
+
+  .nav-link {
+    @apply text-[#121212] text-base font-semibold uppercase leading-4 font-kanit;
+  }
 }
