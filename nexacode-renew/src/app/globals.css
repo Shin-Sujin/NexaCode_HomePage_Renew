@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -31,4 +19,235 @@ body {
   .nav-link {
     @apply text-[#121212] text-base font-semibold uppercase leading-4 font-kanit;
   }
+}
+
+/* hero-area 부분 */
+
+/* hero area style (Tailwind 프로젝트용 globals.css) */
+.hero-area {
+  background-color: var(--black);
+  padding-top: 100px;
+  position: relative;
+  margin-top: 100px;
+}
+
+@media (max-width: 1535px) {
+  .hero-area {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-area {
+    height: auto;
+  }
+}
+
+.hero-area-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.hero-area-bg .bg-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+.hero-area-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-area-inner {
+  position: relative;
+}
+
+.hero-area .text {
+  font-size: 20px;
+  line-height: 1.38;
+  color: var(--white);
+  font-family: var(--font_beatricetrial);
+  max-width: 400px;
+}
+
+@media (max-width: 1279px) {
+  .hero-area .text {
+    font-size: 18px;
+  }
+}
+
+.hero-area .section-title {
+  font-size: 250px;
+  line-height: 0.9;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+@media (max-width: 1535px) {
+  .hero-area .section-title {
+    font-size: 180px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .hero-area .section-title {
+    font-size: 160px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-area .section-title {
+    font-size: 130px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-area .section-title {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-area .section-title {
+    font-size: 55px;
+  }
+}
+
+.hero-area .section-title .o-switch {
+  height: 183px;
+  margin-top: -40px;
+}
+
+@media (max-width: 1535px) {
+  .hero-area .section-title .o-switch {
+    height: 133px;
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .hero-area .section-title .o-switch {
+    height: 113px;
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-area .section-title .o-switch {
+    height: 93px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-area .section-title .o-switch {
+    height: 60px;
+    margin-top: -13px;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-area .section-title .o-switch {
+    height: 40px;
+    margin-top: -9px;
+  }
+}
+
+.hero-area .title-wrapper {
+  position: relative;
+}
+
+.hero-area .title-wrapper .shape-1 {
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+
+@media (max-width: 1023px) {
+  .hero-area .title-wrapper .shape-1 {
+    display: none;
+  }
+}
+
+.hero-area .address {
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--white);
+  margin-top: 16px;
+}
+
+.hero-area .section-title-wrapper {
+  margin-top: 154px;
+}
+
+@media (max-width: 1535px) {
+  .hero-area .section-title-wrapper {
+    margin-top: 134px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .hero-area .section-title-wrapper {
+    margin-top: 104px;
+  }
+}
+
+.hero-area .section-content .text-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media (max-width: 767px) {
+  .hero-area .section-content .text-wrapper {
+    position: static;
+    margin-top: 20px;
+  }
+}
+
+.hero-area .wc-btn-underline {
+  color: var(--white);
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 19px;
+  padding-bottom: 0;
+}
+
+@media (max-width: 479px) {
+  .hero-area .wc-btn-underline {
+    width: 230px;
+  }
+}
+
+.hero-area .wc-btn-underline:hover i {
+  transform: none;
+}
+
+.hero-area .wc-btn-underline .logo {
+  transform: none;
+}
+
+.hero-area .wc-btn-underline i {
+  font-size: 15px;
+  transform: rotate(-45deg);
+  transition: all 0.3s;
+}
+
+.hero-area .wc-btn-underline::before {
+  height: 1px;
+  top: 0;
+  bottom: auto;
+}
+.word {
+  display: inline-block;
 }
