@@ -14,6 +14,7 @@ type Params = {
   textRef: React.RefObject<HTMLElement>;
   creativeRef: React.RefObject<HTMLElement>;
   studioRef: React.RefObject<HTMLElement>;
+  //   imageRef: React.RefObject<HTMLElement>;
 };
 
 export const useStartPageAnimations = ({
@@ -21,7 +22,8 @@ export const useStartPageAnimations = ({
   textRef,
   creativeRef,
   studioRef,
-}: Params) => {
+}: //   imageRef,
+Params) => {
   useEffect(() => {
     if (fadeRef.current) {
       gsap.fromTo(
@@ -67,7 +69,7 @@ export const useStartPageAnimations = ({
         opacity: 0,
         duration: 0.7,
         ease: "circ.out",
-        stagger: 0.03,
+        stagger: 0.05,
       });
     }
 
@@ -80,10 +82,20 @@ export const useStartPageAnimations = ({
       gsap.from(split.chars, {
         x: "100%",
         opacity: 0,
-        duration: 0.7,
+        duration: 0.8,
         ease: "circ.out",
-        stagger: 0.03,
+        stagger: 0.05,
       });
     }
+    // if (imageRef.current) {
+    //   gsap.from(imageRef.current, {
+    //     y: -10,
+    //     opacity: 0,
+    //     duration: 1,
+    //     ease: "circ.out",
+    //     delay: 0.3, // Split 애니메이션과 자연스럽게 이어지도록
+    //   }
+    // );
+    // }
   }, [fadeRef, textRef, creativeRef, studioRef]);
 };

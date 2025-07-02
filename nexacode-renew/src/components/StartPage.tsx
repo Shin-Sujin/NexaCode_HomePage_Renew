@@ -15,12 +15,13 @@ export default function StartPage() {
   const textRef = useRef<HTMLDivElement>(null);
   const creativeRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
-
+  // const imageRef = useRef<HTMLDivElement>(null);
   useStartPageAnimations({
     fadeRef,
     textRef,
     creativeRef,
     studioRef,
+    // imageRef,
   });
 
   return (
@@ -154,17 +155,19 @@ export default function StartPage() {
             <div ref={studioRef} style={{ letterSpacing: "0.05em" }}>
               STUDI
             </div>
-            <Image
-              src="/images/o-switch.webp"
-              alt="switch"
-              width={160}
-              height={68}
-              style={{
-                height: "8.5rem",
-                marginLeft: "0.5rem",
-                width: "auto",
-              }}
-            />
+            <div>
+              <Image
+                src="/images/o-switch.webp"
+                alt="switch"
+                width={160}
+                height={68}
+                style={{
+                  height: "8.5rem",
+                  marginLeft: "0.5rem",
+                  width: "auto",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
