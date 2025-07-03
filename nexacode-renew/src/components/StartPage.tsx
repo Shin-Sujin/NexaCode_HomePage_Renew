@@ -265,7 +265,31 @@ export default function StartPage() {
       }
     });
   }, []);
-
+  const imgRef = useRef<HTMLImageElement>(null);
+  // 스크롤에 따라 이미지가 살짝 위아래로 확대되는 효과
+  useEffect(() => {
+    if (imgRef.current) {
+      gsap.fromTo(
+        imgRef.current,
+        {
+          scale: 1,
+          y: 0,
+        },
+        {
+          scale: 1.15, // 확대
+          y: -30, // 위로 살짝 이동
+          ease: "none",
+          scrollTrigger: {
+            trigger: imgRef.current,
+            start: "top bottom", // 이미지가 보이기 시작할 때
+            end: "bottom top", // 이미지가 사라질 때
+            scrub: 1, // 스크롤과 함께 부드럽게 연동
+            markers: false, // 디버깅용 (필요시 true로 변경)
+          },
+        }
+      );
+    }
+  }, []);
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full" style={{ height: "90vh" }}>
@@ -452,7 +476,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ 흰색 배경 시작(container 안에 있음) ================================ */}
-      <div className="container">
+      <div className="container bg-fuchsia-200">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-8/12">
@@ -565,7 +589,7 @@ export default function StartPage() {
                       according to the meanwhile, 51% of consumers{" "}
                     </div>
                     <button
-                      className="btn-wrapper btn-move has_fade_anim"
+                      className="custom-hover-button has_fade_anim"
                       data-fade-from="top"
                       data-fade-offset="50"
                       data-delay="0.1"
@@ -601,6 +625,20 @@ export default function StartPage() {
               </div>{" "}
             </div>
           </div>
+        </div>
+      </div>
+      <div className="container overflow-hidden bg-fuchsia-300">
+        <div className="relative w-full h-auto overflow-hidden">
+          <Image
+            ref={imgRef}
+            src="/images/img-s-17.webp"
+            alt="image"
+            width={1500}
+            height={1000}
+            className="w-full h-auto object-cover"
+            data-speed="0.8"
+            data-lag="0"
+          />
         </div>
       </div>
       <div className="w-full h-96 bg-red-500">
