@@ -224,6 +224,123 @@ export default function StartPage() {
           </div>
         </div>
       </div>
+      {/* ================================ 흰색 배경 시작(container 안에 있음) ================================ */}
+      <div className="container">
+        <div className="pt-36 pb-36 section-spacing-top">
+          <div className="flex flex-row">
+            <div className="subtitle-wrappe w-8/12">
+              <div
+                style={{
+                  color: "#121212",
+                  fontFamily: "Kanit",
+                  fontSize: "1rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1rem",
+                  textTransform: "uppercase",
+                }}
+              >
+                01.WHO WE ARE
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h2 className="section-title " style={{ perspective: "400px" }}>
+                <div className="section-title-line">
+                  We provide brilliant idea to grow the
+                </div>
+                <div className="section-title-line">
+                  startup — agency with your sharp
+                </div>
+                <div className="section-title-line">brand.</div>
+              </h2>
+              <div className="mt-20">
+                <div className="flex flex-row items-start">
+                  <div className="info-text">
+                    <div className="flex flex-col w-72">
+                      <div
+                        style={{
+                          color: "#121212",
+                          fontFamily: "Inter",
+                          fontSize: "16rem",
+                          fontStyle: "normal",
+                          fontWeight: 400,
+                          lineHeight: "13.125rem",
+                        }}
+                      >
+                        15
+                      </div>
+                      <div
+                        style={{
+                          color: "#555",
+                          fontFamily: "Kanit",
+                          fontSize: "1.25rem",
+                          fontStyle: "normal",
+                          fontWeight: 600,
+                          lineHeight: "1.7125rem",
+                        }}
+                      >
+                        We helped to get companies with $15M+ funding
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      width: "2px",
+                      minHeight: "200px",
+                      background: "rgba(18, 18, 18, 0.08)",
+                      margin: "0 5rem",
+                      alignSelf: "stretch",
+                    }}
+                  ></div>
+
+                  <div className="flex flex-col">
+                    <div
+                      style={{
+                        color: "#555",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.58625rem",
+                        marginBottom: "2.5rem",
+                      }}
+                    >
+                      Consumers today rely heavily on digital means to research
+                      products. We research a brand of bldend engaging with it,
+                      according to the meanwhile, 51% of consumers{" "}
+                    </div>
+                    <button
+                      style={{
+                        display: "flex",
+                        width: "10.625rem",
+                        height: "10.625rem",
+                        padding: "0rem 2.68125rem 0rem 2.69313rem",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: "5.3125rem",
+                        background: "#C9F31D",
+                        color: "#121212",
+                        textAlign: "center",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.18125rem",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Explore us
+                      <br />
+                      more
+                    </button>
+                  </div>
+                </div>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="w-full h-96 bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>
       </div>
