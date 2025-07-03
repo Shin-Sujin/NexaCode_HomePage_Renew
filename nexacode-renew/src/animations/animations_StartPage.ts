@@ -4,10 +4,8 @@
 
 import { useEffect } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
 
-gsap.registerPlugin(ScrollTrigger);
+import SplitType from "split-type";
 
 type Params = {
   fadeRef: React.RefObject<HTMLElement>;
@@ -34,11 +32,6 @@ Params) => {
           opacity: 1,
           ease: "bounce.out",
           duration: 2,
-          scrollTrigger: {
-            trigger: fadeRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
         }
       );
     }

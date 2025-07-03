@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
+import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ export default function StartPage() {
   const creativeRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
-
+  const targetRef = useRef<HTMLDivElement>(null);
   useStartPageAnimations({
     fadeRef,
     textRef,
@@ -24,6 +25,7 @@ export default function StartPage() {
     // imageRef,
   });
   useTextSlide({ slideRef });
+  useFadeInOnScroll({ targetRef });
   const navTexts = [
     "BRANDING",
     "AGENCY",
@@ -187,6 +189,7 @@ export default function StartPage() {
 
       {/* ================================ 하단 text-slide 바 ================================ */}
       <div
+        ref={targetRef}
         style={{
           height: "4rem", // 원하는 높이로 조정
           background: "#C9F31D",
@@ -220,6 +223,9 @@ export default function StartPage() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="w-full h-96 bg-red-500">
+        <div className="w-full h-full bg-blue-500">안녕하세요</div>
       </div>
     </div>
   );
