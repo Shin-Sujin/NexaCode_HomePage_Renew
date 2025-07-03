@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
@@ -17,6 +18,9 @@ export default function StartPage() {
   const studioRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
+  const whoWeAreRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLDivElement>(null);
+
   useStartPageAnimations({
     fadeRef,
     textRef,
@@ -39,6 +43,229 @@ export default function StartPage() {
   ];
 
   const repeatedNavTexts = Array(3).fill(navTexts).flat();
+
+  // has_char_anim 애니메이션 직접 구현
+  useEffect(() => {
+    if (whoWeAreRef.current) {
+      const element = whoWeAreRef.current;
+      const text = element.textContent || "";
+      const stagger = element.getAttribute("data-stagger") || "0.05";
+      const translateX = element.getAttribute("data-translateX") || "20";
+      const delay = element.getAttribute("data-delay") || "0.3";
+
+      // 텍스트를 개별 문자로 분할
+      element.innerHTML = text
+        .split("")
+        .map((char) =>
+          char === " " ? " " : `<span class="char">${char}</span>`
+        )
+        .join("");
+
+      const chars = element.querySelectorAll(".char");
+
+      gsap.from(chars, {
+        duration: 1,
+        delay: parseFloat(delay),
+        x: parseFloat(translateX),
+        autoAlpha: 0,
+        stagger: parseFloat(stagger),
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%", // 더 일찍 시작
+          end: "bottom 20%", // 끝 지점 설정
+          scroller: "body",
+          toggleActions: "play none none reverse", // 스크롤 올릴 때도 애니메이션 되돌림
+          markers: false, // 디버깅용 마커 (필요시 true로 변경)
+        },
+      });
+    }
+  }, []);
+
+  // has_text_move_anim 애니메이션 직접 구현
+  useEffect(() => {
+    if (sectionTitleRef.current) {
+      const element = sectionTitleRef.current;
+      const delay = element.getAttribute("data-delay") || "0.5";
+
+      // 텍스트를 줄 단위로 분할
+      const lines = element.querySelectorAll(".section-title-line");
+
+      gsap.set(element, { perspective: 400 });
+
+      // 초기 상태 설정
+      gsap.set(lines, {
+        opacity: 0,
+        rotationX: -80,
+        transformOrigin: "top center -50",
+      });
+
+      // 애니메이션 실행
+      gsap.to(lines, {
+        duration: 1,
+        delay: parseFloat(delay),
+        opacity: 1,
+        rotationX: 0,
+        force3D: true,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%", // 더 일찍 시작
+          end: "bottom 20%", // 끝 지점 설정
+          scroller: "body",
+          toggleActions: "play none none reverse", // 스크롤 올릴 때도 애니메이션 되돌림
+          markers: false, // 디버깅용 마커 (필요시 true로 변경)
+        },
+      });
+    }
+  }, []);
+
+  // has_fade_anim 애니메이션 직접 구현
+  useEffect(() => {
+    const fadeElements = document.querySelectorAll(".has_fade_anim");
+    fadeElements.forEach((element) => {
+      const fadeFrom = element.getAttribute("data-fade-from") || "bottom";
+      const onScroll = element.getAttribute("data-on-scroll") || "1";
+      const duration = element.getAttribute("data-duration") || "1.5";
+      const fadeOffset = element.getAttribute("data-fade-offset") || "50";
+      const delay = element.getAttribute("data-delay") || "0.5";
+      const ease = element.getAttribute("data-ease") || "power2.out";
+
+      // 초기 상태 설정
+      if (fadeFrom === "bottom") {
+        gsap.set(element, { y: parseInt(fadeOffset), opacity: 0 });
+      } else if (fadeFrom === "top") {
+        gsap.set(element, { y: -parseInt(fadeOffset), opacity: 0 });
+      } else if (fadeFrom === "left") {
+        gsap.set(element, { x: -parseInt(fadeOffset), opacity: 0 });
+      } else if (fadeFrom === "right") {
+        gsap.set(element, { x: parseInt(fadeOffset), opacity: 0 });
+      } else if (fadeFrom === "in") {
+        gsap.set(element, { opacity: 0 });
+      }
+
+      if (onScroll === "1") {
+        if (fadeFrom === "bottom") {
+          gsap.to(element, {
+            y: 0,
+            opacity: 1,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              scroller: "body",
+              toggleActions: "play none none none",
+              markers: false,
+            },
+          });
+        } else if (fadeFrom === "top") {
+          gsap.to(element, {
+            y: 0,
+            opacity: 1,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              scroller: "body",
+              toggleActions: "play none none none",
+              markers: false,
+            },
+          });
+        } else if (fadeFrom === "left") {
+          gsap.to(element, {
+            x: 0,
+            opacity: 1,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              scroller: "body",
+              toggleActions: "play none none none",
+              markers: false,
+            },
+          });
+        } else if (fadeFrom === "right") {
+          gsap.to(element, {
+            x: 0,
+            opacity: 1,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              scroller: "body",
+              toggleActions: "play none none none",
+              markers: false,
+            },
+          });
+        } else if (fadeFrom === "in") {
+          gsap.to(element, {
+            opacity: 1,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              scroller: "body",
+              toggleActions: "play none none none",
+              markers: false,
+            },
+          });
+        }
+      } else {
+        // 스크롤 트리거 없이 즉시 실행
+        if (fadeFrom === "bottom") {
+          gsap.from(element, {
+            y: parseInt(fadeOffset),
+            opacity: 0,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+          });
+        } else if (fadeFrom === "top") {
+          gsap.from(element, {
+            y: -parseInt(fadeOffset),
+            opacity: 0,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+          });
+        } else if (fadeFrom === "left") {
+          gsap.from(element, {
+            x: -parseInt(fadeOffset),
+            opacity: 0,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+          });
+        } else if (fadeFrom === "right") {
+          gsap.from(element, {
+            x: parseInt(fadeOffset),
+            opacity: 0,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+          });
+        } else if (fadeFrom === "in") {
+          gsap.from(element, {
+            opacity: 0,
+            ease: ease,
+            duration: parseFloat(duration),
+            delay: parseFloat(delay),
+          });
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full" style={{ height: "90vh" }}>
@@ -230,6 +457,11 @@ export default function StartPage() {
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-8/12">
               <div
+                ref={whoWeAreRef}
+                className="has_char_anim"
+                data-stagger="0.05"
+                data-translateX="20"
+                data-delay="0.3"
                 style={{
                   color: "#121212",
                   fontFamily: "Kanit",
@@ -244,7 +476,12 @@ export default function StartPage() {
               </div>
             </div>
             <div className="flex flex-col">
-              <h2 className="section-title " style={{ perspective: "400px" }}>
+              <h2
+                ref={sectionTitleRef}
+                className="section-title has_text_move_anim"
+                data-delay="0.5"
+                style={{ perspective: "400px" }}
+              >
                 <div className="section-title-line">
                   We provide brilliant idea to grow the
                 </div>
@@ -258,6 +495,12 @@ export default function StartPage() {
                   <div className="info-text">
                     <div className="flex flex-col w-72">
                       <div
+                        className="has_fade_anim"
+                        data-fade-from="bottom"
+                        data-fade-offset="10"
+                        data-delay="0.1"
+                        data-duration="0.6"
+                        data-on-scroll="1"
                         style={{
                           color: "#121212",
                           fontFamily: "Inter",
@@ -270,6 +513,12 @@ export default function StartPage() {
                         15
                       </div>
                       <div
+                        className="has_fade_anim"
+                        data-fade-from="bottom"
+                        data-fade-offset="10"
+                        data-delay="0.01"
+                        data-duration="0.5"
+                        data-on-scroll="1"
                         style={{
                           color: "#555",
                           fontFamily: "Kanit",
@@ -285,7 +534,7 @@ export default function StartPage() {
                   </div>
                   <div
                     style={{
-                      width: "2px",
+                      width: "6px",
                       minHeight: "200px",
                       background: "rgba(18, 18, 18, 0.08)",
                       margin: "0 5rem",
