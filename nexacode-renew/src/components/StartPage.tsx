@@ -26,6 +26,19 @@ export default function StartPage() {
     // imageRef,
   });
   useTextSlide({ slideRef });
+  const navTexts = [
+    "BRANDING",
+    "AGENCY",
+    "TYPOGRAPHY",
+    "DESIGN",
+    "INTERACTION",
+    "CREATIVITY",
+    "DEVELOPMENT",
+    "STUDIO",
+    "STRATEGY",
+  ];
+
+  const repeatedNavTexts = Array(3).fill(navTexts).flat();
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full" style={{ height: "102vh" }}>
@@ -177,7 +190,7 @@ export default function StartPage() {
       {/* 하단 text-slide 바 */}
       <div
         style={{
-          height: "60px", // 원하는 높이로 조정
+          height: "4rem", // 원하는 높이로 조정
           background: "#C9F31D",
           display: "flex",
           alignItems: "center",
@@ -187,233 +200,26 @@ export default function StartPage() {
         }}
         className="w-full overflow-hidden"
       >
-        <div
-          ref={slideRef}
-          style={{ display: "flex", alignItems: "center", gap: "18px" }}
-        >
+        <div ref={slideRef} style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "18px",
+              gap: "2.8rem",
             }}
           >
-            <span className="nav-bar-text">BRANDING</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">AGENCY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">TYPOGRAPHY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DESIGN</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">INTERACTION</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">CREATIVITY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DEVELOPMENT</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STUDIO</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STRATEGY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">BRANDING</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">AGENCY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">TYPOGRAPHY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DESIGN</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">INTERACTION</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">CREATIVITY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DEVELOPMENT</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STUDIO</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STRATEGY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />{" "}
-            <span className="nav-bar-text">BRANDING</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">AGENCY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">TYPOGRAPHY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DESIGN</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">INTERACTION</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">CREATIVITY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">DEVELOPMENT</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STUDIO</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
-            <span className="nav-bar-text">STRATEGY</span>
-            <Image
-              src="/images/star.webp"
-              alt="star"
-              width={16}
-              height={16}
-              className="nav-bar-icon"
-            />
+            {repeatedNavTexts.map((text, idx) => (
+              <div key={idx} className="flex items-center">
+                <span className="nav-bar-text mr-5">{text}</span>
+                <Image
+                  src="/images/star.webp"
+                  alt="star"
+                  width={20}
+                  height={20}
+                  className="nav-bar-icon"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

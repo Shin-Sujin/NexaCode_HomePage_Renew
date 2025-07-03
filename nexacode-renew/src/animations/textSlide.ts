@@ -20,7 +20,7 @@ export const useTextSlide = ({ slideRef }: Params) => {
 
       gsap.to(element, {
         x: -totalWidth,
-        duration: 5,
+        duration: 70,
         ease: "linear",
         repeat: -1,
         modifiers: {
