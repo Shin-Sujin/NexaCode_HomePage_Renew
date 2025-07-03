@@ -3,11 +3,9 @@
 import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
-
 import "splitting/dist/splitting.css"; // 필요 시
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +15,7 @@ export default function StartPage() {
   const creativeRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
-  // const imageRef = useRef<HTMLDivElement>(null);
+
   useStartPageAnimations({
     fadeRef,
     textRef,
@@ -41,8 +39,8 @@ export default function StartPage() {
   const repeatedNavTexts = Array(3).fill(navTexts).flat();
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="relative w-full" style={{ height: "102vh" }}>
-        {/* 동영상 */}
+      <div className="relative w-full" style={{ height: "90vh" }}>
+        {/* ================================ 동영상 ================================ */}
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -52,7 +50,7 @@ export default function StartPage() {
           className="absolute top-0 left-0 w-full h-full object-cover"
           style={{ zIndex: 0 }}
         />
-        {/* 검은색 오버레이 */}
+        {/* ================================ 검은색 오버레이 ================================ */}
         <div
           className="absolute top-0 left-0 w-full h-full"
           style={{
@@ -68,7 +66,7 @@ export default function StartPage() {
       >
         <div>
           <div className="flex flex-row gap-24">
-            {/* 1번 요소 */}
+            {/* ================================ 1번 요소 ================================ */}
             <div
               ref={fadeRef}
               className="absolute flex flex-col gap-4"
@@ -119,7 +117,7 @@ export default function StartPage() {
                 New York
               </div>
             </div>
-            {/* 2번 요소 */}
+            {/* ================================ 2번 요소 ================================ */}
             <div
               ref={textRef}
               style={{
@@ -144,7 +142,7 @@ export default function StartPage() {
           </div>
         </div>
 
-        {/* 3번 요소 */}
+        {/* ================================ 3번 요소 ================================ */}
         <div
           style={{
             width: "60rem",
@@ -187,7 +185,7 @@ export default function StartPage() {
         </div>
       </div>
 
-      {/* 하단 text-slide 바 */}
+      {/* ================================ 하단 text-slide 바 ================================ */}
       <div
         style={{
           height: "4rem", // 원하는 높이로 조정
