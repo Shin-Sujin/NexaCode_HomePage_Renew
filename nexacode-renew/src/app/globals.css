@@ -251,3 +251,33 @@ body {
 .word {
   display: inline-block;
 }
+/* 메뉴바 텍스트 공통 스타일 */
+.nav-text {
+  color: #121212;
+  font-family: Inter, sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 100% */
+  text-transform: uppercase;
+}
+
+/* 텍스트 슬라이드 텍스트 공통 스타일 */
+.nav-bar-text {
+  color: #121212;
+  font-family: Inter, sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.45rem; /* 100% */
+  text-transform: uppercase;
+}
+
+/* 텍스트 슬라이드 아이콘(디자인 요소) 공통 스타일 */
+.nav-bar-icon {
+  vertical-align: middle;
+  margin: 0 8px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}

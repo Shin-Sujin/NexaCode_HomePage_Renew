@@ -3,10 +3,10 @@
 import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
-
+import { useTextSlide } from "@/animations/textSlide";
+import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,8 @@ export default function StartPage() {
   const textRef = useRef<HTMLDivElement>(null);
   const creativeRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
-  // const imageRef = useRef<HTMLDivElement>(null);
+  const slideRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLDivElement>(null);
   useStartPageAnimations({
     fadeRef,
     textRef,
@@ -23,11 +24,25 @@ export default function StartPage() {
     studioRef,
     // imageRef,
   });
+  useTextSlide({ slideRef });
+  useFadeInOnScroll({ targetRef });
+  const navTexts = [
+    "BRANDING",
+    "AGENCY",
+    "TYPOGRAPHY",
+    "DESIGN",
+    "INTERACTION",
+    "CREATIVITY",
+    "DEVELOPMENT",
+    "STUDIO",
+    "STRATEGY",
+  ];
 
+  const repeatedNavTexts = Array(3).fill(navTexts).flat();
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="relative w-full" style={{ height: "102vh" }}>
-        {/* 동영상 */}
+      <div className="relative w-full" style={{ height: "90vh" }}>
+        {/* ================================ 동영상 ================================ */}
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -37,7 +52,7 @@ export default function StartPage() {
           className="absolute top-0 left-0 w-full h-full object-cover"
           style={{ zIndex: 0 }}
         />
-        {/* 검은색 오버레이 */}
+        {/* ================================ 검은색 오버레이 ================================ */}
         <div
           className="absolute top-0 left-0 w-full h-full"
           style={{
@@ -53,7 +68,7 @@ export default function StartPage() {
       >
         <div>
           <div className="flex flex-row gap-24">
-            {/* 1번 요소 */}
+            {/* ================================ 1번 요소 ================================ */}
             <div
               ref={fadeRef}
               className="absolute flex flex-col gap-4"
@@ -104,7 +119,7 @@ export default function StartPage() {
                 New York
               </div>
             </div>
-            {/* 2번 요소 */}
+            {/* ================================ 2번 요소 ================================ */}
             <div
               ref={textRef}
               style={{
@@ -129,7 +144,7 @@ export default function StartPage() {
           </div>
         </div>
 
-        {/* 3번 요소 */}
+        {/* ================================ 3번 요소 ================================ */}
         <div
           style={{
             width: "60rem",
@@ -172,7 +187,46 @@ export default function StartPage() {
         </div>
       </div>
 
-      <div>안녕하세요</div>
+      {/* ================================ 하단 text-slide 바 ================================ */}
+      <div
+        ref={targetRef}
+        style={{
+          height: "4rem", // 원하는 높이로 조정
+          background: "#C9F31D",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 10,
+          width: "100%",
+        }}
+        className="w-full overflow-hidden"
+      >
+        <div ref={slideRef} style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "2.8rem",
+            }}
+          >
+            {repeatedNavTexts.map((text, idx) => (
+              <div key={idx} className="flex items-center">
+                <span className="nav-bar-text mr-5">{text}</span>
+                <Image
+                  src="/images/star.webp"
+                  alt="star"
+                  width={20}
+                  height={20}
+                  className="nav-bar-icon"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-96 bg-red-500">
+        <div className="w-full h-full bg-blue-500">안녕하세요</div>
+      </div>
     </div>
   );
 }
