@@ -19,8 +19,15 @@ body {
   .nav-link {
     @apply text-[#121212] text-base font-semibold uppercase leading-4 font-kanit;
   }
-}
 
+  .service-item {
+    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide;
+  }
+
+  .service-item-top {
+    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-medium tracking-wide;
+  }
+}
 /* hero-area 부분 */
 
 /* hero area style (Tailwind 프로젝트용 globals.css) */

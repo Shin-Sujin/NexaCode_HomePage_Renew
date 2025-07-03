@@ -640,6 +640,112 @@ export default function StartPage() {
             data-lag="0"
           />
         </div>
+        <div className="pt-36 pb-36 section-spacing-top">
+          <div className="flex flex-row">
+            <div className="subtitle-wrappe w-5/12">
+              <div
+                ref={whoWeAreRef}
+                className="has_char_anim"
+                data-stagger="0.05"
+                data-translateX="20"
+                data-delay="0.3"
+                style={{
+                  color: "#121212",
+                  fontFamily: "Kanit",
+                  fontSize: "1rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1rem",
+                  textTransform: "uppercase",
+                }}
+              >
+                02. SERVICES
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h2
+                className="section-title has_text_move_anim mb-8"
+                data-delay="0.5"
+                style={{ perspective: "400px" }}
+              >
+                <div className="section-title-line">
+                  Digital experience by our professional team.
+                </div>
+              </h2>
+              <div className="grid grid-cols-2 gap-x-24 w-full">
+                <div>
+                  <div className="service-item-top">Creative Design</div>
+                  <div className="service-item">Branding Design</div>
+                  <div className="service-item">Development</div>
+                </div>
+                <div>
+                  <div className="service-item-top">eCommerce</div>
+                  <div className="service-item">Digital marketing</div>
+                  <div className="service-item">Creative Writing</div>
+                </div>
+              </div>{" "}
+              <div className="mt-20">
+                <div className="flex flex-row items-start">
+                  <div className="flex flex-row">
+                    <button
+                      className="custom-hover-button has_fade_anim mr-24"
+                      data-fade-from="top"
+                      data-fade-offset="50"
+                      data-delay="0.1"
+                      data-duration="1.2"
+                      data-ease="bounce"
+                      data-on-scroll="1"
+                      style={{
+                        display: "flex",
+                        width: "10.625rem",
+                        height: "10.625rem",
+                        padding: "0rem 2.68125rem 0rem 2.69313rem",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: "5.3125rem",
+                        background: "#FFFFFF",
+                        color: "#121212",
+                        textAlign: "center",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.18125rem",
+                        border: "0.5px solid #666666",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Explore all
+                      <br />
+                      services
+                    </button>
+                    <div
+                      className="has_fade_anim mt-9"
+                      data-fade-from="bottom"
+                      data-fade-offset="10"
+                      data-delay="0.3"
+                      data-duration="1.5"
+                      data-on-scroll="1"
+                      style={{
+                        color: "#555",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.58625rem",
+                        width: 360,
+                      }}
+                    >
+                      Consumers today rely heavily on digital means to research
+                      products. We research a brand of bldend engaging with it,
+                      according to the meanwhile, 51% of consumers{" "}
+                    </div>
+                  </div>
+                </div>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
       </div>
       <div className="w-full h-96 bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>
