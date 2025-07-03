@@ -69,7 +69,7 @@ Params) => {
         opacity: 0,
         duration: 0.7,
         ease: "circ.out",
-        stagger: 0.05,
+        stagger: 0.07,
       });
     }
 
@@ -84,7 +84,7 @@ Params) => {
         opacity: 0,
         duration: 0.8,
         ease: "circ.out",
-        stagger: 0.05,
+        stagger: 0.07,
       });
     }
     // if (imageRef.current) {

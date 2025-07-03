@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
+import { useTextSlide } from "@/animations/textSlide";
 
 import "splitting/dist/splitting.css"; // 필요 시
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ export default function StartPage() {
   const textRef = useRef<HTMLDivElement>(null);
   const creativeRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
+  const slideRef = useRef<HTMLDivElement>(null);
   // const imageRef = useRef<HTMLDivElement>(null);
   useStartPageAnimations({
     fadeRef,
@@ -23,7 +25,7 @@ export default function StartPage() {
     studioRef,
     // imageRef,
   });
-
+  useTextSlide({ slideRef });
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full" style={{ height: "102vh" }}>
@@ -172,7 +174,249 @@ export default function StartPage() {
         </div>
       </div>
 
-      <div>안녕하세요</div>
+      {/* 하단 text-slide 바 */}
+      <div
+        style={{
+          height: "60px", // 원하는 높이로 조정
+          background: "#C9F31D",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 10,
+          width: "100%",
+        }}
+        className="w-full overflow-hidden"
+      >
+        <div
+          ref={slideRef}
+          style={{ display: "flex", alignItems: "center", gap: "18px" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "18px",
+            }}
+          >
+            <span className="nav-bar-text">BRANDING</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">AGENCY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">TYPOGRAPHY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DESIGN</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">INTERACTION</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">CREATIVITY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DEVELOPMENT</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STUDIO</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STRATEGY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">BRANDING</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">AGENCY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">TYPOGRAPHY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DESIGN</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">INTERACTION</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">CREATIVITY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DEVELOPMENT</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STUDIO</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STRATEGY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />{" "}
+            <span className="nav-bar-text">BRANDING</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">AGENCY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">TYPOGRAPHY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DESIGN</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">INTERACTION</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">CREATIVITY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">DEVELOPMENT</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STUDIO</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+            <span className="nav-bar-text">STRATEGY</span>
+            <Image
+              src="/images/star.webp"
+              alt="star"
+              width={16}
+              height={16}
+              className="nav-bar-icon"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

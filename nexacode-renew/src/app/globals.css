@@ -251,3 +251,22 @@ body {
 .word {
   display: inline-block;
 }
+/* 네비게이션 텍스트 공통 스타일 */
+.nav-text {
+  color: #121212;
+  font-family: Inter, sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 100% */
+  text-transform: uppercase;
+}
+
+/* 네비게이션 아이콘(디자인 요소) 공통 스타일 */
+.nav-bar-icon {
+  vertical-align: middle;
+  margin: 0 8px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
