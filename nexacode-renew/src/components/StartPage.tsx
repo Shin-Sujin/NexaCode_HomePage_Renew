@@ -544,6 +544,12 @@ export default function StartPage() {
 
                   <div className="flex flex-col">
                     <div
+                      className="has_fade_anim"
+                      data-fade-from="bottom"
+                      data-fade-offset="10"
+                      data-delay="0.3"
+                      data-duration="1.5"
+                      data-on-scroll="1"
                       style={{
                         color: "#555",
                         fontFamily: "Kanit",
@@ -559,6 +565,13 @@ export default function StartPage() {
                       according to the meanwhile, 51% of consumers{" "}
                     </div>
                     <button
+                      className="btn-wrapper btn-move has_fade_anim"
+                      data-fade-from="top"
+                      data-fade-offset="50"
+                      data-delay="0.1"
+                      data-duration="1.2"
+                      data-ease="bounce"
+                      data-on-scroll="1"
                       style={{
                         display: "flex",
                         width: "10.625rem",
