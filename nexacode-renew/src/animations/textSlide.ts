@@ -16,11 +16,11 @@ export const useTextSlide = ({ slideRef }: Params) => {
   useEffect(() => {
     if (slideRef.current) {
       const element = slideRef.current;
-      const totalWidth = element.children[0].getBoundingClientRect().width / 2;
+      const totalWidth = element.children[0].getBoundingClientRect().width / 3;
 
       gsap.to(element, {
         x: -totalWidth,
-        duration: 70,
+        duration: 55,
         ease: "linear",
         repeat: -1,
         modifiers: {
