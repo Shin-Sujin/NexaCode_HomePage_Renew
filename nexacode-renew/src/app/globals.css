@@ -297,7 +297,7 @@ body {
   transform: translate3d(0px, 0px, 0px);
   opacity: 1;
   color: #121212;
-  font-family: "beatricetrial";
+  font-family: "BeatriceTRIAL-Regular";
   font-size: 4rem;
   font-style: normal;
   font-weight: 500;
@@ -586,7 +586,7 @@ body {
 
     .thumb img {
       transform: scale(1.15);
-      transition: transform 0.5s ease 0.1s;
+      transition: transform 0.5s ease 0.2s;
     }
   }
 
@@ -616,4 +616,173 @@ body {
     color: #666;
     display: inline-block;
   }
+}
+
+.testimonial-box-wrapper {
+  position: relative;
+  direction: ltr;
+  margin-top: 85px;
+  overflow: hidden;
+}
+
+.testimonial-content {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.video-box {
+  position: relative;
+  width: 420px;
+  aspect-ratio: 100/154;
+  overflow: hidden;
+
+  @media (max-width: 1023px) {
+    width: 330px;
+  }
+
+  @media (max-width: 639px) {
+    width: 100%;
+  }
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.video-box-wrapper {
+  padding-inline-start: 90px;
+
+  @media (max-width: 1279px) {
+    padding-inline-start: 40px;
+  }
+
+  @media (max-width: 639px) {
+    padding-inline-start: 0;
+  }
+}
+
+.wc-btn-play {
+  width: 160px;
+  height: 160px;
+
+  @media (max-width: 767px) {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.meta-info {
+  width: 405px;
+  border-right: 1px solid #2e2e2e;
+  padding-bottom: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  @media (max-width: 1279px) {
+    width: 315px;
+    padding-inline-end: 40px;
+  }
+
+  @media (max-width: 1023px) {
+    width: 235px;
+  }
+
+  @media (max-width: 639px) {
+    position: static;
+    width: 100%;
+    border-bottom: 0;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 1000px;
+    background-color: rgba(255, 255, 255, 0.08);
+    inset-inline-end: -1px;
+    top: -150px;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  .testimonial-count {
+    font-size: 140px;
+    font-family: "BeatriceTRIAL-Regular-BF64829e8f591fb";
+    line-height: 0.87;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: white;
+
+    @media (max-width: 1279px) {
+      font-size: 100px;
+    }
+
+    @media (max-width: 639px) {
+      font-size: 70px;
+    }
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 1.44;
+    margin-bottom: 43px;
+    color: var(--white-2);
+  }
+}
+
+.client-meta {
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 227px;
+
+  @media (max-width: 1023px) {
+    padding-bottom: 67px;
+  }
+
+  .name {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: var(--white);
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 1.42;
+    color: var(--white-2);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.b-ts-pagination {
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  color: var(--white);
+
+  .dash {
+    background-color: var(--white);
+  }
+}
+
+/* nKKU 폰트 등록 */
+@font-face {
+  font-family: "nKKU-Go6G5tXcr4-ORWnVaFrNlJz";
+  src: url("/fonts/nKKU-Go6G5tXcr4-ORWnVaFrNlJz.woff2") format("woff2"),
+    url("/fonts/nKKU-Go6G5tXcr4-ORWnVaFrNlJz.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

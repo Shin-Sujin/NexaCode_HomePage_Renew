@@ -471,7 +471,6 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-
       {/* ================================ 하단 text-slide 바 ================================ */}
       <div
         ref={targetRef}
@@ -609,7 +608,159 @@ export default function StartPage() {
                       data-duration="1.5"
                       data-on-scroll="1"
                       style={{
-                        color: "#555",
+                        color: "#999999",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.58625rem",
+                        marginBottom: "2.5rem",
+                      }}
+                    >
+                      Consumers today rely heavily on digital means to research
+                      products. We research a brand of bldend engaging with it,
+                      according to the meanwhile, 51% of consumers{" "}
+                    </div>
+                    <button
+                      className="has_fade_anim"
+                      data-fade-from="top"
+                      data-fade-offset="50"
+                      data-delay="0.1"
+                      data-duration="1.2"
+                      data-ease="bounce"
+                      data-on-scroll="1"
+                      style={{
+                        display: "flex",
+                        width: "10.625rem",
+                        height: "10.625rem",
+                        padding: "0rem 2.68125rem 0rem 2.69313rem",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: "5.3125rem",
+                        background: "#C9F31D",
+                        color: "#121212",
+                        textAlign: "center",
+                        fontFamily: "Kanit",
+                        fontSize: "1.125rem",
+                        fontStyle: "normal",
+                        fontWeight: 600,
+                        lineHeight: "1.18125rem",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Explore us
+                      <br />
+                      more
+                    </button>
+                  </div>
+                </div>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ================================ 흰색 배경 시작(container 안에 있음) ================================ */}
+      <div className="container">
+        <div className="pt-36 pb-36 section-spacing-top">
+          <div className="flex flex-row">
+            <div className="subtitle-wrappe w-8/12">
+              <div
+                ref={whoWeAreRef}
+                className="has_char_anim"
+                data-stagger="0.05"
+                data-translateX="20"
+                data-delay="0.3"
+                style={{
+                  color: "#121212",
+                  fontFamily: "Kanit",
+                  fontSize: "1rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1rem",
+                  textTransform: "uppercase",
+                }}
+              >
+                01.WHO WE ARE
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h2
+                ref={sectionTitleRef}
+                className="section-title has_text_move_anim"
+                data-delay="0.5"
+                style={{ perspective: "400px" }}
+              >
+                <div className="section-title-line">
+                  We provide brilliant idea to grow the
+                </div>
+                <div className="section-title-line">
+                  startup — agency with your sharp
+                </div>
+                <div className="section-title-line">brand.</div>
+              </h2>
+              <div className="mt-20">
+                <div className="flex flex-row items-start">
+                  <div className="info-text">
+                    <div className="flex flex-col w-72">
+                      <div
+                        className="has_fade_anim"
+                        data-fade-from="bottom"
+                        data-fade-offset="10"
+                        data-delay="0.1"
+                        data-duration="0.6"
+                        data-on-scroll="1"
+                        style={{
+                          color: "#121212",
+                          fontFamily: "Inter",
+                          fontSize: "16rem",
+                          fontStyle: "normal",
+                          fontWeight: 400,
+                          lineHeight: "13.125rem",
+                        }}
+                      >
+                        15
+                      </div>
+                      <div
+                        className="has_fade_anim"
+                        data-fade-from="bottom"
+                        data-fade-offset="10"
+                        data-delay="0.01"
+                        data-duration="0.5"
+                        data-on-scroll="1"
+                        style={{
+                          color: "#555",
+                          fontFamily: "Kanit",
+                          fontSize: "1.25rem",
+                          fontStyle: "normal",
+                          fontWeight: 600,
+                          lineHeight: "1.7125rem",
+                        }}
+                      >
+                        We helped to get companies with $15M+ funding
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      width: "6px",
+                      minHeight: "200px",
+                      background: "rgba(18, 18, 18, 0.08)",
+                      margin: "0 5rem",
+                      alignSelf: "stretch",
+                    }}
+                  ></div>
+
+                  <div className="flex flex-col">
+                    <div
+                      className="has_fade_anim"
+                      data-fade-from="bottom"
+                      data-fade-offset="10"
+                      data-delay="0.3"
+                      data-duration="1.5"
+                      data-on-scroll="1"
+                      style={{
+                        color: "#999999",
                         fontFamily: "Kanit",
                         fontSize: "1.125rem",
                         fontStyle: "normal",
@@ -774,7 +925,7 @@ export default function StartPage() {
                       data-duration="1.5"
                       data-on-scroll="1"
                       style={{
-                        color: "#555",
+                        color: "#999999",
                         fontFamily: "Kanit",
                         fontSize: "1.125rem",
                         fontStyle: "normal",
@@ -799,7 +950,7 @@ export default function StartPage() {
       </div>
       {/* ================================ 03.SELETED WORK ================================ */}
       <div className="container">
-        <div className="pt-36 pb-36 section-spacing-top">
+        <div className="pt-36 pb-3 section-spacing-top">
           <div className="flex flex-col">
             <div className="subtitle-wrappe w-8/12">
               <div
@@ -823,6 +974,7 @@ export default function StartPage() {
                 marginTop: "1rem",
               }}
             ></div>
+            {/* ================================ 이미지 5개 추가 ================================ */}
             <div className="works-wrapper-box">
               <div className="work-box">
                 <div className="thumb">
@@ -883,11 +1035,165 @@ export default function StartPage() {
                 </div>
                 <div className="title">Festonax card</div>
                 <span className="tag">Design - 2019</span>
-              </div>
+              </div>{" "}
+              <button
+                className="has_fade_anim mr-24 mb-44"
+                data-fade-from="top"
+                data-fade-offset="50"
+                data-delay="0.1"
+                data-duration="1.2"
+                data-ease="bounce"
+                data-on-scroll="1"
+                style={{
+                  display: "flex",
+                  width: "10.625rem",
+                  height: "10.625rem",
+                  padding: "0rem 2.68125rem 0rem 2.69313rem",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "5.3125rem",
+                  background: "#FFFFFF",
+                  color: "#121212",
+                  textAlign: "center",
+                  fontFamily: "Kanit",
+                  fontSize: "1.125rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1.18125rem",
+                  border: "0.5px solid #666666",
+                  cursor: "pointer",
+                }}
+              >
+                View all
+                <br />
+                works
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {/* ================================ 04.TESTIMONIAL ================================ */}
+      <div className="w-full" style={{ background: "#161616" }}>
+        <div className="container mx-auto">
+          <div className="pt-24 pb-24 section-spacing-top">
+            {/* ================================ row 1 ================================ */}
+            <div className="flex flex-row">
+              <div className="subtitle-wrappe w-6/12">
+                <div
+                  style={{
+                    color: "#fff",
+                    fontFamily: "Kanit",
+                    fontSize: "1rem",
+                    fontStyle: "normal",
+                    fontWeight: 600,
+                    lineHeight: "1rem",
+                  }}
+                >
+                  04.TESTIMONIAL
+                </div>
+              </div>
+              {/* ================================ row1 -  col 1 ================================ */}
+              <div className="flex flex-col w-full">
+                <div className="title-wrapper">
+                  <h2
+                    className="section-title has_text_move_anim"
+                    data-delay="0.5"
+                    style={{ perspective: "400px" }}
+                  >
+                    <div
+                      className="section-title-line has_fade_anim w-full"
+                      data-fade-from="bottom"
+                      data-fade-offset="30"
+                      data-delay="0.3"
+                      data-duration="1.5"
+                      data-on-scroll="1"
+                      style={{ color: "#fff", letterSpacing: "2px" }}
+                    >
+                      What client say
+                      <br />
+                      about us
+                    </div>
+                  </h2>
+                </div>
+                <div className="testimonial-box-wrapper relative w-full">
+                  <div className="flex flex-row w-full">
+                    <div className="meta-info relative md:static w-full">
+                      <h3 className="testimonial-count md:text-[100px] lg:text-[120px] leading-none mb-4 w-full">
+                        30+
+                      </h3>
+                      <p
+                        className="has_fade_anim w-full"
+                        data-fade-from="bottom"
+                        data-fade-offset="10"
+                        data-delay="0.3"
+                        data-duration="1.5"
+                        data-on-scroll="1"
+                        style={{
+                          color: "#999999",
+                          fontFamily: "BeatriceTRIAL-Regular",
+                          fontSize: "1.125rem",
+                          fontStyle: "normal",
+                          fontWeight: 600,
+                          lineHeight: "1.58625rem",
+                          marginBottom: "2.5rem",
+                          paddingInlineEnd: "90px",
+                        }}
+                      >
+                        We have worked with top companies globally and achieved
+                        a huge positive vibes.
+                      </p>
+                      <hr
+                        className="w-full my-8"
+                        style={{ borderColor: "#2e2e2e" }}
+                      />
+
+                      <h3 className="name text-2xl text-white mt-20 mb-1 w-full">
+                        Julian Bray
+                      </h3>
+                      <p className="text-sm text-[#999999] leading-relaxed w-full">
+                        Deputy Manager, Karnofully
+                      </p>
+                      <div className="flex items-center justify-items-start w-full mt-52">
+                        <span
+                          style={{
+                            fontFamily:
+                              "nKKU-Go6G5tXcr4-ORWnVaFrNlJz, sans-serif",
+                          }}
+                          className="text-white text-sm font-bold font-nKKU"
+                        >
+                          01
+                        </span>
+                        <div className="w-1/4 h-px bg-white mx-4" />
+                        <span
+                          style={{
+                            fontFamily:
+                              "nKKU-Go6G5tXcr4-ORWnVaFrNlJz, sans-serif",
+                          }}
+                          className="text-white text-sm font-bold font-nKKU"
+                        >
+                          03
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* =============== Image Section =============== */}
+                    <div className="w-full md:w-[26.25rem] lg:w-[26.25rem] overflow-hidden ml-16">
+                      <div className="relative w-[26.25rem] h-[40.5rem] overflow-hidden">
+                        <Image
+                          src="/images/videoframe1.png"
+                          alt="testimonial frame 1"
+                          fill
+                          style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>{" "}
       {/* ================================ 끝 ================================ */}
       <div className="w-full h-96 bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>
