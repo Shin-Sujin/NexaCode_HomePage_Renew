@@ -3,7 +3,6 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import Image from "next/image";
 import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
@@ -124,38 +123,34 @@ export default function StartPage() {
   // WORK 텍스트용 has_text_move_anim 애니메이션
   useEffect(() => {
     if (workTitleRef.current) {
-      const element = workTitleRef.current;
-      const delay = element.getAttribute("data-delay") || "0.5";
-
-      // 텍스트를 줄 단위로 분할
-      const lines = element.querySelectorAll(".section-title-line");
-
-      gsap.set(element, { perspective: 400 });
-
-      // 초기 상태 설정
-      gsap.set(lines, {
-        opacity: 0,
-        rotationX: -80,
-        transformOrigin: "top center -50",
-      });
-
-      // 애니메이션 실행
-      gsap.to(lines, {
-        duration: 1,
-        delay: parseFloat(delay),
+      // 초기 상태 설정 - 텍스트가 엎드려있도록
+      gsap.set(workTitleRef.current, {
         opacity: 1,
-        rotationX: 0,
-        force3D: true,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: element,
-          start: "top 80%",
-          end: "bottom 20%",
-          scroller: "body",
-          toggleActions: "play none none reverse",
-          markers: false,
-        },
+        rotationX: 100, // 글씨가 엎드려있는 상태 (반대 방향)
+        transformOrigin: "top center", // 회전축을 맨 위로
       });
+
+      // 스크롤 애니메이션 - 엎드려있다가 일어나는 효과
+      gsap.fromTo(
+        workTitleRef.current,
+        {
+          opacity: 0,
+          rotationX: 100, // 엎드려있는 상태에서 시작 (반대 방향)
+          transformOrigin: "top center", // 회전축을 맨 위로
+        },
+        {
+          opacity: 1,
+          rotationX: 0, // 일어선 상태로
+          duration: 2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: workTitleRef.current,
+            start: "top 80%", // 화면 하단 80% 지점에서 시작
+            end: "bottom 20%", // 화면 상단 20% 지점에서 끝
+            toggleActions: "play none none reverse", // 스크롤 방향에 따라 애니메이션 반전
+          },
+        }
+      );
     }
   }, []);
 
@@ -798,9 +793,7 @@ export default function StartPage() {
             </div>
           </div>
         </div>
-        <h2
-        // ref={workTitleRef}
-        >
+        <h2 ref={workTitleRef}>
           <div className="section-title-work">WORK</div>
         </h2>
       </div>
