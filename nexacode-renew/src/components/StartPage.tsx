@@ -20,6 +20,7 @@ export default function StartPage() {
   const targetRef = useRef<HTMLDivElement>(null);
   const whoWeAreRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
+  const workTitleRef = useRef<HTMLDivElement>(null);
 
   useStartPageAnimations({
     fadeRef,
@@ -120,6 +121,44 @@ export default function StartPage() {
     }
   }, []);
 
+  // WORK 텍스트용 has_text_move_anim 애니메이션
+  useEffect(() => {
+    if (workTitleRef.current) {
+      const element = workTitleRef.current;
+      const delay = element.getAttribute("data-delay") || "0.5";
+
+      // 텍스트를 줄 단위로 분할
+      const lines = element.querySelectorAll(".section-title-line");
+
+      gsap.set(element, { perspective: 400 });
+
+      // 초기 상태 설정
+      gsap.set(lines, {
+        opacity: 0,
+        rotationX: -80,
+        transformOrigin: "top center -50",
+      });
+
+      // 애니메이션 실행
+      gsap.to(lines, {
+        duration: 1,
+        delay: parseFloat(delay),
+        opacity: 1,
+        rotationX: 0,
+        force3D: true,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          end: "bottom 20%",
+          scroller: "body",
+          toggleActions: "play none none reverse",
+          markers: false,
+        },
+      });
+    }
+  }, []);
+
   // has_fade_anim 애니메이션 직접 구현
   useEffect(() => {
     const fadeElements = document.querySelectorAll(".has_fade_anim");
@@ -127,7 +166,7 @@ export default function StartPage() {
       const fadeFrom = element.getAttribute("data-fade-from") || "bottom";
       const onScroll = element.getAttribute("data-on-scroll") || "1";
       const duration = element.getAttribute("data-duration") || "1.5";
-      const fadeOffset = element.getAttribute("data-fade-offset") || "50";
+      const fadeOffset = element.getAttribute("data-fade-offset") || "500";
       const delay = element.getAttribute("data-delay") || "0.5";
       const ease = element.getAttribute("data-ease") || "power2.out";
 
@@ -476,7 +515,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ 흰색 배경 시작(container 안에 있음) ================================ */}
-      <div className="container bg-fuchsia-200">
+      <div className="container">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-8/12">
@@ -589,7 +628,7 @@ export default function StartPage() {
                       according to the meanwhile, 51% of consumers{" "}
                     </div>
                     <button
-                      className="custom-hover-button has_fade_anim"
+                      className="has_fade_anim"
                       data-fade-from="top"
                       data-fade-offset="50"
                       data-delay="0.1"
@@ -627,7 +666,7 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      <div className="container overflow-hidden bg-fuchsia-300">
+      <div className="container overflow-hidden">
         <div className="relative w-full h-auto overflow-hidden">
           <Image
             ref={imgRef}
@@ -644,7 +683,6 @@ export default function StartPage() {
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-5/12">
               <div
-                ref={whoWeAreRef}
                 className="has_char_anim"
                 data-stagger="0.05"
                 data-translateX="20"
@@ -668,11 +706,25 @@ export default function StartPage() {
                 data-delay="0.5"
                 style={{ perspective: "400px" }}
               >
-                <div className="section-title-line">
+                <div
+                  className="section-title-line has_fade_anim"
+                  data-fade-from="bottom"
+                  data-fade-offset="30"
+                  data-delay="0.3"
+                  data-duration="1.5"
+                  data-on-scroll="1"
+                >
                   Digital experience by our professional team.
                 </div>
               </h2>
-              <div className="grid grid-cols-2 gap-x-24 w-full">
+              <div
+                className="grid grid-cols-2 gap-x-24 w-full has_fade_anim"
+                data-fade-from="left"
+                data-fade-offset="50"
+                data-delay="0.3"
+                data-duration="1.5"
+                data-on-scroll="1"
+              >
                 <div>
                   <div className="service-item-top">Creative Design</div>
                   <div className="service-item">Branding Design</div>
@@ -688,7 +740,7 @@ export default function StartPage() {
                 <div className="flex flex-row items-start">
                   <div className="flex flex-row">
                     <button
-                      className="custom-hover-button has_fade_anim mr-24"
+                      className="has_fade_anim mr-24"
                       data-fade-from="top"
                       data-fade-offset="50"
                       data-delay="0.1"
@@ -746,6 +798,11 @@ export default function StartPage() {
             </div>
           </div>
         </div>
+        <h2
+        // ref={workTitleRef}
+        >
+          <div className="section-title-work">WORK</div>
+        </h2>
       </div>
       <div className="w-full h-96 bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>

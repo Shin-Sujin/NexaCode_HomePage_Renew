@@ -303,6 +303,20 @@ body {
   font-weight: 500;
   line-height: 3.8rem;
 }
+.section-title-work {
+  display: block;
+  position: relative;
+  opacity: 1;
+  color: #121212;
+  font-family: "beatricetrial";
+  text-align: center;
+  font-size: 30rem;
+  font-weight: 500;
+  line-height: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 15rem;
+  letter-spacing: -0.03em;
+}
 .section-subtitle {
   font-size: 16px;
   text-transform: uppercase;
