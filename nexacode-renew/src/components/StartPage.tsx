@@ -8,6 +8,8 @@ import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
 import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
+import CounterUp from "@/components/CounterUp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function StartPage() {
@@ -1118,9 +1120,15 @@ export default function StartPage() {
                 <div className="testimonial-box-wrapper relative w-full">
                   <div className="flex flex-row w-full">
                     <div className="meta-info relative md:static w-full">
-                      <h3 className="testimonial-count md:text-[100px] lg:text-[120px] leading-none mb-4 w-full">
-                        30+
-                      </h3>
+                      <div className="flex items-end testimonial-count md:text-[100px] lg:text-[120px] leading-none mb-4 w-full">
+                        <CounterUp
+                          targetNumber={30}
+                          duration={2000}
+                          // delay={16}
+                          className=""
+                        />
+                        <span>+</span>
+                      </div>
                       <p
                         className="has_fade_anim w-full"
                         data-fade-from="bottom"
