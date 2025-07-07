@@ -797,6 +797,98 @@ export default function StartPage() {
           <div className="section-title-work">WORK</div>
         </h2>
       </div>
+      {/* ================================ 03.SELETED WORK ================================ */}
+      <div className="container">
+        <div className="pt-36 pb-36 section-spacing-top">
+          <div className="flex flex-col">
+            <div className="subtitle-wrappe w-8/12">
+              <div
+                style={{
+                  color: "#121212",
+                  fontFamily: "Kanit",
+                  fontSize: "1rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1rem",
+                }}
+              >
+                03.SELETED WORK
+              </div>
+            </div>
+            <div
+              style={{
+                width: "100%",
+                height: "1px",
+                background: "#E5E5E5",
+                marginTop: "1rem",
+              }}
+            ></div>
+            <div className="works-wrapper-box">
+              <div className="work-box">
+                <div className="thumb">
+                  <Image
+                    src="/images/victoria_kinko.webp"
+                    alt="Victoria kinko"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+                <div className="title">Victoria kinko</div>
+                <span className="tag">Design - 2019</span>
+              </div>
+              <div className="work-box">
+                <div className="thumb">
+                  <Image
+                    src="/images/jimmyfermin.webp"
+                    alt="Jimmy fermi"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+                <div className="title">Jimmy fermin</div>
+                <span className="tag">Design - 2019</span>
+              </div>
+              <div className="work-box">
+                <div className="thumb">
+                  <Image
+                    src="/images/briyokathwoody.webp"
+                    alt="Briyo kathwood"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+                <div className="title">Briyokath Woody</div>
+                <span className="tag">Design - 2019</span>
+              </div>
+              <div className="work-box">
+                <div className="thumb">
+                  <Image
+                    src="/images/mastartery.webp"
+                    alt="Mastarter"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+                <div className="title">Mastartery</div>
+                <span className="tag">Design - 2019</span>
+              </div>
+              <div className="work-box">
+                <div className="thumb">
+                  <Image
+                    src="/images/festonaxcard.webp"
+                    alt="Festonax card"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+                <div className="title">Festonax card</div>
+                <span className="tag">Design - 2019</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ================================ 끝 ================================ */}
       <div className="w-full h-96 bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>
       </div>

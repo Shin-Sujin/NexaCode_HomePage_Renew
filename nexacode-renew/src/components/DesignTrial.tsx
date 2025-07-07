@@ -52,7 +52,7 @@ export default function DesignTrial() {
         fontSize: "10rem",
         fontStyle: "normal",
         fontWeight: 600,
-        lineHeight: "1em",
+        lineHeight: "1rem",
         textTransform: "uppercase",
         boxSizing: "border-box",
         overflow: "hidden",
