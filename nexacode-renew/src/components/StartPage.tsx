@@ -9,6 +9,7 @@ import { useTextSlide } from "@/animations/textSlide";
 import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
 import CounterUp from "@/components/CounterUp";
+import TestimonialRotator from "@/components/TestimonialRotator";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1203,8 +1204,9 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ 끝 ================================ */}
-      <div className="w-full h-96 bg-red-500">
+      <div className="w-full h-full bg-red-500">
         <div className="w-full h-full bg-blue-500">안녕하세요</div>
+        <TestimonialRotator />
       </div>
     </div>
   );

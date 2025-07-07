@@ -1,6 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
-import DesignTrial from "@/components/DesignTrial";
+// import DesignTrial from "@/components/DesignTrial";
 
 export const metadata = {
   title: "Demo Project",
@@ -17,7 +17,6 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
-        <DesignTrial />
       </body>
     </html>
   );

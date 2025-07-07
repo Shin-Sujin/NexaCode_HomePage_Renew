@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/autoplay";
 
 body {
   color: var(--foreground);
