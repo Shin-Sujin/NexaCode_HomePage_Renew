@@ -8,7 +8,7 @@ import { useStartPageAnimations } from "@/animations/animations_StartPage";
 import { useTextSlide } from "@/animations/textSlide";
 import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
-import CounterUp from "@/components/CounterUp";
+// import CounterUp from "@/components/CounterUp";
 import TestimonialRotator from "@/components/TestimonialRotator";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -1120,82 +1120,7 @@ export default function StartPage() {
                 </div>
                 <div className="testimonial-box-wrapper relative w-full">
                   <div className="flex flex-row w-full">
-                    <div className="meta-info relative md:static w-full">
-                      <div className="flex items-end testimonial-count md:text-[100px] lg:text-[120px] leading-none mb-4 w-full">
-                        <CounterUp
-                          targetNumber={30}
-                          duration={2000}
-                          // delay={16}
-                          className=""
-                        />
-                        <span>+</span>
-                      </div>
-                      <p
-                        className="has_fade_anim w-full"
-                        data-fade-from="bottom"
-                        data-fade-offset="10"
-                        data-delay="0.3"
-                        data-duration="1.5"
-                        data-on-scroll="1"
-                        style={{
-                          color: "#999999",
-                          fontFamily: "BeatriceTRIAL-Regular",
-                          fontSize: "1.125rem",
-                          fontStyle: "normal",
-                          fontWeight: 600,
-                          lineHeight: "1.58625rem",
-                          marginBottom: "2.5rem",
-                          paddingInlineEnd: "90px",
-                        }}
-                      >
-                        We have worked with top companies globally and achieved
-                        a huge positive vibes.
-                      </p>
-                      <hr
-                        className="w-full my-8"
-                        style={{ borderColor: "#2e2e2e" }}
-                      />
-
-                      <h3 className="name text-2xl text-white mt-20 mb-1 w-full">
-                        Julian Bray
-                      </h3>
-                      <p className="text-sm text-[#999999] leading-relaxed w-full">
-                        Deputy Manager, Karnofully
-                      </p>
-                      <div className="flex items-center justify-items-start w-full mt-52">
-                        <span
-                          style={{
-                            fontFamily:
-                              "nKKU-Go6G5tXcr4-ORWnVaFrNlJz, sans-serif",
-                          }}
-                          className="text-white text-sm font-bold font-nKKU"
-                        >
-                          01
-                        </span>
-                        <div className="w-1/4 h-px bg-white mx-4" />
-                        <span
-                          style={{
-                            fontFamily:
-                              "nKKU-Go6G5tXcr4-ORWnVaFrNlJz, sans-serif",
-                          }}
-                          className="text-white text-sm font-bold font-nKKU"
-                        >
-                          03
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* =============== Image Section =============== */}
-                    <div className="w-full md:w-[26.25rem] lg:w-[26.25rem] overflow-hidden ml-16">
-                      <div className="relative w-[26.25rem] h-[40.5rem] overflow-hidden">
-                        <Image
-                          src="/images/videoframe1.png"
-                          alt="testimonial frame 1"
-                          fill
-                          style={{ objectFit: "cover" }}
-                        />
-                      </div>
-                    </div>
+                    <TestimonialRotator />
                   </div>
                 </div>
               </div>
