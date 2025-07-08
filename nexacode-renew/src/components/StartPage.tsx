@@ -1053,40 +1053,51 @@ export default function StartPage() {
                   <span>of world-wide.</span>
                 </div>
               </h2>
-              <div className="w-full overflow-x-auto awwwards-thin">
-                <table className="w-full border-collapse">
+              <div
+                className="w-full awwwards-thin has_text_move_anim"
+                data-delay="0.5"
+                style={{ overflow: "hidden" }}
+              >
+                <table
+                  className="w-full border-collapse has_fade_anim"
+                  data-fade-from="bottom"
+                  data-fade-offset="30"
+                  data-delay="0.3"
+                  data-duration="1.5"
+                  data-on-scroll="1"
+                >
                   <tbody>
                     <tr className="border-t border-b border-[#e5e5e5]">
                       <td className="py-3 pr-6   text-left">Awwwards</td>
-                      <td className="py-3 px-6 pl-16 ">
+                      <td className="py-3 px-6 pl-32 ">
                         3x creative agency of the day
                       </td>
                       <td className="py-3 px-6   text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
                       <td className="py-3 pr-6  text-left">Envato</td>
-                      <td className="py-3 px-6 pl-16  awwwards-thin">
+                      <td className="py-3 px-6 pl-32  awwwards-thin">
                         1x agency of the year
                       </td>
                       <td className="py-3 px-6   text-right">Awarded</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
                       <td className="py-3 pr-6   text-left">CSS Winner</td>
-                      <td className="py-3 px-6 pl-16">
+                      <td className="py-3 px-6 pl-32">
                         5x honorable mentioned
                       </td>
                       <td className="py-3 px-6  text-right">Mentioned</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
                       <td className="py-3 pr-6  text-left">Behance</td>
-                      <td className="py-3 px-6 pl-16 ">
+                      <td className="py-3 px-6 pl-32 ">
                         2x Featured design of the week
                       </td>
                       <td className="py-3 px-6 text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
                       <td className="py-3 pr-6  text-left">Dribbble</td>
-                      <td className="py-3 px-6 pl-16 ">
+                      <td className="py-3 px-6 pl-32 ">
                         8x Best design of the day
                       </td>
                       <td className="py-3 px-6  text-right">Winner</td>
