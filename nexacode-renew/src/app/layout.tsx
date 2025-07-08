@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
+// import DesignTrial from "@/components/DesignTrial";
 
 export const metadata = {
   title: "Demo Project",
