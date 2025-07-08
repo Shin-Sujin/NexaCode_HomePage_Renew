@@ -7,12 +7,12 @@ import { useTextSlide } from "@/src/animations/textSlide";
 import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
 // import CounterUp from "@/components/CounterUp";
-import TestimonialRotator from "@/src/components/TestimonialRotator";
-import ButtonPage01 from "@/src/components/ButtonPage01";
-import ButtonPage02 from "@/src/components/ButtonPage02";
-import TeamGrid from "@/src/components/TeamGrid";
-import AchievementTable from "@/src/components/AchievementTable";
-import WorkGallery from "@/src/components/WorkGallery";
+import TestimonialRotator from "@/src/components/startPageComponents/TestimonialRotator";
+import ButtonPage01 from "@/src/components/startPageComponents/ButtonPage01";
+import ButtonPage02 from "@/src/components/startPageComponents/ButtonPage02";
+import TeamGrid from "@/src/components/startPageComponents/TeamGrid";
+import AchievementTable from "@/src/components/startPageComponents/AchievementTable";
+import WorkGallery from "@/src/components/startPageComponents/WorkGallery";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);

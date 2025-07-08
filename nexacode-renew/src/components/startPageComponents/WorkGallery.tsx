@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import ButtonPage03 from "@/src/components/ButtonPage03";
+import ButtonPage03 from "@/src/components/startPageComponents/ButtonPage03";
 
 export default function WorkGallery() {
   const works = [
