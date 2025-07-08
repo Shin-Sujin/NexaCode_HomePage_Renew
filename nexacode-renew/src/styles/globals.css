@@ -30,6 +30,14 @@ body {
   .service-item-top {
     @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-medium tracking-wide;
   }
+
+  .section-subtitle {
+    @apply text-[#121212] font-kanit text-base font-semibold leading-4 uppercase;
+  }
+
+  .section-subtitle-white {
+    @apply text-white font-kanit text-base font-semibold leading-4 uppercase;
+  }
 }
 /* hero-area 부분 */
 
