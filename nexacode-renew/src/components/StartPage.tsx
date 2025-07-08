@@ -244,19 +244,10 @@ export default function StartPage() {
             <div className="subtitle-wrappe w-8/12">
               <div
                 ref={whoWeAreRef}
-                className="has_char_anim"
+                className="has_char_anim section-subtitle"
                 data-stagger="0.05"
                 data-translateX="20"
                 data-delay="0.3"
-                style={{
-                  color: "#121212",
-                  fontFamily: "Kanit",
-                  fontSize: "1rem",
-                  fontStyle: "normal",
-                  fontWeight: 600,
-                  lineHeight: "1rem",
-                  textTransform: "uppercase",
-                }}
               >
                 01.WHO WE ARE
               </div>
@@ -376,19 +367,10 @@ export default function StartPage() {
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-5/12">
               <div
-                className="has_char_anim"
+                className="has_char_anim section-subtitle"
                 data-stagger="0.05"
                 data-translateX="20"
                 data-delay="0.3"
-                style={{
-                  color: "#121212",
-                  fontFamily: "Kanit",
-                  fontSize: "1rem",
-                  fontStyle: "normal",
-                  fontWeight: 600,
-                  lineHeight: "1rem",
-                  textTransform: "uppercase",
-                }}
               >
                 02. SERVICES
               </div>
@@ -469,18 +451,7 @@ export default function StartPage() {
         <div className="pt-36 pb-3 section-spacing-top">
           <div className="flex flex-col">
             <div className="subtitle-wrappe w-8/12">
-              <div
-                style={{
-                  color: "#121212",
-                  fontFamily: "Kanit",
-                  fontSize: "1rem",
-                  fontStyle: "normal",
-                  fontWeight: 600,
-                  lineHeight: "1rem",
-                }}
-              >
-                03.SELETED WORK
-              </div>
+              <div className="section-subtitle">03.SELETED WORK</div>
             </div>
             <div
               style={{
@@ -564,18 +535,7 @@ export default function StartPage() {
             {/* ================================ row 1 ================================ */}
             <div className="flex flex-row">
               <div className="subtitle-wrappe w-6/12">
-                <div
-                  style={{
-                    color: "#fff",
-                    fontFamily: "Kanit",
-                    fontSize: "1rem",
-                    fontStyle: "normal",
-                    fontWeight: 600,
-                    lineHeight: "1rem",
-                  }}
-                >
-                  04.TESTIMONIAL
-                </div>
+                <div className="section-subtitle-white">04.TESTIMONIAL</div>
               </div>
               {/* ================================ row1 -  col 1 ================================ */}
               <div className="flex flex-col w-full">
@@ -631,18 +591,7 @@ export default function StartPage() {
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-6/12">
-              <div
-                style={{
-                  color: "#121212",
-                  fontFamily: "Kanit",
-                  fontSize: "1rem",
-                  fontStyle: "normal",
-                  fontWeight: 600,
-                  lineHeight: "1rem",
-                }}
-              >
-                05. ACHIEVEMENT & AWARD
-              </div>
+              <div className="section-subtitle">05. ACHIEVEMENT & AWARD</div>
             </div>
             <div className="flex flex-col w-full">
               <h2
@@ -730,18 +679,7 @@ export default function StartPage() {
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-6/12">
-              <div
-                style={{
-                  color: "#121212",
-                  fontFamily: "Kanit",
-                  fontSize: "1rem",
-                  fontStyle: "normal",
-                  fontWeight: 600,
-                  lineHeight: "1rem",
-                }}
-              >
-                06. THE TEAM
-              </div>
+              <div className="section-subtitle">06. THE TEAM</div>
             </div>
             <div className="flex flex-col w-full">
               <h2
