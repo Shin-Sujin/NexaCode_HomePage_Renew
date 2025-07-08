@@ -123,7 +123,7 @@ export const useStartPageAnimations = ({
         ease: "power2.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           scroller: "body",
           toggleActions: "play none none reverse",
@@ -161,7 +161,7 @@ export const useStartPageAnimations = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           scroller: "body",
           toggleActions: "play none none reverse",
@@ -196,7 +196,7 @@ export const useStartPageAnimations = ({
           ease: "power3.out",
           scrollTrigger: {
             trigger: workTitleRef.current,
-            start: "top 80%",
+            start: "top 90%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
@@ -228,7 +228,7 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: whetherRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
@@ -259,7 +259,7 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: ourTeamRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
@@ -413,7 +413,6 @@ export const useStartPageAnimations = ({
     });
   }, []);
 
-  // 이미지 스크롤 애니메이션
   useEffect(() => {
     if (imgRef.current) {
       gsap.fromTo(
@@ -421,10 +420,12 @@ export const useStartPageAnimations = ({
         {
           scale: 1,
           y: 0,
+          clipPath: "inset(0% 0% 0% 0%)",
         },
         {
           scale: 1.15,
           y: -30,
+          clipPath: "inset(0% 0% 0% 0%)",
           ease: "none",
           scrollTrigger: {
             trigger: imgRef.current,
@@ -439,7 +440,6 @@ export const useStartPageAnimations = ({
   }, [imgRef]);
 };
 
-// 스크롤 클리핑 효과 훅
 export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
   const [clipValue, setClipValue] = useState(100);
 
@@ -453,27 +453,27 @@ export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
       const windowHeight = window.innerHeight;
       const imageHeight = rect.height;
 
-      // 이미지가 화면에 들어오기 시작할 때부터 완전히 나갈 때까지
       if (rect.top <= windowHeight && rect.bottom >= 0) {
-        // 이미지가 화면 중앙에 있을 때 완전히 보이도록
-        const centerProgress =
+        const scrollProgress =
           (windowHeight - rect.top) / (windowHeight + imageHeight);
 
-        // 더 부드러운 이징 함수 적용 (easeInOutCubic)
-        const easedProgress =
-          centerProgress < 0.5
-            ? 4 * centerProgress * centerProgress * centerProgress
-            : 1 - Math.pow(-2 * centerProgress + 2, 3) / 2;
+        const easedProgress = Math.min(1, Math.max(0, scrollProgress));
 
-        // 클리핑 값 계산 (0: 완전히 보임, 100: 완전히 가려짐)
-        const clipValue = Math.max(0, Math.min(100, 100 - easedProgress * 100));
-        setClipValue(clipValue);
+        let clipValue;
+        if (easedProgress <= 0.5) {
+          const firstHalfProgress = easedProgress * 2;
+          clipValue = 100 - firstHalfProgress * 100;
+        } else {
+          const secondHalfProgress = (easedProgress - 0.5) * 2;
+          clipValue = secondHalfProgress * 100;
+        }
+
+        setClipValue(Math.max(0, Math.min(100, clipValue)));
       }
       ticking = false;
     };
 
     const handleScroll = () => {
-      // 스크롤 방향과 거리를 고려한 부드러운 처리
       if (!ticking) {
         requestAnimationFrame(updateClip);
         ticking = true;

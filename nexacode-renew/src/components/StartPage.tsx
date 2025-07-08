@@ -495,7 +495,7 @@ export default function StartPage() {
                       className="section-title-line has_fade_anim w-full"
                       data-fade-from="bottom"
                       data-fade-offset="30"
-                      data-delay="0.3"
+                      data-delay="0"
                       data-duration="1.5"
                       data-on-scroll="1"
                       style={{ color: "#fff", letterSpacing: "2px" }}
@@ -549,7 +549,7 @@ export default function StartPage() {
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
                   data-fade-offset="30"
-                  data-delay="0.3"
+                  data-delay="0"
                   data-duration="1.5"
                   data-on-scroll="1"
                 >
@@ -600,6 +600,39 @@ export default function StartPage() {
           </div>
         </div>
       </div>
+      {/* ================================ 07. RECENT POST ================================ */}
+      <div className="container overflow-hidden relative">
+        <div className="pt-36 pb-36 section-spacing-top relative z-10">
+          <div className="flex flex-col">
+            <div className="flex flex-row">
+              <div className="subtitle-wrappe w-6/12">
+                <div className="section-subtitle">07.RECENT POST</div>
+              </div>
+              <div className="flex w-full">
+                <h2
+                  // ref={ourTeamRef}
+                  className="section-title has_text_move_anim mb-20"
+                  style={{ perspective: "400px" }}
+                >
+                  <div
+                    className="section-title-line has_fade_anim"
+                    data-fade-from="bottom"
+                    data-fade-offset="30"
+                    data-delay="0.3"
+                    data-duration="1.5"
+                    data-on-scroll="1"
+                  >
+                    <span>Learn from journal</span>
+                    <br />
+                    <span>insight of Binox</span>
+                  </div>
+                </h2>
+              </div>
+            </div>
+            <div className="flex flex-row">사진이랑 텍스트 세트</div>
+          </div>
+        </div>
+      </div>
       <div
         ref={backgroundImageRef}
         className="relative w-full h-auto overflow-hidden"
@@ -617,10 +650,10 @@ export default function StartPage() {
           data-speed="0.8"
           data-lag="0"
         />
-      </div>
+      </div>{" "}
       {/* ================================ 끝 ================================ */}
       <div className="w-full h-full bg-red-500">
-        <div className="w-full h-96 bg-blue-500">안녕하세요</div>
+        <div className="w-full h-[100rem] bg-blue-500">안녕하세요</div>
       </div>
     </div>
   );
