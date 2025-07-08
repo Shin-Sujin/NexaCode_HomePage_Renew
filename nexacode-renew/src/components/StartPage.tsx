@@ -600,6 +600,24 @@ export default function StartPage() {
           </div>
         </div>
       </div>
+      <div
+        ref={backgroundImageRef}
+        className="relative w-full h-auto overflow-hidden"
+        style={{
+          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
+          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        }}
+      >
+        <Image
+          src="/images/background06.webp"
+          alt="image"
+          width={1500}
+          height={1000}
+          className="w-full h-auto object-cover"
+          data-speed="0.8"
+          data-lag="0"
+        />
+      </div>{" "}
       {/* ================================ 07. RECENT POST ================================ */}
       <div className="container overflow-hidden relative">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
@@ -633,24 +651,6 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      <div
-        ref={backgroundImageRef}
-        className="relative w-full h-auto overflow-hidden"
-        style={{
-          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
-          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-        }}
-      >
-        <Image
-          src="/images/background06.webp"
-          alt="image"
-          width={1500}
-          height={1000}
-          className="w-full h-auto object-cover"
-          data-speed="0.8"
-          data-lag="0"
-        />
-      </div>{" "}
       {/* ================================ 끝 ================================ */}
       <div className="w-full h-full bg-red-500">
         <div className="w-full h-[100rem] bg-blue-500">안녕하세요</div>
