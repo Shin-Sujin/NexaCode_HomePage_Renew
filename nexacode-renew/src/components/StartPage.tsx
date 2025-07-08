@@ -1011,10 +1011,26 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ 05.achievement & Award ================================ */}
-      <div className="container overflow-hidden">
-        <div className="pt-36 pb-36 section-spacing-top">
+      <div className="container overflow-hidden relative">
+        {/* 배경 이미지 */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          <Image
+            src="/images/background05.webp"
+            alt="background"
+            width={1000}
+            height={750}
+            className="object-contain"
+            style={{
+              zIndex: -1,
+              maxWidth: "65%",
+              maxHeight: "80%",
+              transform: "translateX(70px) translateY(110px)",
+            }}
+          />
+        </div>
+        <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
-            <div className="subtitle-wrappe w-4/12">
+            <div className="subtitle-wrappe w-6/12">
               <div
                 style={{
                   color: "#121212",
@@ -1028,10 +1044,10 @@ export default function StartPage() {
                 05. ACHIEVEMENT & AWARD
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <h2
                 ref={whetherRef}
-                className="section-title has_text_move_anim mb-16"
+                className="section-title has_text_move_anim mb-20"
                 style={{ perspective: "400px" }}
               >
                 <div
@@ -1053,63 +1069,54 @@ export default function StartPage() {
                   <span>of world-wide.</span>
                 </div>
               </h2>
-              <div className="w-full overflow-x-auto">
-                <table className="min-w-full border-collapse">
+              <div
+                className="w-full awwwards-thin has_text_move_anim"
+                data-delay="0.5"
+                style={{ overflow: "hidden" }}
+              >
+                <table
+                  className="w-full border-collapse has_fade_anim"
+                  data-fade-from="bottom"
+                  data-fade-offset="30"
+                  data-delay="0.3"
+                  data-duration="1.5"
+                  data-on-scroll="1"
+                >
                   <tbody>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Awwwards
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                    <tr className="border-t border-b border-[#e5e5e5]">
+                      <td className="py-3 pr-6   text-left">Awwwards</td>
+                      <td className="py-3 px-6 pl-32 ">
                         3x creative agency of the day
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6   text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Envato
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Envato</td>
+                      <td className="py-3 px-6 pl-32  awwwards-thin">
                         1x agency of the year
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Awarded
-                      </td>
+                      <td className="py-3 px-6   text-right">Awarded</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        CSS Winner
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6   text-left">CSS Winner</td>
+                      <td className="py-3 px-6 pl-32">
                         5x honorable mentioned
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Mentioned
-                      </td>
+                      <td className="py-3 px-6  text-right">Mentioned</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Behance
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Behance</td>
+                      <td className="py-3 px-6 pl-32 ">
                         2x Featured design of the week
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6 text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Dribbble
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Dribbble</td>
+                      <td className="py-3 px-6 pl-32 ">
                         8x Best design of the day
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6  text-right">Winner</td>
                     </tr>
                   </tbody>
                 </table>

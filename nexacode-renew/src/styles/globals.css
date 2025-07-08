@@ -789,9 +789,9 @@ body {
   font-style: normal;
   font-display: swap;
 }
-
-/* Awwwards 텍스트용 커스텀 클래스 */
 .awwwards-thin {
-  font-weight: 400 !important;
-  font-family: "Inter", sans-serif !important;
+  font-weight: 350; /* 100~900 자유롭게 조절 가능 */
+  font-size: 1.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
 }
