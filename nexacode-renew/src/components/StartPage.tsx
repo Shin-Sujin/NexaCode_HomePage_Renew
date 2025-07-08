@@ -23,6 +23,7 @@ export default function StartPage() {
   const whoWeAreRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   const workTitleRef = useRef<HTMLDivElement>(null);
+  const whetherRef = useRef<HTMLDivElement>(null);
 
   useStartPageAnimations({
     fadeRef,
@@ -154,6 +155,38 @@ export default function StartPage() {
           },
         }
       );
+    }
+  }, []);
+  //
+
+  // Whether 텍스트용 개별 span 애니메이션
+  useEffect(() => {
+    if (whetherRef.current) {
+      const spans = whetherRef.current.querySelectorAll("span");
+
+      // 각 span에 초기 상태 설정
+      gsap.set(spans, {
+        opacity: 0,
+        rotationX: 100, // 글씨가 엎드려있는 상태
+        transformOrigin: "top center",
+        y: 50, // 아래에서 시작
+      });
+
+      // 각 span을 순차적으로 애니메이션
+      gsap.to(spans, {
+        opacity: 1,
+        rotationX: 0, // 일어선 상태로
+        y: 0, // 원래 위치로
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.25, // 각 span 사이의 시간차
+        scrollTrigger: {
+          trigger: whetherRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
     }
   }, []);
 
@@ -983,10 +1016,6 @@ export default function StartPage() {
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-4/12">
               <div
-                className="has_char_anim"
-                data-stagger="0.05"
-                data-translateX="20"
-                data-delay="0.3"
                 style={{
                   color: "#121212",
                   fontFamily: "Kanit",
@@ -1001,8 +1030,8 @@ export default function StartPage() {
             </div>
             <div className="flex flex-col">
               <h2
-                className="section-title has_text_move_anim mb-8"
-                data-delay="0.5"
+                ref={whetherRef}
+                className="section-title has_text_move_anim mb-16"
                 style={{ perspective: "400px" }}
               >
                 <div
@@ -1013,13 +1042,15 @@ export default function StartPage() {
                   data-duration="1.5"
                   data-on-scroll="1"
                 >
-                  Whether it&apos;s crafting a visually
+                  <span>Whether it&apos;s crafting a visually</span>
                   <br />
-                  stunning brand identity, the <br />
-                  creative <br />
-                  design service compare with <br />
-                  more <br />
-                  agencies of world-wide.
+                  <span>stunning brand identity, the</span>
+                  <br />
+                  <span>creative design service</span>
+                  <br />
+                  <span>compare with more agencies</span>
+                  <br />
+                  <span>of world-wide.</span>
                 </div>
               </h2>
               <div className="w-full overflow-x-auto">
