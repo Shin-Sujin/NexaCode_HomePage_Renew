@@ -1014,7 +1014,7 @@ export default function StartPage() {
       <div className="container overflow-hidden">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
-            <div className="subtitle-wrappe w-4/12">
+            <div className="subtitle-wrappe w-6/12">
               <div
                 style={{
                   color: "#121212",
@@ -1028,10 +1028,10 @@ export default function StartPage() {
                 05. ACHIEVEMENT & AWARD
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <h2
                 ref={whetherRef}
-                className="section-title has_text_move_anim mb-16"
+                className="section-title has_text_move_anim mb-20"
                 style={{ perspective: "400px" }}
               >
                 <div
@@ -1053,63 +1053,43 @@ export default function StartPage() {
                   <span>of world-wide.</span>
                 </div>
               </h2>
-              <div className="w-full overflow-x-auto">
-                <table className="min-w-full border-collapse">
+              <div className="w-full overflow-x-auto awwwards-thin">
+                <table className="w-full border-collapse">
                   <tbody>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Awwwards
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                    <tr className="border-t border-b border-[#e5e5e5]">
+                      <td className="py-3 pr-6   text-left">Awwwards</td>
+                      <td className="py-3 px-6 pl-16 ">
                         3x creative agency of the day
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6   text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Envato
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Envato</td>
+                      <td className="py-3 px-6 pl-16  awwwards-thin">
                         1x agency of the year
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Awarded
-                      </td>
+                      <td className="py-3 px-6   text-right">Awarded</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        CSS Winner
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6   text-left">CSS Winner</td>
+                      <td className="py-3 px-6 pl-16">
                         5x honorable mentioned
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Mentioned
-                      </td>
+                      <td className="py-3 px-6  text-right">Mentioned</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Behance
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Behance</td>
+                      <td className="py-3 px-6 pl-16 ">
                         2x Featured design of the week
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6 text-right">Winner</td>
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Dribbble
-                      </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
+                      <td className="py-3 pr-6  text-left">Dribbble</td>
+                      <td className="py-3 px-6 pl-16 ">
                         8x Best design of the day
                       </td>
-                      <td className="py-4 px-6 text-2xl awwwards-thin">
-                        Winner
-                      </td>
+                      <td className="py-3 px-6  text-right">Winner</td>
                     </tr>
                   </tbody>
                 </table>
