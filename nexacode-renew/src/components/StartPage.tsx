@@ -1011,8 +1011,24 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ 05.achievement & Award ================================ */}
-      <div className="container overflow-hidden">
-        <div className="pt-36 pb-36 section-spacing-top">
+      <div className="container overflow-hidden relative">
+        {/* 배경 이미지 */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          <Image
+            src="/images/background05.webp"
+            alt="background"
+            width={1000}
+            height={750}
+            className="object-contain"
+            style={{
+              zIndex: -1,
+              maxWidth: "65%",
+              maxHeight: "80%",
+              transform: "translateX(70px) translateY(110px)",
+            }}
+          />
+        </div>
+        <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-6/12">
               <div
