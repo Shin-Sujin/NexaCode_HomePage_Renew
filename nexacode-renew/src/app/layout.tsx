@@ -1,5 +1,5 @@
-import "./globals.css";
-import Header from "@/components/Header";
+import "../styles/globals.css";
+import Header from "@/src/components/Header";
 // import DesignTrial from "@/components/DesignTrial";
 
 export const metadata = {

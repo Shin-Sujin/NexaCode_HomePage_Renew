@@ -4,12 +4,12 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { useStartPageAnimations } from "@/animations/animations_StartPage";
-import { useTextSlide } from "@/animations/textSlide";
-import { useFadeInOnScroll } from "@/animations/fadeInOnScroll";
+import { useStartPageAnimations } from "@/src/animations/animations_StartPage";
+import { useTextSlide } from "@/src/animations/textSlide";
+import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
 // import CounterUp from "@/components/CounterUp";
-import TestimonialRotator from "@/components/TestimonialRotator";
+import TestimonialRotator from "@/src/components/TestimonialRotator";
 
 gsap.registerPlugin(ScrollTrigger);
 
