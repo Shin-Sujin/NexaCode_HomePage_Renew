@@ -10,9 +10,9 @@ import "splitting/dist/splitting.css"; // 필요 시
 import TestimonialRotator from "@/src/components/TestimonialRotator";
 import ButtonPage01 from "@/src/components/ButtonPage01";
 import ButtonPage02 from "@/src/components/ButtonPage02";
-import ButtonPage03 from "@/src/components/ButtonPage03";
 import TeamGrid from "@/src/components/TeamGrid";
 import AchievementTable from "@/src/components/AchievementTable";
+import WorkGallery from "@/src/components/WorkGallery";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -463,70 +463,7 @@ export default function StartPage() {
                 marginTop: "1rem",
               }}
             ></div>
-            {/* ================================ 이미지 5개 추가 ================================ */}
-            <div className="works-wrapper-box">
-              <div className="work-box">
-                <div className="thumb">
-                  <Image
-                    src="/images/victoria_kinko.webp"
-                    alt="Victoria kinko"
-                    width={800}
-                    height={600}
-                  />
-                </div>
-                <div className="title">Victoria kinko</div>
-                <span className="tag">Design - 2019</span>
-              </div>
-              <div className="work-box">
-                <div className="thumb">
-                  <Image
-                    src="/images/jimmyfermin.webp"
-                    alt="Jimmy fermi"
-                    width={800}
-                    height={600}
-                  />
-                </div>
-                <div className="title">Jimmy fermin</div>
-                <span className="tag">Design - 2019</span>
-              </div>
-              <div className="work-box">
-                <div className="thumb">
-                  <Image
-                    src="/images/briyokathwoody.webp"
-                    alt="Briyo kathwood"
-                    width={800}
-                    height={600}
-                  />
-                </div>
-                <div className="title">Briyokath Woody</div>
-                <span className="tag">Design - 2019</span>
-              </div>
-              <div className="work-box">
-                <div className="thumb">
-                  <Image
-                    src="/images/mastartery.webp"
-                    alt="Mastarter"
-                    width={800}
-                    height={600}
-                  />
-                </div>
-                <div className="title">Mastartery</div>
-                <span className="tag">Design - 2019</span>
-              </div>
-              <div className="work-box">
-                <div className="thumb">
-                  <Image
-                    src="/images/festonaxcard.webp"
-                    alt="Festonax card"
-                    width={800}
-                    height={600}
-                  />
-                </div>
-                <div className="title">Festonax card</div>
-                <span className="tag">Design - 2019</span>
-              </div>{" "}
-              <ButtonPage03 />
-            </div>
+            <WorkGallery />
           </div>
         </div>
       </div>
