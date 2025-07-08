@@ -2,7 +2,10 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { useStartPageAnimations } from "@/src/animations/animations_StartPage";
+import {
+  useStartPageAnimations,
+  useScrollClippingEffect,
+} from "@/src/animations/animations_StartPage";
 import { useTextSlide } from "@/src/animations/textSlide";
 import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
 import "splitting/dist/splitting.css"; // 필요 시
@@ -27,6 +30,7 @@ export default function StartPage() {
   const whetherRef = useRef<HTMLDivElement>(null);
   const ourTeamRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+  const backgroundImageRef = useRef<HTMLDivElement>(null);
 
   useStartPageAnimations({
     fadeRef,
@@ -42,6 +46,9 @@ export default function StartPage() {
   });
   useTextSlide({ slideRef });
   useFadeInOnScroll({ targetRef });
+
+  // 스크롤 클리핑 효과 훅 사용
+  const imageClip = useScrollClippingEffect(backgroundImageRef);
   const navTexts = [
     "BRANDING",
     "AGENCY",
@@ -592,6 +599,24 @@ export default function StartPage() {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        ref={backgroundImageRef}
+        className="relative w-full h-auto overflow-hidden"
+        style={{
+          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
+          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        }}
+      >
+        <Image
+          src="/images/background06.webp"
+          alt="image"
+          width={1500}
+          height={1000}
+          className="w-full h-auto object-cover"
+          data-speed="0.8"
+          data-lag="0"
+        />
       </div>
       {/* ================================ 끝 ================================ */}
       <div className="w-full h-full bg-red-500">

@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -437,4 +437,54 @@ export const useStartPageAnimations = ({
       );
     }
   }, [imgRef]);
+};
+
+// 스크롤 클리핑 효과 훅
+export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
+  const [clipValue, setClipValue] = useState(100);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateClip = () => {
+      if (!ref.current) return;
+
+      const rect = ref.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const imageHeight = rect.height;
+
+      // 이미지가 화면에 들어오기 시작할 때부터 완전히 나갈 때까지
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        // 이미지가 화면 중앙에 있을 때 완전히 보이도록
+        const centerProgress =
+          (windowHeight - rect.top) / (windowHeight + imageHeight);
+
+        // 더 부드러운 이징 함수 적용 (easeInOutCubic)
+        const easedProgress =
+          centerProgress < 0.5
+            ? 4 * centerProgress * centerProgress * centerProgress
+            : 1 - Math.pow(-2 * centerProgress + 2, 3) / 2;
+
+        // 클리핑 값 계산 (0: 완전히 보임, 100: 완전히 가려짐)
+        const clipValue = Math.max(0, Math.min(100, 100 - easedProgress * 100));
+        setClipValue(clipValue);
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      // 스크롤 방향과 거리를 고려한 부드러운 처리
+      if (!ticking) {
+        requestAnimationFrame(updateClip);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [ref]);
+
+  return clipValue;
 };
