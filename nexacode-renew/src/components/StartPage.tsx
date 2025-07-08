@@ -24,6 +24,7 @@ export default function StartPage() {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   const workTitleRef = useRef<HTMLDivElement>(null);
   const whetherRef = useRef<HTMLDivElement>(null);
+  const ourTeamRef = useRef<HTMLDivElement>(null);
 
   useStartPageAnimations({
     fadeRef,
@@ -182,6 +183,36 @@ export default function StartPage() {
         stagger: 0.25, // 각 span 사이의 시간차
         scrollTrigger: {
           trigger: whetherRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    }
+  }, []);
+  // Whether 텍스트용 개별 span 애니메이션
+  useEffect(() => {
+    if (ourTeamRef.current) {
+      const spans = ourTeamRef.current.querySelectorAll("span");
+
+      // 각 span에 초기 상태 설정
+      gsap.set(spans, {
+        opacity: 0,
+        rotationX: 100, // 글씨가 엎드려있는 상태
+        transformOrigin: "top center",
+        y: 50, // 아래에서 시작
+      });
+
+      // 각 span을 순차적으로 애니메이션
+      gsap.to(spans, {
+        opacity: 1,
+        rotationX: 0, // 일어선 상태로
+        y: 0, // 원래 위치로
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.25, // 각 span 사이의 시간차
+        scrollTrigger: {
+          trigger: ourTeamRef.current,
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
@@ -1120,6 +1151,145 @@ export default function StartPage() {
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ================================ 06. The team ================================ */}
+      <div className="container overflow-hidden relative">
+        <div className="pt-36 pb-36 section-spacing-top relative z-10">
+          <div className="flex flex-row">
+            <div className="subtitle-wrappe w-6/12">
+              <div
+                style={{
+                  color: "#121212",
+                  fontFamily: "Kanit",
+                  fontSize: "1rem",
+                  fontStyle: "normal",
+                  fontWeight: 600,
+                  lineHeight: "1rem",
+                }}
+              >
+                06. THE TEAM
+              </div>
+            </div>
+            <div className="flex flex-col w-full">
+              <h2
+                ref={ourTeamRef}
+                className="section-title has_text_move_anim mb-20"
+                style={{ perspective: "400px" }}
+              >
+                <div
+                  className="section-title-line has_fade_anim"
+                  data-fade-from="bottom"
+                  data-fade-offset="30"
+                  data-delay="0.3"
+                  data-duration="1.5"
+                  data-on-scroll="1"
+                >
+                  <span>Our talented</span>
+                  <br />
+                  <span>team</span>
+                </div>
+              </h2>
+              <div className="grid grid-cols-3 grid-rows-2 gap-y-16 gap-x-28 w-full">
+                {/* 1번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member1.webp"
+                    alt="Kamal Abraham"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Kamal Abraham
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    CEO, Wealcoder
+                  </div>
+                </div>
+                {/* 2번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member2.webp"
+                    alt="Selina Gomaze"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Selina Gomaze
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    Junior Executive
+                  </div>
+                </div>
+                {/* 3번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member3.webp"
+                    alt="Pedrik Vadra"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Pedrik Vadra
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    Sr. Developer
+                  </div>
+                </div>
+                {/* 4번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member4.webp"
+                    alt="Thomas Ribbon"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Thomas Ribbon
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    UX Designer
+                  </div>
+                </div>
+                {/* 5번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member5.webp"
+                    alt="Sofia Uironka"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Sofia Uironka
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    Developer
+                  </div>
+                </div>
+                {/* 6번째 팀원 */}
+                <div className="flex flex-col items-center">
+                  <Image
+                    src="/images/member6.webp"
+                    alt="Joseph Buttler"
+                    width={220}
+                    height={220}
+                    className="rounded-full object-cover mb-4"
+                  />
+                  <div className="text-xl font-medium text-center">
+                    Joseph Buttler
+                  </div>
+                  <div className="text-gray-500 text-center text-sm mt-1">
+                    Developer
+                  </div>
+                </div>
               </div>
             </div>
           </div>
