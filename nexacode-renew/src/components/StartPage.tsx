@@ -11,6 +11,8 @@ import TestimonialRotator from "@/src/components/TestimonialRotator";
 import ButtonPage01 from "@/src/components/ButtonPage01";
 import ButtonPage02 from "@/src/components/ButtonPage02";
 import ButtonPage03 from "@/src/components/ButtonPage03";
+import TeamGrid from "@/src/components/TeamGrid";
+import AchievementTable from "@/src/components/AchievementTable";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -618,58 +620,7 @@ export default function StartPage() {
                   <span>of world-wide.</span>
                 </div>
               </h2>
-              <div
-                className="w-full awwwards-thin has_text_move_anim"
-                data-delay="0.5"
-                style={{ overflow: "hidden" }}
-              >
-                <table
-                  className="w-full border-collapse has_fade_anim"
-                  data-fade-from="bottom"
-                  data-fade-offset="30"
-                  data-delay="0.3"
-                  data-duration="1.5"
-                  data-on-scroll="1"
-                >
-                  <tbody>
-                    <tr className="border-t border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-6   text-left">Awwwards</td>
-                      <td className="py-3 px-6 pl-32 ">
-                        3x creative agency of the day
-                      </td>
-                      <td className="py-3 px-6   text-right">Winner</td>
-                    </tr>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-6  text-left">Envato</td>
-                      <td className="py-3 px-6 pl-32  awwwards-thin">
-                        1x agency of the year
-                      </td>
-                      <td className="py-3 px-6   text-right">Awarded</td>
-                    </tr>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-6   text-left">CSS Winner</td>
-                      <td className="py-3 px-6 pl-32">
-                        5x honorable mentioned
-                      </td>
-                      <td className="py-3 px-6  text-right">Mentioned</td>
-                    </tr>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-6  text-left">Behance</td>
-                      <td className="py-3 px-6 pl-32 ">
-                        2x Featured design of the week
-                      </td>
-                      <td className="py-3 px-6 text-right">Winner</td>
-                    </tr>
-                    <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-6  text-left">Dribbble</td>
-                      <td className="py-3 px-6 pl-32 ">
-                        8x Best design of the day
-                      </td>
-                      <td className="py-3 px-6  text-right">Winner</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <AchievementTable />
             </div>
           </div>
         </div>
@@ -700,104 +651,7 @@ export default function StartPage() {
                   <span>team</span>
                 </div>
               </h2>
-              <div className="grid grid-cols-3 grid-rows-2 gap-y-16 gap-x-28 w-full">
-                {/* 1번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member1.webp"
-                    alt="Kamal Abraham"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Kamal Abraham
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    CEO, Wealcoder
-                  </div>
-                </div>
-                {/* 2번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member2.webp"
-                    alt="Selina Gomaze"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Selina Gomaze
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    Junior Executive
-                  </div>
-                </div>
-                {/* 3번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member3.webp"
-                    alt="Pedrik Vadra"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Pedrik Vadra
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    Sr. Developer
-                  </div>
-                </div>
-                {/* 4번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member4.webp"
-                    alt="Thomas Ribbon"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Thomas Ribbon
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    UX Designer
-                  </div>
-                </div>
-                {/* 5번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member5.webp"
-                    alt="Sofia Uironka"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Sofia Uironka
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    Developer
-                  </div>
-                </div>
-                {/* 6번째 팀원 */}
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/images/member6.webp"
-                    alt="Joseph Buttler"
-                    width={220}
-                    height={220}
-                    className="rounded-full object-cover mb-4"
-                  />
-                  <div className="text-xl font-medium text-center">
-                    Joseph Buttler
-                  </div>
-                  <div className="text-gray-500 text-center text-sm mt-1">
-                    Developer
-                  </div>
-                </div>
-              </div>
+              <TeamGrid />
             </div>
           </div>
         </div>
