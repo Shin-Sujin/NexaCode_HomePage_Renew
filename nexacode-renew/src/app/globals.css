@@ -789,3 +789,9 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
+/* Awwwards 텍스트용 커스텀 클래스 */
+.awwwards-thin {
+  font-weight: 400 !important;
+  font-family: "Inter", sans-serif !important;
+}
