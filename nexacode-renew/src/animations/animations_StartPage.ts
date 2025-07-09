@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -482,50 +482,83 @@ export const useStartPageAnimations = ({
 };
 
 export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
-  const [clipValue, setClipValue] = useState(100);
-
   useEffect(() => {
-    let ticking = false;
+    if (ref.current) {
+      const element = ref.current;
+      let clipPath = "inset(0% 0% 0% 0%)";
 
-    const updateClip = () => {
-      if (!ref.current) return;
+      const updateClip = () => {
+        const rect = element.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
 
-      const rect = ref.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const imageHeight = rect.height;
-
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const scrollProgress =
-          (windowHeight - rect.top) / (windowHeight + imageHeight);
-
-        const easedProgress = Math.min(1, Math.max(0, scrollProgress));
-
-        let clipValue;
-        if (easedProgress <= 0.5) {
-          const firstHalfProgress = easedProgress * 2;
-          clipValue = 100 - firstHalfProgress * 100;
+        // 요소가 뷰포트에 들어오기 시작할 때
+        if (elementTop < viewportHeight && elementTop > -elementHeight) {
+          const progress =
+            (viewportHeight - elementTop) / (viewportHeight + elementHeight);
+          const clipPercentage = Math.max(0, Math.min(100, progress * 100));
+          clipPath = `inset(0% 0% ${100 - clipPercentage}% 0%)`;
+        } else if (elementTop <= -elementHeight) {
+          // 요소가 완전히 뷰포트 위로 나갔을 때
+          clipPath = "inset(0% 0% 0% 0%)";
         } else {
-          const secondHalfProgress = (easedProgress - 0.5) * 2;
-          clipValue = secondHalfProgress * 100;
+          // 요소가 뷰포트 아래에 있을 때
+          clipPath = "inset(0% 0% 100% 0%)";
         }
 
-        setClipValue(Math.max(0, Math.min(100, clipValue)));
-      }
-      ticking = false;
-    };
+        element.style.clipPath = clipPath;
+      };
 
-    const handleScroll = () => {
-      if (!ticking) {
+      const handleScroll = () => {
         requestAnimationFrame(updateClip);
-        ticking = true;
-      }
-    };
+      };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+      window.addEventListener("scroll", handleScroll);
+      updateClip(); // 초기 상태 설정
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [ref]);
+};
 
-  return clipValue;
+// FooterArea h2 태그용 3D 회전 애니메이션
+export const useFooterTitleAnimation = (ref: React.RefObject<HTMLElement>) => {
+  useEffect(() => {
+    if (ref.current) {
+      const element = ref.current;
+
+      // 초기 상태 설정 - 텍스트가 엎드려있도록
+      gsap.set(element, {
+        opacity: 0,
+        rotationX: 100,
+        transformOrigin: "top center",
+      });
+
+      // 스크롤 애니메이션 - 엎드려있다가 일어나는 효과
+      gsap.fromTo(
+        element,
+        {
+          opacity: 0,
+          rotationX: 100,
+          transformOrigin: "top center",
+        },
+        {
+          opacity: 1,
+          rotationX: 0,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            markers: false,
+          },
+        }
+      );
+    }
+  }, [ref]);
 };
