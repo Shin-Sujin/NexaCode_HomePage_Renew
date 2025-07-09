@@ -458,12 +458,12 @@ export default function StartPage() {
           <div className="section-title-work">WORK</div>
         </h2>
       </div>
-      {/* ================================ 03.SELETED WORK ================================ */}
+      {/* ================================ 03.SELECTED WORK ================================ */}
       <div className="container">
         <div className="pt-36 pb-3 section-spacing-top">
           <div className="flex flex-col">
             <div className="subtitle-wrappe w-8/12">
-              <div className="section-subtitle">03.SELETED WORK</div>
+              <div className="section-subtitle">03.SELECTED WORK</div>
             </div>
             <div
               style={{
@@ -551,7 +551,7 @@ export default function StartPage() {
                 <div
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
-                  data-fade-offset="30"
+                  data-fade-offset="10"
                   data-delay="0"
                   data-duration="1.5"
                   data-on-scroll="1"
@@ -588,9 +588,9 @@ export default function StartPage() {
                 <div
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
-                  data-fade-offset="30"
-                  data-delay="0.3"
-                  data-duration="1.5"
+                  data-fade-offset="50"
+                  data-delay="0.1"
+                  data-duration="1.2"
                   data-on-scroll="1"
                 >
                   <span>Our talented</span>
@@ -641,7 +641,14 @@ export default function StartPage() {
                 </h2>
               </div>
             </div>
-            <div className="flex flex-row gap-20 w-full">
+            <div
+              className="flex flex-row gap-20 w-full has_fade_anim "
+              data-fade-from="bottom"
+              data-fade-offset="30"
+              data-delay="0"
+              data-duration="0.6"
+              data-on-scroll="1"
+            >
               <OverlapCard
                 imageSrc="/images/page07Image1.webp"
                 imageAlt="Card Background"
