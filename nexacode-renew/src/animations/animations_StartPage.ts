@@ -166,7 +166,7 @@ export const useStartPageAnimations = ({
           start: "top 90%",
           end: "bottom 20%",
           scroller: "body",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -200,7 +200,7 @@ export const useStartPageAnimations = ({
             trigger: workTitleRef.current,
             start: "top 90%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -239,7 +239,7 @@ export const useStartPageAnimations = ({
           start: "top 90%",
           end: "bottom 20%",
           scroller: "body",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -271,7 +271,7 @@ export const useStartPageAnimations = ({
           trigger: whetherRef.current,
           start: "top 90%",
           end: "bottom 20%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
     }

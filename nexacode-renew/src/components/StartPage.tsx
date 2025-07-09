@@ -648,7 +648,6 @@ export default function StartPage() {
                 category="Branding"
                 date="14 Jan 2024"
                 title="How to bring fold to your startup company with Arolax"
-                readMoreText="Read More"
               />
               <OverlapCard
                 imageSrc="/images/page07Image2.webp"
@@ -656,7 +655,6 @@ export default function StartPage() {
                 category="Design"
                 date="12 Jan 2024"
                 title="How to manage a talented and successful design team"
-                readMoreText="Read More"
               />
             </div>
           </div>

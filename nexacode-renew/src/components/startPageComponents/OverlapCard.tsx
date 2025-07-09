@@ -15,7 +15,6 @@ export default function OverlapCard({
   category,
   date,
   title,
-  readMoreText = "Read More",
 }: OverlapCardProps) {
   return (
     <div className="relative w-full max-w-xl">
@@ -40,7 +39,7 @@ export default function OverlapCard({
           {title}
         </h2>
         <hr className="mb-3" />
-        <p className="text-base font-semibold">{readMoreText}</p>
+        <p className="text-base font-semibold">Read More</p>
       </div>
     </div>
   );
