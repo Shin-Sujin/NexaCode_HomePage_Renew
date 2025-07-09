@@ -27,6 +27,7 @@ export default function StartPage() {
   const whoWeAreRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   const workTitleRef = useRef<HTMLDivElement>(null);
+  const recentPostTitleRef = useRef<HTMLDivElement>(null);
   const whetherRef = useRef<HTMLDivElement>(null);
   const ourTeamRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -40,6 +41,7 @@ export default function StartPage() {
     whoWeAreRef,
     sectionTitleRef,
     workTitleRef,
+    recentPostTitleRef,
     whetherRef,
     ourTeamRef,
     imgRef,
@@ -628,22 +630,13 @@ export default function StartPage() {
               </div>
               <div className="flex w-full">
                 <h2
-                  // ref={ourTeamRef}
-                  className="section-title has_text_move_anim mb-20"
+                  ref={recentPostTitleRef}
+                  className="section-title has_text_move_anim"
+                  data-delay="0.2"
                   style={{ perspective: "400px" }}
                 >
-                  <div
-                    className="section-title-line has_fade_anim"
-                    data-fade-from="bottom"
-                    data-fade-offset="30"
-                    data-delay="0.3"
-                    data-duration="1.5"
-                    data-on-scroll="1"
-                  >
-                    <span>Learn from journal</span>
-                    <br />
-                    <span>insight of Binox</span>
-                  </div>
+                  <div className="section-title-line">Learn from journal</div>
+                  <div className="section-title-line">insight of Binox</div>
                 </h2>
               </div>
             </div>

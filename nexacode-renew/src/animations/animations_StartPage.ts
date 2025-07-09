@@ -17,6 +17,7 @@ type Params = {
   whoWeAreRef: React.RefObject<HTMLElement>;
   sectionTitleRef: React.RefObject<HTMLElement>;
   workTitleRef: React.RefObject<HTMLElement>;
+  recentPostTitleRef: React.RefObject<HTMLElement>;
   whetherRef: React.RefObject<HTMLElement>;
   ourTeamRef: React.RefObject<HTMLElement>;
   imgRef: React.RefObject<HTMLImageElement>;
@@ -30,6 +31,7 @@ export const useStartPageAnimations = ({
   whoWeAreRef,
   sectionTitleRef,
   workTitleRef,
+  recentPostTitleRef,
   whetherRef,
   ourTeamRef,
   imgRef,
@@ -204,6 +206,45 @@ export const useStartPageAnimations = ({
       );
     }
   }, [workTitleRef]);
+
+  // Recent Post 텍스트용 has_text_move_anim 애니메이션 (sectionTitleRef와 동일한 효과)
+  // has_text_move_anim 애니메이션
+  useEffect(() => {
+    if (recentPostTitleRef.current) {
+      const element = recentPostTitleRef.current;
+      const delay = element.getAttribute("data-delay") || "0.5";
+
+      // 텍스트를 줄 단위로 분할
+      const lines = element.querySelectorAll(".section-title-line");
+
+      gsap.set(element, { perspective: 400 });
+
+      // 초기 상태 설정
+      gsap.set(lines, {
+        opacity: 0,
+        rotationX: -80,
+        transformOrigin: "top center -50",
+      });
+
+      // 애니메이션 실행
+      gsap.to(lines, {
+        duration: 0.8,
+        delay: parseFloat(delay),
+        opacity: 1,
+        rotationX: 0,
+        force3D: true,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 90%",
+          end: "bottom 20%",
+          scroller: "body",
+          toggleActions: "play none none reverse",
+          markers: false,
+        },
+      });
+    }
+  }, [recentPostTitleRef]);
 
   // Whether 텍스트용 개별 span 애니메이션
   useEffect(() => {
