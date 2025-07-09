@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
     "counterup2": "^2.0.2",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
