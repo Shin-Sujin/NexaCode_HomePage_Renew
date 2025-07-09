@@ -16,6 +16,7 @@ import ButtonPage02 from "@/src/components/startPageComponents/ButtonPage02";
 import TeamGrid from "@/src/components/startPageComponents/TeamGrid";
 import AchievementTable from "@/src/components/startPageComponents/AchievementTable";
 import WorkGallery from "@/src/components/startPageComponents/WorkGallery";
+import OverlapCard from "@/src/components/startPageComponents/OverlapCard";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -628,7 +629,7 @@ export default function StartPage() {
               <div className="subtitle-wrappe w-6/12">
                 <div className="section-subtitle">07.RECENT POST</div>
               </div>
-              <div className="flex w-full">
+              <div className="flex w-full mb-20">
                 <h2
                   ref={recentPostTitleRef}
                   className="section-title has_text_move_anim"
@@ -640,7 +641,10 @@ export default function StartPage() {
                 </h2>
               </div>
             </div>
-            <div className="flex flex-row">사진이랑 텍스트 세트</div>
+            <div className="flex flex-row gap-20 w-full">
+              <OverlapCard />
+              <OverlapCard />
+            </div>
           </div>
         </div>
       </div>
