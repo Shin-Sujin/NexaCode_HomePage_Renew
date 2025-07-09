@@ -8,8 +8,8 @@ import {
 } from "@/src/animations/animations_StartPage";
 import { useTextSlide } from "@/src/animations/textSlide";
 import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
-import "splitting/dist/splitting.css"; // 필요 시
-// import CounterUp from "@/components/CounterUp";
+import "splitting/dist/splitting.css";
+
 import TestimonialRotator from "@/src/components/startPageComponents/TestimonialRotator";
 import ButtonPage01 from "@/src/components/startPageComponents/ButtonPage01";
 import ButtonPage02 from "@/src/components/startPageComponents/ButtonPage02";
@@ -68,8 +68,8 @@ export default function StartPage() {
   const repeatedNavTexts = Array(3).fill(navTexts).flat();
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="relative w-full" style={{ height: "90vh" }}>
-        {/* ================================ 동영상 ================================ */}
+      {/* ================================ section 01 ================================ */}
+      <div className="relative w-full" style={{ height: "100vh" }}>
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -96,6 +96,7 @@ export default function StartPage() {
         <div>
           <div className="flex flex-row gap-24">
             {/* ================================ 1번 요소 ================================ */}
+
             <div
               ref={fadeRef}
               className="absolute flex flex-col gap-4"
@@ -250,7 +251,7 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      {/* ================================ 01.WHO WE ARE ================================ */}
+      {/* ================================ section 02 ================================ */}
       <div className="container">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
@@ -375,7 +376,7 @@ export default function StartPage() {
             data-lag="0"
           />
         </div>
-        {/* ================================ 02.SERVICES ================================ */}
+        {/* ================================ section 03 ================================ */}
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-5/12">
@@ -459,7 +460,7 @@ export default function StartPage() {
           <div className="section-title-work">WORK</div>
         </h2>
       </div>
-      {/* ================================ 03.SELECTED WORK ================================ */}
+      {/* ================================ section 04 ================================ */}
       <div className="container">
         <div className="pt-36 pb-3 section-spacing-top">
           <div className="flex flex-col">
@@ -478,16 +479,15 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      {/* ================================ 04.TESTIMONIAL ================================ */}
+      {/* ================================ section 05 ================================ */}
       <div className="w-full" style={{ background: "#161616" }}>
         <div className="container mx-auto">
           <div className="pt-24 pb-24 section-spacing-top">
-            {/* ================================ row 1 ================================ */}
             <div className="flex flex-row">
               <div className="subtitle-wrappe w-6/12">
                 <div className="section-subtitle-white">04.TESTIMONIAL</div>
               </div>
-              {/* ================================ row1 -  col 1 ================================ */}
+
               <div className="flex flex-col w-full">
                 <div className="title-wrapper">
                   <h2
@@ -520,7 +520,7 @@ export default function StartPage() {
           </div>
         </div>
       </div>{" "}
-      {/* ================================ 05.achievement & Award ================================ */}
+      {/* ================================ section 06 ================================ */}
       <div className="container overflow-hidden relative">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0 flex items-center justify-center">
@@ -573,7 +573,7 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      {/* ================================ 06. The team ================================ */}
+      {/* ================================ section 07 ================================ */}
       <div className="container overflow-hidden relative">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
@@ -622,7 +622,7 @@ export default function StartPage() {
           data-lag="0"
         />
       </div>{" "}
-      {/* ================================ 07. RECENT POST ================================ */}
+      {/* ================================ section 08 ================================ */}
       <div className="container overflow-hidden relative">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-col">
@@ -668,7 +668,7 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      {/* ================================ 마무리 페이지 ================================ */}
+      {/* ================================ section 09 ================================ */}
       <div
         className="w-full flex justify-center"
         style={{ background: "#161616" }}
@@ -676,6 +676,79 @@ export default function StartPage() {
         <div className="container">
           <FooterArea />
         </div>
+      </div>{" "}
+      {/* ================================ 끝 ================================ */}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#fff" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#649AC3" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#F8C8C8" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#fff" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#649AC3" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#F8C8C8" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#fff" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#649AC3" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#F8C8C8" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#fff" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#649AC3" }}
+      >
+        안녕하세요
+      </div>{" "}
+      <div
+        className="h-96 flex items-center justify-center"
+        style={{ background: "#F8C8C8" }}
+      >
+        안녕하세요
       </div>{" "}
     </div>
   );

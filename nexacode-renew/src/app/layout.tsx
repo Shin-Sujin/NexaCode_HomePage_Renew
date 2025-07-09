@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import Header from "@/src/components/Header";
+import Lenis from "./lenis";
+
 // import DesignTrial from "@/components/DesignTrial";
 
 export const metadata = {
@@ -16,7 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <main>
+          {" "}
+          <Lenis>{children}</Lenis>
+        </main>
       </body>
     </html>
   );
