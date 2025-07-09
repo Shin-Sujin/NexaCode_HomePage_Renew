@@ -642,8 +642,22 @@ export default function StartPage() {
               </div>
             </div>
             <div className="flex flex-row gap-20 w-full">
-              <OverlapCard />
-              <OverlapCard />
+              <OverlapCard
+                imageSrc="/images/page07Image1.webp"
+                imageAlt="Card Background"
+                category="Branding"
+                date="14 Jan 2024"
+                title="How to bring fold to your startup company with Arolax"
+                readMoreText="Read More"
+              />
+              <OverlapCard
+                imageSrc="/images/page07Image2.webp"
+                imageAlt="Card Background"
+                category="Design"
+                date="12 Jan 2024"
+                title="How to manage a talented and successful design team"
+                readMoreText="Read More"
+              />
             </div>
           </div>
         </div>
