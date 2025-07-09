@@ -17,6 +17,7 @@ import TeamGrid from "@/src/components/startPageComponents/TeamGrid";
 import AchievementTable from "@/src/components/startPageComponents/AchievementTable";
 import WorkGallery from "@/src/components/startPageComponents/WorkGallery";
 import OverlapCard from "@/src/components/startPageComponents/OverlapCard";
+import FooterArea from "@/src/components/startPageComponents/FooterArea";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -667,10 +668,15 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      {/* ================================ 끝 ================================ */}
-      <div className="w-full h-full bg-red-500">
-        <div className="w-full h-[100rem] bg-blue-500">안녕하세요</div>
-      </div>
+      {/* ================================ 마무리 페이지 ================================ */}
+      <div
+        className="w-full flex justify-center"
+        style={{ background: "#161616" }}
+      >
+        <div className="container">
+          <FooterArea />
+        </div>
+      </div>{" "}
     </div>
   );
 }
