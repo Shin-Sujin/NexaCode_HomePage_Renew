@@ -369,7 +369,7 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ section 06 ================================ */}
-      <div className="container overflow-hidden relative bg-purple-200/80">
+      <div className="container overflow-hidden relative ">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <Image
@@ -412,7 +412,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 07 ================================ */}
-      <div className="container overflow-hidden relative bg-yellow-500/80">
+      <div className="container overflow-hidden relative ">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-6/12">
@@ -438,46 +438,25 @@ export default function StartPage() {
           </div>
         </div>
       </div>
-      <div
-        ref={backgroundImageRef}
-        className="relative w-full h-auto overflow-hidden"
-        style={{
-          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
-          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-        }}
-      >
-        <Image
-          src="/images/background06.webp"
-          alt="image"
-          width={1500}
-          height={1000}
-          className="w-full h-auto object-cover"
-          data-speed="0.5"
-          data-lag="0"
-        />
-      </div>{" "}
       {/* ================================ section 08 ================================ */}
-      <div className="container overflow-hidden relative bg-pink-500/80">
+      <div className="container overflow-hidden relative ">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-col">
             <div className="flex flex-row">
               <div className="subtitle-wrappe w-6/12">
-                <div className="section-subtitle">07.RECENT POST</div>
+                <div className="section-subtitle">07. RECENT POST</div>
               </div>
               <div className="flex w-full mb-20">
                 <h2
                   ref={recentPostTitleRef}
-                  className="section-title has_text_move_anim perspective-[400px]"
+                  className="section-title perspective-[400px]"
                 >
                   <div className="section-title-line">Learn from journal</div>
                   <div className="section-title-line">insight of Binox</div>
                 </h2>
               </div>
             </div>
-            <div
-              className="flex flex-row gap-20 w-full has_fade_anim "
-              data-fade-from="bottom"
-            >
+            <div className="flex flex-row gap-20 w-full justify-between">
               <OverlapCard
                 imageSrc="/images/page07Image1.webp"
                 imageAlt="Card Background"
@@ -496,6 +475,24 @@ export default function StartPage() {
           </div>
         </div>
       </div>
+      <div
+        ref={backgroundImageRef}
+        className="relative w-full h-auto overflow-hidden"
+        style={{
+          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
+          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        }}
+      >
+        <Image
+          src="/images/background06.webp"
+          alt="image"
+          width={1500}
+          height={1000}
+          className="w-full h-auto object-cover"
+          // data-speed="0.5"
+          data-lag="0"
+        />
+      </div>{" "}
       {/* ================================ FooterArea ================================ */}
       <div
         className="w-full flex justify-center h-screen items-center"
@@ -505,7 +502,6 @@ export default function StartPage() {
           <FooterArea />
         </div>
       </div>{" "}
-      <div className="w-full h-[100vh] bg-red-500"></div>
     </div>
   );
 }

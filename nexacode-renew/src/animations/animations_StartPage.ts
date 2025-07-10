@@ -125,10 +125,10 @@ export const useStartPageAnimations = ({
         ease: "power2.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 99%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -163,10 +163,9 @@ export const useStartPageAnimations = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
-          start: "top 99%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
-          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -198,21 +197,19 @@ export const useStartPageAnimations = ({
           ease: "power3.out",
           scrollTrigger: {
             trigger: workTitleRef.current,
-            start: "top 99%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
+            start: "bottom 95%",
+            end: "top 20%",
           },
         }
       );
     }
   }, [workTitleRef]);
 
-  // Recent Post 텍스트용 has_text_move_anim 애니메이션 (sectionTitleRef와 동일한 효과)
-  // has_text_move_anim 애니메이션
+  // Recent Post 텍스트용 has_text_move_anim 애니메이션 (최적화된 버전)
   useEffect(() => {
     if (recentPostTitleRef.current) {
       const element = recentPostTitleRef.current;
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const delay = element.getAttribute("data-delay") || "0.1"; // delay 줄임
 
       // 텍스트를 줄 단위로 분할
       const lines = element.querySelectorAll(".section-title-line");
@@ -222,22 +219,23 @@ export const useStartPageAnimations = ({
       // 초기 상태 설정
       gsap.set(lines, {
         opacity: 0,
-        rotationX: -80,
+        rotationX: -60, // 회전 각도 줄임
         transformOrigin: "top center -50",
       });
 
-      // 애니메이션 실행
+      // 애니메이션 실행 (더 빠르고 부드럽게)
       gsap.to(lines, {
-        duration: 0.8,
+        duration: 0.6, // duration 줄임
         delay: parseFloat(delay),
         opacity: 1,
         rotationX: 0,
         force3D: true,
-        stagger: 0.1,
+        stagger: 0.05, // stagger 줄임
+        ease: "power2.out", // ease 추가
         scrollTrigger: {
           trigger: element,
-          start: "top 99%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
           toggleActions: "play none none none",
           markers: false,
@@ -302,7 +300,7 @@ export const useStartPageAnimations = ({
           trigger: ourTeamRef.current,
           start: "top 99%",
           end: "bottom 20%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
     }
@@ -333,6 +331,14 @@ export const useStartPageAnimations = ({
       }
 
       if (onScroll === "1") {
+        const scrollTriggerConfig = {
+          trigger: element,
+          start: "top 99%", // 트리거 포인트 조정
+          scroller: "body",
+          toggleActions: "play none none none",
+          markers: false,
+        };
+
         if (fadeFrom === "bottom") {
           gsap.to(element, {
             y: 0,
@@ -340,13 +346,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 99%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "top") {
           gsap.to(element, {
@@ -355,13 +355,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 99%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "left") {
           gsap.to(element, {
@@ -370,13 +364,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 99%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "right") {
           gsap.to(element, {
@@ -385,13 +373,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 99%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "in") {
           gsap.to(element, {
@@ -399,13 +381,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 99%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         }
       } else {
@@ -472,7 +448,6 @@ export const useStartPageAnimations = ({
             trigger: imgRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1,
             markers: false,
           },
         }
