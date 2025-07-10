@@ -37,16 +37,12 @@ export default function AchievementTable() {
   return (
     <div
       className="w-full awwwards-thin has_text_move_anim"
-      data-delay="0.5"
+      // data-delay="0.5"
       style={{ overflow: "hidden" }}
     >
       <table
         className="w-full border-collapse has_fade_anim"
         data-fade-from="bottom"
-        data-fade-offset="30"
-        data-delay="0.3"
-        data-duration="1.5"
-        data-on-scroll="1"
       >
         <tbody>
           {achievements.map((achievement) => (

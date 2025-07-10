@@ -10,12 +10,14 @@ type SlideInFromLeftParams = {
   targetRef: React.RefObject<HTMLElement>;
   delay?: number;
   duration?: number;
+  x?: number;
 };
 
 export const useSlideInFromLeft = ({
   targetRef,
   delay = 0,
   duration = 1,
+  x = -100,
 }: SlideInFromLeftParams) => {
   useEffect(() => {
     if (targetRef.current) {
@@ -23,21 +25,24 @@ export const useSlideInFromLeft = ({
         targetRef.current,
         {
           opacity: 0,
-          x: -100, // 왼쪽에서 시작
+          x: x, // 왼쪽에서 시작
+          scale: 0.95,
         },
         {
           opacity: 1,
           x: 0, // 원래 위치로
+          scale: 1,
           duration: duration,
           delay: delay,
           ease: "power3.out",
           scrollTrigger: {
             trigger: targetRef.current,
-            start: "top 80%", // 스크롤 시 뷰포트 80% 도달 시 애니메이션 시작
-            toggleActions: "play none none none",
+            start: "bottom 95%", // 화면 하단에서 약간이라도 등장하는 순간
+            end: "top 20%",
+            markers: false,
           },
         }
       );
     }
-  }, [targetRef, delay, duration]);
+  }, [targetRef, delay, duration, x]);
 };

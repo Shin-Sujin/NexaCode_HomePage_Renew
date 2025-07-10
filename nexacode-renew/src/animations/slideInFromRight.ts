@@ -6,31 +6,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type FadeInParams = {
+type SlideInFromRightParams = {
   targetRef: React.RefObject<HTMLElement>;
   delay?: number;
   duration?: number;
-  y?: number;
+  x?: number;
 };
 
-export const useFadeInOnScroll = ({
+export const useSlideInFromRight = ({
   targetRef,
   delay = 0,
   duration = 1,
-  y = 50,
-}: FadeInParams) => {
+  x = 100,
+}: SlideInFromRightParams) => {
   useEffect(() => {
     if (targetRef.current) {
       gsap.fromTo(
         targetRef.current,
         {
           opacity: 0,
-          y: y, // 아래에서 시작
-          scale: 0.95, // 약간 작게 시작
+          x: x, // 오른쪽에서 시작
+          scale: 0.95,
         },
         {
           opacity: 1,
-          y: 0,
+          x: 0, // 원래 위치로
           scale: 1,
           duration: duration,
           delay: delay,
@@ -44,5 +44,5 @@ export const useFadeInOnScroll = ({
         }
       );
     }
-  }, [targetRef, delay, duration, y]);
+  }, [targetRef, delay, duration, x]);
 };

@@ -17,14 +17,19 @@ export default function OverlapCard({
   title,
 }: OverlapCardProps) {
   return (
-    <div className="relative w-full max-w-xl work-box">
+    <div
+      className="relative w-full max-w-xl work-box has_fade_anim"
+      data-fade-from="bottom"
+      data-duration="0.5"
+      data-delay="0.3"
+    >
       {/* 뒤에 있는 이미지 */}
       <div className="w-[18.9375rem] h-[25.8125rem] relative overflow-hidden thumb">
         <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
       </div>
 
       {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
-      <div className="absolute bottom-0 right-[-3rem] bg-white p-10 w-[24.375rem] h-[18.75rem]">
+      <div className="absolute bottom-0 translate-x-[10rem] bg-white p-10 w-[24.375rem] h-[18.75rem]">
         <p className="text-sm mb-2" style={{ color: "#555555" }}>
           {category} — {date}
         </p>

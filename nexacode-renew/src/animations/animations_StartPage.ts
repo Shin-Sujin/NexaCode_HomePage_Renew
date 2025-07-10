@@ -125,10 +125,10 @@ export const useStartPageAnimations = ({
         ease: "power2.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -139,7 +139,7 @@ export const useStartPageAnimations = ({
   useEffect(() => {
     if (sectionTitleRef.current) {
       const element = sectionTitleRef.current;
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const delay = element.getAttribute("data-delay") || "0.01";
 
       // 텍스트를 줄 단위로 분할
       const lines = element.querySelectorAll(".section-title-line");
@@ -155,7 +155,7 @@ export const useStartPageAnimations = ({
 
       // 애니메이션 실행
       gsap.to(lines, {
-        duration: 1,
+        duration: 0.5,
         delay: parseFloat(delay),
         opacity: 1,
         rotationX: 0,
@@ -163,10 +163,9 @@ export const useStartPageAnimations = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
-          toggleActions: "play none none none",
           markers: false,
         },
       });
@@ -198,21 +197,19 @@ export const useStartPageAnimations = ({
           ease: "power3.out",
           scrollTrigger: {
             trigger: workTitleRef.current,
-            start: "top 90%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
+            start: "bottom 95%",
+            end: "top 20%",
           },
         }
       );
     }
   }, [workTitleRef]);
 
-  // Recent Post 텍스트용 has_text_move_anim 애니메이션 (sectionTitleRef와 동일한 효과)
-  // has_text_move_anim 애니메이션
+  // Recent Post 텍스트용 has_text_move_anim 애니메이션 (최적화된 버전)
   useEffect(() => {
     if (recentPostTitleRef.current) {
       const element = recentPostTitleRef.current;
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const delay = element.getAttribute("data-delay") || "0.1"; // delay 줄임
 
       // 텍스트를 줄 단위로 분할
       const lines = element.querySelectorAll(".section-title-line");
@@ -222,22 +219,23 @@ export const useStartPageAnimations = ({
       // 초기 상태 설정
       gsap.set(lines, {
         opacity: 0,
-        rotationX: -80,
+        rotationX: -60, // 회전 각도 줄임
         transformOrigin: "top center -50",
       });
 
-      // 애니메이션 실행
+      // 애니메이션 실행 (더 빠르고 부드럽게)
       gsap.to(lines, {
-        duration: 0.8,
+        duration: 0.6, // duration 줄임
         delay: parseFloat(delay),
         opacity: 1,
         rotationX: 0,
         force3D: true,
-        stagger: 0.1,
+        stagger: 0.05, // stagger 줄임
+        ease: "power2.out", // ease 추가
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
-          end: "bottom 20%",
+          start: "bottom 95%",
+          end: "top 20%",
           scroller: "body",
           toggleActions: "play none none none",
           markers: false,
@@ -269,7 +267,7 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: whetherRef.current,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           toggleActions: "play none none none",
         },
@@ -300,9 +298,9 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: ourTeamRef.current,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       });
     }
@@ -314,9 +312,9 @@ export const useStartPageAnimations = ({
     fadeElements.forEach((element) => {
       const fadeFrom = element.getAttribute("data-fade-from") || "bottom";
       const onScroll = element.getAttribute("data-on-scroll") || "1";
-      const duration = element.getAttribute("data-duration") || "1.5";
-      const fadeOffset = element.getAttribute("data-fade-offset") || "500";
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const duration = element.getAttribute("data-duration") || "0.5";
+      const fadeOffset = element.getAttribute("data-fade-offset") || "30";
+      const delay = element.getAttribute("data-delay") || "0.01";
       const ease = element.getAttribute("data-ease") || "power2.out";
 
       // 초기 상태 설정
@@ -333,6 +331,14 @@ export const useStartPageAnimations = ({
       }
 
       if (onScroll === "1") {
+        const scrollTriggerConfig = {
+          trigger: element,
+          start: "top 99%", // 트리거 포인트 조정
+          scroller: "body",
+          toggleActions: "play none none none",
+          markers: false,
+        };
+
         if (fadeFrom === "bottom") {
           gsap.to(element, {
             y: 0,
@@ -340,13 +346,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "top") {
           gsap.to(element, {
@@ -355,13 +355,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "left") {
           gsap.to(element, {
@@ -370,13 +364,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "right") {
           gsap.to(element, {
@@ -385,13 +373,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         } else if (fadeFrom === "in") {
           gsap.to(element, {
@@ -399,13 +381,7 @@ export const useStartPageAnimations = ({
             ease: ease,
             duration: parseFloat(duration),
             delay: parseFloat(delay),
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              scroller: "body",
-              toggleActions: "play none none none",
-              markers: false,
-            },
+            scrollTrigger: scrollTriggerConfig,
           });
         }
       } else {
@@ -472,7 +448,6 @@ export const useStartPageAnimations = ({
             trigger: imgRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1,
             markers: false,
           },
         }
@@ -492,19 +467,43 @@ export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
         const viewportHeight = window.innerHeight;
         const elementTop = rect.top;
         const elementHeight = rect.height;
+        const elementBottom = rect.bottom;
 
-        // 요소가 뷰포트에 들어오기 시작할 때
+        // 요소가 뷰포트에 들어오기 시작할 때 (상단에서 등장)
         if (elementTop < viewportHeight && elementTop > -elementHeight) {
           const progress =
             (viewportHeight - elementTop) / (viewportHeight + elementHeight);
           const clipPercentage = Math.max(0, Math.min(100, progress * 100));
-          clipPath = `inset(0% 0% ${100 - clipPercentage}% 0%)`;
-        } else if (elementTop <= -elementHeight) {
-          // 요소가 완전히 뷰포트 위로 나갔을 때
-          clipPath = "inset(0% 0% 0% 0%)";
-        } else {
-          // 요소가 뷰포트 아래에 있을 때
+
+          // 상단에서 등장하는 효과 (상단 100px이 가려져 있다가 나타남)
+          const topClip = Math.max(0, 30 - clipPercentage * 1.4); // 1.2배로 조정하여 더 부드럽게
+          const bottomClip = 0;
+
+          clipPath = `inset(${topClip}% 0% ${bottomClip}% 0%)`;
+        }
+        // 요소가 뷰포트를 벗어나기 시작할 때 (하단에서 퇴장)
+        else if (elementBottom < viewportHeight && elementBottom > 0) {
+          const progress =
+            (viewportHeight - elementBottom) / (viewportHeight + elementHeight);
+          const clipPercentage = Math.max(0, Math.min(100, progress * 100));
+
+          // 하단에서 퇴장하는 효과 (하단 100px이 가려짐)
+          const topClip = 0;
+          const bottomClip = Math.max(0, 10 - clipPercentage * 1.2);
+
+          clipPath = `inset(${topClip}% 0% ${bottomClip}% 0%)`;
+        }
+        // 요소가 완전히 뷰포트 위로 나갔을 때
+        else if (elementTop <= -elementHeight) {
+          clipPath = "inset(100% 0% 0% 0%)";
+        }
+        // 요소가 뷰포트 아래에 있을 때
+        else if (elementBottom >= viewportHeight + elementHeight) {
           clipPath = "inset(0% 0% 100% 0%)";
+        }
+        // 요소가 뷰포트 중앙에 있을 때 (완전히 보임)
+        else if (elementTop >= 0 && elementBottom <= viewportHeight) {
+          clipPath = "inset(0% 0% 0% 0%)";
         }
 
         element.style.clipPath = clipPath;
@@ -552,7 +551,7 @@ export const useFooterTitleAnimation = (ref: React.RefObject<HTMLElement>) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 80%",
+            start: "top 99%",
             end: "bottom 20%",
             toggleActions: "play none none none",
             markers: false,

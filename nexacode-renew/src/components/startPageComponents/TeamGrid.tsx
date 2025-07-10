@@ -77,10 +77,10 @@ export default function TeamGrid() {
         scale: 1,
         duration: 0.8,
         ease: "power3.out",
-        delay: index * 0.2, // 각 멤버마다 0.2초씩 지연
+        delay: index * 0.1, // 각 멤버마다 0.2초씩 지연
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 99%",
           toggleActions: "play none none none",
         },
       });
@@ -96,7 +96,7 @@ export default function TeamGrid() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 85%",
+          start: "top 99%",
           toggleActions: "play none none none",
         },
       }
