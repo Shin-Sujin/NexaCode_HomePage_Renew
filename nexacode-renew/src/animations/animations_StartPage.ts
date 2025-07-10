@@ -492,19 +492,43 @@ export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
         const viewportHeight = window.innerHeight;
         const elementTop = rect.top;
         const elementHeight = rect.height;
+        const elementBottom = rect.bottom;
 
-        // 요소가 뷰포트에 들어오기 시작할 때
+        // 요소가 뷰포트에 들어오기 시작할 때 (상단에서 등장)
         if (elementTop < viewportHeight && elementTop > -elementHeight) {
           const progress =
             (viewportHeight - elementTop) / (viewportHeight + elementHeight);
           const clipPercentage = Math.max(0, Math.min(100, progress * 100));
-          clipPath = `inset(0% 0% ${100 - clipPercentage}% 0%)`;
-        } else if (elementTop <= -elementHeight) {
-          // 요소가 완전히 뷰포트 위로 나갔을 때
-          clipPath = "inset(0% 0% 0% 0%)";
-        } else {
-          // 요소가 뷰포트 아래에 있을 때
+
+          // 상단에서 등장하는 효과 (상단 100px이 가려져 있다가 나타남)
+          const topClip = Math.max(0, 30 - clipPercentage * 1.4); // 1.2배로 조정하여 더 부드럽게
+          const bottomClip = 0;
+
+          clipPath = `inset(${topClip}% 0% ${bottomClip}% 0%)`;
+        }
+        // 요소가 뷰포트를 벗어나기 시작할 때 (하단에서 퇴장)
+        else if (elementBottom < viewportHeight && elementBottom > 0) {
+          const progress =
+            (viewportHeight - elementBottom) / (viewportHeight + elementHeight);
+          const clipPercentage = Math.max(0, Math.min(100, progress * 100));
+
+          // 하단에서 퇴장하는 효과 (하단 100px이 가려짐)
+          const topClip = 0;
+          const bottomClip = Math.max(0, 10 - clipPercentage * 1.2);
+
+          clipPath = `inset(${topClip}% 0% ${bottomClip}% 0%)`;
+        }
+        // 요소가 완전히 뷰포트 위로 나갔을 때
+        else if (elementTop <= -elementHeight) {
+          clipPath = "inset(100% 0% 0% 0%)";
+        }
+        // 요소가 뷰포트 아래에 있을 때
+        else if (elementBottom >= viewportHeight + elementHeight) {
           clipPath = "inset(0% 0% 100% 0%)";
+        }
+        // 요소가 뷰포트 중앙에 있을 때 (완전히 보임)
+        else if (elementTop >= 0 && elementBottom <= viewportHeight) {
+          clipPath = "inset(0% 0% 0% 0%)";
         }
 
         element.style.clipPath = clipPath;
