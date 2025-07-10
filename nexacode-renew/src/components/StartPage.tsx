@@ -69,147 +69,74 @@ export default function StartPage() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* ================================ section 01 ================================ */}
-      <div className="relative w-full" style={{ height: "100vh" }}>
+      <div className="relative w-full h-[70rem] flex items-center justify-center">
         <video
           src="/videoes/production_id.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          style={{ zIndex: 0 }}
+          className="absolute top-0 left-0 w-full h-full object-cover z-[0]"
         />
-        {/* ================================ 검은색 오버레이 ================================ */}
-        <div
-          className="absolute top-0 left-0 w-full h-full"
-          style={{
-            background: "#000",
-            opacity: 0.8,
-            zIndex: 1,
-          }}
-        />
-      </div>
-      <div
-        className="absolute mt-36 ml-16 top-0 left-0 flex flex-col gap-12 p-10"
-        style={{ zIndex: 2 }}
-      >
-        <div>
-          <div className="flex flex-row gap-24">
-            {/* ================================ 1번 요소 ================================ */}
-
-            <div
-              ref={fadeRef}
-              className="absolute flex flex-col gap-4"
-              style={{ zIndex: 2, width: 450, maxWidth: "90vw" }}
-            >
-              {/* 윗부분 선 */}
-              <div
-                style={{
-                  borderTop: "1px solid #fff",
-                  width: "100%",
-                  marginBottom: 8,
-                }}
-              />
-              {/* 텍스트 + 화살표 한 줄 */}
-              <div
-                className="flex items-center justify-between"
-                style={{ width: "100%" }}
-              >
-                <span
-                  style={{
-                    color: "#fff",
-                    fontWeight: 400,
-                    fontSize: 20,
-                    letterSpacing: 1,
-                    whiteSpace: "nowrap",
-                  }}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/80 z-[1] flex" />
+        {/* 컨테이너 내용을 동영상 위에 겹치도록 배치 */}
+        <div className="container relative z-[2] h-full flex">
+          <div className="pb-36 section-spacing-top w-full">
+            <div className="flex flex-col">
+              <div className="flex flex-row justify-between">
+                {/* ================================ 1번 요소 ================================ */}
+                <div
+                  ref={fadeRef}
+                  className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[28.125rem]"
                 >
-                  Arolax™
-                </span>
-                <span
-                  style={{ color: "#fff", fontSize: 18, whiteSpace: "nowrap" }}
+                  {/* 윗부분 선 */}
+                  <div className="border-t border-white mb-4" />
+                  {/* 텍스트 + 화살표 한 줄 */}
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-white font-normal text-xl tracking-wider whitespace-nowrap">
+                      Arolax™
+                    </span>
+                    <span className="text-white text-xl whitespace-nowrap">
+                      ↗
+                    </span>
+                  </div>
+                  {/* 주소 */}
+                  <div className="text-white font-medium text-xl leading-[1.3]">
+                    1772 Street Charleston,
+                    <br />
+                    New York
+                  </div>
+                </div>
+                {/* ================================ 2번 요소 ================================ */}
+                <div
+                  ref={textRef}
+                  className="block w-[50rem] text-white font-normal text-[1.4rem] leading-[1.725rem] ml-[55rem] tracking-wider whitespace-normal
+"
                 >
-                  ↗
-                </span>
+                  We believe that the surest measure of success is when our
+                  partners with us more than half It&apos;s more than just the
+                  visuals. We&apos;re here to support your growth.
+                </div>
               </div>
-              {/* 주소 */}
-              <div
-                style={{
-                  color: "#fff",
-                  fontFamily: "Kanit",
-                  fontWeight: 700,
-                  fontSize: 18,
-                  lineHeight: 1.3,
-                }}
-              >
-                1772 Street Charleston,
-                <br />
-                New York
+              {/* ================================ 3번 요소 ================================ */}
+              <div className=" text-white font-medium text-[15rem] leading-[12rem] flex flex-col justify-center  mt-[15rem]">
+                {/* CREATIVE (첫 줄) */}
+                <div ref={creativeRef}>CREATIVE</div>
+
+                {/* STUDI + 이미지 (둘째 줄) */}
+                <div className="flex items-center">
+                  <div ref={studioRef}>STUDI</div>
+                  <div>
+                    <Image
+                      src="/images/o-switch.webp"
+                      alt="switch"
+                      width={160}
+                      height={68}
+                      className="h-[8.5rem] ml-[0.5rem] w-auto"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* ================================ 2번 요소 ================================ */}
-            <div
-              ref={textRef}
-              style={{
-                display: "block",
-                width: "25rem",
-                color: "#FFF",
-                fontFamily: "Inter",
-                fontSize: "1.4rem",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "1.725rem",
-                marginLeft: "55rem",
-                letterSpacing: "0.05em",
-                whiteSpace: "normal",
-                wordBreak: "break-word",
-              }}
-            >
-              We believe that the surest measure of success is when our partners
-              with us more than half It&apos;s more than just the visuals.
-              We&apos;re here to support your growth.
-            </div>
-          </div>
-        </div>
-
-        {/* ================================ 3번 요소 ================================ */}
-        <div
-          style={{
-            width: "60rem",
-            height: "28rem",
-            color: "#FFF",
-            fontFamily: "beatricetrial",
-            fontSize: "12rem",
-            fontStyle: "normal",
-            fontWeight: 600,
-            lineHeight: "10rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          {/* CREATIVE (첫 줄) */}
-          <div ref={creativeRef} style={{ letterSpacing: "0.05em" }}>
-            CREATIVE
-          </div>
-
-          {/* STUDI + 이미지 (둘째 줄) */}
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div ref={studioRef} style={{ letterSpacing: "0.05em" }}>
-              STUDI
-            </div>
-            <div>
-              <Image
-                src="/images/o-switch.webp"
-                alt="switch"
-                width={160}
-                height={68}
-                style={{
-                  height: "8.5rem",
-                  marginLeft: "0.5rem",
-                  width: "auto",
-                }}
-              />
             </div>
           </div>
         </div>
@@ -521,7 +448,7 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ section 06 ================================ */}
-      <div className="container overflow-hidden relative">
+      <div className="container overflow-hidden relative bg-purple-200/80">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <Image
@@ -574,7 +501,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 07 ================================ */}
-      <div className="container overflow-hidden relative">
+      <div className="container overflow-hidden relative bg-yellow-500/80">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-row">
             <div className="subtitle-wrappe w-6/12">
@@ -623,7 +550,7 @@ export default function StartPage() {
         />
       </div>{" "}
       {/* ================================ section 08 ================================ */}
-      <div className="container overflow-hidden relative">
+      <div className="container overflow-hidden relative bg-pink-500/80">
         <div className="pt-36 pb-36 section-spacing-top relative z-10">
           <div className="flex flex-col">
             <div className="flex flex-row">
@@ -670,7 +597,7 @@ export default function StartPage() {
       </div>
       {/* ================================ section 09 ================================ */}
       <div
-        className="w-full flex justify-center"
+        className="w-full flex justify-center h-screen items-center"
         style={{ background: "#161616" }}
       >
         <div className="container">
