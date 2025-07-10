@@ -43,8 +43,6 @@ export default function AchievementTable() {
       <table
         className="w-full border-collapse has_fade_anim"
         data-fade-from="bottom"
-        data-fade-offset="10"
-        data-duration="0.5"
       >
         <tbody>
           {achievements.map((achievement) => (

@@ -197,8 +197,6 @@ export default function StartPage() {
                     <div className="flex flex-col w-72">
                       <div
                         data-fade-from="bottom"
-                        data-fade-offset="10"
-                        // data-delay="0.1"
                         data-duration="0.6"
                         className="has_fade_anim text-[#121212] font-normal text-[16rem] leading-[13.125rem]"
                         style={{
@@ -210,8 +208,6 @@ export default function StartPage() {
                       <div
                         className="has_fade_anim text-[#555] font-medium text-[1.25rem] leading-[1.8125rem]"
                         data-fade-from="bottom"
-                        data-fade-offset="10"
-                        // data-delay="0.01"
                         data-duration="0.5"
                         style={{
                           fontFamily: "Kanit",
@@ -227,8 +223,6 @@ export default function StartPage() {
                     <div
                       className="has_fade_anim text-[#999] font-medium text-[1.125rem] leading-[1.58625rem] mb-[2.5rem]"
                       data-fade-from="bottom"
-                      data-fade-offset="10"
-                      // data-delay="0.3"
                       data-duration="1.5"
                       style={{
                         fontFamily: "Kanit",
@@ -281,7 +275,6 @@ export default function StartPage() {
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
                   data-fade-offset="100"
-                  // data-delay="0"
                   data-duration="0.8"
                 >
                   Digital experience by our professional team.
@@ -290,8 +283,6 @@ export default function StartPage() {
               <div
                 className="grid grid-cols-2 gap-x-24 w-full has_fade_anim"
                 data-fade-from="left"
-                data-fade-offset="10"
-                // data-delay="0.3"
                 data-duration="0.5"
               >
                 <div>
@@ -311,10 +302,6 @@ export default function StartPage() {
                     <ButtonPage02 />
                     <div
                       className="has_fade_anim mt-9 text-[#999] font-medium text-[1.125rem] leading-[1.58625rem] w-[36rem] font-kanit"
-                      data-fade-from="bottom"
-                      data-fade-offset="10"
-                      // data-delay="0.3"
-                      data-duration="0.5"
                       style={{
                         fontFamily: "Kanit",
                       }}
@@ -363,8 +350,6 @@ export default function StartPage() {
                     <div
                       className="section-title-line has_fade_anim w-full tracking-wider !text-white"
                       data-fade-from="bottom"
-                      data-fade-offset="30"
-                      // data-delay="0"
                       data-duration="0.5"
                     >
                       What client say
@@ -408,7 +393,6 @@ export default function StartPage() {
                 <div
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
-                  data-fade-offset="1"
                   data-duration="0.3"
                 >
                   <span>Whether it&apos;s crafting a visually</span>
@@ -442,8 +426,6 @@ export default function StartPage() {
                 <div
                   className="section-title-line has_fade_anim"
                   data-fade-from="bottom"
-                  data-fade-offset="10"
-                  // data-delay="0.1"
                   data-duration="0.5"
                 >
                   <span>Our talented</span>
@@ -470,7 +452,7 @@ export default function StartPage() {
           width={1500}
           height={1000}
           className="w-full h-auto object-cover"
-          data-speed="0.8"
+          data-speed="0.5"
           data-lag="0"
         />
       </div>{" "}
@@ -486,7 +468,6 @@ export default function StartPage() {
                 <h2
                   ref={recentPostTitleRef}
                   className="section-title has_text_move_anim perspective-[400px]"
-                  // data-delay="0.2"
                 >
                   <div className="section-title-line">Learn from journal</div>
                   <div className="section-title-line">insight of Binox</div>
@@ -496,9 +477,6 @@ export default function StartPage() {
             <div
               className="flex flex-row gap-20 w-full has_fade_anim "
               data-fade-from="bottom"
-              data-fade-offset="10"
-              // data-delay="0"
-              data-duration="0.6"
             >
               <OverlapCard
                 imageSrc="/images/page07Image1.webp"
@@ -527,6 +505,7 @@ export default function StartPage() {
           <FooterArea />
         </div>
       </div>{" "}
+      <div className="w-full h-[100vh] bg-red-500"></div>
     </div>
   );
 }

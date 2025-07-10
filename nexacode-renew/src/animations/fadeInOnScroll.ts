@@ -23,7 +23,7 @@ export const useFadeInOnScroll = ({ targetRef }: FadeInParams) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: targetRef.current,
-            start: "top 80%", // 스크롤 시 뷰포트 80% 도달 시 애니메이션 시작
+            start: "top 99%", // 스크롤 시 뷰포트 80% 도달 시 애니메이션 시작
             toggleActions: "play none none none",
           },
         }

@@ -99,9 +99,8 @@ export default function ButtonPage01() {
       ref={buttonRef}
       className="btn has_fade_anim"
       data-fade-from="top"
-      data-fade-offset="10"
-      // data-delay="0.1"
-      data-duration="0.5"
+      data-fade-offset="100"
+      data-duration="1.5"
       data-ease="bounce"
     >
       <span ref={spanRef}></span>

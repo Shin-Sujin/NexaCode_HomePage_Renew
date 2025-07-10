@@ -5,9 +5,9 @@ export default function ButtonPage03() {
     <button
       className="has_fade_anim mr-24 mb-44"
       data-fade-from="top"
-      data-fade-offset="10"
+      data-fade-offset="100"
       // data-delay="0.1"
-      data-duration="0.5"
+      data-duration="1.5"
       data-ease="bounce"
       style={{
         display: "flex",

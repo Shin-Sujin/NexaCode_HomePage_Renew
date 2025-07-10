@@ -125,7 +125,7 @@ export const useStartPageAnimations = ({
         ease: "power2.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           scroller: "body",
           toggleActions: "play none none reverse",
@@ -139,7 +139,7 @@ export const useStartPageAnimations = ({
   useEffect(() => {
     if (sectionTitleRef.current) {
       const element = sectionTitleRef.current;
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const delay = element.getAttribute("data-delay") || "0.01";
 
       // 텍스트를 줄 단위로 분할
       const lines = element.querySelectorAll(".section-title-line");
@@ -155,7 +155,7 @@ export const useStartPageAnimations = ({
 
       // 애니메이션 실행
       gsap.to(lines, {
-        duration: 1,
+        duration: 0.5,
         delay: parseFloat(delay),
         opacity: 1,
         rotationX: 0,
@@ -163,7 +163,7 @@ export const useStartPageAnimations = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           scroller: "body",
           toggleActions: "play none none none",
@@ -198,7 +198,7 @@ export const useStartPageAnimations = ({
           ease: "power3.out",
           scrollTrigger: {
             trigger: workTitleRef.current,
-            start: "top 90%",
+            start: "top 99%",
             end: "bottom 20%",
             toggleActions: "play none none none",
           },
@@ -236,7 +236,7 @@ export const useStartPageAnimations = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           scroller: "body",
           toggleActions: "play none none none",
@@ -269,7 +269,7 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: whetherRef.current,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           toggleActions: "play none none none",
         },
@@ -300,7 +300,7 @@ export const useStartPageAnimations = ({
         stagger: 0.25,
         scrollTrigger: {
           trigger: ourTeamRef.current,
-          start: "top 90%",
+          start: "top 99%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
@@ -315,8 +315,8 @@ export const useStartPageAnimations = ({
       const fadeFrom = element.getAttribute("data-fade-from") || "bottom";
       const onScroll = element.getAttribute("data-on-scroll") || "1";
       const duration = element.getAttribute("data-duration") || "0.5";
-      const fadeOffset = element.getAttribute("data-fade-offset") || "500";
-      const delay = element.getAttribute("data-delay") || "0.1";
+      const fadeOffset = element.getAttribute("data-fade-offset") || "30";
+      const delay = element.getAttribute("data-delay") || "0.01";
       const ease = element.getAttribute("data-ease") || "power2.out";
 
       // 초기 상태 설정
@@ -342,7 +342,7 @@ export const useStartPageAnimations = ({
             delay: parseFloat(delay),
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 99%",
               scroller: "body",
               toggleActions: "play none none none",
               markers: false,
@@ -357,7 +357,7 @@ export const useStartPageAnimations = ({
             delay: parseFloat(delay),
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 99%",
               scroller: "body",
               toggleActions: "play none none none",
               markers: false,
@@ -372,7 +372,7 @@ export const useStartPageAnimations = ({
             delay: parseFloat(delay),
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 99%",
               scroller: "body",
               toggleActions: "play none none none",
               markers: false,
@@ -387,7 +387,7 @@ export const useStartPageAnimations = ({
             delay: parseFloat(delay),
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 99%",
               scroller: "body",
               toggleActions: "play none none none",
               markers: false,
@@ -401,7 +401,7 @@ export const useStartPageAnimations = ({
             delay: parseFloat(delay),
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 99%",
               scroller: "body",
               toggleActions: "play none none none",
               markers: false,
@@ -552,7 +552,7 @@ export const useFooterTitleAnimation = (ref: React.RefObject<HTMLElement>) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 80%",
+            start: "top 99%",
             end: "bottom 20%",
             toggleActions: "play none none none",
             markers: false,

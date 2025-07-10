@@ -51,20 +51,10 @@ const StaticContent = memo(() => {
         <span>+</span>
       </div>
       <p
-        className="has_fade_anim w-full"
+        className="has_fade_anim w-full text-[#999999] text-m font-bold leading-relaxed mb-20 px-10 md:px-0 md:text-base md:leading-relaxed md:mb-0 "
         data-fade-from="bottom"
-        data-fade-offset="10"
-        // data-delay="0.01"
-        data-duration="0.5"
         style={{
-          color: "#999999",
           fontFamily: "BeatriceTRIAL-Regular",
-          fontSize: "1.125rem",
-          fontStyle: "normal",
-          fontWeight: 600,
-          lineHeight: "1.58625rem",
-          marginBottom: "2.5rem",
-          paddingInlineEnd: "90px",
         }}
       >
         We have worked with top companies globally and achieved a huge positive
