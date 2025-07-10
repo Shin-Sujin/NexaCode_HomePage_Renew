@@ -45,12 +45,44 @@ export default function ButtonPage01() {
       }, 200);
     };
 
-    const handleMouseLeave = () => {
-      if (span) {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (!span) return;
+
+      const rect = button.getBoundingClientRect();
+      const currentX = e.clientX;
+      const currentY = e.clientY;
+
+      let topVal = currentY - rect.top;
+      let leftVal = currentX - rect.left;
+
+      // 버튼 경계 내로 제한
+      if (topVal > rect.height) {
+        topVal = rect.height;
+      }
+      if (leftVal > rect.width) {
+        leftVal = rect.width;
+      }
+      if (topVal < 0) {
+        topVal = 0;
+      }
+      if (leftVal < 0) {
+        leftVal = 0;
+      }
+
+      // 퇴장 위치 설정
+      span.style.top = topVal + "px";
+      span.style.left = leftVal + "px";
+
+      // 퇴장 애니메이션 클래스 추가
+      span.classList.remove("btnAni");
+      span.classList.add("btnAniOut");
+
+      // 애니메이션 완료 후 요소 숨김
+      setTimeout(() => {
         span.style.display = "none";
         span.style.opacity = "0";
-        span.classList.remove("btnAni");
-      }
+        span.classList.remove("btnAniOut");
+      }, 500);
     };
 
     button.addEventListener("mouseenter", handleMouseEnter);
