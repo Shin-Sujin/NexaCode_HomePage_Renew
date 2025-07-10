@@ -314,9 +314,9 @@ export const useStartPageAnimations = ({
     fadeElements.forEach((element) => {
       const fadeFrom = element.getAttribute("data-fade-from") || "bottom";
       const onScroll = element.getAttribute("data-on-scroll") || "1";
-      const duration = element.getAttribute("data-duration") || "1.5";
+      const duration = element.getAttribute("data-duration") || "0.5";
       const fadeOffset = element.getAttribute("data-fade-offset") || "500";
-      const delay = element.getAttribute("data-delay") || "0.5";
+      const delay = element.getAttribute("data-delay") || "0.1";
       const ease = element.getAttribute("data-ease") || "power2.out";
 
       // 초기 상태 설정

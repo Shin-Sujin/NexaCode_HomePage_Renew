@@ -54,9 +54,8 @@ const StaticContent = memo(() => {
         className="has_fade_anim w-full"
         data-fade-from="bottom"
         data-fade-offset="10"
-        data-delay="0.3"
-        data-duration="1.5"
-        data-on-scroll="1"
+        // data-delay="0.01"
+        data-duration="0.5"
         style={{
           color: "#999999",
           fontFamily: "BeatriceTRIAL-Regular",

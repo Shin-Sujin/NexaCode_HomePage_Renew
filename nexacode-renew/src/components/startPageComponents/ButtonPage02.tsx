@@ -7,9 +7,8 @@ export default function ButtonPage02() {
       data-fade-from="top"
       data-fade-offset="50"
       data-delay="0.1"
-      data-duration="1.2"
+      data-duration="0.5"
       data-ease="bounce"
-      data-on-scroll="1"
       style={{
         display: "flex",
         width: "10.625rem",
