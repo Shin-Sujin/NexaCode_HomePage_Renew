@@ -69,7 +69,7 @@ export default function StartPage() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* ================================ section 01 ================================ */}
-      <div className="relative w-full h-[55rem] flex items-center justify-center max-sm:h-[50rem]">
+      <div className="relative w-full h-[55rem] flex items-center justify-center">
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -83,11 +83,11 @@ export default function StartPage() {
         <div className="container relative z-[2] h-full flex">
           <div className="section-spacing-top mb-5 mt-5 w-full ">
             <div className="flex flex-col  h-full">
-              <div className="flex flex-row items-start justify-between pb-10 max-sm:flex-col max-sm:pb-5 max-sm:gap-8">
+              <div className="flex flex-row items-start justify-between pb-10 ">
                 {/* ================================ 1번 요소 ================================ */}
                 <div
                   ref={fadeRef}
-                  className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-sm:w-[25rem] max-sm:mt-20"
+                  className="flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] xs:w-[25rem] xs:mt-20"
                 >
                   {/* 윗부분 선 */}
                   <div className="border-t border-white mb-4 w-full" />
@@ -108,7 +108,7 @@ export default function StartPage() {
                 {/* ================================ 2번 요소 ================================ */}
                 <div
                   ref={textRef}
-                  className=" w-[25rem] text-white font-normal text-[1.3rem] leading-[1.725rem] tracking-wider max-sm:w-[25rem] max-sm:text-xl max-sm:font-light max-sm:leading-[1.5rem]"
+                  className="w-[25rem] text-white font-normal text-[1.3rem] leading-[1.725rem] tracking-wider xs:w-[25rem] xs:text-xl xs:font-light xs:leading-[1.5rem]"
                 >
                   We believe that the surest measure of success is when our
                   partners with us more than half It&apos;s more than just the
@@ -116,8 +116,8 @@ export default function StartPage() {
                 </div>
               </div>
               {/* ================================ 3번 요소 ================================ */}
-              <div className="flex-1 flex items-center justify-center max-sm:items-start max-sm:justify-start max-sm:mt-8">
-                <div className="text-white font-medium text-[15rem] leading-[12rem] flex flex-col items-start max-sm:text-[7rem] max-sm:leading-[6rem] max-sm:items- max-sm:justify-start max-sm:text-center">
+              <div className="flex-1 flex items-center justify-center">
+                <div className="text-white font-medium text-[15rem] leading-[12rem] flex flex-col items-start max-sm:text-[7rem] max-sm:leading-[4rem]">
                   {/* CREATIVE (첫 줄) */}
                   <div ref={creativeRef}>CREATIVE</div>
 
@@ -502,6 +502,9 @@ export default function StartPage() {
           <FooterArea />
         </div>
       </div>{" "}
+      <div className="h-96 xs:bg-red-300 sm:bg-blue-300 md:bg-yellow-300 lg:bg-green-300 xl:bg-orange-300 xxl:bg-purple-300">
+        반응형 배경 컬러 테스트
+      </div>
     </div>
   );
 }
