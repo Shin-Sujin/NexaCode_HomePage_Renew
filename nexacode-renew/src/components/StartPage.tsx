@@ -69,7 +69,7 @@ export default function StartPage() {
   return (
     <div className="flex flex-col items-center w-full">
       {/* ================================ section 01 ================================ */}
-      <div className="relative w-full h-[55rem] flex items-center justify-center max-lg:h-[45rem] max-md:h-[55rem] max-sm:h-[45rem] max-lg:pr-20">
+      <div className="relative w-full h-[55rem] flex items-center justify-center max-lg:h-[45rem] xl:pr-20 max-md:h-[55rem] max-sm:h-[45rem] max-xl:pr-20 max-xl:mt-16 max-xl:h-[50rem] max-lg:pr-20  ">
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -82,7 +82,10 @@ export default function StartPage() {
         {/* 컨테이너 내용을 동영상 위에 겹치도록 배치 */}
         <div className="container relative z-[2] h-full flex">
           <div className="w-full mt-5 mb-5 section-spacing-top ">
-            <div className="flex flex-col h-full max-lg:ml-6 max-lg:mt-20 max-md:ml-10 max-md:mr-10 max-sm:ml-6 max-sm:mr-6 max-sm:mt-5">
+            <div
+              className="flex flex-col h-full xl:ml-20 max-xl:ml-20 max-lg:ml-6 
+             max-md:ml-10 max-md:mr-10 max-sm:ml-6 max-sm:mr-6 max-sm:mt-5"
+            >
               <div className="flex flex-row items-start justify-between pb-10 max-md:flex-col max-md:pb-5 max-md:gap-8 ">
                 {/* ================================ 1번 요소 ================================ */}
                 <div
@@ -116,8 +119,8 @@ export default function StartPage() {
                 </div>
               </div>
               {/* ================================ 3번 요소 ================================ */}
-              <div className="flex items-center justify-center flex-1 max-md:flex-none max-lg:items-start max-lg:justify-start max-lg:mt-10 max-md:mt-8">
-                <div className="text-white font-medium text-[15rem] leading-[12rem] flex flex-col items-start max-lg:text-[8rem] max-lg:leading-[7rem] max-sm:text-[5rem] max-sm:leading-[4.5rem]  max-md:justify-start  max-md:text-[8rem] max-md:leading-[7rem] ">
+              <div className="flex items-center justify-center flex-1 xl:items-start xl:justify-start xl:mt-16 max-md:flex-none max-xl:items-start max-xl:justify-start ">
+                <div className="text-white font-medium  text-[15rem] leading-[12rem] flex flex-col items-start  max-xl:text-[12rem] max-xl:leading-[10rem] max-xl:mt-20 max-lg:text-[10rem] max-lg:leading-[8rem] max-sm:text-[5rem] max-sm:leading-[4.5rem]  max-md:justify-start  max-md:text-[8rem] max-md:leading-[7rem] ">
                   {/* CREATIVE (첫 줄) */}
                   <div ref={creativeRef}>CREATIVE</div>
 
