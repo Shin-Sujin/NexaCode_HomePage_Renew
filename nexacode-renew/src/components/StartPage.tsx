@@ -175,10 +175,10 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 02 ================================ */}
-      <div className="container">
-        <div className="pt-36 pb-36 section-spacing-top">
-          <div className="flex flex-row">
-            <div className="w-8/12 subtitle-wrappe">
+      <div className="container xl:px-20 max-xl:px-10 max-xs:px-6">
+        <div className="pt-36 pb-36 section-spacing-top xl:pb-20 max-xl:pb-16 ">
+          <div className="flex flex-row max-lg:flex-col">
+            <div className="w-8/12 subtitle-wrappe xl:w-7/12 max-xl:w-6/12">
               <div
                 ref={whoWeAreRef}
                 className="has_char_anim section-subtitle"
@@ -192,25 +192,22 @@ export default function StartPage() {
             <div className="flex flex-col">
               <h2
                 ref={sectionTitleRef}
-                className="section-title has_text_move_anim perspective-[400px]"
+                className="section-title has_text_move_anim perspective-[400px] max-xl:w-[52rem] max-lg:w-[50rem] max-md:w-[35rem] "
                 // data-delay="0.5"
               >
-                <div className="section-title-line">
-                  We provide brilliant idea to grow the
+                <div className="section-title-line max-lg:mt-10  max-md:text-[3rem] max-md:leading-[2.8rem] max-xs:text-[2.6rem]">
+                  We provide brilliant idea to grow the startup — agency with
+                  your sharp brand.
                 </div>
-                <div className="section-title-line">
-                  startup — agency with your sharp
-                </div>
-                <div className="section-title-line">brand.</div>
               </h2>
               <div className="mt-20">
-                <div className="flex flex-row items-start">
-                  <div className="info-text">
-                    <div className="flex flex-col w-72">
+                <div className="flex flex-row items-start max-xs:flex-col">
+                  <div className="info-text ">
+                    <div className="flex flex-col w-72 max-md:w-[16rem] max-sm:w-[12rem] max-xs:w-full">
                       <div
                         data-fade-from="bottom"
                         data-duration="0.6"
-                        className="has_fade_anim text-[#121212] font-normal text-[16rem] leading-[13.125rem]"
+                        className="has_fade_anim text-[#121212] font-normal text-[16rem] leading-[13.125rem] max-sm:text-[10rem] max-xs:leading-[8rem]"
                         style={{
                           fontFamily: "Inter",
                         }}
@@ -218,7 +215,7 @@ export default function StartPage() {
                         15
                       </div>
                       <div
-                        className="has_fade_anim text-[#555] font-medium text-[1.25rem] leading-[1.8125rem]"
+                        className="has_fade_anim text-[#555] font-medium text-[1.25rem] leading-[1.8125rem] max-xs:font-bold max-xs:leading-[2rem] max-xs:text-[1.5rem] max-xs:w-[20rem] "
                         data-fade-from="bottom"
                         data-duration="0.5"
                         style={{
@@ -229,11 +226,11 @@ export default function StartPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="w-[6px] min-h-[200px] bg-[rgba(18,18,18,0.08)] mx-[5rem] self-stretch" />
+                  <div className="w-[6px] min-h-[200px] bg-[rgba(18,18,18,0.08)] mx-[5rem] self-stretch max-sm:mx-[2rem] max-xs:hidden" />
 
                   <div className="flex flex-col">
                     <div
-                      className="has_fade_anim text-[#999] font-medium text-[1.125rem] leading-[1.58625rem] mb-[2.5rem]"
+                      className="has_fade_anim text-[#999] font-medium text-[1.125rem] leading-[1.58625rem] mb-[2.5rem] max-sm:text-[#4c4c4c] max-xs:mt-10 max-xs:text-[1.3rem] max-xs:leading-[2rem] max-xs:font-semibold"
                       data-fade-from="bottom"
                       data-duration="1.5"
                       style={{
@@ -265,7 +262,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 03 ================================ */}
-      <div className="container overflow-hidden">
+      <div className="container overflow-hidden xl:px-20 max-xl:px-10">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="w-5/12 subtitle-wrappe">
@@ -333,7 +330,7 @@ export default function StartPage() {
         </h2>
       </div>
       {/* ================================ section 04 ================================ */}
-      <div className="container">
+      <div className="container xl:px-20 max-xl:px-10">
         <div className="pb-3 pt-36 section-spacing-top">
           <div className="flex flex-col">
             <div className="w-8/12 subtitle-wrappe">
@@ -345,7 +342,10 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 05 ================================ */}
-      <div className="w-full" style={{ background: "#161616" }}>
+      <div
+        className="w-full xl:px-20 max-xl:px-10"
+        style={{ background: "#161616" }}
+      >
         <div className="container mx-auto">
           <div className="pt-24 pb-24 section-spacing-top">
             <div className="flex flex-row">
@@ -381,7 +381,7 @@ export default function StartPage() {
         </div>
       </div>{" "}
       {/* ================================ section 06 ================================ */}
-      <div className="container relative overflow-hidden ">
+      <div className="container relative overflow-hidden xl:px-20 max-xl:px-10">
         {/* 배경 이미지 */}
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <Image
@@ -424,7 +424,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 07 ================================ */}
-      <div className="container relative overflow-hidden ">
+      <div className="container relative overflow-hidden xl:px-20 max-xl:px-10">
         <div className="relative z-10 pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="w-6/12 subtitle-wrappe">
@@ -451,7 +451,7 @@ export default function StartPage() {
         </div>
       </div>
       {/* ================================ section 08 ================================ */}
-      <div className="container relative overflow-hidden ">
+      <div className="container relative overflow-hidden xl:px-20 max-xl:px-10">
         <div className="relative z-10 pt-36 pb-36 section-spacing-top">
           <div className="flex flex-col">
             <div className="flex flex-row">
@@ -507,7 +507,7 @@ export default function StartPage() {
       </div>{" "}
       {/* ================================ FooterArea ================================ */}
       <div
-        className="flex items-center justify-center w-full h-screen"
+        className="flex items-center justify-center w-full h-screen xl:px-20 max-xl:px-10"
         style={{ background: "#161616" }}
       >
         <div className="container">
