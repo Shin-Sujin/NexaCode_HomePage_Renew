@@ -69,7 +69,7 @@ export default function StartPage() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* ================================ section 01 ================================ */}
-      <div className="relative w-full h-[55rem] flex items-center justify-center max-sm:h-[50rem]">
+      <div className="relative w-full h-[55rem] flex items-center justify-center max-sm:h-[45rem] ">
         <video
           src="/videoes/production_id.mp4"
           autoPlay
@@ -82,12 +82,12 @@ export default function StartPage() {
         {/* 컨테이너 내용을 동영상 위에 겹치도록 배치 */}
         <div className="container relative z-[2] h-full flex">
           <div className="section-spacing-top mb-5 mt-5 w-full ">
-            <div className="flex flex-col  h-full">
-              <div className="flex flex-row items-start justify-between pb-10 max-sm:flex-col max-sm:pb-5 max-sm:gap-8">
+            <div className="flex flex-col  h-full max-md:ml-10 max-md:mr-10 max-sm:ml-6 max-sm:mr-6">
+              <div className="flex flex-row items-start justify-between pb-10 max-md:flex-col max-md:pb-5 max-md:gap-8 ">
                 {/* ================================ 1번 요소 ================================ */}
                 <div
                   ref={fadeRef}
-                  className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-sm:w-[25rem] max-sm:mt-20"
+                  className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-sm:w-[25rem] max-md:mt-20"
                 >
                   {/* 윗부분 선 */}
                   <div className="border-t border-white mb-4 w-full" />
@@ -116,8 +116,8 @@ export default function StartPage() {
                 </div>
               </div>
               {/* ================================ 3번 요소 ================================ */}
-              <div className="flex-1 flex items-center justify-center max-sm:items-start max-sm:justify-start max-sm:mt-8">
-                <div className="text-white font-medium text-[15rem] leading-[12rem] flex flex-col items-start max-sm:text-[7rem] max-sm:leading-[6rem] max-sm:items- max-sm:justify-start max-sm:text-center">
+              <div className="flex-1 flex items-center justify-center max-md:items-start max-md:justify-start  max-md:mt-8 ">
+                <div className="text-white font-medium text-[15rem] leading-[12rem] flex flex-col items-start max-sm:text-[5rem] max-sm:leading-[4.5rem]  max-md:justify-start  max-md:text-[8rem] max-md:leading-[7rem] ">
                   {/* CREATIVE (첫 줄) */}
                   <div ref={creativeRef}>CREATIVE</div>
 
@@ -130,7 +130,7 @@ export default function StartPage() {
                         alt="switch"
                         width={160}
                         height={68}
-                        className="h-[8.5rem] ml-[0.5rem] w-auto max-sm:h-[4rem] max-sm:ml-0"
+                        className="h-[8.5rem] ml-[0.5rem] w-auto max-sm:h-[4rem] max-sm:ml-0 max-md:h-[6rem] max-md:ml-[0.5rem]"
                       />
                     </div>
                   </div>
