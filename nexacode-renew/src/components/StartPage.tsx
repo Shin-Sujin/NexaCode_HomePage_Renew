@@ -251,8 +251,6 @@ export default function StartPage() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container overflow-hidden">
         <div className="relative w-full h-auto overflow-hidden">
           <Image
             ref={imgRef}
@@ -265,7 +263,9 @@ export default function StartPage() {
             data-lag="0"
           />
         </div>
-        {/* ================================ section 03 ================================ */}
+      </div>
+      {/* ================================ section 03 ================================ */}
+      <div className="container overflow-hidden">
         <div className="pt-36 pb-36 section-spacing-top">
           <div className="flex flex-row">
             <div className="w-5/12 subtitle-wrappe">
