@@ -408,29 +408,27 @@ export default function StartPage() {
           />
         </div>
         <div className="relative z-10 pt-36 pb-36 section-spacing-top">
-          <div className="flex flex-row">
+          <div className="flex flex-row max-lg:flex-col max-lg:gap-10">
             <div className="w-6/12 subtitle-wrappe">
               <div className="section-subtitle">05. ACHIEVEMENT & AWARD</div>
             </div>
             <div className="flex flex-col w-full">
               <h2
                 ref={whetherRef}
-                className="section-title has_text_move_anim mb-20 perspective-[400px]"
+                className="section-title has_text_move_anim mb-20 perspective-[400px] "
               >
                 <div
-                  className="section-title-line has_fade_anim"
+                  className="section-title-line has_fade_anim max-lg:space-y-3"
                   data-fade-from="bottom"
                   data-duration="0.3"
                 >
-                  <span>Whether it&apos;s crafting a visually</span>
-                  <br />
-                  <span>stunning brand identity, the</span>
-                  <br />
-                  <span>creative design service</span>
-                  <br />
-                  <span>compare with more agencies</span>
-                  <br />
-                  <span>of world-wide.</span>
+                  <span className="block">
+                    Whether it&apos;s crafting a visually
+                  </span>
+                  <span className="block">stunning brand identity, the</span>
+                  <span className="block">creative design service</span>
+                  <span className="block">compare with more agencies</span>
+                  <span className="block">of world-wide.</span>
                 </div>
               </h2>
               <AchievementTable />

@@ -41,15 +41,24 @@ export default function AchievementTable() {
       style={{ overflow: "hidden" }}
     >
       <table
-        className="w-full border-collapse has_fade_anim"
+        className="w-full border-collapse has_fade_anim "
         data-fade-from="bottom"
       >
         <tbody>
           {achievements.map((achievement) => (
-            <tr key={achievement.id} className="border-b border-[#e5e5e5]">
-              <td className="py-3 pr-6 text-left">{achievement.platform}</td>
-              <td className="py-3 px-6 pl-32">{achievement.description}</td>
-              <td className="py-3 px-6 text-right">{achievement.status}</td>
+            <tr
+              key={achievement.id}
+              className="border-b border-[#e5e5e5] max-xs:block"
+            >
+              <td className="py-3 pr-6 text-left max-xs:block max-xs:pr-0 max-xs:pb-1">
+                {achievement.platform}
+              </td>
+              <td className="py-3 px-6 pl-32 max-xs:block max-xs:px-0 max-xs:pb-1 max-xs:pl-0">
+                {achievement.description}
+              </td>
+              <td className="py-3 px-6 text-right max-xs:block max-xs:px-0 max-xs:text-left">
+                {achievement.status}
+              </td>
             </tr>
           ))}
         </tbody>

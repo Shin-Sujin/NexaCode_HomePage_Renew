@@ -5,7 +5,11 @@
 @import "swiper/css";
 @import "swiper/css/pagination";
 @import "swiper/css/autoplay";
-
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 html {
   font-size: 16px;
 }
