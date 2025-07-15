@@ -5,10 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { useRef } from "react";
-import type SliderType from "react-slick";
 
 const CardSlider = () => {
-  const sliderRef = useRef<SliderType | null>(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   const settings = {
     dots: true,
@@ -117,9 +116,11 @@ const CardSlider = () => {
           </div>
         ))}
       </Slider>{" "}
-      {/* ✅ 하단 고정 화살표 버튼 */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-12 z-50">
+      {/* 🔽 화살표 버튼 - 양쪽 끝에 고정 */}
+      <div className="absolute bottom-1 left-2 -translate-y-1/2 z-10 px-4">
         <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+      </div>
+      <div className="absolute bottom-1 right-2 -translate-y-1/2 z-10 px-4">
         <NextArrow onClick={() => sliderRef.current?.slickNext()} />
       </div>
     </div>
