@@ -20,6 +20,8 @@
     "next": "14.2.30",
     "react": "^18",
     "react-dom": "^18",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "split-type": "^0.3.4",
     "splitting": "^1.1.0",
     "swiper": "^11.2.10"
