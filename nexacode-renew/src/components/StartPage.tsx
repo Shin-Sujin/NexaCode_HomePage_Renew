@@ -439,7 +439,7 @@ export default function StartPage() {
       {/* ================================ section 07 ================================ */}
       <div className="container relative overflow-hidden xl:px-20 max-xl:px-10">
         <div className="relative z-10 pt-36 pb-36 section-spacing-top">
-          <div className="flex flex-row">
+          <div className="flex flex-row max-lg:flex-col max-lg:gap-10">
             <div className="w-6/12 subtitle-wrappe">
               <div className="section-subtitle">06. THE TEAM</div>
             </div>
@@ -453,8 +453,8 @@ export default function StartPage() {
                   data-fade-from="bottom"
                   data-duration="0.5"
                 >
-                  <span>Our talented</span>
-                  <br />
+                  <span>Our talented </span>
+                  <br className="max-lg:hidden" />
                   <span>team</span>
                 </div>
               </h2>

@@ -111,7 +111,7 @@ export default function TeamGrid() {
   return (
     <div
       ref={containerRef}
-      className="grid grid-cols-3 grid-rows-2 gap-y-16 gap-x-28 w-full"
+      className="grid grid-cols-3 grid-rows-2 gap-y-16 gap-x-28 w-full max-sm:grid-cols-2 max-sm:grid-rows-3 max-xs:grid-cols-1 max-xs:grid-rows-6"
     >
       {teamMembers.map((member, index) => (
         <div
