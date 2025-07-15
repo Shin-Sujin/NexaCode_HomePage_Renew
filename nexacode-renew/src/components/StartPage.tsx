@@ -467,11 +467,11 @@ export default function StartPage() {
       <div className="container relative overflow-hidden xl:px-20 max-xl:px-10">
         <div className="relative z-10 pt-36 pb-36 section-spacing-top">
           <div className="flex flex-col">
-            <div className="flex flex-row">
+            <div className="flex flex-row max-lg:flex-col max-lg:gap-10">
               <div className="w-6/12 subtitle-wrappe">
                 <div className="section-subtitle">07. RECENT POST</div>
               </div>
-              <div className="flex w-full mb-20">
+              <div className="flex w-full mb-20 max-lg:hidden">
                 <h2
                   ref={recentPostTitleRef}
                   className="section-title perspective-[400px]"
@@ -480,8 +480,18 @@ export default function StartPage() {
                   <div className="section-title-line">insight of Binox</div>
                 </h2>
               </div>
+              <div className="hidden w-[75%] mb-20 max-lg:flex">
+                <h2
+                  ref={recentPostTitleRef}
+                  className="section-title perspective-[400px]"
+                >
+                  <div className="section-title-line">
+                    Learn from journal insight of Binox
+                  </div>
+                </h2>
+              </div>
             </div>
-            <div className="flex flex-row justify-between w-full gap-20">
+            <div className="flex flex-row justify-between w-full gap-20 max-lg:gap-10 max-sm:gap-0 max-xs:flex-col">
               <OverlapCard
                 imageSrc="/images/page07Image1.webp"
                 imageAlt="Card Background"
@@ -520,7 +530,7 @@ export default function StartPage() {
       </div>{" "}
       {/* ================================ FooterArea ================================ */}
       <div
-        className="flex items-center justify-center w-full h-screen xl:px-20 max-xl:px-10"
+        className="flex items-center justify-center w-full  xl:px-20 max-xl:px-10"
         style={{ background: "#161616" }}
       >
         <div className="container">
