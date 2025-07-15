@@ -1,10 +1,15 @@
+/* Tailwind CSS directives - These are valid PostCSS directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import "swiper/css";
 @import "swiper/css/pagination";
 @import "swiper/css/autoplay";
-
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 html {
   font-size: 16px;
 }
@@ -35,19 +40,59 @@ body {
   }
 
   .service-item {
-    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide;
+    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
+    max-md:mb-3 max-md:pb-3 max-md:text-xl;
   }
 
   .service-item-top {
-    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-medium tracking-wide;
+    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-medium tracking-wide
+    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg;
   }
 
-  .section-subtitle {
-    @apply text-[#121212] font-kanit text-base font-semibold leading-4 uppercase;
+  .service-item {
+    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
+    max-md:mb-3 max-md:pb-3 max-md:text-xl;
   }
 
   .section-subtitle-white {
     @apply text-white font-kanit text-base font-semibold leading-4 uppercase;
+  }
+
+  .section-title-line {
+    @apply block text-start relative opacity-100 text-[#121212] font-["beatricetrial"] text-6xl 
+    font-medium leading-[3.8rem] max-md:text-[3.2rem] max-lg:leading-[3rem];
+  }
+
+  .section-title-work {
+    @apply relative opacity-100 text-[#121212] font-["beatricetrial"] text-center text-[30rem] font-medium 
+    tracking-[-0.03em] w-full h-[50vh] flex justify-center items-center px-6 
+    max-xl:text-[25rem] max-xl:h-[30vh] 
+    max-lg:text-[22rem] max-lg:h-[30vh] 
+    max-md:text-[18rem] max-md:h-[30vh]    
+    max-sm:text-[15rem] max-sm:h-[20vh]
+    max-xs:text-[12rem] max-xs:h-[15vh];
+  }
+
+  .info-text {
+    .text {
+      @apply text-xl leading-[1.37] max-w-[303px] mt-[5px] md:max-w-[260px];
+    }
+
+    .number {
+      @apply text-[250px] leading-[0.84] flex lg:text-[200px] md:text-[120px];
+
+      span {
+        @apply text-[40px];
+      }
+    }
+  }
+
+  .thumb {
+    @apply relative overflow-hidden;
+
+    img {
+      @apply w-full h-auto transition-transform duration-500 ease-out block;
+    }
   }
 }
 /* hero-area 부분 */
@@ -311,41 +356,6 @@ body {
   display: inline-block;
 }
 
-.section-title-line {
-  display: block;
-  text-align: start;
-  position: relative;
-  transform-origin: 440px 58.8438px;
-  transform: translate3d(0px, 0px, 0px);
-  opacity: 1;
-  color: #121212;
-  font-family: "BeatriceTRIAL-Regular";
-  font-size: 4rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 3.8rem;
-}
-.section-title-work {
-  /* display: block; */
-  position: relative;
-  opacity: 1;
-  color: #121212;
-  font-family: "beatricetrial";
-  text-align: center;
-  font-size: 30rem;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  /* overflow: hidden; */
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-  opacity: 1;
-}
-
 .section-subtitle {
   font-size: 16px;
   text-transform: uppercase;
@@ -355,36 +365,36 @@ body {
 }
 
 .section-title {
-  font-size: 70px;
+  font-size: var(--section-title-size, 70px);
   margin-top: -19px;
 
   @media (max-width: 1535px) {
-    font-size: 55px;
+    font-size: var(--section-title-size, 55px);
     margin-top: -14px;
   }
 
   @media (max-width: 1279px) {
-    font-size: 55px;
+    font-size: var(--section-title-size, 55px);
     margin-top: -14px;
   }
 
   @media (max-width: 1023px) {
-    font-size: 46px;
+    font-size: var(--section-title-size, 46px);
     margin-top: -13px;
   }
 
   @media (max-width: 767px) {
-    font-size: 40px;
+    font-size: 5rem !important;
     margin-top: -10px;
   }
 
   @media (max-width: 639px) {
-    font-size: 35px;
+    font-size: var(--section-title-size, 35px);
     margin-top: -9px;
   }
 
   @media (max-width: 479px) {
-    font-size: 30px;
+    font-size: var(--section-title-size, 30px);
     margin-top: -8px;
   }
 }
@@ -516,37 +526,6 @@ body {
       color: var(--black);
     }
   }
-
-  .info-text {
-    .text {
-      font-size: 20px;
-      line-height: 1.37;
-      max-width: 303px;
-      margin-top: 5px;
-
-      @media (max-width: 767px) {
-        max-width: 260px;
-      }
-    }
-
-    .number {
-      font-size: 250px;
-      line-height: 0.84;
-      display: flex;
-
-      @media (max-width: 1023px) {
-        font-size: 200px;
-      }
-
-      @media (max-width: 767px) {
-        font-size: 120px;
-      }
-
-      span {
-        font-size: 40px;
-      }
-    }
-  }
 }
 .custom-hover-button {
   position: relative;
@@ -572,30 +551,11 @@ body {
 }
 
 .works-wrapper-box {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: 880px;
-  justify-content: flex-end;
-
-  @media (max-width: 1024px) {
-    /* $lg */
-    grid-template-columns: auto;
-    justify-content: flex-start;
-  }
-}
-
-.works-wrapper {
-  display: grid;
-  gap: 68px;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  @apply mt-[50px] grid justify-end grid-cols-[880px] 
+  max-lg:grid-cols-[55rem] max-lg:justify-center
+  max-md:grid max-md:grid-cols-[700px] max-md:justify-center
+  max-sm:grid max-sm:grid-cols-[500px] max-sm:justify-center
+  max-xs:grid max-xs:grid-cols-[100%] max-xs:justify-center;
 }
 
 .work-box {
@@ -608,17 +568,6 @@ body {
     .thumb img {
       transform: scale(1.15);
       transition: transform 0.5s ease 0.2s;
-    }
-  }
-
-  .thumb {
-    position: relative;
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.5s ease;
-      display: block;
     }
   }
 

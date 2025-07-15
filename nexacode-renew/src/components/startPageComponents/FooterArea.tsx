@@ -59,12 +59,12 @@ export default function FooterArea() {
           </div>
         </div>
       </div>
-      <div className={styles.footerLinks}>
+      <div className={`${styles.footerLinks} max-md:flex max-md:flex-col `}>
         <p>
           © 2022 – 2025 | All rights reserved <br /> by{" "}
           <strong>crowdyTheme</strong>
         </p>
-        <div className={styles.linkList}>
+        <div className={`${styles.linkList} max-md:mt-10`}>
           <a href="#">About Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Career</a>
