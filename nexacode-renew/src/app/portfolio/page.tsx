@@ -6,9 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function PortfolioPage() {
   return (
-    <div className=" bg-red-200 fixed top-0 left-0 w-screen h-screen overflow-hidden">
-      <h1 className="text-3xl font-bold text-center mt-60">My Portfolio</h1>
-      <CardSlider />
+    <div className="fixed top-0 left-0 w-screen h-screen bg-red-200 overflow-hidden flex items-center justify-center">
+      <div className="w-full max-w-6xl px-4">
+        <CardSlider />
+      </div>
     </div>
   );
 }
