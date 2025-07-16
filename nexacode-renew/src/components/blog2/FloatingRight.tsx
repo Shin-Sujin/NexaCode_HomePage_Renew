@@ -1,16 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
-import feather from "feather-icons";
+import React from "react";
 
-export default function FloatingRight() {
-  useEffect(() => {
-    feather.replace();
-  }, []);
+interface Step {
+  id: string;
+  label: string;
+}
 
+interface FloatingRightProps {
+  steps: Step[];
+}
+
+export default function FloatingRight({ steps }: FloatingRightProps) {
   return (
-    <button className="floating right">
-      <i data-feather="arrow-up"></i>
-    </button>
+    <div className="flex flex-col gap-4 w-48 min-w-[8rem] sticky top-32 h-fit">
+      <div className="font-semibold mb-2">Step</div>
+      {steps.map((step) => (
+        <a
+          key={step.id}
+          href={`#${step.id}`}
+          className="text-gray-600 hover:underline"
+        >
+          {step.label}
+        </a>
+      ))}
+    </div>
   );
 }
