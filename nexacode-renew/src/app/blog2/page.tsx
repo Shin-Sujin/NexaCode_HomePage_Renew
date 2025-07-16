@@ -18,7 +18,7 @@ export default function Blog2Page() {
     <div className="site__container">
       <Header />
       <main className="post">
-        <div className="container">
+        <div className="blog-container">
           <FloatingLeft />
           <Content />
           <FloatingRight />
