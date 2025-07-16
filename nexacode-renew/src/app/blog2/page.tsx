@@ -9,6 +9,7 @@ import Content from "@/src/components/blog2/Content";
 import FloatingRight from "@/src/components/blog2/FloatingRight";
 import Footer from "@/src/components/blog2/Footer";
 import Title from "@/src/components/blog2/Title";
+import ScrollProgressBar from "@/src/components/blog2/ScrollProgressBar";
 
 export const steps = [
   { id: "step1", label: "C2C 앱 고민이라면 꼭 읽어보세요" },
@@ -23,6 +24,8 @@ export default function Blog2Page() {
 
   return (
     <div className="site__container">
+      {/* ✅ 스크롤 프로그레스 바 삽입 */}
+      <ScrollProgressBar />
       <Title />
       <main className="post">
         <div className="blog-container">
