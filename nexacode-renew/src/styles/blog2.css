@@ -19,36 +19,6 @@ body {
   width: 100%;
   height: auto;
 }
-.site__container::before,
-.site__container::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: auto;
-  background-image: url("/images/background.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center top;
-  left: 0;
-}
-.site__container::before {
-  min-height: 460px;
-  top: 0;
-  z-index: -1;
-}
-.site__container::after {
-  min-height: 230px;
-  transform: rotate(180deg);
-  bottom: 0;
-  z-index: -2;
-}
-
-/* header,navigation 영역 */
-.site__header {
-  width: 100%;
-  border-bottom: 1px solid #c7d2fe;
-  margin-bottom: 64px;
-}
 
 /* post 영역 */
 .post {
