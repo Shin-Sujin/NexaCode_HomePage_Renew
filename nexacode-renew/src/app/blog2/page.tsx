@@ -14,7 +14,7 @@ import { steps } from "@/src/components/blog2/blog2Steps";
 
 export default function Blog2Page() {
   useEffect(() => {
-    feather.replace(); // feather 아이콘 초기화
+    feather.replace(); // feather 아이콘 초기화dkdk
   }, []);
 
   return (
