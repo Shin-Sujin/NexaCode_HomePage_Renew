@@ -19,7 +19,6 @@ export default function Blog2Page() {
 
   return (
     <div className="site__container">
-      {/* ✅ 스크롤 프로그레스 바 삽입 */}
       <ScrollProgressBar />
       <Title />
       <main className="post">

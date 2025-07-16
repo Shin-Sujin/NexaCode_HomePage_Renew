@@ -12,7 +12,7 @@ const CardSlider = () => {
   const settings = {
     dots: true,
     infinite: false, // variableWidth에서는 보통 false 권장
-    variableWidth: true, // 각 카드의 너비를 동적으로 조정
+    variableWidth: false, // 각 카드의 너비를 동적으로 조정
     speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -20,14 +20,21 @@ const CardSlider = () => {
     arrows: false, // ✅ 기본 화살표 활성화
     nextArrow: <NextArrow />, // ✅ 커스텀 적용
     prevArrow: <PrevArrow />,
-    autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
+        breakpoint: 3000,
+        settings: { slidesToShow: 4.2 },
       },
       {
-        breakpoint: 640,
+        breakpoint: 1099,
+        settings: { slidesToShow: 3.2 },
+      },
+      {
+        breakpoint: 799,
+        settings: { slidesToShow: 2.2 },
+      },
+      {
+        breakpoint: 639,
         settings: { slidesToShow: 1 },
       },
     ],
@@ -97,22 +104,24 @@ const CardSlider = () => {
   ];
 
   return (
-    <div className="w-full px-4 py-10 pf_sm:w-[250px] pf_sm:h-[600px]">
+    <div className="w-full  px-4 py-10 pf_sm:py-4 pf_sm:h-[350px]">
       <Slider ref={sliderRef} {...settings}>
         {items.map((item) => (
           <div
             key={item.id}
-            className="px-3 inline-block align-top pf_sm:w-[250px] pf_sm:h-[600px]"
+            className="px-3 inline-block align-top pf_sm:w-[240px]" // px-2로 살짝 줄임
           >
-            <div className="bg-white overflow-hidden text-start">
+            <div className="bg-white overflow-hidden text-start w-full ">
               <Image
                 src={item.imageSrc}
                 alt={item.title}
-                width={400} // 적절한 width로 수정
-                height={300} // 적절한 height로 수정
-                className="w-full h-auto"
+                width={400}
+                height={300}
+                className="w-full h-auto pf_sm:h-[300px] pf_lg:h-[100px]"
               />
-              <div className="py-4">
+              <div className="py-4 pf_sm:w-[250px]">
+                {" "}
+                {/* 텍스트 영역도 동일하게 */}
                 <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
                   {item.title}
                 </h3>
