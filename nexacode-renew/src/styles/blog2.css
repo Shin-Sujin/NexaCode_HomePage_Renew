@@ -42,53 +42,12 @@ body {
   bottom: 0;
   z-index: -2;
 }
+
 /* header,navigation 영역 */
 .site__header {
   width: 100%;
   border-bottom: 1px solid #c7d2fe;
   margin-bottom: 64px;
-}
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
-  height: 80px;
-  width: 960px;
-}
-
-.logo {
-  color: #4f46e5;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 28px;
-}
-
-.logo span {
-  color: #222;
-}
-
-.nav .nav-menu {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav .nav-menu a {
-  color: #222;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.nav .nav-menu .contact {
-  background-color: #4f46e5;
-  padding: 8px 12px;
-  border-radius: 2rem;
-}
-.nav .nav-menu .contact a {
-  color: white;
 }
 
 /* post 영역 */
@@ -403,55 +362,33 @@ body {
 
 .floating.left {
   position: sticky;
-  top: 32px;
-  padding: 16px;
-  background-color: white;
-  border-radius: 8px;
-  filter: drop-shadow(0px 4px 4px #d2dae5);
-  /* order: -1; */
+  top: 152px;
+  padding-right: 100px;
+  background: none;
   margin-right: 32px;
-  width: 76px;
   align-self: start;
 }
-.floating.left .buttons {
+
+.floating.left .button {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-height: calc(100vh - 100px);
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
-.floating button {
-  border: 0;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
+.floating.left .button {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
 }
-.floating.left .buttons .feather-message-circle {
-  color: #4f46e5;
-}
-.floating.left .buttons .feather-heart {
-  color: #ff4545;
-}
-.floating.left .buttons button:last-child {
-  border-top: 1px solid #818cf8;
-  padding-top: 8px;
-  justify-content: center;
-}
-.floating.right {
-  position: sticky;
-  bottom: 32px;
-  align-self: end;
-  margin-left: 32px;
-  background-color: white;
-  padding: 8px;
-  border: 0;
-  border-radius: 8px;
-  color: #4f46e5;
-  filter: drop-shadow(0px 4px 4px #d2dae5);
-}
-.floating.right .feather {
-  margin-right: 0;
-}
+
 /* 사이트 푸터 */
 .footer {
   display: flex;
