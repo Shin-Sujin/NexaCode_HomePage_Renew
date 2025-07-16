@@ -110,9 +110,9 @@ export default function Content() {
         <div className="hashtag">
           <i data-feather="hash"></i>
           <ul>
-            <li className="hashtag__item">#일기</li>
-            <li className="hashtag__item">#일상</li>
-            <li className="hashtag__item">#이야기</li>
+            <li className="hashtag__item">#앱</li>
+            <li className="hashtag__item">#웹</li>
+            <li className="hashtag__item">#C2C</li>
           </ul>
         </div>
 
@@ -160,7 +160,7 @@ export default function Content() {
         </div>
 
         {/* 댓글 */}
-        <div className="comment">
+        {/* <div className="comment">
           <h2 className="comment__title">
             <i data-feather="message-circle"></i>
             Comment
@@ -237,7 +237,7 @@ export default function Content() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* 추천글 */}
         <div className="recommended">
@@ -258,7 +258,7 @@ export default function Content() {
               </figure>
               <div className="post__category">diary</div>
               <h2 className="post__title">
-                많은 하나에 별이 나는 오면 별 흙으로 남은 까닭입니다.
+                어플제작업체, C2C 앱 고민이라면 꼭 읽어보세요
               </h2>
             </div>
             <div className="post">
@@ -273,7 +273,7 @@ export default function Content() {
               </figure>
               <div className="post__category">diary</div>
               <h2 className="post__title">
-                별들을 까닭이요, 어머님, 이국 까닭입니다.
+                홈페이지 제작업체, 지역 기반으로 선택해도 괜찮을까?
               </h2>
             </div>
             <div className="post">
@@ -288,7 +288,7 @@ export default function Content() {
               </figure>
               <div className="post__category">diary</div>
               <h2 className="post__title">
-                언덕 시인의 멀듯이, 무엇인지 그러나 오면 하나 버리었습니다.
+                홈페이지 제작, 로딩 속도가 홈페이지의 첫인상을 좌우합니다
               </h2>
             </div>
           </div>
