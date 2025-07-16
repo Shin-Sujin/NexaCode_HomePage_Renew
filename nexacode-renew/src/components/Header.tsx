@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="flex items-center w-full bg-white justify-between px-3 fixed top-0 left-0 right-0 z-50 h-[4.375rem] mx-auto max-lg:px-20">
+    <header className="relative grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-20">
       {/* 로고 */}
       <div className="flex items-center">
         <Image src="/images/siteLogo.png" alt="logo" width={120} height={36} />
       </div>
       {/* 네비게이션 */}
-      <nav className="hidden lg:flex items-center gap-10">
+      <nav className="hidden lg:flex justify-center items-center gap-10">
         <a href="#" className="nav-link">
           DEMOS
         </a>
@@ -30,8 +30,8 @@ export default function Header() {
           CONTACT
         </a>
       </nav>
-      {/* 오른쪽 버튼 그룹: Get started + 메뉴 버튼 */}
-      <div className="flex items-center gap-2 ml-auto">
+      {/* 오른쪽 버튼 그룹 */}
+      <div className="flex items-center gap-2 justify-end absolute right-0 top-1/2 -translate-y-1/2 px-3">
         <a
           href="#"
           className="flex items-center gap-2"
