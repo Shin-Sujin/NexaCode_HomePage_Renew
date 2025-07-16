@@ -17,8 +17,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
       <Image
         src={imageSrc}
         alt={title}
-        width={800}
-        height={400}
+        width={800} // 비율 유지를 위해 남겨두고
+        height={400} // 비율 유지를 위해 남겨두고
         className="w-full h-auto block mb-2"
       />
       <div className="font-550 text-2xl">{title}</div>
