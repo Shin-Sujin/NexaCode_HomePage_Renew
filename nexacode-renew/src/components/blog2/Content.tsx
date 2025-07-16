@@ -11,35 +11,28 @@ export default function Content() {
 
   return (
     <div className="content">
-      <header className="post-header">
-        <span className="post-header__category">diary</span>
-        <h2 className="post-header__title">
-          많은 하나에 별이 나는 오면 별 흙으로 남은 까닭입니다.
+      <div className="bg-gray-100 rounded-2xl p-12 mb-20">
+        <h2 className="font-semibold text-2xl mb-6 text-gray-800">
+          C2C 앱 고민이라면 꼭 읽어보세요
         </h2>
-        <ul className="post-header__info">
-          <li className="post-header__date">
-            <i data-feather="calendar"></i>
-            2022.4.30
-          </li>
-          <li className="post-header__author">
-            <i data-feather="user"></i>
-            BlogStory
-          </li>
-        </ul>
-      </header>
-
-      <figure className="featured-image">
-        <Image
-          src="/images/blog/featured_image.jpg"
-          alt="blog featured-image"
-          width={960}
-          height={510}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />{" "}
-      </figure>
-
+        <p className="text-xl leading-relaxed text-gray-600">
+          수능 언어영역 지문에 경제 용어가 등장했기 때문일까요. 엄마, 아빠가
+          모인
+          <br />
+          커뮤니티에선 요즘 ‘문해력’ ‘경제신문’ 키워드가 자주 보여요.{" "}
+          <span className="underline">토스 앱을 쓰는 자녀를</span>
+          <br />
+          둔 부모님들에게도 아이와 경제신문 읽기에 대해 궁금한 질문을
+          받아봤는데요.
+          <br />
+          100개가 넘는 질문들이 쏟아졌어요. 함께 좋은 질문을 뽑아 박현아
+          선생님이
+          <br />
+          답했어요.
+        </p>
+      </div>
       <article className="post-content">
-        <h2>지나가는 위에 내 별빛이 무엇인지 별 버리었습니다.</h2>
+        <h2>C2C 앱 고민이라면 꼭 읽어보세요</h2>
         <p>
           많은 하나에 별이 나는 오면 별 흙으로 남은 까닭입니다. 차 소녀들의 별을
           어머님, 별 벌써 흙으로 버리었습니다. 하나 하나에 벌써 못 했던 어머니
@@ -51,7 +44,7 @@ export default function Content() {
           아름다운 된 하나에 가슴속에 너무나 있습니다.
         </p>
 
-        <h2>하나에 멀듯이, 이름자 까닭입니다.</h2>
+        <h2>C2C 앱 개발, 왜 어렵고 왜 실패할까?</h2>
         <p>
           겨울이 아스라히 하나에 까닭입니다. 아직 아름다운 이 계집애들의 별에도
           봅니다. 된 추억과 동경과 멀리 노루, 계십니다. 된 경, 너무나 하늘에는
@@ -96,7 +89,7 @@ export default function Content() {
           별들을 까닭이요, 어머님, 이국 까닭입니다. 헤일 너무나 애기 계십니다...
         </blockquote>
 
-        <h2>이웃 쓸쓸함과 우는 별 릴케 걱정도 아무 봅니다.</h2>
+        <h2>실패한 앱, 다시 시작할 수 있을까?</h2>
         <p>
           남은 동경과 어머니, 속의 둘 별빛이 강아지, 아스라히 하나에 듯합니다.
           다하지 보고, 멀듯이, 까닭입니다. 하늘에는 까닭이요, 마리아 이름과,

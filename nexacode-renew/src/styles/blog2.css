@@ -14,7 +14,7 @@ body {
 }
 .site__container {
   position: relative;
-  background-color: #f8f8f8;
+
   z-index: 0;
   width: 100%;
   height: auto;
@@ -102,10 +102,12 @@ body {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
   height: auto;
 }
 .post .blog-container .content {
-  width: 960px;
+  width: 760px;
 }
 .post-header {
   margin-bottom: 64px;
@@ -164,6 +166,9 @@ body {
 
 .post-content h2 {
   font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #383838;
 }
 
 .post-content p {
