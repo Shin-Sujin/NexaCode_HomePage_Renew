@@ -2,7 +2,7 @@
 export const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="flex items-center gap-2 text-black text-sm font-bold hover:opacity-70"
+    className="flex items-center gap-2 text-black text-base font-400  hover:opacity-70"
   >
     <span className="text-lg">←</span>
     PREV
@@ -12,7 +12,7 @@ export const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
 export const NextArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="flex items-center gap-2 text-black text-sm font-bold hover:opacity-70"
+    className="flex items-center gap-2 text-black text-base font-400 hover:opacity-70"
   >
     NEXT
     <span className="text-lg">→</span>

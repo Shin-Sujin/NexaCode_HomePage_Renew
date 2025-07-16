@@ -11,7 +11,8 @@ const CardSlider = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false, // variableWidth에서는 보통 false 권장
+    variableWidth: true, // 각 카드의 너비를 동적으로 조정
     speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -96,10 +97,13 @@ const CardSlider = () => {
   ];
 
   return (
-    <div className="w-full px-4 py-10">
+    <div className="w-full px-4 py-10 pf_sm:w-[250px] pf_sm:h-[600px]">
       <Slider ref={sliderRef} {...settings}>
         {items.map((item) => (
-          <div key={item.id} className="px-3">
+          <div
+            key={item.id}
+            className="px-3 inline-block align-top pf_sm:w-[250px] pf_sm:h-[600px]"
+          >
             <div className="bg-white overflow-hidden text-start">
               <Image
                 src={item.imageSrc}
@@ -108,9 +112,13 @@ const CardSlider = () => {
                 height={300} // 적절한 height로 수정
                 className="w-full h-auto"
               />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm">{item.description}</p>
+              <div className="py-4">
+                <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-sm pf_xs:ml-1">
+                  {item.description}
+                </p>
               </div>
             </div>
           </div>

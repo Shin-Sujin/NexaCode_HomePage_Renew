@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function PortfolioPage() {
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen bg-red-200 overflow-hidden flex items-center justify-center">
+    <div className="fixed top-0 left-0 w-screen h-screen overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-6xl px-4">
         <CardSlider />
       </div>
