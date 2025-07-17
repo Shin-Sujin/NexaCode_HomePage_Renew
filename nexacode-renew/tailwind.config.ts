@@ -26,7 +26,7 @@ const config: Config = {
         pf_xxl: "1920px",
         pf_xl: "1400px",
         pf_lg: "1100px",
-        pf_md: "800x",
+        pf_md: "800px",
         pf_sm: "640px",
         pf_xs: "576px",
         "max-xl": { raw: "(max-width: 1399px)" },
@@ -34,6 +34,12 @@ const config: Config = {
         "max-md": { raw: "(max-width: 991px)" },
         "max-sm": { raw: "(max-width: 767px)" },
         "max-xs": { raw: "(max-width: 575px)" },
+        "max-pf_md": { raw: "(max-width: 799px)" },
+        "max-pf_sm": { raw: "(max-width: 639px)" },
+        "max-pf_xs": { raw: "(max-width: 575px)" },
+        "max-pf_xxl": { raw: "(max-width: 1919px)" },
+        "max-pf_xl": { raw: "(max-width: 1399px)" },
+        "max-pf_lg": { raw: "(max-width: 1099px)" },
       },
       transitionDuration: {
         "450": "450ms", // 450ms를 커스텀 duration으로 추가

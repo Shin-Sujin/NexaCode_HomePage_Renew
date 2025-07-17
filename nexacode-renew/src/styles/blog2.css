@@ -354,3 +354,31 @@ body {
 .feather {
   margin-right: 8px;
 }
+
+@media (max-width: 800px) {
+  .post .blog-container .content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .post-content {
+    padding: 24px 8px !important;
+    border-radius: 0 !important;
+  }
+  .bg-gray-100.rounded-2xl.p-12.mb-20 {
+    padding: 16px 8px !important;
+    border-radius: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .recommended .post__container {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .recommended .post__container > .post {
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+}
