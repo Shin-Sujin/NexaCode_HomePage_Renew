@@ -25,7 +25,7 @@ export default function OverlapCard({
         data-delay="0.3"
       >
         {/* 뒤에 있는 이미지 */}
-        <div className="w-[18.9375rem] h-[25.8125rem] relative overflow-hidden thumb">
+        <div className="w-[18.9375rem] h-[25.8125rem] relative overflow-hidden thumb ">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
         </div>
 
@@ -55,12 +55,12 @@ export default function OverlapCard({
         data-delay="0.3"
       >
         {/* 뒤에 있는 이미지 */}
-        <div className="w-[18.9375rem] h-[25.8125rem]  thumb max-sm:w-[15rem] max-sm:h-[23rem] max-xs:w-[27rem] max-xs:h-[40rem]">
+        <div className="w-[18.9375rem] h-[25.8125rem] thumb max-sm:w-[15rem] max-sm:h-[23rem] max-xs:w-[15rem] max-xs:h-[15rem] max-xs:mt-[2rem]">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
         </div>
 
         {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
-        <div className="bg-white p-2 mt-5 w-[20rem] h-[18.75rem]">
+        <div className="bg-white p-2 mt-5 w-[20rem] h-[18.75rem] max-xs:w-[20rem] max-xs:text-2xl max-xs:h-[10rem]">
           <p className="text-sm" style={{ color: "#555555" }}>
             {category} — {date}
           </p>
