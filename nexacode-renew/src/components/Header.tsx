@@ -4,11 +4,11 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-20">
+    <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-2">
       {/* 로고 */}
-      <div className="flex items-center">
+      <a href="/" className="flex items-center">
         <Image src="/images/siteLogo.png" alt="logo" width={120} height={36} />
-      </div>
+      </a>
       {/* 네비게이션 */}
       <nav className="hidden lg:flex justify-center items-center gap-10">
         <a href="#" className="nav-link">
@@ -17,7 +17,7 @@ export default function Header() {
         <a href="#" className="nav-link">
           ABOUT
         </a>
-        <a href="#" className="nav-link">
+        <a href="/portfolio" className="nav-link">
           PORTFOLIO
         </a>
         <a href="#" className="nav-link">
