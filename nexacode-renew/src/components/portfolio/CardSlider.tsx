@@ -1,146 +1,124 @@
 "use client";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useRef, useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
-import { useRef } from "react";
-
+import { items } from "./portfolioItems";
+import { Swiper as SwiperClass } from "swiper";
+import "../../styles/swiper-custom.css";
 const CardSlider = () => {
-  const sliderRef = useRef<Slider | null>(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const settings = {
-    dots: true,
-    infinite: false, // variableWidth에서는 보통 false 권장
-    variableWidth: false, // 각 카드의 너비를 동적으로 조정
-    speed: 600,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: false, // ✅ 기본 화살표 활성화
-    nextArrow: <NextArrow />, // ✅ 커스텀 적용
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 3000,
-        settings: { slidesToShow: 4.2 },
-      },
-      {
-        breakpoint: 1099,
-        settings: { slidesToShow: 3.2 },
-      },
-      {
-        breakpoint: 799,
-        settings: { slidesToShow: 2.2 },
-      },
-      {
-        breakpoint: 639,
-        settings: { slidesToShow: 1 },
-      },
-    ],
+  const [dragStartX, setDragStartX] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleMouseUp = (e: MouseEvent) => {
+      if (dragStartX !== null) {
+        handleEnd(e.clientX);
+      }
+    };
+
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [dragStartX]);
+
+  const handleStart = (x: number) => {
+    setDragStartX(x);
   };
 
-  const items = [
-    {
-      id: 1,
-      imageSrc: "/images/portfolio1.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 2,
-      imageSrc: "/images/portfolio2.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 3,
-      imageSrc: "/images/portfolio3.webp",
-      title: "JACK MOON",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 4,
-      imageSrc: "/images/portfolio4.webp",
-      title: "BENJAMINE SQUAD",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 5,
-      imageSrc: "/images/portfolio5.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 6,
-      imageSrc: "/images/portfolio1.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 7,
-      imageSrc: "/images/portfolio2.webp",
-      title: "JACK MOON",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 8,
-      imageSrc: "/images/portfolio3.webp",
-      title: "BENJAMINE SQUAD",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 9,
-      imageSrc: "/images/portfolio4.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 10,
-      imageSrc: "/images/portfolio5.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-  ];
+  const handleEnd = (x: number) => {
+    if (dragStartX === null || !swiperRef.current) return;
+
+    const diff = x - dragStartX;
+    const absDiff = Math.abs(diff);
+    const direction = diff < 0 ? "next" : "prev";
+
+    const swiper = swiperRef.current;
+    const wrapperWidth = swiper.wrapperEl.offsetWidth;
+    const slidesPerView =
+      typeof swiper.params.slidesPerView === "number"
+        ? swiper.params.slidesPerView
+        : 1;
+    const slideWidth = wrapperWidth / slidesPerView;
+    const slideDelta = Math.floor(absDiff / slideWidth);
+    // ✅ 최소 1장 넘어가게 보장
+    const nextIndex =
+      direction === "next"
+        ? swiper.activeIndex + Math.max(1, slideDelta)
+        : swiper.activeIndex - Math.max(1, slideDelta);
+
+    swiper.slideTo(nextIndex);
+
+    setDragStartX(null);
+  };
 
   return (
-    <div className="w-full  px-4 py-10 pf_sm:py-4 pf_sm:h-[350px]">
-      <Slider ref={sliderRef} {...settings}>
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="px-3 inline-block align-top pf_sm:w-[240px]" // px-2로 살짝 줄임
-          >
-            <div className="bg-white overflow-hidden text-start w-full ">
-              <Image
-                src={item.imageSrc}
-                alt={item.title}
-                width={400}
-                height={300}
-                className="w-full h-auto pf_sm:h-[300px] pf_lg:h-[100px]"
-              />
-              <div className="py-4 pf_sm:w-[250px]">
-                {" "}
-                {/* 텍스트 영역도 동일하게 */}
-                <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 text-sm pf_xs:ml-1">
-                  {item.description}
-                </p>
+    <>
+      <div
+        ref={containerRef}
+        className="w-full relative select-none"
+        onMouseDown={(e) => handleStart(e.clientX)}
+        onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+        onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
+      >
+        <Swiper
+          modules={[Navigation, Pagination]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          slidesPerView={3}
+          spaceBetween={24}
+          speed={600}
+          allowTouchMove={false}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 2.2 },
+            800: { slidesPerView: 3.5 },
+            1100: { slidesPerView: 4.3 },
+          }}
+        >
+          {items.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing ">
+                <div className="bg-white overflow-hidden text-start w-full">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.title}
+                    width={800}
+                    height={600}
+                    draggable={false}
+                    className="w-full h-auto  select-none xxl:h-[500px] 
+                    xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[300px] "
+                  />
+                  <div className="py-4  select-none">
+                    <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm pf_xs:ml-1">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </Slider>{" "}
-      {/* 🔽 화살표 버튼 - 양쪽 끝에 고정 */}
-      <div className="absolute bottom-1 left-2 -translate-y-1/2 z-10 px-4">
-        <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>{" "}
+      <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
+        <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
       </div>
-      <div className="absolute bottom-1 right-2 -translate-y-1/2 z-10 px-4">
-        <NextArrow onClick={() => sliderRef.current?.slickNext()} />
+      <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
+        <NextArrow onClick={() => swiperRef.current?.slideNext()} />
       </div>
-    </div>
+    </>
   );
 };
 

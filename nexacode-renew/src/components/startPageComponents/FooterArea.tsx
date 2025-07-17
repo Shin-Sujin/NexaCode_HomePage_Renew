@@ -1,30 +1,16 @@
 "use client";
 
-import { useRef } from "react";
 import styles from "../../styles/FooterArea.module.css";
-import { useSlideInFromLeft } from "../../animations/slideInFromLeft";
-import { useFooterTitleAnimation } from "../../animations/animations_StartPage";
 
 export default function FooterArea() {
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useSlideInFromLeft({
-    targetRef: subtitleRef,
-    delay: 0.2,
-    duration: 1.2,
-  });
-
-  useFooterTitleAnimation(titleRef);
-
   return (
     <section className={styles.footerAreaWrapper}>
       <div className={styles.inner}>
-        <h2 ref={titleRef} className={styles.title}>
+        <h2 className={styles.title}>
           Get started <br />
           now
         </h2>
-        <p ref={subtitleRef} className={styles.subtitle}>
+        <p className={styles.subtitle}>
           If you would like to work with us or just want to get in touch,
           we&apos;d love to hear from you!
         </p>
