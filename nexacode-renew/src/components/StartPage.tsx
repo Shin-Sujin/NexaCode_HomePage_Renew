@@ -111,7 +111,7 @@ export default function StartPage() {
                 {/* ================================ 2번 요소 ================================ */}
                 <div
                   ref={textRef}
-                  className=" w-[25rem] text-white font-normal text-[1.3rem] leading-[1.725rem] tracking-wider max-sm:w-[25rem] max-sm:text-xl max-sm:font-light max-sm:leading-[1.5rem] max-md:hidden"
+                  className=" w-[25rem] text-white font-normal text-[1.3rem] leading-[1.725rem] tracking-wider max-sm:w-[25rem] max-sm:text-xl max-sm:font-light max-sm:leading-[1.5rem] max-md:hidden max-xs:hidden"
                 >
                   We believe that the surest measure of success is when our
                   partners with us more than half It&apos;s more than just the
@@ -192,10 +192,10 @@ export default function StartPage() {
             <div className="flex flex-col">
               <h2
                 ref={sectionTitleRef}
-                className="section-title  has_text_move_anim perspective-[400px] max-xl:w-[52rem] max-lg:w-[50rem] max-md:w-[35rem] "
+                className="section-title has_text_move_anim perspective-[400px] max-w-full"
                 // data-delay="0.5"
               >
-                <div className="section-title-line max-lg:mt-10  max-md:text-[3rem] max-md:leading-[2.8rem] max-xs:text-[2.6rem]">
+                <div className="section-title-line w-full max-w-full max-lg:mt-10 max-md:text-[3rem] max-md:leading-[2.8rem] max-xs:text-[2.6rem]">
                   We provide brilliant idea to grow the startup — agency with
                   your sharp brand.
                 </div>

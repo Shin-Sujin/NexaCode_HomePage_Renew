@@ -1,8 +1,11 @@
 // src/components/Header.tsx
+"use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-2">
       {/* 로고 */}
@@ -23,7 +26,7 @@ export default function Header() {
         <a href="#" className="nav-link">
           PAGES
         </a>
-        <a href="#" className="nav-link">
+        <a href="/blog" className="nav-link">
           BLOG
         </a>
         <a href="#" className="nav-link">
@@ -54,6 +57,7 @@ export default function Header() {
         <button
           className="block lg:hidden ml-3 p-2 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
           aria-label="메뉴 열기"
+          onClick={() => setIsModalOpen(true)}
         >
           {/* 햄버거 아이콘 (SVG) */}
           <svg
@@ -72,6 +76,62 @@ export default function Header() {
           </svg>
         </button>
       </div>
+      {/* 전체화면 모달 */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] bg-white bg-opacity-95 flex flex-col items-center justify-center transition-all">
+          <button
+            className="absolute top-6 right-6 text-3xl font-bold"
+            aria-label="메뉴 닫기"
+            onClick={() => setIsModalOpen(false)}
+          >
+            ×
+          </button>
+          <nav className="flex flex-col gap-8 text-2xl font-bold items-center">
+            <a
+              href="#"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              DEMOS
+            </a>
+            <a
+              href="#"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              ABOUT
+            </a>
+            <a
+              href="/portfolio"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              PORTFOLIO
+            </a>
+            <a
+              href="#"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              PAGES
+            </a>
+            <a
+              href="/blog"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              BLOG
+            </a>
+            <a
+              href="#"
+              className="nav-link"
+              onClick={() => setIsModalOpen(false)}
+            >
+              CONTACT
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
