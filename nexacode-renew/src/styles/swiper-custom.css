@@ -1,0 +1,79 @@
+/* 공통 bullet 스타일 */
+.swiper-pagination-bullet {
+  opacity: 1;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+/* ========== 큰 화면 (찍찍이 스타일) ========== */
+@media (min-width: 1200px) {
+  .swiper-pagination-bullet {
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    background-color: #666777;
+    margin: 0 8px !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 100px;
+  }
+
+  .swiper-pagination {
+    position: fixed !important;
+    bottom: 50px !important;
+    left: 0;
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    z-index: 50;
+  }
+}
+
+/* ========== 작은 화면 (dot 스타일) ========== */
+@media (max-width: 1199px) {
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background-color: #d1d5db;
+    margin: 0 4px !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 10px;
+    background-color: #c9f31d;
+  }
+
+  .swiper-pagination {
+    position: fixed !important;
+    bottom: 40px !important;
+    display: flex !important;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+/* ========== 작은 화면 (dot 스타일) ========== */
+@media (max-width: 800px) {
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background-color: #d1d5db;
+    margin: 0 4px !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 10px;
+    background-color: #c9f31d;
+  }
+
+  .swiper-pagination {
+    position: fixed !important;
+    bottom: 15% !important;
+    display: flex !important;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

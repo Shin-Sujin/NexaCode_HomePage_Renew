@@ -9,7 +9,7 @@ import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { items } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
-
+import "../../styles/swiper-custom.css";
 const CardSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -60,63 +60,65 @@ const CardSlider = () => {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full px-4 py-10 pf_sm:py-4 pf_sm:h-[350px] relative select-none"
-      onMouseDown={(e) => handleStart(e.clientX)}
-      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-      onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
-    >
-      <Swiper
-        modules={[Navigation, Pagination]}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        slidesPerView={3}
-        spaceBetween={24}
-        speed={600}
-        allowTouchMove={false}
-        pagination={{ clickable: true }}
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          640: { slidesPerView: 2.2 },
-          800: { slidesPerView: 3.2 },
-          1100: { slidesPerView: 4.2 },
-        }}
+    <>
+      <div
+        ref={containerRef}
+        className="w-full relative select-none"
+        onMouseDown={(e) => handleStart(e.clientX)}
+        onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+        onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
       >
-        {items.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="px-3 inline-block align-top pf_sm:w-[240px] cursor-grab active:cursor-grabbing">
-              <div className="bg-white overflow-hidden text-start w-full">
-                <Image
-                  src={item.imageSrc}
-                  alt={item.title}
-                  width={400}
-                  height={300}
-                  draggable={false}
-                  className="w-full h-auto pf_sm:h-[300px] pf_lg:h-[100px] select-none"
-                />
-                <div className="py-4 pf_sm:w-[250px] select-none">
-                  <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm pf_xs:ml-1">
-                    {item.description}
-                  </p>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          slidesPerView={3}
+          spaceBetween={24}
+          speed={600}
+          allowTouchMove={false}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 2.2 },
+            800: { slidesPerView: 3.5 },
+            1100: { slidesPerView: 4.3 },
+          }}
+        >
+          {items.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing ">
+                <div className="bg-white overflow-hidden text-start w-full">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.title}
+                    width={800}
+                    height={600}
+                    draggable={false}
+                    className="w-full h-auto  select-none xxl:h-[500px] 
+                    xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[300px] "
+                  />
+                  <div className="py-4  select-none">
+                    <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm pf_xs:ml-1">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <div className="absolute bottom-1 left-2 -translate-y-1/2 z-10 px-4">
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>{" "}
+      <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
         <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
       </div>
-      <div className="absolute bottom-1 right-2 -translate-y-1/2 z-10 px-4">
+      <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
         <NextArrow onClick={() => swiperRef.current?.slideNext()} />
       </div>
-    </div>
+    </>
   );
 };
 
