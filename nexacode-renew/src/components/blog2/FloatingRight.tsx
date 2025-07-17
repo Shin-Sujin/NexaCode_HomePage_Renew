@@ -26,7 +26,7 @@ export default function FloatingRight({ steps }: FloatingRightProps) {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-60 min-w-[8rem] sticky top-32 h-fit pl-10">
+    <div className="flex flex-col gap-4 w-60 min-w-[8rem] sticky top-32 h-fit pl-10 max-pf_lg:hidden">
       <div className="font-semibold mb-2">Step</div>
       {steps.map((step) => (
         <a
