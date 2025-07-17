@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Title() {
   return (
     <div
-      className="relative w-full  h-[80vh] min-w-0 min-h-0 flex items-center justify-center"
+      className="relative w-full  h-[80vh] min-w-0 min-h-0 flex items-center justify-center xxl:h-[50vh]"
       style={{ overflowX: "hidden" }}
     >
       {/* 배경 이미지 */}

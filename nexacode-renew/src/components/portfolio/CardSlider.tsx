@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { useRef } from "react";
-
+import { items } from "./portfolioItems";
 const CardSlider = () => {
   const sliderRef = useRef<Slider | null>(null);
 
@@ -17,9 +17,13 @@ const CardSlider = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
-    arrows: false, // ✅ 기본 화살표 활성화
+    arrows: false,
     nextArrow: <NextArrow />, // ✅ 커스텀 적용
     prevArrow: <PrevArrow />,
+    draggable: true, // ✅ 데스크탑 드래그 허용
+    swipe: true, // ✅ 모바일 스와이프 허용
+    swipeToSlide: true, // ✅ 드래그 중간 위치에도 반응
+    touchMove: true, // ✅ 터치로도 드래그 허용
     responsive: [
       {
         breakpoint: 3000,
@@ -39,69 +43,6 @@ const CardSlider = () => {
       },
     ],
   };
-
-  const items = [
-    {
-      id: 1,
-      imageSrc: "/images/portfolio1.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 2,
-      imageSrc: "/images/portfolio2.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 3,
-      imageSrc: "/images/portfolio3.webp",
-      title: "JACK MOON",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 4,
-      imageSrc: "/images/portfolio4.webp",
-      title: "BENJAMINE SQUAD",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 5,
-      imageSrc: "/images/portfolio5.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 6,
-      imageSrc: "/images/portfolio1.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 7,
-      imageSrc: "/images/portfolio2.webp",
-      title: "JACK MOON",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 8,
-      imageSrc: "/images/portfolio3.webp",
-      title: "BENJAMINE SQUAD",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 9,
-      imageSrc: "/images/portfolio4.webp",
-      title: "DEESHAPE BUZZ",
-      description: "BRANDING – 2014",
-    },
-    {
-      id: 10,
-      imageSrc: "/images/portfolio5.webp",
-      title: "ROMEN BRAY DILBRO",
-      description: "BRANDING – 2014",
-    },
-  ];
 
   return (
     <div className="w-full  px-4 py-10 pf_sm:py-4 pf_sm:h-[350px]">
