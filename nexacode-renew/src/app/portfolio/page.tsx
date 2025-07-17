@@ -1,8 +1,6 @@
 "use client";
 
 import CardSlider from "../../components/portfolio/CardSlider";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 export default function PortfolioPage() {
   return (

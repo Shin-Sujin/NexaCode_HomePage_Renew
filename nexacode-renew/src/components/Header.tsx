@@ -21,7 +21,7 @@ export default function Header() {
           PORTFOLIO
         </a>
 
-        <a href="/blog" className="nav-link">
+        <a href="/blogList" className="nav-link">
           BLOG
         </a>
         <a href="#" className="nav-link">
@@ -80,7 +80,7 @@ export default function Header() {
             </a>
 
             <a
-              href="/blog"
+              href="/blogList"
               className="nav-link"
               onClick={() => setIsModalOpen(false)}
             >
