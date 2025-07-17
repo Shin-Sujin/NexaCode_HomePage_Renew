@@ -15,17 +15,12 @@ export default function Header() {
       {/* 네비게이션 */}
       <nav className="hidden lg:flex justify-center items-center gap-10">
         <a href="#" className="nav-link">
-          DEMOS
-        </a>
-        <a href="#" className="nav-link">
           ABOUT
         </a>
         <a href="/portfolio" className="nav-link">
           PORTFOLIO
         </a>
-        <a href="#" className="nav-link">
-          PAGES
-        </a>
+
         <a href="/blog" className="nav-link">
           BLOG
         </a>
@@ -35,24 +30,6 @@ export default function Header() {
       </nav>
       {/* 오른쪽 버튼 그룹 */}
       <div className="flex items-center gap-2 justify-end absolute right-0 top-1/2 -translate-y-1/2 px-3">
-        <a
-          href="#"
-          className="flex items-center gap-2"
-          style={{
-            color: "#121212",
-            fontFamily: "Kanit",
-            fontSize: "0.875rem",
-            fontStyle: "normal",
-            fontWeight: 800,
-            lineHeight: "0.875rem",
-            borderBottom: "2px solid #121212",
-            paddingBottom: 2,
-            textDecoration: "none",
-          }}
-        >
-          Get started{" "}
-          <span style={{ fontSize: "1.1em", marginLeft: 4 }}>→</span>
-        </a>
         {/* 메뉴 버튼 (모바일용) */}
         <button
           className="block lg:hidden ml-3 p-2 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
@@ -92,13 +69,6 @@ export default function Header() {
               className="nav-link"
               onClick={() => setIsModalOpen(false)}
             >
-              DEMOS
-            </a>
-            <a
-              href="#"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
               ABOUT
             </a>
             <a
@@ -108,13 +78,7 @@ export default function Header() {
             >
               PORTFOLIO
             </a>
-            <a
-              href="#"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
-              PAGES
-            </a>
+
             <a
               href="/blog"
               className="nav-link"
