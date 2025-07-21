@@ -2,13 +2,13 @@ import React from "react";
 
 export default function ContactForm() {
   return (
-    <form className="contact-form" style={{ maxWidth: 600 }}>
+    <form className="max-w-[600px] w-full pt-20 pb-20 ">
       {/* 1. 개발 영역 선택 */}
-      <div style={{ marginBottom: 32 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: 8 }}>
-          1. 개발 영역 선택 <span style={{ color: "#e53935" }}>*</span>
+      <div className="pt-10 pb-8">
+        <div className="font-bold text-[1.2rem] mb-2">
+          1. 개발 영역 선택 <span className="text-[#e53935]">*</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div className="flex flex-col gap-2">
           <label>
             <input type="checkbox" name="area" value="앱 개발" defaultChecked />{" "}
             앱 개발
@@ -28,11 +28,11 @@ export default function ContactForm() {
       </div>
 
       {/* 2. 준비 단계 */}
-      <div style={{ marginBottom: 32 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: 8 }}>
-          2. 준비 단계 <span style={{ color: "#e53935" }}>*</span>
+      <div className="mb-8">
+        <div className="font-bold text-[1.2rem] mb-2">
+          2. 준비 단계 <span className="text-[#e53935]">*</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div className="flex flex-col gap-2">
           <label>
             <input
               type="checkbox"
@@ -70,11 +70,11 @@ export default function ContactForm() {
       </div>
 
       {/* 3. 작업물 개발팀의 페이지 수 */}
-      <div style={{ marginBottom: 32 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: 8 }}>
+      <div className="mb-8">
+        <div className="font-bold text-[1.2rem] mb-2">
           3. 작업물 개발팀의 페이지 수
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div className="flex flex-col gap-2">
           <label>
             <input type="radio" name="pageCount" value="1~2개" /> 1~2개
           </label>
@@ -95,110 +95,71 @@ export default function ContactForm() {
       </div>
 
       {/* 4. 개발할 서비스에 대해 한줄로 소개해주세요 */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 4 }}>
+      <div className="mb-6">
+        <div className="font-bold text-[1.1rem] mb-1">
           4. 개발할 서비스에 대해 한줄로 소개해주세요{" "}
-          <span style={{ color: "#e53935" }}>*</span>
+          <span className="text-[#e53935]">*</span>
         </div>
         <input
           type="text"
           name="serviceIntro"
           required
-          style={{
-            width: "100%",
-            padding: 8,
-            border: "1px solid #ccc",
-            borderRadius: 4,
-          }}
+          className="w-full p-2 border border-[#ccc] rounded"
         />
       </div>
-
-      {/* 5. 회사명 */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 4 }}>
-          5. 회사명 <span style={{ color: "#e53935" }}>*</span>
+      <div className="flex flex-row gap-4 w-full">
+        {/* 5. 회사명 */}
+        <div className="mb-6 w-1/2">
+          <div className="font-bold text-[1.1rem] mb-1">
+            5. 회사명 <span className="text-[#e53935]">*</span>
+          </div>
+          <input
+            type="text"
+            name="company"
+            required
+            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+          />
         </div>
-        <input
-          type="text"
-          name="company"
-          required
-          style={{
-            width: "100%",
-            padding: 8,
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            background: "#f5f5f5",
-          }}
-        />
-      </div>
 
-      {/* 6. 성함 */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 4 }}>
-          6. 성함 <span style={{ color: "#e53935" }}>*</span>
+        {/* 6. 성함 */}
+        <div className="mb-6 w-1/2">
+          <div className="font-bold text-[1.1rem] mb-1">
+            6. 성함 <span className="text-[#e53935]">*</span>
+          </div>
+          <input
+            type="text"
+            name="name"
+            required
+            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+          />
         </div>
-        <input
-          type="text"
-          name="name"
-          required
-          style={{
-            width: "100%",
-            padding: 8,
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            background: "#f5f5f5",
-          }}
-        />
       </div>
-
       {/* 7. 이메일 주소 */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 4 }}>
-          7. 이메일 주소 <span style={{ color: "#e53935" }}>*</span>
+      <div className="mb-6">
+        <div className="font-bold text-[1.1rem] mb-1">
+          7. 이메일 주소 <span className="text-[#e53935]">*</span>
         </div>
         <input
           type="email"
           name="email"
           required
-          style={{
-            width: "100%",
-            padding: 8,
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            background: "#f5f5f5",
-          }}
+          className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
         />
       </div>
 
       {/* 8. 답변 내용 */}
-      <div style={{ marginBottom: 32 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 4 }}>
-          8. 답변 내용
-        </div>
+      <div className="mb-8">
+        <div className="font-bold text-[1.1rem] mb-1">8. 답변 내용</div>
         <textarea
           name="answer"
           rows={6}
-          style={{
-            width: "100%",
-            padding: 8,
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            background: "#f5f5f5",
-          }}
+          className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
         />
       </div>
 
       <button
         type="submit"
-        style={{
-          background: "linear-gradient(90deg, #6C47FF 0%, #7B3FE4 100%)",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          padding: "10px 32px",
-          fontWeight: 600,
-          fontSize: "1rem",
-        }}
+        className="bg-gradient-to-r from-[#6C47FF] to-[#7B3FE4] text-white border-none rounded-[6px] px-8 py-2 font-semibold text-[1rem]"
       >
         제출
       </button>
