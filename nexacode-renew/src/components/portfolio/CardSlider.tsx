@@ -99,7 +99,7 @@ const CardSlider = () => {
                     xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[300px] "
                   />
                   <div className="py-4  select-none">
-                    <h3 className="text-2xl font-500 mb-2 pf_xs:text-3xl">
+                    <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
                       {item.title}
                     </h3>
                     <p className="text-gray-500 text-sm pf_xs:ml-1">
