@@ -16,6 +16,15 @@ const config: Config = {
         foreground: "var(--foreground)",
         primary: "#C9F31D", // 원하는 색상 코드로 변경
       },
+      fontFamily: {
+        ibm: ["var(--font-ibm)", "sans-serif"],
+        chiron: ["var(--font-chiron)"],
+
+        kanit: ["Kanit", "sans-serif"],
+        museo: ["MuseoModerno", "sans-serif"],
+        noticia: ["NoticiaText", "serif"],
+        beatrice: ["BeatriceTRIAL", "sans-serif"],
+      },
       screens: {
         xxl: "1920px",
         xl: "1400px",
