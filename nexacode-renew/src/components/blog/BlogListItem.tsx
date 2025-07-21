@@ -1,4 +1,4 @@
-// components/BlogListItem.tsx
+// components/BlogListItem.tsx 아이템 컴포넌트
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
