@@ -118,6 +118,22 @@ body {
   .custom-table-answer {
     @apply bg-gray-200 text-gray-700 px-3 py-1 rounded;
   }
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: #676262;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-underline-hovered::after {
+    width: 100%;
+  }
 }
 /* hero-area 부분 */
 
