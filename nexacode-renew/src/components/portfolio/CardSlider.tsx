@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -69,7 +69,11 @@ const CardSlider = () => {
         onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
       >
         <Swiper
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{
+            delay: 2000, // ✅ 3초마다 자동 넘김
+            disableOnInteraction: false, // 사용자 조작 후에도 계속 자동 재생
+          }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
