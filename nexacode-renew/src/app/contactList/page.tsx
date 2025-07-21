@@ -8,21 +8,23 @@ import Link from "next/link";
 export default function ContactListPage() {
   return (
     <div>
-      <main className="max-w-5xl mx-auto pt-48 pb-20  px-10">
-        <h1 className="text-6xl text-gray-800 font-600 mb-6 ">문의하기</h1>
-        <h2 className="text-xl text-gray-600 font-400 mb-50 ">
+      <main className="max-w-5xl mx-auto pt-48 pb-20  px-10 max-md:pt-36 max-md:pb-10">
+        <h1 className="text-6xl text-gray-800 font-600 mb-6 max-md:text-4xl max-md:px-2 ">
+          문의하기
+        </h1>
+        <h2 className="text-xl text-gray-600 font-400 mb-50 max-md:text-lg max-md:px-3 max-md:mb-0">
           무엇이든 물어보세요, 상세하게 답변하겠습니다
         </h2>
         {/* 실제 콘텐츠 */}
         <div className="relative z-10 w-full max-w-6xl  mt-24 ">
           {/* 상단 제목 및 버튼 */}
           <div className="flex justify-end mb-8">
-            <button className="bg-gray-800 text-white px-8 py-5 rounded-none text-lg font-medium hover:bg-gray-800 transition">
+            <button className="bg-gray-800 text-white px-8 py-5 rounded-none text-lg font-medium hover:bg-gray-800 transition max-md:w-full max-md:mb-10">
               무료 상담 신청
             </button>
           </div>
           {/* 문의 리스트 테이블 */}
-          <div className="overflow-x-auto bg-white ">
+          <div className="overflow-x-auto bg-white max-md:hidden">
             <table className="min-w-full text-left border-separate border-spacing-y-2 border-t-2 ">
               <thead>
                 <tr>
@@ -91,8 +93,53 @@ export default function ContactListPage() {
               </tbody>
             </table>
           </div>
+        </div>
+        {/* 모바일 버전 */}
+        <div className="max-md:block hidden">
+          <h3 className="text-2xl text-gray-700 font-semibold mt-10 mb-5">
+            문의사항
+          </h3>
+          <hr className="border-t-1 border-gray-200 my-5" />
+          <div className="flex flex-col gap-4 text-gray-800">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-semibold mt-2">1. 앱 개발</h3>
+              <p className="text-gray-700">
+                <Link
+                  href="/contact"
+                  className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
+                >
+                  AI 기반 이미지 분석으로 개인 맞춤형 스타일링 솔루션을 제공하는
+                  전문가용 플랫폼 앱
+                </Link>
+              </p>
+              <div className="flex justify-end gap-2 mt-2">
+                <a className="text-gray-700 mt-1">박 **</a>
+                <div className="text-gray-100 ml-3 bg-gray-400 p-2 text-xs rounded-lg">
+                  답변 완료
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold mt-10">2. 앱 개발</h3>
+              <p className="text-gray-700">
+                <Link
+                  href="/contact"
+                  className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
+                >
+                  방송 프로그램 기반의 방송국/제작사-광고주 간 광고 매칭 플랫폼
+                  앱
+                </Link>
+              </p>
+            </div>
+            <div className="flex justify-end gap-2 mt-2">
+              <a className="text-gray-700 mt-1">박 **</a>
+              <div className="text-gray-100 ml-3 bg-gray-400 p-2 text-xs rounded-lg">
+                답변 완료
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="max-md:block hidden">
           {/* 페이지네이션 */}
-          <div className="flex justify-center items-center mt-40 gap-2">
+          <div className="flex justify-center items-center mt-40 gap-2 max-md:mt-20">
             <button
               className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-semibold"
               disabled

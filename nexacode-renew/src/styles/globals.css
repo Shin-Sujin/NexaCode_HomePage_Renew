@@ -790,7 +790,8 @@ body {
 /* nKKU 폰트 등록 */
 @font-face {
   font-family: "nKKU-Go6G5tXcr4-ORWnVaFrNlJz";
-  src: url("../app/fonts/nKKU-Go6G5tXcr4-ORWnVaFrNlJz.woff2") format("woff2");
+  src: url("../app/fonts/local/nKKU-Go6G5tXcr4-ORWnVaFrNlJz.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
