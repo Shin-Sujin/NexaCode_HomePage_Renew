@@ -38,7 +38,7 @@ export const useStartPageAnimations = ({
 }: Params) => {
   // 기본 애니메이션들
   useEffect(() => {
-    if (fadeRef.current) {
+    if (fadeRef && fadeRef.current) {
       gsap.fromTo(
         fadeRef.current,
         { y: -150, opacity: 0 },
@@ -51,7 +51,7 @@ export const useStartPageAnimations = ({
       );
     }
 
-    if (textRef.current) {
+    if (textRef && textRef.current) {
       const split = new SplitType(textRef.current, {
         types: "lines,words,chars",
         tagName: "span",
@@ -66,7 +66,7 @@ export const useStartPageAnimations = ({
       });
     }
 
-    if (creativeRef.current) {
+    if (creativeRef && creativeRef.current) {
       const split = new SplitType(creativeRef.current, {
         types: "lines,words,chars",
         tagName: "span",
@@ -81,7 +81,7 @@ export const useStartPageAnimations = ({
       });
     }
 
-    if (studioRef.current) {
+    if (studioRef && studioRef.current) {
       const split = new SplitType(studioRef.current, {
         types: "lines,words,chars",
         tagName: "span",
@@ -99,7 +99,7 @@ export const useStartPageAnimations = ({
 
   // has_char_anim 애니메이션
   useEffect(() => {
-    if (whoWeAreRef.current) {
+    if (whoWeAreRef && whoWeAreRef.current) {
       const element = whoWeAreRef.current;
       const text = element.textContent || "";
       const stagger = element.getAttribute("data-stagger") || "0.05";
@@ -137,7 +137,7 @@ export const useStartPageAnimations = ({
 
   // has_text_move_anim 애니메이션
   useEffect(() => {
-    if (sectionTitleRef.current) {
+    if (sectionTitleRef && sectionTitleRef.current) {
       const element = sectionTitleRef.current;
       const delay = element.getAttribute("data-delay") || "0.01";
 
@@ -174,7 +174,7 @@ export const useStartPageAnimations = ({
 
   // WORK 텍스트용 has_text_move_anim 애니메이션
   useEffect(() => {
-    if (workTitleRef.current) {
+    if (workTitleRef && workTitleRef.current) {
       // 초기 상태 설정 - 텍스트가 엎드려있도록
       gsap.set(workTitleRef.current, {
         opacity: 1,
@@ -207,7 +207,7 @@ export const useStartPageAnimations = ({
 
   // Recent Post 텍스트용 has_text_move_anim 애니메이션 (최적화된 버전)
   useEffect(() => {
-    if (recentPostTitleRef.current) {
+    if (recentPostTitleRef && recentPostTitleRef.current) {
       const element = recentPostTitleRef.current;
       const delay = element.getAttribute("data-delay") || "0.1"; // delay 줄임
 
@@ -246,7 +246,7 @@ export const useStartPageAnimations = ({
 
   // Whether 텍스트용 개별 span 애니메이션
   useEffect(() => {
-    if (whetherRef.current) {
+    if (whetherRef && whetherRef.current) {
       const spans = whetherRef.current.querySelectorAll("span");
 
       // 각 span에 초기 상태 설정
@@ -277,7 +277,7 @@ export const useStartPageAnimations = ({
 
   // Our Team 텍스트용 개별 span 애니메이션
   useEffect(() => {
-    if (ourTeamRef.current) {
+    if (ourTeamRef && ourTeamRef.current) {
       const spans = ourTeamRef.current.querySelectorAll("span");
 
       // 각 span에 초기 상태 설정
@@ -431,7 +431,7 @@ export const useStartPageAnimations = ({
   }, []);
 
   useEffect(() => {
-    if (imgRef.current) {
+    if (imgRef && imgRef.current) {
       gsap.fromTo(
         imgRef.current,
         {
@@ -458,7 +458,7 @@ export const useStartPageAnimations = ({
 
 export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
   useEffect(() => {
-    if (ref.current) {
+    if (ref && ref.current) {
       const element = ref.current;
       let clipPath = "inset(0% 0% 0% 0%)";
 
@@ -526,7 +526,7 @@ export const useScrollClippingEffect = (ref: React.RefObject<HTMLElement>) => {
 // FooterArea h2 태그용 3D 회전 애니메이션
 export const useFooterTitleAnimation = (ref: React.RefObject<HTMLElement>) => {
   useEffect(() => {
-    if (ref.current) {
+    if (ref && ref.current) {
       const element = ref.current;
 
       // 초기 상태 설정 - 텍스트가 엎드려있도록
