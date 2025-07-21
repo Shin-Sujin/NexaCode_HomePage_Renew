@@ -14,7 +14,7 @@ export default function Header() {
       </a>
       {/* 네비게이션 */}
       <nav className="hidden lg:flex justify-center items-center gap-10">
-        <a href="#" className="nav-link">
+        <a href="/" className="nav-link">
           ABOUT
         </a>
         <a href="/portfolio" className="nav-link">
@@ -65,7 +65,7 @@ export default function Header() {
           </button>
           <nav className="flex flex-col gap-8 text-2xl font-bold items-center">
             <a
-              href="#"
+              href="/"
               className="nav-link"
               onClick={() => setIsModalOpen(false)}
             >

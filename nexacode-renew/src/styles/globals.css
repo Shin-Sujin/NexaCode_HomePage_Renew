@@ -99,6 +99,25 @@ body {
       @apply w-full h-auto transition-transform duration-500 ease-out block max-pf_xs:w-[10rem] max-pf_xs:h-[10rem];
     }
   }
+
+  .custom-table {
+    @apply w-full border-separate border-spacing-y-2 bg-white;
+  }
+  .custom-table-th {
+    @apply py-4 font-semibold text-lg text-left bg-white border-b-2 border-black;
+  }
+  .custom-table-td {
+    @apply py-4 text-base text-gray-800 bg-white align-middle;
+  }
+  .custom-table-tr {
+    @apply border-b border-gray-200 bg-white;
+  }
+  .custom-table-tr:last-child {
+    @apply border-b-0;
+  }
+  .custom-table-answer {
+    @apply bg-gray-200 text-gray-700 px-3 py-1 rounded;
+  }
 }
 /* hero-area 부분 */
 
