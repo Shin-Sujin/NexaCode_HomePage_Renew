@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { useStartPageAnimations } from "@/src/animations/animations_StartPage";
+
 export default function ContactIntro() {
+  const fadeRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLElement>(null);
+  const studioRef = useRef<HTMLElement>(null);
+  const whoWeAreRef = useRef<HTMLElement>(null);
+  const sectionTitleRef = useRef<HTMLElement>(null);
+  const workTitleRef = useRef<HTMLElement>(null);
+  const recentPostTitleRef = useRef<HTMLElement>(null);
+  const whetherRef = useRef<HTMLElement>(null);
+  const ourTeamRef = useRef<HTMLElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const creativeRef = useRef<HTMLDivElement>(null);
+  useStartPageAnimations({
+    fadeRef,
+    textRef,
+    creativeRef,
+    studioRef,
+    whoWeAreRef,
+    sectionTitleRef,
+    workTitleRef,
+    recentPostTitleRef,
+    whetherRef,
+    ourTeamRef,
+    imgRef,
+  });
   return (
     <div>
       <div className="flex flex-col items-center max-md:py-20">
-        <h2 className="text-9xl font-bold mb-3 mt-[60%] text-gray-100 max-xxl:mt-[-30%] max-md:mt-[40%]  max-md:text-6xl max-lg:text-6xl">
+        <h2
+          ref={creativeRef}
+          className="text-9xl font-bold mb-3 mt-[60%] text-gray-100 max-xxl:mt-[-30%] max-md:mt-[40%]  max-md:text-6xl max-lg:text-6xl"
+        >
           Contact us
         </h2>
         <p className="ml-12 text-2xl text-gray-200 mb-[40%] max-xxl:mb-[20%] max-md:text-lg max-md:ml-0">
