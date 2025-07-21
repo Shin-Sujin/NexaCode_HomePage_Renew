@@ -79,10 +79,10 @@ const CardSlider = () => {
           allowTouchMove={false}
           pagination={{ clickable: true }}
           breakpoints={{
-            0: { slidesPerView: 1 },
-            640: { slidesPerView: 2.2 },
-            800: { slidesPerView: 3.5 },
-            1100: { slidesPerView: 4.3 },
+            0: { slidesPerView: 1, centeredSlides: true },
+            640: { slidesPerView: 2.2, centeredSlides: false },
+            800: { slidesPerView: 3.5, centeredSlides: false },
+            1100: { slidesPerView: 4.3, centeredSlides: false },
           }}
         >
           {items.map((item) => (
@@ -96,7 +96,7 @@ const CardSlider = () => {
                     height={600}
                     draggable={false}
                     className="w-full h-auto  select-none xxl:h-[500px] 
-                    xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[300px] "
+                    xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[400px] max-sm:h-[350px] "
                   />
                   <div className="py-4  select-none">
                     <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
