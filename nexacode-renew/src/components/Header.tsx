@@ -6,6 +6,13 @@ import { useState } from "react";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const menuItems = [
+    { label: "ABOUT", href: "/" },
+    { label: "PORTFOLIO", href: "/portfolio" },
+    { label: "BLOG", href: "/blogList" },
+    { label: "CONTACT", href: "/contactList" },
+  ];
   return (
     <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-2">
       {/* 로고 */}
@@ -14,19 +21,19 @@ export default function Header() {
       </a>
       {/* 네비게이션 */}
       <nav className="hidden lg:flex justify-center items-center gap-10">
-        <a href="/" className="nav-link">
-          ABOUT
-        </a>
-        <a href="/portfolio" className="nav-link">
-          PORTFOLIO
-        </a>
-
-        <a href="/blogList" className="nav-link">
-          BLOG
-        </a>
-        <a href="/contactList" className="nav-link">
-          CONTACT
-        </a>
+        {menuItems.map((item, idx) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className={`nav-link nav-underline transition-opacity duration-200 ${
+              hoveredIdx !== null && hoveredIdx !== idx ? "opacity-50" : ""
+            } ${hoveredIdx === idx ? "nav-underline-hovered" : ""}`}
+            onMouseEnter={() => setHoveredIdx(idx)}
+            onMouseLeave={() => setHoveredIdx(null)}
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
       {/* 오른쪽 버튼 그룹 */}
       <div className="flex items-center gap-2 justify-end absolute right-0 top-1/2 -translate-y-1/2 px-3">
@@ -64,35 +71,20 @@ export default function Header() {
             ×
           </button>
           <nav className="flex flex-col gap-8 text-2xl font-bold items-center">
-            <a
-              href="/"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
-              ABOUT
-            </a>
-            <a
-              href="/portfolio"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
-              PORTFOLIO
-            </a>
-
-            <a
-              href="/blogList"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
-              BLOG
-            </a>
-            <a
-              href="/contactList"
-              className="nav-link"
-              onClick={() => setIsModalOpen(false)}
-            >
-              CONTACT
-            </a>
+            {menuItems.map((item, idx) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`nav-link nav-underline transition-opacity duration-200 ${
+                  hoveredIdx !== null && hoveredIdx !== idx ? "opacity-50" : ""
+                } ${hoveredIdx === idx ? "nav-underline-hovered" : ""}`}
+                onClick={() => setIsModalOpen(false)}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
         </div>
       )}
