@@ -87,17 +87,18 @@ const CardSlider = () => {
         >
           {items.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing ">
+              <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
                 <div className="bg-white overflow-hidden text-start w-full">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.title}
-                    width={800}
-                    height={600}
-                    draggable={false}
-                    className="w-full h-auto  select-none xxl:h-[500px] 
-                    xl:h-[400px] lg:h-[350px] md:h-[360px] sm:h-[400px] max-sm:h-[350px] "
-                  />
+                  <div className="w-full aspect-square relative">
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.title}
+                      width={800}
+                      height={800}
+                      draggable={false}
+                      className="select-none  "
+                    />
+                  </div>
                   <div className="py-4  select-none">
                     <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
                       {item.title}
