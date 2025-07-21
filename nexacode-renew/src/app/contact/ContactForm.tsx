@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactForm() {
   return (
-    <form className="max-w-[600px] w-full pt-20 pb-20 ">
+    <form className="max-w-[600px] w-full pt-20 pb-20  ">
       {/* 1. 개발 영역 선택 */}
       <div className="pt-10 pb-8">
         <div className="font-bold text-[1.2rem] mb-2">
