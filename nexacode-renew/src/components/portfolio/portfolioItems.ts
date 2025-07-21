@@ -43,19 +43,19 @@ export const items = [
   },
   {
     id: 8,
-    imageSrc: "/images/portfolio3.webp",
+    imageSrc: "/images/nexaPortfolio3.png",
     title: "BENJAMINE SQUAD",
     description: "BRANDING – 2014",
   },
   {
     id: 9,
-    imageSrc: "/images/portfolio4.webp",
+    imageSrc: "/images/nexaPortfolio2.png",
     title: "DEESHAPE BUZZ",
     description: "BRANDING – 2014",
   },
   {
     id: 10,
-    imageSrc: "/images/portfolio5.webp",
+    imageSrc: "/images/nexaPortfolio4.png",
     title: "ROMEN BRAY DILBRO",
     description: "BRANDING – 2014",
   },
