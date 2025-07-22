@@ -29,7 +29,8 @@
     "slick-carousel": "^1.8.1",
     "split-type": "^0.3.4",
     "splitting": "^1.1.0",
-    "swiper": "^11.2.10"
+    "swiper": "^11.2.10",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@types/node": "^20",

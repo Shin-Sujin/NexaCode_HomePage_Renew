@@ -1,21 +1,22 @@
 "use client";
 
-import { blogList } from "@/src/components/blog/blogItem";
+import { useBlogStore } from "@/src/stores/store";
 
 import { useEffect } from "react";
 import feather from "feather-icons";
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 // import Header from "@/src/components/blog/Header";
 import FloatingLeft from "@/src/components/blog/FloatingLeft";
-import Content from "@/src/components/blog/Content";
 import FloatingRight from "@/src/components/blog/FloatingRight";
 import Footer from "@/src/components/blog/Footer";
 import Title from "@/src/components/blog/Title";
 import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
 import { steps } from "@/src/components/blog/blogSteps";
+import { BlogContent0 } from "@/src/components/blog/blogContents";
 
 export default function BlogPage({ params }: { params: { id: string } }) {
-  const blog = blogList[Number(params.id)];
+  const blog = useBlogStore((state) => state.blogList[Number(params.id)]);
+  const isFirst = Number(params.id) === 0;
 
   useEffect(() => {
     feather.replace(); // feather 아이콘 초기화dkdk
@@ -33,7 +34,18 @@ export default function BlogPage({ params }: { params: { id: string } }) {
       <main className="post">
         <div className="blog-container">
           <FloatingLeft />
-          <Content index={Number(params.id)} /> <FloatingRight steps={steps} />
+          <div style={{ flex: 1, padding: "2rem" }}>
+            {isFirst ? (
+              <BlogContent0 />
+            ) : (
+              <div className="content">
+                <article className="post-content">
+                  <div dangerouslySetInnerHTML={{ __html: blog.content }} />{" "}
+                </article>
+              </div>
+            )}
+          </div>
+          <FloatingRight steps={steps} />
         </div>
       </main>
       <Footer />

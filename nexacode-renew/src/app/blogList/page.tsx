@@ -3,12 +3,10 @@
 import { useState } from "react";
 import "@/src/styles/blog.css";
 import Footer from "@/src/components/blog/Footer";
-import { blogList } from "@/src/components/blog/blogItem";
+import { useBlogStore } from "@/src/stores/store";
 import BlogListItem from "@/src/components/blog/BlogListItem";
 import TextEditor from "@/src/components/blog/TextEditor"; // 위치에 맞게 수정
 import { Modal, Button, message } from "antd";
-import { addBlog } from "@/src/apis/blog";
-import { BlogContents } from "@/src/components/blog/blogContents";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
@@ -30,6 +28,7 @@ export default function BlogListPage() {
   const [keywords, setKeywords] = useState([]);
   const [blogStatus, setBlogStatus] = useState(null);
   const [editorKey] = useState<number>(0); // 이걸 추가!
+  const resetBlogList = useBlogStore((state) => state.resetBlogList);
 
   const openModalToCreate = () => {
     // 새 게시물을 추가하기 위해 모달을 여는 함수
@@ -48,30 +47,28 @@ export default function BlogListPage() {
     setBlogStatus(null);
   };
   const handleOk = async () => {
-    // 등록 로직
     try {
-      const response = await addBlog({
-        title,
-        content,
-        thumbnailPath,
-        keywords,
-        description,
-      });
-      // BlogContents 배열의 마지막 인덱스 구하기
-
-      // blogList에 새 글 추가
-      blogList.unshift({
+      const newBlog = {
         category: "Tech",
         title,
         desc: description,
-        date: "2025년 5월 23일",
+        date: new Date().toLocaleDateString("ko-KR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
         author: "nexacode",
         thumbnailPath,
-        content: BlogContents[0], // 항상 0번 인덱스
-      });
+        content, // HTML string
+        keywords,
+        description,
+      };
+      console.log("[등록되는 블로그 데이터]", newBlog);
+      // 실제 등록 로직: store에 추가
+      useBlogStore.getState().addBlog(newBlog);
       message.success("등록이 완료되었습니다");
-      setIsModalOpen(false); // 등록 후 모달 닫기
-      clearModalData(); // 입력값 초기화
+      setIsModalOpen(false);
+      clearModalData();
     } catch (error) {
       console.error("Error adding post:", error);
       message.error("잠시 후 다시 시도해주세요");
@@ -85,13 +82,21 @@ export default function BlogListPage() {
             <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
               넥사코드 이야기
             </h1>
-            <a
-              href="#"
-              onClick={openModalToCreate}
-              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition-colors font-semibold text-lg max-md:w-full max-md:text-base max-md:px-4 max-md:py-2"
-            >
-              작성하기
-            </a>
+            <div className="flex gap-2">
+              <a
+                href="#"
+                onClick={openModalToCreate}
+                className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition-colors font-semibold text-lg max-md:w-full max-md:text-base max-md:px-4 max-md:py-2"
+              >
+                작성하기
+              </a>
+              <button
+                onClick={resetBlogList}
+                className="inline-block bg-gray-200 text-gray-800 px-6 py-2 rounded-lg shadow hover:bg-gray-300 transition-colors font-semibold text-lg max-md:w-full max-md:text-base max-md:px-4 max-md:py-2"
+              >
+                블로그 초기화
+              </button>
+            </div>
           </div>
           <h2 className="text-xl text-gray-600 font-400 mb-20 max-md:text-lg max-md:px-3 ">
             넥사코드에서 세상의 변화를 <br className="max-md:block hidden" />
@@ -99,10 +104,9 @@ export default function BlogListPage() {
           </h2>
           <div className="space-y-6 max-md:space-y-2">
             <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
-            {blogList.map((item, idx) => {
-              // console.log("BlogListItem index:", idx); // index 콘솔 출력
-              return <BlogListItem key={idx} index={idx} {...item} />;
-            })}
+            {useBlogStore((state) => state.blogList).map((item, idx) => (
+              <BlogListItem key={idx} index={idx} {...item} />
+            ))}
           </div>
         </main>
       </main>
