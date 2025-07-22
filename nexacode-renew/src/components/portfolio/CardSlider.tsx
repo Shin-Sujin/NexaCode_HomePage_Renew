@@ -10,6 +10,8 @@ import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { items } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
 import "../../styles/swiper-custom.css";
+import Link from "next/link";
+
 const CardSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -92,26 +94,28 @@ const CardSlider = () => {
           {items.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
-                <div className="bg-white overflow-hidden text-start w-full">
-                  <div className="w-full aspect-square relative">
-                    <Image
-                      src={item.imageSrc}
-                      alt={item.title}
-                      width={800}
-                      height={800}
-                      draggable={false}
-                      className="select-none  "
-                    />
+                <Link href="/portfolioDetail">
+                  <div className="bg-white overflow-hidden text-start w-full">
+                    <div className="w-full aspect-square relative">
+                      <Image
+                        src={item.imageSrc}
+                        alt={item.title}
+                        width={800}
+                        height={800}
+                        draggable={false}
+                        className="select-none  "
+                      />
+                    </div>
+                    <div className="py-4  select-none">
+                      <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm pf_xs:ml-1">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="py-4  select-none">
-                    <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm pf_xs:ml-1">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+                </Link>
               </div>
             </SwiperSlide>
           ))}
