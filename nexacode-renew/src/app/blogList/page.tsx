@@ -8,6 +8,7 @@ import BlogListItem from "@/src/components/blog/BlogListItem";
 import TextEditor from "@/src/components/blog/TextEditor"; // 위치에 맞게 수정
 import { Modal, Button, message } from "antd";
 import { addBlog } from "@/src/apis/blog";
+import { BlogContents } from "@/src/components/blog/blogContents";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
@@ -56,6 +57,8 @@ export default function BlogListPage() {
         keywords,
         description,
       });
+      // BlogContents 배열의 마지막 인덱스 구하기
+
       // blogList에 새 글 추가
       blogList.unshift({
         category: "Tech",
@@ -64,7 +67,7 @@ export default function BlogListPage() {
         date: "2025년 5월 23일",
         author: "nexacode",
         thumbnailPath,
-        content: BlogContent1,
+        content: BlogContents[0], // 항상 0번 인덱스
       });
       message.success("등록이 완료되었습니다");
       setIsModalOpen(false); // 등록 후 모달 닫기
