@@ -1,5 +1,3 @@
-// pages/blog/index.tsx
-
 export const blogList = [
   {
     category: "Teamstory",
@@ -7,7 +5,7 @@ export const blogList = [
     desc: "길을 만들어가는 사람들 시리즈 | 네 번째 이야기",
     date: "2025년 6월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
   {
     category: "Tech",
@@ -15,7 +13,7 @@ export const blogList = [
     desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
     date: "2025년 6월 13일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_02.jpg",
+    thumbnailPath: "/images/blog/image_02.jpg",
   },
   {
     category: "Teamstory",
@@ -23,7 +21,7 @@ export const blogList = [
     desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
     date: "2025년 5월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_03.jpg",
+    thumbnailPath: "/images/blog/image_03.jpg",
   },
   {
     category: "Tech",
@@ -31,7 +29,7 @@ export const blogList = [
     desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
     date: "2025년 5월 23일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
   {
     category: "Teamstory",
@@ -39,7 +37,7 @@ export const blogList = [
     desc: "길을 만들어가는 사람들 시리즈 | 네 번째 이야기",
     date: "2025년 6월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
   {
     category: "Tech",
@@ -47,7 +45,7 @@ export const blogList = [
     desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
     date: "2025년 6월 13일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_02.jpg",
+    thumbnailPath: "/images/blog/image_02.jpg",
   },
   {
     category: "Teamstory",
@@ -55,7 +53,7 @@ export const blogList = [
     desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
     date: "2025년 5월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_03.jpg",
+    thumbnailPath: "/images/blog/image_03.jpg",
   },
   {
     category: "Tech",
@@ -63,7 +61,7 @@ export const blogList = [
     desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
     date: "2025년 5월 23일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
   {
     category: "Teamstory",
@@ -71,7 +69,7 @@ export const blogList = [
     desc: "길을 만들어가는 사람들 시리즈 | 네 번째 이야기",
     date: "2025년 6월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
   {
     category: "Tech",
@@ -79,7 +77,7 @@ export const blogList = [
     desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
     date: "2025년 6월 13일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_02.jpg",
+    thumbnailPath: "/images/blog/image_02.jpg",
   },
   {
     category: "Teamstory",
@@ -87,7 +85,7 @@ export const blogList = [
     desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
     date: "2025년 5월 30일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_03.jpg",
+    thumbnailPath: "/images/blog/image_03.jpg",
   },
   {
     category: "Tech",
@@ -95,6 +93,6 @@ export const blogList = [
     desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
     date: "2025년 5월 23일",
     author: "nexacode",
-    thumbnail: "/images/blog/image_01.jpg",
+    thumbnailPath: "/images/blog/image_01.jpg",
   },
 ];

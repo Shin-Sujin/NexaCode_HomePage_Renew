@@ -9,7 +9,7 @@ type Props = {
   desc: string;
   date: string;
   author: string;
-  thumbnail: string;
+  thumbnailPath: string;
 };
 
 export const BlogListItem = ({
@@ -18,7 +18,7 @@ export const BlogListItem = ({
   desc,
   date,
   author,
-  thumbnail,
+  thumbnailPath,
 }: Props) => {
   return (
     <Link href="/blog" className="block">
@@ -26,7 +26,7 @@ export const BlogListItem = ({
         {/* Image */}
         <div className="w-full md:w-[300px] h-[187px] max-w-[500px] max-h-[187px] flex-shrink-0 relative overflow-hidden md:order-2 order-1 max-md:w-full max-md:h-[187px] max-lg:h-[500px] ">
           <Image
-            src={thumbnail}
+            src={thumbnailPath}
             alt={title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
