@@ -20,6 +20,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     feather.replace(); // feather 아이콘 초기화dkdk
     console.log("전달받은 블로그 index:", params.id); // index 콘솔 출력
+    console.log("전달받은 블로그 content:", params.id); // index 콘솔 출력
   }, []);
 
   // blog가 undefined일 수 있으니 예외처리 필요
@@ -32,7 +33,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
       <main className="post">
         <div className="blog-container">
           <FloatingLeft />
-          <Content key={Number(params.id)} /> <FloatingRight steps={steps} />
+          <Content index={Number(params.id)} /> <FloatingRight steps={steps} />
         </div>
       </main>
       <Footer />

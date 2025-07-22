@@ -8,7 +8,6 @@ import BlogListItem from "@/src/components/blog/BlogListItem";
 import TextEditor from "@/src/components/blog/TextEditor"; // 위치에 맞게 수정
 import { Modal, Button, message } from "antd";
 import { addBlog } from "@/src/apis/blog";
-import { BlogContent1 } from "@/src/components/blog/blogContents";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
