@@ -119,8 +119,15 @@ export default function StartPage() {
                 </div>
               </div>
               {/* ================================ 3번 요소 ================================ */}
-              <div className="flex items-center justify-center flex-1 xl:items-start xl:justify-start xl:mt-16 max-md:flex-none max-xl:items-start max-xl:justify-start ">
-                <div className="text-white font-medium  text-[15rem] leading-[12rem] flex flex-col items-start  max-xl:text-[12rem] max-xl:leading-[10rem] max-xl:mt-20 max-lg:text-[10rem] max-lg:leading-[8rem] max-sm:text-[5rem] max-sm:leading-[4.5rem]  max-md:justify-start  max-md:text-[8rem] max-md:leading-[7rem] ">
+              <div
+                className="flex items-center justify-center flex-1 xl:items-start xl:justify-start xl:mt-16 
+              max-md:flex-none max-xl:items-start max-xl:justify-start "
+              >
+                <div
+                  className="text-white font-medium  text-[15rem] leading-[12rem] flex flex-col items-start  
+                max-xl:text-[12rem] max-xl:leading-[10rem] max-xl:mt-20 max-lg:text-[10rem] max-lg:leading-[8rem] 
+                max-sm:text-[5rem] max-sm:leading-[4.5rem]  max-md:justify-start  max-md:text-[8rem] max-md:leading-[7rem] "
+                >
                   {/* CREATIVE (첫 줄) */}
                   <div ref={creativeRef}>CREATIVE</div>
 
