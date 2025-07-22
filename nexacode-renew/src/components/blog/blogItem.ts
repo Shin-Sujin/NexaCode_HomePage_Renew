@@ -1,3 +1,7 @@
+import { BlogContent0 } from "./blogContents";
+
+// 필요한 만큼 추가
+
 export const blogList = [
   {
     category: "Teamstory",
@@ -6,30 +10,7 @@ export const blogList = [
     date: "2025년 6월 30일",
     author: "nexacode",
     thumbnailPath: "/images/blog/image_01.jpg",
-  },
-  {
-    category: "Tech",
-    title: "Ohouse Spark - 오늘의집의 통합 Spark 환경",
-    desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
-    date: "2025년 6월 13일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_02.jpg",
-  },
-  {
-    category: "Teamstory",
-    title: "정량과 정성 사이에서, 새로운 가능성을 발견한다는 것",
-    desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
-    date: "2025년 5월 30일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_03.jpg",
-  },
-  {
-    category: "Tech",
-    title: "오늘의집 Spark on Kubernetes 도입 및 개선 여정",
-    desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
-    date: "2025년 5월 23일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_01.jpg",
+    content: BlogContent0,
   },
   {
     category: "Teamstory",
@@ -38,30 +19,7 @@ export const blogList = [
     date: "2025년 6월 30일",
     author: "nexacode",
     thumbnailPath: "/images/blog/image_01.jpg",
-  },
-  {
-    category: "Tech",
-    title: "Ohouse Spark - 오늘의집의 통합 Spark 환경",
-    desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
-    date: "2025년 6월 13일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_02.jpg",
-  },
-  {
-    category: "Teamstory",
-    title: "정량과 정성 사이에서, 새로운 가능성을 발견한다는 것",
-    desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
-    date: "2025년 5월 30일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_03.jpg",
-  },
-  {
-    category: "Tech",
-    title: "오늘의집 Spark on Kubernetes 도입 및 개선 여정",
-    desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
-    date: "2025년 5월 23일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_01.jpg",
+    content: BlogContent0,
   },
   {
     category: "Teamstory",
@@ -70,29 +28,24 @@ export const blogList = [
     date: "2025년 6월 30일",
     author: "nexacode",
     thumbnailPath: "/images/blog/image_01.jpg",
-  },
-  {
-    category: "Tech",
-    title: "Ohouse Spark - 오늘의집의 통합 Spark 환경",
-    desc: "확장성과 높은 Spark 실행 환경을 위한 통합 이미지 플랫폼 구축기",
-    date: "2025년 6월 13일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_02.jpg",
+    content: BlogContent0,
   },
   {
     category: "Teamstory",
-    title: "정량과 정성 사이에서, 새로운 가능성을 발견한다는 것",
-    desc: "Trailblazer: 길을 만들어가는 사람들 시리즈 | 세 번째 이야기",
-    date: "2025년 5월 30일",
-    author: "nexacode",
-    thumbnailPath: "/images/blog/image_03.jpg",
-  },
-  {
-    category: "Tech",
-    title: "오늘의집 Spark on Kubernetes 도입 및 개선 여정",
-    desc: "탄력적이고 안정적인 Apache Spark 실행 환경을 만드는 전략과 인사이트",
-    date: "2025년 5월 23일",
+    title: "두개의 답에서, 또 다른 질문으로",
+    desc: "길을 만들어가는 사람들 시리즈 | 네 번째 이야기",
+    date: "2025년 6월 30일",
     author: "nexacode",
     thumbnailPath: "/images/blog/image_01.jpg",
+    content: BlogContent0,
+  },
+  {
+    category: "Teamstory",
+    title: "하나의 답에서, 또 다른 질문으로",
+    desc: "길을 만들어가는 사람들 시리즈 | 네 번째 이야기",
+    date: "2025년 6월 30일",
+    author: "nexacode",
+    thumbnailPath: "/images/blog/image_01.jpg",
+    content: BlogContent0,
   },
 ];

@@ -8,6 +8,7 @@ import BlogListItem from "@/src/components/blog/BlogListItem";
 import TextEditor from "@/src/components/blog/TextEditor"; // 위치에 맞게 수정
 import { Modal, Button, message } from "antd";
 import { addBlog } from "@/src/apis/blog";
+import { BlogContent1 } from "@/src/components/blog/blogContents";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
@@ -64,6 +65,7 @@ export default function BlogListPage() {
         date: "2025년 5월 23일",
         author: "nexacode",
         thumbnailPath,
+        content: BlogContent1,
       });
       message.success("등록이 완료되었습니다");
       setIsModalOpen(false); // 등록 후 모달 닫기
@@ -95,12 +97,14 @@ export default function BlogListPage() {
           </h2>
           <div className="space-y-6 max-md:space-y-2">
             <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
-            {blogList.map((item, idx) => (
-              <BlogListItem key={idx} {...item} />
-            ))}
+            {blogList.map((item, idx) => {
+              // console.log("BlogListItem index:", idx); // index 콘솔 출력
+              return <BlogListItem key={idx} index={idx} {...item} />;
+            })}
           </div>
         </main>
       </main>
+      {/* ================================= 작성하기 모달 ================================= */}
       <Modal
         open={isModalOpen}
         onOk={handleOk}
