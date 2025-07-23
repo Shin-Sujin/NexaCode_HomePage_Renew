@@ -19,6 +19,10 @@ interface BlogStore {
   blogList: BlogItem[];
   addBlog: (item: BlogItem) => void;
   resetBlogList: () => void;
+  selectedTime: string | null; // 추가
+  setSelectedTime: (time: string | null) => void; // 추가
+  selectedDate: string | null; // 추가
+  setSelectedDate: (date: string | null) => void; // 추가
 }
 
 export const useBlogStore = create<BlogStore>()(
@@ -69,6 +73,10 @@ export const useBlogStore = create<BlogStore>()(
             },
           ],
         })),
+      selectedTime: null, // 추가
+      setSelectedTime: (time: string | null) => set({ selectedTime: time }), // 추가
+      selectedDate: null, // 추가
+      setSelectedDate: (date: string | null) => set({ selectedDate: date }), // 추가
     }),
     {
       name: "blog-storage",

@@ -19,6 +19,7 @@ import {
   getColumnDetail,
   getPortfolioDetail,
 } from "@/src/apis/blog";
+import { useBlogStore } from "@/src/stores/store";
 
 const { Option } = Select;
 
@@ -343,6 +344,10 @@ const TextEditor = ({
     console.log("예약 발행 버튼 클릭됨");
   };
 
+  // 시간 값 가져오기
+  const selectedTime = useBlogStore((state) => state.selectedTime);
+  const selectedDate = useBlogStore((state) => state.selectedDate);
+
   return (
     <div className="modal-form form-inline">
       <Form layout="horizontal" form={form}>
@@ -423,9 +428,16 @@ const TextEditor = ({
             <Form.Item name="title" style={{ marginBottom: 0 }}>
               <BlogTimeSelect />
             </Form.Item>
-            <Button type="primary" onClick={handleReservePublish}>
-              예약 발행 하기
-            </Button>
+            <div className="flex flex-col gap-2">
+              <div>
+                {selectedTime
+                  ? `${selectedDate} ${selectedTime}`
+                  : "시간을 선택하세요."}
+              </div>
+              <Button type="primary" onClick={handleReservePublish}>
+                예약 발행 하기
+              </Button>
+            </div>
           </div>
         </Col>
         <Col>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useBlogStore } from "@/src/stores/store";
 
 const times = [
   "10:00",
@@ -24,7 +25,9 @@ const times = [
 ];
 
 export default function BlogTimeSelect() {
-  const [selected, setSelected] = useState<string | null>(null);
+  // const [selected, setSelected] = useState<string | null>(null);
+  const selected = useBlogStore((state) => state.selectedTime);
+  const setSelected = useBlogStore((state) => state.setSelectedTime);
 
   return (
     <div className="w-full max-w-xl mx-auto">
