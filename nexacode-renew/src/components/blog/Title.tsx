@@ -1,6 +1,10 @@
 import Image from "next/image";
-
-export default function Title() {
+interface TitleProps {
+  title: string;
+  date?: string;
+  // 필요하면 author, thumbnailPath 등도 추가
+}
+export default function Title({ title, date }: TitleProps) {
   return (
     <div
       className="relative w-full  h-[80vh] min-w-0 min-h-0 flex items-center justify-center xxl:h-[50vh]"
@@ -21,10 +25,10 @@ export default function Title() {
       {/* 텍스트 영역 */}
       <div className="relative z-10 flex flex-col items-center justify-end w-full h-full pb-20 max-pf_md:px-10">
         <h1 className="text-7xl md:text-5xl font-semibold text-white drop-shadow-lg mb-6 text-center max-pf_md:text-5xl max-pf_xs:text-3xl">
-          어플제작업체, C2C 앱 고민이라면 꼭 읽어보세요
+          {title}
         </h1>
         <div className="flex items-center text-white/90 text-lg drop-shadow">
-          <span>🗓️ 2023.04.20</span>
+          <span>🗓️ {date}</span>
         </div>
       </div>
     </div>

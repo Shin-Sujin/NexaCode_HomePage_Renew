@@ -36,7 +36,7 @@ const ibm = localFont({
   display: "swap",
 });
 
-export const chiron = localFont({
+const chiron = localFont({
   src: [
     {
       path: "./fonts/local/ChironHeiHK-Light.ttf",
@@ -89,14 +89,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${ibm.variable} ${chiron.variable}`}>
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
         />
       </head>
-      <body className={`${ibm.className} ${montserrat.className}`}>
+      <body
+        className={`${ibm.className} ${montserrat.className}${chiron.variable}`}
+      >
         <Header />
         <main>
           <Lenis>{children}</Lenis>
