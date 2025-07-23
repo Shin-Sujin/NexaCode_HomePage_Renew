@@ -10,7 +10,7 @@ import { Button, Upload, message, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Col, Form, Input } from "antd";
 import BlogCalendar from "@/src/components/blog/BlogCalendar";
-
+import BlogTimeSelect from "@/src/components/blog/BlogTimeSelect";
 import {
   addTagImage,
   // addThumbnailURL,
@@ -419,6 +419,9 @@ const TextEditor = ({
           >
             <Form.Item name="title" style={{ marginBottom: 0 }}>
               <BlogCalendar />
+            </Form.Item>
+            <Form.Item name="title" style={{ marginBottom: 0 }}>
+              <BlogTimeSelect />
             </Form.Item>
             <Button type="primary" onClick={handleReservePublish}>
               예약 발행 하기

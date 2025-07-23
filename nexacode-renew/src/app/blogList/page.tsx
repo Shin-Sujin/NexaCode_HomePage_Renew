@@ -155,7 +155,7 @@ export default function BlogListPage() {
           </Button>,
         ]}
       >
-        <div className="px-8 pt-8">
+        <div className="px-8 pt-8 max-h-[70vh] overflow-y-auto">
           <TextEditor
             contentType={"blog"}
             post={selectedPost?.id}
