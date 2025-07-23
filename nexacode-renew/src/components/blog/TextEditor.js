@@ -9,6 +9,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { Button, Upload, message, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Col, Form, Input } from "antd";
+import BlogCalendar from "@/src/components/blog/BlogCalendar";
 
 import {
   addTagImage,
@@ -336,6 +337,12 @@ const TextEditor = ({
     setKeywords(keywordsArray);
   };
 
+  // 예약 발행 버튼 핸들러 추가 (컴포넌트 내에)
+  const handleReservePublish = () => {
+    // TODO: 실제 예약 발행 로직 구현
+    console.log("예약 발행 버튼 클릭됨");
+  };
+
   return (
     <div className="modal-form form-inline">
       <Form layout="horizontal" form={form}>
@@ -400,7 +407,24 @@ const TextEditor = ({
             </Select>
           </Col>
         )}
-
+        <Col md={24}>
+          <h3 className="mb-2 text-base font-bold">예약 발행</h3>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "end",
+              gap: 15,
+              marginBottom: 20,
+            }}
+          >
+            <Form.Item name="title" style={{ marginBottom: 0 }}>
+              <BlogCalendar />
+            </Form.Item>
+            <Button type="primary" onClick={handleReservePublish}>
+              예약 발행 하기
+            </Button>
+          </div>
+        </Col>
         <Col>
           <Form.Item name="content">
             <CKEditor

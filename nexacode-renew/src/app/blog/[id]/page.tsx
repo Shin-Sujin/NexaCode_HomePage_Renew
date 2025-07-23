@@ -7,11 +7,11 @@ import feather from "feather-icons";
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 // import Header from "@/src/components/blog/Header";
 import FloatingLeft from "@/src/components/blog/FloatingLeft";
-import FloatingRight from "@/src/components/blog/FloatingRight";
+// import FloatingRight from "@/src/components/blog/FloatingRight";
 import Footer from "@/src/components/blog/Footer";
 import Title from "@/src/components/blog/Title";
 import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
-import { steps } from "@/src/components/blog/blogSteps";
+// import { steps } from "@/src/components/blog/blogSteps";
 import { BlogContent0 } from "@/src/components/blog/blogContents";
 
 export default function BlogPage({ params }: { params: { id: string } }) {
