@@ -861,6 +861,22 @@ h3 i,
 h3 strong {
   font-size: 20px;
 }
+
+code.language-c {
+  content: "Editor’s Note";
+  display: block;
+  background-color: #f3f4f6; /* Tailwind: bg-gray-100 */
+  border-radius: 1rem; /* Tailwind: rounded-2xl */
+  padding: 3rem; /* Tailwind: p-12 */
+  margin-bottom: 5rem; /* Tailwind: mb-20 */
+  font-size: 1.25rem; /* Tailwind: text-xl */
+  line-height: 1.75rem; /* Tailwind: leading-relaxed */
+  color: #4b5563; /* Tailwind: text-gray-600 */
+  display: block;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
 .ck.ck-content ul,
 .ck.ck-content ul li {
   list-style-type: inherit;
