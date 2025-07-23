@@ -1,4 +1,5 @@
 // <path-to-your-build>/src/ckeditor.ts or file containing editor configuration if you are integrating an editor from source.
+/* eslint-disable */
 "use client";
 
 // The editor creator to use.

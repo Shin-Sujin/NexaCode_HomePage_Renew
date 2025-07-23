@@ -12,7 +12,7 @@ const BlogWriteModal = () => {
   const [keywords, setKeywords] = useState([]);
   const [description, setDescription] = useState("");
   const [resetEditorForm, setResetEditorForm] = useState(false);
-  const [editorKey, setEditorKey] = useState<number>(0);
+  // const [editorKey, setEditorKey] = useState<number>(0);
 
   const handleRegister = async () => {
     try {
@@ -76,7 +76,7 @@ const BlogWriteModal = () => {
               setDescription={setDescription}
               resetEditorForm={resetEditorForm}
               setResetEditorForm={setResetEditorForm}
-              editorKey={editorKey}
+              // editorKey={editorKey}
               blogStatus={null}
               setBlogStatus={() => {}}
             />

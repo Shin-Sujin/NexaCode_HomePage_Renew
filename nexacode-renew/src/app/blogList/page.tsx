@@ -5,7 +5,11 @@ import "@/src/styles/blog.css";
 import Footer from "@/src/components/blog/Footer";
 import { useBlogStore } from "@/src/stores/store";
 import BlogListItem from "@/src/components/blog/BlogListItem";
-import TextEditor from "@/src/components/blog/TextEditor"; // 위치에 맞게 수정
+import dynamic from "next/dynamic";
+const TextEditor = dynamic(() => import("@/src/components/blog/TextEditor"), {
+  ssr: false,
+});
+// import TextEditor from "@/src/components/blog/TextEditor";
 import { Modal, Button, message } from "antd";
 
 // Define types for the blog list item and API response
@@ -27,7 +31,7 @@ export default function BlogListPage() {
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
   const [blogStatus, setBlogStatus] = useState(null);
-  const [editorKey] = useState<number>(0); // 이걸 추가!
+  // const [editorKey] = useState<number>(0); // 이걸 추가!
   const resetBlogList = useBlogStore((state) => state.resetBlogList);
 
   const openModalToCreate = () => {
@@ -162,7 +166,7 @@ export default function BlogListPage() {
             setDescription={setDescription}
             resetEditorForm={resetEditorForm}
             setResetEditorForm={setResetEditorForm}
-            editorKey={editorKey}
+            // editorKey={editorKey}
             blogStatus={blogStatus}
             setBlogStatus={setBlogStatus}
           />
