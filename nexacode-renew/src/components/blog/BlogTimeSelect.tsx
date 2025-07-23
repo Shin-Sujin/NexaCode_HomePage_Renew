@@ -30,8 +30,8 @@ export default function BlogTimeSelect() {
   const setSelected = useBlogStore((state) => state.setSelectedTime);
 
   return (
-    <div className="w-full max-w-xl mx-auto">
-      <h2 className="text-lg font-bold mb-2 text-gray-700">시간 선택</h2>
+    <div className="w-full max-w-xl mx-auto border border-gray-400 p-2">
+      <h2 className="text-base font-bold mb-3 text-gray-700">시간 선택</h2>
 
       <div className="grid grid-cols-5 gap-4">
         {times.map((time) => {

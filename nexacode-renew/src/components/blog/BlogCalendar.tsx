@@ -15,7 +15,7 @@ const BlogCalendar = () => {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
     const day = String(today.getDate()).padStart(2, "0");
-    setSelectedDate(`${year}년 ${month}월 ${day}일`);
+    setSelectedDate(`${year}. ${month}. ${day}.`);
   }, [setSelectedDate]);
 
   const onChangeCalendar = useCallback(() => {
@@ -30,7 +30,7 @@ const BlogCalendar = () => {
           const year = value.getFullYear();
           const month = String(value.getMonth() + 1).padStart(2, "0");
           const day = String(value.getDate()).padStart(2, "0");
-          setSelectedDate(`${year}년 ${month}월 ${day}일`);
+          setSelectedDate(`${year}. ${month}. ${day}.`);
         }}
       />
     </div>

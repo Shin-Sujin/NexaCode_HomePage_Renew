@@ -428,8 +428,9 @@ const TextEditor = ({
             <Form.Item name="title" style={{ marginBottom: 0 }}>
               <BlogTimeSelect />
             </Form.Item>
-            <div className="flex flex-col gap-2">
-              <div>
+            <div className="flex flex-col ml-2">
+              <div className=" text-sm font-bold">예약 발행 일시</div>
+              <div className="mb-3">
                 {selectedTime
                   ? `${selectedDate} ${selectedTime}`
                   : "시간을 선택하세요."}
