@@ -11,9 +11,9 @@ export default function FloatingLeft() {
   return (
     <aside className="floating left  max-pf_lg:hidden">
       <div className="buttons">
-        <button className="button">
+        {/* <button className="button">
           <i data-feather="message-circle"></i>3
-        </button>
+        </button> */}
         <button className="button">
           <i data-feather="heart"></i>9
         </button>

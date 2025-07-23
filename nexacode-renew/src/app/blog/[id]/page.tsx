@@ -45,7 +45,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
               </div>
             )}
           </div>
-          <FloatingRight steps={steps} />
+          {/* <FloatingRight steps={steps} /> */}
         </div>
       </main>
       <Footer />
