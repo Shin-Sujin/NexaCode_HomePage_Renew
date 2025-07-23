@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "^11.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^41.2.0",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.47",
     "@types/jquery": "^3.5.32",
-    "antd": "^5.26.6",
+    "antd": "^5.15.2",
     "autoprefixer": "^10.4.21",
+    "ckeditor5": "^46.0.0",
     "ckeditor5-custom-build": "file:ckeditor5",
     "counterup2": "^2.0.2",
     "feather-icons": "^4.29.2",
