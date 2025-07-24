@@ -35,23 +35,19 @@ export default function BlogPage({ params }: { params: { id: string } }) {
         <div className="blog-container">
           <FloatingLeft />
           <div style={{ flex: 1, padding: "2rem" }}>
-            {isFirst ? (
-              <BlogContent0 />
-            ) : (
-              <div className="content">
-                <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
-                  <h2 className="font-semibold text-2xl mb-6 text-gray-800">
-                    {blog.prologueTitle}
-                  </h2>
-                  <p className="text-xl leading-relaxed text-gray-600">
-                    {blog.prologueContent}
-                  </p>
-                </div>
-                <article className="post-content">
-                  <div dangerouslySetInnerHTML={{ __html: blog.content }} />{" "}
-                </article>
+            <div className="content">
+              <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
+                <h2 className="font-semibold text-2xl mb-6 text-gray-800">
+                  {blog.prologueTitle}
+                </h2>
+                <p className="text-xl leading-relaxed text-gray-600">
+                  {blog.prologueContent}
+                </p>
               </div>
-            )}
+              <article className="post-content">
+                <div dangerouslySetInnerHTML={{ __html: blog.content }} />{" "}
+              </article>
+            </div>
           </div>
           {/* <FloatingRight steps={steps} /> */}
         </div>

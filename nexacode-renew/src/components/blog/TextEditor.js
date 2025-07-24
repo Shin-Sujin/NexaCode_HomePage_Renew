@@ -408,8 +408,9 @@ const TextEditor = ({
           <Col md={24}>
             <h3 className="mb-2 text-base font-bold">Prologue</h3>
             <Form.Item name="prologueContent">
-              <Input
+              <Input.TextArea
                 placeholder="Editor's Note"
+                autoSize={{ minRows: 1, maxRows: 30 }}
                 onChange={(e) => setPrologueContent(e.target.value)}
               />
             </Form.Item>
