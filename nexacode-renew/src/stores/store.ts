@@ -13,12 +13,18 @@ export interface BlogItem {
   content: string | React.FC; // string 또는 컴포넌트
   keywords?: string[];
   description?: string;
+  prologueTitle?: string;
+  prologueContent?: string;
 }
 
 interface BlogStore {
   blogList: BlogItem[];
   addBlog: (item: BlogItem) => void;
   resetBlogList: () => void;
+  selectedTime: string | null; // 추가
+  setSelectedTime: (time: string | null) => void; // 추가
+  selectedDate: string | null; // 추가
+  setSelectedDate: (date: string | null) => void; // 추가
 }
 
 export const useBlogStore = create<BlogStore>()(
@@ -33,6 +39,8 @@ export const useBlogStore = create<BlogStore>()(
           author: "nexacode",
           thumbnailPath: "/images/blog/image_01.jpg",
           content: BlogContent0,
+          prologueTitle: "Editor's Note",
+          prologueContent: "Editor's Note",
         },
         {
           category: "Teamstory",
@@ -42,6 +50,8 @@ export const useBlogStore = create<BlogStore>()(
           author: "nexacode",
           thumbnailPath: "/images/blog/image_02.jpg",
           content: "<div>BlogContent1</div>",
+          prologueTitle: "Editor's Note",
+          prologueContent: "Editor's Note",
         },
       ],
       addBlog: (item: BlogItem) =>
@@ -57,6 +67,8 @@ export const useBlogStore = create<BlogStore>()(
               author: "nexacode",
               thumbnailPath: "/images/blog/image_01.jpg",
               content: BlogContent0,
+              prologueTitle: "Editor's Note",
+              prologueContent: "Editor's Note",
             },
             {
               category: "Teamstory",
@@ -66,9 +78,15 @@ export const useBlogStore = create<BlogStore>()(
               author: "nexacode",
               thumbnailPath: "/images/blog/image_02.jpg",
               content: "<div>BlogContent1</div>",
+              prologueTitle: "Editor's Note",
+              prologueContent: "Editor's Note",
             },
           ],
         })),
+      selectedTime: null, // 추가
+      setSelectedTime: (time: string | null) => set({ selectedTime: time }), // 추가
+      selectedDate: null, // 추가
+      setSelectedDate: (date: string | null) => set({ selectedDate: date }), // 추가
     }),
     {
       name: "blog-storage",

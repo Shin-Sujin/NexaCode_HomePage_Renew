@@ -29,7 +29,6 @@ export const BlogContent0 = () => (
         까닭입니다. 별 북간도에 프랑시스 덮어 있습니다. 우는 애기 아름다운 된
         하나에 가슴속에 너무나 있습니다.
       </p>
-
       <h2 id="step2">C2C 앱 개발, 왜 어렵고 왜 실패할까?</h2>
       <p>
         겨울이 아스라히 하나에 까닭입니다. 아직 아름다운 이 계집애들의 별에도
@@ -40,28 +39,15 @@ export const BlogContent0 = () => (
         거외다. 패, 잔디가 이름을 그리워 자랑처럼 너무나 까닭입니다. 위에도
         비둘기, 내 다하지 어머니, 쓸쓸함과 이 새워 이제 까닭입니다.
       </p>
-
       <div className="image">
-        <figure className="image__item">
-          <Image
-            src="/images/blog/image_01.jpg"
-            alt=""
-            width={500}
-            height={220}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />{" "}
-        </figure>
-        <figure className="image__item">
-          <Image
-            src="/images/blog/image_02.jpg"
-            alt=""
-            width={500}
-            height={220}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />{" "}
-        </figure>
-      </div>
-
+        <Image
+          src="/images/blog/image_01.jpg"
+          alt=""
+          width={500}
+          height={220}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />{" "}
+      </div>{" "}
       <p>
         많은 나의 된 이름과, 계십니다. 아직 써 하나의 계십니다. 풀이 옥 동경과
         지나고 하나에 남은 하나에 이름과, 듯합니다. 밤이 까닭이요, 멀리 어머니,
@@ -70,13 +56,20 @@ export const BlogContent0 = () => (
         하나에 내린 무엇인지 봅니다. 계절이 하나에 지나고 불러 오는 봅니다.
         청춘이 가난한 북간도에 별 버리었습니다.
       </p>
-
+      <div className="image">
+        <Image
+          src="/images/blog/image_02.jpg"
+          alt=""
+          width={500}
+          height={220}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />{" "}
+      </div>
       <blockquote>
         라이트/다크 모드 전환 버튼을 구현해 사용자가 원하는 테마를 선택할 수
         있도록 합니다. 이는 다양한 사용자 유형을 모두 만족시키는 가장 실용적인
         방법입니다.
       </blockquote>
-
       <h2 id="step3">실패한 앱, 다시 시작할 수 있을까?</h2>
       <p>
         남은 동경과 어머니, 속의 둘 별빛이 강아지, 아스라히 하나에 듯합니다.
@@ -96,7 +89,6 @@ export const BlogContent0 = () => (
         피어나듯이 잠, 별 계십니다. 못 이 나는 있습니다. 가득 가슴속에 다 나의
         별 하나에 봅니다.
       </p>
-
       {/* 해시태그 */}
       <div className="hashtag">
         <i data-feather="hash"></i>
@@ -106,7 +98,6 @@ export const BlogContent0 = () => (
           <li className="hashtag__item">#C2C</li>
         </ul>
       </div>
-
       {/* 글쓴이 */}
       <div className="author">
         <div className="author__top">
@@ -149,9 +140,8 @@ export const BlogContent0 = () => (
           어머니, 남은 많은 위에도 버리었습니다.
         </p>
       </div>
-
       {/* 추천글 */}
-      <div className="recommended">
+      {/* <div className="recommended">
         <h2 className="recommended__title">
           <i data-feather="file-text"></i>
           Recommended
@@ -203,7 +193,7 @@ export const BlogContent0 = () => (
             </h2>
           </div>
         </div>
-      </div>
+      </div> */}
     </article>
   </div>
 );

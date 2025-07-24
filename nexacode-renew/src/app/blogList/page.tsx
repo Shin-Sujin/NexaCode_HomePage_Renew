@@ -31,7 +31,9 @@ export default function BlogListPage() {
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
   const [blogStatus, setBlogStatus] = useState(null);
-  // const [editorKey] = useState<number>(0); // 이걸 추가!
+  const [prologueTitle, setPrologueTitle] = useState("");
+  const [prologueContent, setPrologueContent] = useState("");
+  const [editorKey] = useState<number>(0); // 이걸 추가!
   const resetBlogList = useBlogStore((state) => state.resetBlogList);
 
   const openModalToCreate = () => {
@@ -48,6 +50,8 @@ export default function BlogListPage() {
     setThumbnailPath("");
     setKeywords([]);
     setDescription("");
+    setPrologueTitle("");
+    setPrologueContent("");
     setBlogStatus(null);
   };
   const handleOk = async () => {
@@ -66,6 +70,8 @@ export default function BlogListPage() {
         content, // HTML string
         keywords,
         description,
+        prologueTitle,
+        prologueContent,
       };
       console.log("[등록되는 블로그 데이터]", newBlog);
       // 실제 등록 로직: store에 추가
@@ -147,6 +153,8 @@ export default function BlogListPage() {
               setThumbnailPath("");
               setKeywords([]);
               setDescription("");
+              setPrologueTitle("");
+              setPrologueContent("");
               setResetEditorForm(true); // Add this line
               setBlogStatus(null);
             }}
@@ -155,7 +163,7 @@ export default function BlogListPage() {
           </Button>,
         ]}
       >
-        <div className="px-8 pt-8">
+        <div className="px-8 pt-8 max-h-[70vh] overflow-y-auto">
           <TextEditor
             contentType={"blog"}
             post={selectedPost?.id}
@@ -164,9 +172,11 @@ export default function BlogListPage() {
             setThumbnailPath={setThumbnailPath}
             setKeywords={setKeywords}
             setDescription={setDescription}
+            setPrologueTitle={setPrologueTitle}
+            setPrologueContent={setPrologueContent}
             resetEditorForm={resetEditorForm}
             setResetEditorForm={setResetEditorForm}
-            // editorKey={editorKey}
+            editorKey={editorKey}
             blogStatus={blogStatus}
             setBlogStatus={setBlogStatus}
           />

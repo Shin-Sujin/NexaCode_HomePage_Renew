@@ -9,7 +9,8 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { Button, Upload, message, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Col, Form, Input } from "antd";
-
+import BlogCalendar from "@/src/components/blog/BlogCalendar";
+import BlogTimeSelect from "@/src/components/blog/BlogTimeSelect";
 import {
   addTagImage,
   // addThumbnailURL,
@@ -18,6 +19,7 @@ import {
   getColumnDetail,
   getPortfolioDetail,
 } from "@/src/apis/blog";
+import { useBlogStore } from "@/src/stores/store";
 
 const { Option } = Select;
 
@@ -27,6 +29,8 @@ const TextEditor = ({
   setData,
   setTitle,
   setDescription,
+  setPrologueTitle,
+  setPrologueContent,
   setKeywords,
   post,
   setThumbnailPath,
@@ -156,6 +160,8 @@ const TextEditor = ({
     setThumbnail(null); // If setThumbnail is a state setter for thumbnail, you'll want to nullify it
     setKeywords([]);
     setDescription("");
+    setPrologueTitle("");
+    setPrologueContent("");
     setBlogStatus(null);
   };
 
@@ -175,14 +181,22 @@ const TextEditor = ({
 
         if (data) {
           console.log(data);
-          const { title, content, description, keywords } = data.data;
+          const {
+            title,
+            content,
+            description,
+            keywords,
+            prologueTitle,
+            prologueContent,
+          } = data.data;
 
           setTitle(title);
           setData(content);
           setContent(content);
           setDescription(description);
           setKeywords(keywords);
-
+          setPrologueTitle(prologueTitle);
+          setPrologueContent(prologueContent);
           if (contentType !== "portfolio") {
             form.setFieldsValue({
               title,
@@ -326,6 +340,8 @@ const TextEditor = ({
       setThumbnail(null); // Clear thumbnail
       setKeywords([]);
       setDescription("");
+      setPrologueTitle("");
+      setPrologueContent("");
       setResetEditorForm(false); // Prevents infinite loop
     }
   }, [resetEditorForm, form]);
@@ -335,6 +351,16 @@ const TextEditor = ({
     const keywordsArray = e.target.value.split(",").map((kw) => kw.trim());
     setKeywords(keywordsArray);
   };
+
+  // 예약 발행 버튼 핸들러 추가 (컴포넌트 내에)
+  const handleReservePublish = () => {
+    // TODO: 실제 예약 발행 로직 구현
+    console.log("예약 발행 버튼 클릭됨");
+  };
+
+  // 시간 값 가져오기
+  const selectedTime = useBlogStore((state) => state.selectedTime);
+  const selectedDate = useBlogStore((state) => state.selectedDate);
 
   return (
     <div className="modal-form form-inline">
@@ -356,7 +382,6 @@ const TextEditor = ({
             </Form.Item>
           </Col>
         )}
-
         {contentType !== "portfolio" && (
           <Col md={24}>
             <h3 className="mb-2 text-base font-bold">설명</h3>
@@ -364,6 +389,29 @@ const TextEditor = ({
               <Input
                 placeholder="설명"
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+        )}{" "}
+        {contentType !== "portfolio" && (
+          <Col md={24}>
+            <h3 className="mb-2 text-base font-bold">Prologue 제목</h3>
+            <Form.Item name="prologueTitle">
+              <Input
+                placeholder="Editor's Note"
+                onChange={(e) => setPrologueTitle(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+        )}{" "}
+        {contentType !== "portfolio" && (
+          <Col md={24}>
+            <h3 className="mb-2 text-base font-bold">Prologue</h3>
+            <Form.Item name="prologueContent">
+              <Input.TextArea
+                placeholder="Editor's Note"
+                autoSize={{ minRows: 1, maxRows: 30 }}
+                onChange={(e) => setPrologueContent(e.target.value)}
               />
             </Form.Item>
           </Col>
@@ -400,7 +448,35 @@ const TextEditor = ({
             </Select>
           </Col>
         )}
-
+        <Col md={24}>
+          <h3 className="mb-2 text-base font-bold">예약 발행</h3>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "end",
+              gap: 15,
+              marginBottom: 20,
+            }}
+          >
+            <Form.Item name="title" style={{ marginBottom: 0 }}>
+              <BlogCalendar />
+            </Form.Item>
+            <Form.Item name="title" style={{ marginBottom: 0 }}>
+              <BlogTimeSelect />
+            </Form.Item>
+            <div className="flex flex-col ml-2">
+              <div className=" text-sm font-bold">예약 발행 일시</div>
+              <div className="mb-3">
+                {selectedTime
+                  ? `${selectedDate} ${selectedTime}`
+                  : "시간을 선택하세요."}
+              </div>
+              <Button type="primary" onClick={handleReservePublish}>
+                예약 발행 하기
+              </Button>
+            </div>
+          </div>
+        </Col>
         <Col>
           <Form.Item name="content">
             <CKEditor

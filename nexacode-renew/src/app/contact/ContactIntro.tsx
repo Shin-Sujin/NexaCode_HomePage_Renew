@@ -32,7 +32,7 @@ export default function ContactIntro() {
       <div className="flex flex-col items-center max-md:py-20">
         <h2
           ref={creativeRef}
-          className="text-9xl font-bold mb-3 mt-[60%] text-gray-100 max-xxl:mt-[-30%] max-md:mt-[40%]  max-md:text-6xl max-lg:text-6xl"
+          className="text-9xl font-bold mb-3 mt-[60%] text-gray-100 max-xxl:mt-[20%] max-md:mt-[40%] max-xxl:text-8xl max-md:text-6xl max-lg:text-5xl "
         >
           Contact us
         </h2>
