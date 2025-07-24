@@ -27,52 +27,60 @@ export default function ContactPage() {
           </div>
           {/* 문의 리스트 테이블 */}
           <div className="overflow-x-auto bg-white max-md:hidden">
-            <table className="min-w-full text-left border-separate border-spacing-y-2 border-t-2 ">
+            <table className="min-w-full text-left border-separate border-spacing-y-2  ">
               <thead>
                 <tr>
-                  <th className="py-4 font-semibold text-lg w-32 text-left ">
+                  <th className="pl-4 py-4 font-semibold text-lg w-32 text-left border-b-2 border-t-2 border-gray-500">
                     분류
                   </th>
-                  <th className="py-4 font-semibold text-lg text-left">
+                  <th className="py-4 font-semibold text-lg text-left border-b-2 border-t-2 border-gray-500">
                     서비스 요약
                   </th>
-                  <th className="py-4 font-semibold text-lg w-24 text-left ">
+                  <th className="py-4 font-semibold text-lg w-24 text-center border-b-2 border-t-2 border-gray-500">
                     성함
                   </th>
-                  <th className="py-4 font-semibold text-lg w-32 text-left ">
-                    상세보기
+                  <th className="py-4 font-semibold text-lg w-32 text-center border-b-2 border-t-2 border-gray-500">
+                    답변여부
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {contactSampleData.map((item) => (
-                  <tr key={item.id}>
-                    <td className="py-4 text-base text-gray-800 align-middle ">
-                      {Array.isArray(item.answers.area)
-                        ? item.answers.area.join(", ")
-                        : item.answers.area}
-                    </td>
-                    <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
-                      <Link
-                        href={`/contact/${item.id}`}
-                        className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
-                      >
-                        {item.answers.serviceIntro}
-                      </Link>
-                    </td>
-                    <td className="py-4 text-base text-gray-800 align-middle">
-                      {item.answers.name}
-                    </td>
-                    <td className="py-4 text-base align-middle">
-                      <Link
-                        href={`/contact/${item.id}`}
-                        className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300"
-                      >
-                        상세보기
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {contactSampleData
+                  .slice()
+                  .reverse()
+                  .map((item) => (
+                    <tr key={item.id}>
+                      <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
+                        {Array.isArray(item.answers.area)
+                          ? item.answers.area.join(", ")
+                          : item.answers.area}
+                      </td>
+                      <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
+                        <Link
+                          href={`/contact/${item.id}`}
+                          className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
+                        >
+                          {item.answers.serviceIntro}
+                        </Link>
+                      </td>
+                      <td className="py-4 text-base text-gray-800 align-middle text-center">
+                        {item.answers.name}
+                      </td>
+                      <td className="py-4 text-sm align-middle text-center">
+                        <div>
+                          {item.status === "답변 완료" ? (
+                            <span className="bg-gray-300 text-black px-1 py-1">
+                              답변 완료
+                            </span>
+                          ) : (
+                            <span className="bg-gray-700 text-gray-200 px-3 py-1 ">
+                              대기중
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

@@ -268,9 +268,9 @@ export default function ContactForm() {
           <Link
             href="/contact"
             type="submit"
-            className="bg-gradient-to-r from-[#6C47FF] to-[#7B3FE4] text-white border-none rounded-[6px] px-8 py-2 font-semibold text-[1rem]"
+            className="bg-gradient-to-r from-[#6C47FF] to-[#7B3FE4] text-white border-none rounded-[6px] px-8 py-2 font-medium text-[1rem]"
           >
-            제출
+            문의하기
           </Link>
           <div className=" text-gray-600 my-5 font-medium text-[1rem] text-center">
             내 프로젝트에 대해 궁금한 점이 있으세요?

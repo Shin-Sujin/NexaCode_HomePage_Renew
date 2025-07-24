@@ -90,16 +90,18 @@ export default function ContactAnswerPage({ params }: Props) {
                 {item.type === "textServiceIntroArea" && (
                   <textarea
                     name={item.name}
+                    placeholder="답변 내용"
                     value={typeof value === "string" ? value : ""}
                     readOnly
                     disabled
-                    rows={2}
+                    rows={3}
                     className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
                   />
                 )}
                 {item.type === "textarea" && (
                   <textarea
                     name={item.name}
+                    placeholder="답변 내용"
                     value={typeof value === "string" ? value : ""}
                     readOnly
                     disabled
