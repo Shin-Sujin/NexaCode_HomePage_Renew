@@ -29,6 +29,8 @@ const TextEditor = ({
   setData,
   setTitle,
   setDescription,
+  setPrologueTitle,
+  setPrologueContent,
   setKeywords,
   post,
   setThumbnailPath,
@@ -158,6 +160,8 @@ const TextEditor = ({
     setThumbnail(null); // If setThumbnail is a state setter for thumbnail, you'll want to nullify it
     setKeywords([]);
     setDescription("");
+    setPrologueTitle("");
+    setPrologueContent("");
     setBlogStatus(null);
   };
 
@@ -177,14 +181,22 @@ const TextEditor = ({
 
         if (data) {
           console.log(data);
-          const { title, content, description, keywords } = data.data;
+          const {
+            title,
+            content,
+            description,
+            keywords,
+            prologueTitle,
+            prologueContent,
+          } = data.data;
 
           setTitle(title);
           setData(content);
           setContent(content);
           setDescription(description);
           setKeywords(keywords);
-
+          setPrologueTitle(prologueTitle);
+          setPrologueContent(prologueContent);
           if (contentType !== "portfolio") {
             form.setFieldsValue({
               title,
@@ -328,6 +340,8 @@ const TextEditor = ({
       setThumbnail(null); // Clear thumbnail
       setKeywords([]);
       setDescription("");
+      setPrologueTitle("");
+      setPrologueContent("");
       setResetEditorForm(false); // Prevents infinite loop
     }
   }, [resetEditorForm, form]);
@@ -368,7 +382,6 @@ const TextEditor = ({
             </Form.Item>
           </Col>
         )}
-
         {contentType !== "portfolio" && (
           <Col md={24}>
             <h3 className="mb-2 text-base font-bold">설명</h3>
@@ -376,6 +389,28 @@ const TextEditor = ({
               <Input
                 placeholder="설명"
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+        )}{" "}
+        {contentType !== "portfolio" && (
+          <Col md={24}>
+            <h3 className="mb-2 text-base font-bold">Prologue 제목</h3>
+            <Form.Item name="prologueTitle">
+              <Input
+                placeholder="Editor's Note"
+                onChange={(e) => setPrologueTitle(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+        )}{" "}
+        {contentType !== "portfolio" && (
+          <Col md={24}>
+            <h3 className="mb-2 text-base font-bold">Prologue</h3>
+            <Form.Item name="prologueContent">
+              <Input
+                placeholder="Editor's Note"
+                onChange={(e) => setPrologueContent(e.target.value)}
               />
             </Form.Item>
           </Col>

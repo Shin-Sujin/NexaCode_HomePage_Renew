@@ -11,6 +11,8 @@ const BlogWriteModal = () => {
   const [thumbnailPath, setThumbnailPath] = useState("");
   const [keywords, setKeywords] = useState([]);
   const [description, setDescription] = useState("");
+  const [prologueTitle, setPrologueTitle] = useState("");
+  const [prologueContent, setPrologueContent] = useState("");
   const [resetEditorForm, setResetEditorForm] = useState(false);
   // const [editorKey, setEditorKey] = useState<number>(0);
 
@@ -22,6 +24,8 @@ const BlogWriteModal = () => {
         thumbnailPath,
         keywords,
         description,
+        prologueTitle,
+        prologueContent,
       });
       alert("가짜 등록 완료됨 ✅");
       setIsOpen(false);
@@ -38,6 +42,8 @@ const BlogWriteModal = () => {
     setThumbnailPath("");
     setKeywords([]);
     setDescription("");
+    setPrologueTitle("");
+    setPrologueContent("");
     setResetEditorForm(true);
   };
 
@@ -74,6 +80,8 @@ const BlogWriteModal = () => {
               setThumbnailPath={setThumbnailPath}
               setKeywords={setKeywords}
               setDescription={setDescription}
+              setPrologueTitle={setPrologueTitle}
+              setPrologueContent={setPrologueContent}
               resetEditorForm={resetEditorForm}
               setResetEditorForm={setResetEditorForm}
               // editorKey={editorKey}
