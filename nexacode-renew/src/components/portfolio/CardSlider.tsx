@@ -73,7 +73,7 @@ const CardSlider = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           autoplay={{
-            delay: 2000,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           onSwiper={(swiper) => {
