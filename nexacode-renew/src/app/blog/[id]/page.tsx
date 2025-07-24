@@ -17,10 +17,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
   const blog = useBlogStore((state) => state.blogList[Number(params.id)]);
 
   useEffect(() => {
-    feather.replace(); // feather 아이콘 초기화dkdk
-    console.log("전달받은 블로그 index:", params.id); // index 콘솔 출력
-    console.log("전달받은 블로그 content:", params.id); // index 콘솔 출력
-    console.log("해당 블로그의 키워드:", blog?.keywords);
+    feather.replace(); // feather 아이콘 초기화
   }, [blog]);
 
   // blog가 undefined일 수 있으니 예외처리 필요
