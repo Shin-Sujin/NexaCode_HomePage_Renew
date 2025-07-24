@@ -26,7 +26,7 @@ export default function ContactPage() {
           <ContactIntro />
         </div>
         <div
-          className="w-[45vw] flex items-start justify-start px-10 max-md:w-full overflow-y-scroll  max-md:overflow-y-auto"
+          className="w-[45vw] flex items-start justify-start px-10 max-md:w-full max-md:overflow-y-auto"
           style={{ overflowY: "scroll", height: "100vh" }}
           onWheel={(e) => {
             e.currentTarget.scrollTop += e.deltaY;
