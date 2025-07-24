@@ -71,6 +71,7 @@ const CardSlider = () => {
         onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
       >
         <Swiper
+          className="min-h-[400px]"
           modules={[Navigation, Pagination, Autoplay]}
           autoplay={{
             delay: 3000,
