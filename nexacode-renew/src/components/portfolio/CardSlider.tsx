@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
-import { items } from "./portfolioItems";
+import { portfolioItems } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
 import "../../styles/swiper-custom.css";
 import Link from "next/link";
@@ -73,8 +73,8 @@ const CardSlider = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           autoplay={{
-            delay: 2000, // ✅ 3초마다 자동 넘김
-            disableOnInteraction: false, // 사용자 조작 후에도 계속 자동 재생
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -91,10 +91,15 @@ const CardSlider = () => {
             1100: { slidesPerView: 4.3, centeredSlides: false },
           }}
         >
-          {items.map((item) => (
+          {portfolioItems.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
-                <Link href="/portfolioDetail">
+                <Link
+                  href={`/portfolio/${item.id}`}
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                >
+                  {" "}
                   <div className="bg-white overflow-hidden text-start w-full">
                     <div className="w-full aspect-square relative">
                       <Image
@@ -103,11 +108,10 @@ const CardSlider = () => {
                         width={800}
                         height={800}
                         draggable={false}
-                        className="select-none  "
                       />
                     </div>
                     <div className="py-4  select-none">
-                      <h3 className="text-2xl text-gray-700 font-500 mb-2 pf_xs:text-3xl">
+                      <h3 className="text-2xl text-gray-700 font-500 mb-2">
                         {item.title}
                       </h3>
                       <p className="text-gray-500 text-sm pf_xs:ml-1">

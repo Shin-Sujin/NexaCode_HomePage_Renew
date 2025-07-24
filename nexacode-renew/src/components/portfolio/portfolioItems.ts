@@ -1,4 +1,4 @@
-export const items = [
+export const portfolioItems = [
   {
     id: 1,
     imageSrc: "/images/nextPortfoilo.png",

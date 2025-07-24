@@ -10,8 +10,8 @@ export default function Header() {
   const menuItems = [
     { label: "ABOUT", href: "/" },
     { label: "PORTFOLIO", href: "/portfolio" },
-    { label: "BLOG", href: "/blogList" },
-    { label: "CONTACT", href: "/contactList" },
+    { label: "BLOG", href: "/blog" },
+    { label: "CONTACT", href: "/contact" },
   ];
   return (
     <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-2">
