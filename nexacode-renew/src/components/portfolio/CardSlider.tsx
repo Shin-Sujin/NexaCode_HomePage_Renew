@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
-import { items } from "./portfolioItems";
+import { portfolioItems } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
 import "../../styles/swiper-custom.css";
 import Link from "next/link";
@@ -91,11 +91,11 @@ const CardSlider = () => {
             1100: { slidesPerView: 4.3, centeredSlides: false },
           }}
         >
-          {items.map((item) => (
+          {portfolioItems.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
                 <Link
-                  href="/portfolioDetail"
+                  href={`/portfolio/${item.id}`}
                   draggable={false}
                   onDragStart={(e) => e.preventDefault()}
                 >
