@@ -19,9 +19,11 @@ export default function ContactListPage() {
         <div className="relative z-10 w-full max-w-6xl  mt-24 ">
           {/* 상단 제목 및 버튼 */}
           <div className="flex justify-end mb-8">
-            <button className="bg-gray-800 text-white px-8 py-5 rounded-none text-lg font-medium hover:bg-gray-800 transition max-md:w-full max-md:mb-10">
-              무료 상담 신청
-            </button>
+            <Link href="/contact">
+              <button className="bg-gray-800 text-white px-8 py-5 rounded-none text-lg font-medium hover:bg-gray-800 transition max-md:w-full max-md:mb-10">
+                무료 상담 신청
+              </button>
+            </Link>
           </div>
           {/* 문의 리스트 테이블 */}
           <div className="overflow-x-auto bg-white max-md:hidden">

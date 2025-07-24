@@ -1,44 +1,28 @@
 "use client";
 
-import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
-import Footer from "@/src/components/blog/Footer";
+"use client";
 
-import ContactIntro from "./ContactIntro";
+import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
+
 import ContactForm from "./ContactForm";
 
 export default function ContactPage() {
   return (
-    <div
-      className="relative w-screen min-h-screen  overflow-hidden"
-      style={{ margin: 0, padding: 0 }}
-    >
-      {/* 배경 레이어 */}
-      <div className="absolute top-0 left-0 w-full h-full flex z-0 pointer-events-none">
-        <div className="w-[55vw] h-full bg-gradient-to-b from-[#23272f] via-[#23272b] to-[#18181b] max-md:bg-white max-md:bg-none max-md:w-full"></div>
-        <div className="w-[45vw] h-full bg-white max-md:bg-none max-md:w-full"></div>
-      </div>
-      {/* 실제 콘텐츠 */}
-      <div className="relative flex w-screen min-h-screen z-10 max-md:flex-col">
-        <div
-          className="w-[55vw] flex items-center justify-center px-10 max-md:w-full max-md:bg-black overflow-hidden max-md:overflow-y-scroll max-md:h-[50vh]"
-          style={{ overflowY: "hidden" }}
-        >
-          <ContactIntro />
+    <main className="w-full max-w-full overflow-x-hidden m-0 p-0">
+      <main className="max-w-5xl mx-auto px-4 pt-48 max-md:w-full max-md:pb-20">
+        <div className="flex items-center justify-between mb-6 max-md:flex-col max-md:items-start max-md:gap-4">
+          <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
+            문의작성
+          </h1>
         </div>
-        <div
-          className="w-[45vw] flex items-start justify-start px-10 max-md:w-full max-md:overflow-y-auto"
-          style={{ overflowY: "scroll", height: "100vh" }}
-          onWheel={(e) => {
-            e.currentTarget.scrollTop += e.deltaY;
-            e.preventDefault();
-          }}
-        >
+        <h2 className="text-xl text-gray-600 font-400 mb-10 max-md:text-lg max-md:px-3 ">
+          무엇이든 물어보세요, 상세하게 답변하겠습니다.
+        </h2>
+        <div className="space-y-6 max-md:space-y-2">
+          <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
           <ContactForm />
         </div>
-      </div>
-      <div className="hidden max-md:block">
-        <Footer />
-      </div>
-    </div>
+      </main>
+    </main>
   );
 }
