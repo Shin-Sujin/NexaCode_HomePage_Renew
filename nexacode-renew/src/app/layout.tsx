@@ -91,10 +91,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-        />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${ibm.className} ${montserrat.className}${chiron.variable}`}
