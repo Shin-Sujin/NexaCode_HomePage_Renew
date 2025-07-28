@@ -63,7 +63,7 @@ const CardSlider = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen overflow-hidden flex items-center justify-center">
+    <div className="relative w-full flex items-center justify-center">
       <div className="w-full max-w-[200rem] px-4">
         {" "}
         <div
