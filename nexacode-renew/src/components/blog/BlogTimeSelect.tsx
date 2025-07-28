@@ -27,7 +27,7 @@ const times = [
 export default function BlogTimeSelect() {
   // const [selected, setSelected] = useState<string | null>(null);
   const selected = useBlogStore((state) => state.selectedTime);
-  const setSelected = useBlogStore((state) => state.setSelectedTime);
+  const setSelectedTime = useBlogStore((state) => state.setSelectedTime);
 
   return (
     <div className="w-full max-w-xl mx-auto border border-gray-400 p-2">
@@ -40,7 +40,7 @@ export default function BlogTimeSelect() {
             <button
               key={time}
               type="button"
-              onClick={() => setSelected(time)}
+              onClick={() => setSelectedTime(time)}
               className={`
                 py-3 px-2 rounded-lg border
                 text-xs font-semibold

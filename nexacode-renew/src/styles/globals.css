@@ -915,3 +915,9 @@ code.language-c {
   font-weight: 700;
   line-height: 20px;
 }
+
+/* 캘린더 관련 스타일 */
+.selected-red {
+  background-color: #ff8989 !important; /* tailwind red-500 */
+  color: #fff !important;
+}

@@ -90,6 +90,16 @@ export const useBlogStore = create<BlogStore>()(
     }),
     {
       name: "blog-storage",
+      partialize: (state) =>
+        Object.fromEntries(
+          Object.entries(state).filter(
+            ([key]) =>
+              key !== "selectedTime" &&
+              key !== "setSelectedTime" &&
+              key !== "selectedDate" &&
+              key !== "setSelectedDate"
+          )
+        ),
     }
   )
 );

@@ -139,6 +139,7 @@ const TextEditor = ({
   // const [editorData, setEditorData] = useState("");
   const [content, setContent] = useState(""); // Add this line
   const [thumbnail, setThumbnail] = useState(null);
+  const [isReserved, setIsReserved] = useState(false); // 예약 발행 버튼 색상 상태
 
   const onReadyEditor = (editor) => {
     if (!editor) {
@@ -354,6 +355,7 @@ const TextEditor = ({
 
   // 예약 발행 버튼 핸들러 추가 (컴포넌트 내에)
   const handleReservePublish = () => {
+    setIsReserved(true); // 클릭 시 파란색으로 변경
     // TODO: 실제 예약 발행 로직 구현
     console.log("예약 발행 버튼 클릭됨");
   };
@@ -471,9 +473,21 @@ const TextEditor = ({
                   ? `${selectedDate} ${selectedTime}`
                   : "시간을 선택하세요."}
               </div>
-              <Button type="primary" onClick={handleReservePublish}>
-                예약 발행 하기
+              <Button
+                type={isReserved ? "primary" : "default"}
+                onClick={handleReservePublish}
+              >
+                {isReserved ? "예약 발행" : "예약 발행 하기"}
               </Button>
+              {isReserved && (
+                <Button
+                  style={{ marginTop: 8 }}
+                  danger
+                  onClick={() => setIsReserved(false)}
+                >
+                  예약 취소하기
+                </Button>
+              )}
             </div>
           </div>
         </Col>
@@ -493,6 +507,11 @@ const TextEditor = ({
           </Form.Item>
         </Col>
       </Form>
+      {isReserved && (
+        <div className="text-sm text-gray-500">
+          이 글은 {selectedDate} {selectedTime}에 발행됩니다.
+        </div>
+      )}
     </div>
   );
 };
