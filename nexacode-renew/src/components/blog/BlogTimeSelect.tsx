@@ -24,7 +24,12 @@ const times = [
   "19:30",
 ];
 
-export default function BlogTimeSelect() {
+interface BlogTimeSelectProps {
+  disabled?: boolean;
+}
+export default function BlogTimeSelect({
+  disabled = false,
+}: BlogTimeSelectProps) {
   // const [selected, setSelected] = useState<string | null>(null);
   const selected = useBlogStore((state) => state.selectedTime);
   const setSelectedTime = useBlogStore((state) => state.setSelectedTime);
@@ -40,16 +45,16 @@ export default function BlogTimeSelect() {
             <button
               key={time}
               type="button"
-              onClick={() => setSelectedTime(time)}
+              disabled={disabled}
+              onClick={disabled ? undefined : () => setSelectedTime(time)}
               className={`
                 py-3 px-2 rounded-lg border
                 text-xs font-semibold
                 transition bg-white text-gray-700 border-gray-200 hover:border-gray-400
-                   
-                }
+                ${disabled ? "opacity-50 cursor-not-allowed" : ""}
                 ${
                   isSelected
-                    ? "border-red-300 text-gray-900 shadow bg-red-100"
+                    ? "border-red-500 bg-red-200 text-gray-900 shadow bg-red-100"
                     : ""
                 }
               `}

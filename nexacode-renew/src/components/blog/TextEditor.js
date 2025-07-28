@@ -364,6 +364,33 @@ const TextEditor = ({
   const selectedTime = useBlogStore((state) => state.selectedTime);
   const selectedDate = useBlogStore((state) => state.selectedDate);
 
+  // 날짜와 시간 포맷 변환 함수
+  function formatKoreanDateTime(dateStr, timeStr) {
+    if (!dateStr || !timeStr) return "";
+    // dateStr: '2025. 07. 22.' 또는 '2025. 7. 22.'
+    // timeStr: '16:00' 또는 '04:00'
+    // 1. 날짜 파싱
+    const dateMatch = dateStr.match(/(\d{4})\. ?(\d{1,2})\. ?(\d{1,2})\./);
+    if (!dateMatch) return dateStr + " " + timeStr;
+    const year = dateMatch[1];
+    const month = parseInt(dateMatch[2], 10);
+    const day = parseInt(dateMatch[3], 10);
+    // 2. 시간 파싱
+    const [hourStr, minuteStr] = timeStr.split(":");
+    let hour = parseInt(hourStr, 10);
+    const minute = parseInt(minuteStr, 10);
+    let period = "오전";
+    if (hour === 0) {
+      hour = 12;
+    } else if (hour === 12) {
+      period = "오후";
+    } else if (hour > 12) {
+      period = "오후";
+      hour = hour - 12;
+    }
+    return `${year}년 ${month}월 ${day}일 ${period} ${hour}시`;
+  }
+
   return (
     <div className="modal-form form-inline">
       <Form layout="horizontal" form={form}>
@@ -461,10 +488,10 @@ const TextEditor = ({
             }}
           >
             <Form.Item name="title" style={{ marginBottom: 0 }}>
-              <BlogCalendar />
+              <BlogCalendar disabled={isReserved} />
             </Form.Item>
             <Form.Item name="title" style={{ marginBottom: 0 }}>
-              <BlogTimeSelect />
+              <BlogTimeSelect disabled={isReserved} />
             </Form.Item>
             <div className="flex flex-col ml-2">
               <div className=" text-sm font-bold">예약 발행 일시</div>
@@ -473,20 +500,24 @@ const TextEditor = ({
                   ? `${selectedDate} ${selectedTime}`
                   : "시간을 선택하세요."}
               </div>
-              <Button
-                type={isReserved ? "primary" : "default"}
-                onClick={handleReservePublish}
-              >
-                {isReserved ? "예약 발행" : "예약 발행 하기"}
-              </Button>
-              {isReserved && (
-                <Button
-                  style={{ marginTop: 8 }}
-                  danger
-                  onClick={() => setIsReserved(false)}
-                >
-                  예약 취소하기
-                </Button>
+              {selectedTime && (
+                <>
+                  <Button
+                    type={isReserved ? "primary" : "default"}
+                    onClick={handleReservePublish}
+                  >
+                    {isReserved ? "예약 발행" : "예약 발행 하기"}
+                  </Button>
+                  {isReserved && (
+                    <Button
+                      style={{ marginTop: 8 }}
+                      danger
+                      onClick={() => setIsReserved(false)}
+                    >
+                      예약 취소하기
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -508,8 +539,9 @@ const TextEditor = ({
         </Col>
       </Form>
       {isReserved && (
-        <div className="text-sm text-gray-500">
-          이 글은 {selectedDate} {selectedTime}에 발행됩니다.
+        <div className="text-sm text-gray-500 text-right ">
+          이 글은 {formatKoreanDateTime(selectedDate, selectedTime)}에
+          발행됩니다.
         </div>
       )}
     </div>
