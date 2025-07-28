@@ -21,6 +21,7 @@ type BlogListItem = {
   thumbnailPath: string;
   content: string;
   createdAt: string;
+  description: string;
 };
 
 interface BlogApiResponse {
@@ -166,7 +167,7 @@ export default function BlogListPage() {
                   key={item.id}
                   index={item.id}
                   category="Tech"
-                  desc="설명 고정"
+                  description={item.description}
                   author="nexacode"
                   date={item.createdAt}
                   title={item.title}

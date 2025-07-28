@@ -209,16 +209,18 @@ h3 strong {
     max-width: calc(50% - 8px);
   }
 }
-
+figure.table {
+  width: 100% !important;
+}
 .table {
   display: flex;
   justify-content: center;
-}
-.table table {
   width: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 .table table th {
   font-weight: 700;
@@ -234,4 +236,14 @@ h3 strong {
 .table table th {
   overflow-wrap: break-word;
   position: relative;
+}
+
+.ck-table-resized {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.col {
+  width: 100%;
 }
