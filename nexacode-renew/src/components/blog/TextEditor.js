@@ -388,7 +388,8 @@ const TextEditor = ({
       period = "오후";
       hour = hour - 12;
     }
-    return `${year}년 ${month}월 ${day}일 ${period} ${hour}시`;
+    const minuteText = minute !== 0 ? ` ${minute}분` : "";
+    return `${year}년 ${month}월 ${day}일 ${period} ${hour}시${minuteText}`;
   }
 
   return (
