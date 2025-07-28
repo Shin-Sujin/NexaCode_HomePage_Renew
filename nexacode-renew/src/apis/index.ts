@@ -1,25 +1,25 @@
-import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 import config from "../config/config";
-import cookieHelper from "../utils/cookieHelper";
+// import cookieHelper from "../utils/cookieHelper";
 
 const http = axios.create({
   baseURL: config.apiUrl,
 });
 
-http.interceptors.request.use(
-  (config: InternalAxiosRequestConfig<void>) => {
-    const token = cookieHelper.getCookie("access_token");
-    config.headers = config.headers || {};
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+// http.interceptors.request.use(
+//   (config: InternalAxiosRequestConfig<void>) => {
+//     const token = cookieHelper.getCookie("access_token");
+//     config.headers = config.headers || {};
+//     if (token) {
+//       config.headers["Authorization"] = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 // --- Auth ---
 
