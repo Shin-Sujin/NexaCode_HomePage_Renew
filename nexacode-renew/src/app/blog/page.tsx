@@ -13,6 +13,8 @@ const TextEditor = dynamic(() => import("@/src/components/blog/TextEditor"), {
 // import TextEditor from "@/src/components/blog/TextEditor";
 import { Modal, Button, message } from "antd";
 import { fetchPublicBlogs } from "@/src/apis";
+import Pagination from "@/src/components/blog/Pagination";
+import SearchBar from "@/src/components/blog/SearchBar";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
@@ -21,11 +23,26 @@ type BlogListItem = {
   thumbnailPath: string;
   content: string;
   createdAt: string;
+  description: string;
 };
 
 interface BlogApiResponse {
   data: BlogListItem[];
   totalCount?: number;
+}
+
+// useDebounce 커스텀 훅 구현
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+  return debouncedValue;
 }
 
 export default function BlogListPage() {
@@ -38,7 +55,7 @@ export default function BlogListPage() {
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
   const [blogStatus, setBlogStatus] = useState(null);
-  const [prologueTitle, setPrologueTitle] = useState("");
+
   const [prologueContent, setPrologueContent] = useState("");
   const [editorKey] = useState<number>(0); // 이걸 추가!
   const resetBlogList = useBlogStore((state) => state.resetBlogList);
@@ -48,30 +65,42 @@ export default function BlogListPage() {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 500);
+  const handleSearch = () => {
+    setCurrentPage(1); // 검색 시 페이지를 1로 초기화
+    fetchData(1, search); // 검색어와 함께 fetch
+  };
+
+  // fetchData를 외부로 분리
+  const fetchData = async (
+    page = currentPage,
+    searchValue = debouncedSearch
+  ) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = (await fetchPublicBlogs(page, searchValue)) as {
+        data: BlogApiResponse;
+      };
+      const items = res.data?.data || [];
+      setBlogList(items);
+      if (typeof res.data?.totalCount === "number") {
+        setTotalCount(res.data.totalCount);
+      }
+    } catch {
+      setError("블로그 데이터를 불러오지 못했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = (await fetchPublicBlogs(currentPage)) as {
-          data: BlogApiResponse;
-        };
-        const items = res.data?.data || [];
-        setBlogList(items);
-        if (typeof res.data?.totalCount === "number") {
-          setTotalCount(res.data.totalCount);
-        }
-      } catch {
-        setError("블로그 데이터를 불러오지 못했습니다.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [currentPage]);
+    fetchData(currentPage, debouncedSearch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, debouncedSearch]);
 
-  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 1;
+  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 7;
 
   const openModalToCreate = () => {
     console.log("작성하기 버튼 클릭됨, 모달 오픈 시도"); // 이 줄 추가
@@ -88,7 +117,7 @@ export default function BlogListPage() {
     setThumbnailPath("");
     setKeywords([]);
     setDescription("");
-    setPrologueTitle("");
+
     setPrologueContent("");
     setBlogStatus(null);
   };
@@ -108,7 +137,7 @@ export default function BlogListPage() {
         content, // HTML string
         keywords,
         description,
-        prologueTitle,
+
         prologueContent,
       };
       console.log("[등록되는 블로그 데이터]", newBlog);
@@ -146,12 +175,17 @@ export default function BlogListPage() {
               </button>
             </div>
           </div>
-          <h2 className="text-xl text-gray-600 font-400 mb-20 max-md:text-lg max-md:px-3 ">
-            넥사코드에서 세상의 변화를 <br className="max-md:block hidden" />
-            만들어 가고 있는 사람들의 이야기입니다.
+          <h2 className="text-xl text-gray-600 font-400 pl-2 mb-20 max-md:text-lg max-md:px-3 ">
+            IT 외주, 개발 비즈니스 꿀팁 블로그 서비스{" "}
           </h2>
           <div className="space-y-6 max-md:space-y-2">
-            <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
+            {/* 검색하기 컴포넌트 추가 */}
+            <SearchBar
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onSearch={handleSearch}
+            />
+
             {loading ? (
               <div className="text-center py-10 text-gray-400">로딩 중...</div>
             ) : error ? (
@@ -166,7 +200,7 @@ export default function BlogListPage() {
                   key={item.id}
                   index={item.id}
                   category="Tech"
-                  desc="설명 고정"
+                  description={item.description}
                   author="nexacode"
                   date={item.createdAt}
                   title={item.title}
@@ -175,38 +209,12 @@ export default function BlogListPage() {
               ))
             )}
           </div>
-          {/* 페이지네이션 UI */}
-          <div className="flex justify-center mt-8 gap-2">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              이전
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === i + 1
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              다음
-            </button>
-          </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </main>
       </main>
       {/* ================================= 작성하기 모달 ================================= */}
@@ -242,7 +250,7 @@ export default function BlogListPage() {
               setThumbnailPath("");
               setKeywords([]);
               setDescription("");
-              setPrologueTitle("");
+
               setPrologueContent("");
               setResetEditorForm(true); // Add this line
               setBlogStatus(null);
@@ -261,8 +269,7 @@ export default function BlogListPage() {
             setThumbnailPath={setThumbnailPath}
             setKeywords={setKeywords}
             setDescription={setDescription}
-            setPrologueTitle={setPrologueTitle}
-            setPrologueContent={setPrologueContent}
+            setPrologueData={setPrologueContent}
             resetEditorForm={resetEditorForm}
             setResetEditorForm={setResetEditorForm}
             editorKey={editorKey}

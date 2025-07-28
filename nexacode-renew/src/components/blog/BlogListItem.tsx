@@ -6,7 +6,7 @@ import Link from "next/link";
 interface BlogListItemProps {
   category: string;
   title: string;
-  desc: string;
+  description: string;
   date: string;
   author: string;
   thumbnailPath: string;
@@ -15,12 +15,21 @@ interface BlogListItemProps {
 export const BlogListItem = ({
   category,
   title,
-  desc,
   date,
   author,
   index,
   thumbnailPath,
+  description,
 }: BlogListItemProps) => {
+  function formatKoreanDate(dateString: string) {
+    // 이미 한글 형식이면 그대로 반환
+    if (dateString.match(/년.*월.*일/)) return dateString;
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString;
+    return `${date.getFullYear()}년 ${
+      date.getMonth() + 1
+    }월 ${date.getDate()}일`;
+  }
   return (
     <Link
       href={`/blog/${index}`}
@@ -42,14 +51,14 @@ export const BlogListItem = ({
           <span className="text-sm text-gray-500 font-medium mb-3 block">
             {category}
           </span>
-          <h3 className="text-3xl font-500 text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
+          <h3 className="text-3xl font-500 break-keep leading-normal text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
             {title}
           </h3>
-          <p className="text-gray-500 text-lg max-md:text-base max-md:hidden">
-            {desc}
+          <p className="text-gray-500 text-lg pr-32 break-keep max-md:text-base max-md:hidden">
+            {description}
           </p>
           <div className="text-sm text-gray-400 mt-5 max-md:text-xs max-md:mt-1">
-            {date} &nbsp;·&nbsp; {author}
+            {formatKoreanDate(date)} &nbsp;·&nbsp; {author}
           </div>
         </div>
       </div>

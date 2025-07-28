@@ -13,7 +13,6 @@ export interface BlogItem {
   content: string | React.FC; // string 또는 컴포넌트
   keywords?: string[];
   description?: string;
-  prologueTitle?: string;
   prologueContent?: string;
 }
 
@@ -39,7 +38,7 @@ export const useBlogStore = create<BlogStore>()(
           author: "nexacode",
           thumbnailPath: "/images/blog/image_01.jpg",
           content: BlogContent0,
-          prologueTitle: "Editor's Note",
+
           prologueContent: "Editor's Note",
         },
         {
@@ -50,7 +49,7 @@ export const useBlogStore = create<BlogStore>()(
           author: "nexacode",
           thumbnailPath: "/images/blog/image_02.jpg",
           content: "<div>BlogContent1</div>",
-          prologueTitle: "Editor's Note",
+
           prologueContent: "Editor's Note",
         },
       ],
@@ -67,7 +66,7 @@ export const useBlogStore = create<BlogStore>()(
               author: "nexacode",
               thumbnailPath: "/images/blog/image_01.jpg",
               content: BlogContent0,
-              prologueTitle: "Editor's Note",
+
               prologueContent: "Editor's Note",
             },
             {
@@ -78,7 +77,7 @@ export const useBlogStore = create<BlogStore>()(
               author: "nexacode",
               thumbnailPath: "/images/blog/image_02.jpg",
               content: "<div>BlogContent1</div>",
-              prologueTitle: "Editor's Note",
+
               prologueContent: "Editor's Note",
             },
           ],

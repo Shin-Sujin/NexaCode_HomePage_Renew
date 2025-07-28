@@ -848,38 +848,6 @@ body {
   display: none !important;
 }
 
-h1,
-h1 i,
-h1 strong {
-  font-size: 30px;
-}
-
-h2,
-h2 i,
-h2 strong {
-  font-size: 25px;
-}
-h3,
-h3 i,
-h3 strong {
-  font-size: 20px;
-}
-
-code.language-c {
-  content: "Editor’s Note";
-  display: block;
-  background-color: #f3f4f6; /* Tailwind: bg-gray-100 */
-  border-radius: 1rem; /* Tailwind: rounded-2xl */
-  padding: 3rem; /* Tailwind: p-12 */
-  margin-bottom: 5rem; /* Tailwind: mb-20 */
-  font-size: 1.25rem; /* Tailwind: text-xl */
-  line-height: 1.75rem; /* Tailwind: leading-relaxed */
-  color: #4b5563; /* Tailwind: text-gray-600 */
-  display: block;
-  white-space: pre-wrap;
-  overflow-x: auto;
-}
-
 .ck.ck-content ul,
 .ck.ck-content ul li {
   list-style-type: inherit;
@@ -920,4 +888,20 @@ code.language-c {
 .selected-red {
   background-color: #ff8989 !important; /* tailwind red-500 */
   color: #fff !important;
+}
+
+.ck-content .table table th {
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.05);
+}
+.ck-content .table table td,
+.ck-content .table table th {
+  min-width: 2em;
+  padding: 0.4em;
+  border: 1px solid #bfbfbf;
+}
+.ck-content .table table td,
+.ck-content .table table th {
+  overflow-wrap: break-word;
+  position: relative;
 }

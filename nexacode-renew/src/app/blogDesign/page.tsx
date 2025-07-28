@@ -8,7 +8,7 @@ import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
 import { steps } from "@/src/components/blog/blogSteps";
 import { BlogContent0 } from "@/src/components/blog/blogContents";
 
-import "@/src/styles/blog.css";
+import "@/src/styles/blog_copy.css";
 export default function BlogDesignPage() {
   return (
     <div className="site__container">

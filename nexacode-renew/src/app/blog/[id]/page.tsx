@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import feather from "feather-icons";
+
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 import FloatingLeft from "@/src/components/blog/FloatingLeft";
-import FloatingRight from "@/src/components/blog/FloatingRight";
+// import FloatingRight from "@/src/components/blog/FloatingRight";
 import Footer from "@/src/components/blog/Footer";
 import Title from "@/src/components/blog/Title";
 import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
-import { steps } from "@/src/components/blog/blogSteps";
+// import { steps } from "@/src/components/blog/blogSteps";
 import { fetchPublicBlogDetail } from "@/src/apis";
 
 interface BlogDetail {
@@ -21,7 +21,7 @@ interface BlogDetail {
   viewCount: number;
   createdAt: string;
   date?: string;
-  prologueTitle?: string;
+
   prologueContent?: string;
 }
 
@@ -45,8 +45,8 @@ export default function BlogPage({ params }: { params: { id: string } }) {
           setBlog({
             ...data,
             date: data.createdAt,
-            prologueTitle: "Editor's Note",
-            prologueContent: "이 글은 NexaCode 블로그의 공식 포스트입니다.",
+
+            prologueContent: data.prologueContent,
           });
         } else {
           setBlog(null);
@@ -62,10 +62,6 @@ export default function BlogPage({ params }: { params: { id: string } }) {
   }, [params.id]);
 
   useEffect(() => {
-    if (blog) feather.replace(); // feather 아이콘 초기화
-  }, [blog]);
-
-  useEffect(() => {
     if (blog) {
       console.log("BlogDetail:", blog);
     }
@@ -79,25 +75,27 @@ export default function BlogPage({ params }: { params: { id: string } }) {
     <div className="site__container">
       <ScrollProgressBar />
       <Title title={blog.title} date={blog.date} />
+      <FloatingLeft />
 
       <main className="post">
         <div className="blog-container">
-          <FloatingLeft />
           <div style={{ flex: 1 }}>
             <div className="content">
-              <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
-                <h2 className="font-semibold text-2xl mb-6 text-gray-800">
-                  {blog.prologueTitle}
-                </h2>
-                <p className="text-xl leading-relaxed text-gray-600">
-                  {blog.prologueContent}
-                </p>
-              </div>
+              {blog.prologueContent ? (
+                <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
+                  <p className="leading-relaxed text-gray-800">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: blog.prologueContent,
+                      }}
+                    />
+                  </p>
+                </div>
+              ) : null}
               <article className="post-content">
                 <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                 {/* 해시태그 */}
                 <div className="hashtag">
-                  <i data-feather="hash"></i>
                   <ul>
                     {(blog.keywords && blog.keywords.length > 0
                       ? blog.keywords[0].split("#").filter(Boolean)
@@ -112,7 +110,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
               </article>
             </div>
           </div>
-          <FloatingRight steps={steps} />
+          {/* <FloatingRight steps={steps} /> */}
         </div>
       </main>
       <Footer />
