@@ -70,14 +70,12 @@ h3 strong {
 .post-content h2 {
   font-size: 30px;
   font-weight: 600;
-  text-align: center;
   color: #383838;
 }
 
 .post-content h3 {
   font-size: 20px;
   font-weight: 600;
-  text-align: center;
   color: #383838;
 }
 
@@ -180,6 +178,21 @@ h3 strong {
 }
 .feather {
   margin-right: 8px;
+}
+
+/* 모든 텍스트에 단어 단위 줄바꿈 적용 */
+body,
+.post-content,
+.post-content p,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content .hashtag__item,
+.footer,
+.footer .site__information,
+.table table td,
+.table table th {
+  word-break: keep-all;
 }
 
 @media (max-width: 800px) {
