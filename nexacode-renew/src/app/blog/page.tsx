@@ -55,6 +55,7 @@ export default function BlogListPage() {
       setLoading(true);
       setError(null);
       try {
+        console.log("API 요청 페이지:", currentPage);
         const res = (await fetchPublicBlogs(currentPage)) as {
           data: BlogApiResponse;
         };
@@ -72,7 +73,7 @@ export default function BlogListPage() {
     fetchData();
   }, [currentPage]);
 
-  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 1;
+  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 7;
 
   const openModalToCreate = () => {
     console.log("작성하기 버튼 클릭됨, 모달 오픈 시도"); // 이 줄 추가
@@ -147,9 +148,8 @@ export default function BlogListPage() {
               </button>
             </div>
           </div>
-          <h2 className="text-xl text-gray-600 font-400 mb-20 max-md:text-lg max-md:px-3 ">
-            넥사코드에서 세상의 변화를 <br className="max-md:block hidden" />
-            만들어 가고 있는 사람들의 이야기입니다.
+          <h2 className="text-xl text-gray-600 font-400 pl-2 mb-20 max-md:text-lg max-md:px-3 ">
+            IT 외주, 개발 비즈니스 꿀팁 블로그 서비스{" "}
           </h2>
           <div className="space-y-6 max-md:space-y-2">
             <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
@@ -178,34 +178,59 @@ export default function BlogListPage() {
           </div>
           {/* 페이지네이션 UI */}
           <div className="flex justify-center mt-8 gap-2">
+            {/* 맨 처음으로 */}
+            <button
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 disabled:opacity-30"
+              aria-label="맨 처음"
+            >
+              «
+            </button>
+            {/* 이전 */}
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 disabled:opacity-30"
+              aria-label="이전"
             >
-              이전
+              ‹
             </button>
+            {/* 페이지 번호 */}
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentPage(i + 1)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === i + 1
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-base font-semibold transition
+                  ${
+                    currentPage === i + 1
+                      ? "bg-gray-400 text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }
+                `}
               >
                 {i + 1}
               </button>
             ))}
+            {/* 다음 */}
             <button
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 disabled:opacity-30"
+              aria-label="다음"
             >
-              다음
+              ›
+            </button>
+            {/* 맨 끝으로 */}
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 disabled:opacity-30"
+              aria-label="맨 끝"
+            >
+              »
             </button>
           </div>
         </main>
