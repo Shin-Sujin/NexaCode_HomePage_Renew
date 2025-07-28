@@ -207,3 +207,18 @@ export const deleteColumns = async (id: number): Promise<unknown> => {
   return http.delete(`/api/v1/admin/unsaenara/columns/${id}`);
 };
 // --- Unsaenara/Columns EndPoint ---
+
+// --- Public/Blogs ---
+export const fetchPublicBlogs = async (
+  page: number,
+  search?: string
+): Promise<unknown> => {
+  const params: Record<string, unknown> = { page };
+  if (search) params.search = search;
+
+  return http.get("/api/v1/blogs", { params });
+};
+
+export const fetchPublicBlogDetail = async (id: number): Promise<unknown> => {
+  return http.get(`/api/v1/blogs/${id}`);
+};

@@ -12,7 +12,7 @@ interface BlogListItemProps {
   thumbnailPath: string;
   index: number;
 }
-export const BlogListItem = ({
+export const BlogListItemDesign = ({
   category,
   title,
   desc,
@@ -29,7 +29,7 @@ export const BlogListItem = ({
     >
       <div className="flex flex-col md:flex-row items-start mx-auto justify-between gap-6 border-b border-gray-200 py-8 cursor-pointer group max-md:gap-1 max-md:px-4 ">
         {/* Image */}
-        <div className="w-full md:w-[210px] h-[187px] max-w-[210px] max-h-[187px] flex-shrink-0 relative overflow-hidden md:order-2 order-1 max-md:w-full max-md:h-[187px] max-lg:h-[500px] ">
+        <div className="w-full md:w-[300px] h-[187px] max-w-[500px] max-h-[187px] flex-shrink-0 relative overflow-hidden md:order-2 order-1 max-md:w-full max-md:h-[187px] max-lg:h-[500px] ">
           <Image
             src={thumbnailPath}
             alt={title}
@@ -57,4 +57,4 @@ export const BlogListItem = ({
   );
 };
 
-export default BlogListItem;
+export default BlogListItemDesign;
