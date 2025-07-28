@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import "@/src/styles/blog.css";
+
 import Footer from "@/src/components/blog/Footer";
 import { useBlogStore } from "@/src/stores/store";
 import BlogListItem from "@/src/components/blog/BlogListItem";

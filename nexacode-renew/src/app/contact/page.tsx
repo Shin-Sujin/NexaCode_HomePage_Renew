@@ -1,6 +1,6 @@
 "use client";
 
-import "@/src/styles/blog.css";
+// import "@/src/styles/blog.css";
 import Footer from "@/src/components/blog/Footer";
 import Link from "next/link";
 import { contactSampleData } from "@/src/components/contact/contactSampleData";

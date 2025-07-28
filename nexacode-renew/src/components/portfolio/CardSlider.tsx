@@ -9,7 +9,7 @@ import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { portfolioItems } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
-import "../../styles/swiper-custom.css";
+// import "../../styles/swiper-custom.css";
 import Link from "next/link";
 
 const CardSlider = () => {
