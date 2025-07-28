@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "../../styles/button_startPage.css";
+// import "../../styles/button_startPage.css";
 
 export default function ButtonPage01() {
   const buttonRef = useRef<HTMLAnchorElement>(null);
