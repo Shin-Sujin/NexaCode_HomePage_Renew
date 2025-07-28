@@ -62,77 +62,80 @@ const CardSlider = () => {
   };
 
   return (
-    <>
-      <div
-        ref={containerRef}
-        className="w-full relative select-none"
-        onMouseDown={(e) => handleStart(e.clientX)}
-        onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-        onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
-      >
-        <Swiper
-          className="min-h-[400px]"
-          modules={[Navigation, Pagination, Autoplay]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          slidesPerView={3}
-          spaceBetween={24}
-          speed={600}
-          allowTouchMove={false}
-          pagination={{ clickable: true }}
-          breakpoints={{
-            0: { slidesPerView: 1, centeredSlides: true },
-            640: { slidesPerView: 2.2, centeredSlides: false },
-            800: { slidesPerView: 3.5, centeredSlides: false },
-            1100: { slidesPerView: 4.3, centeredSlides: false },
-          }}
+    <div className="fixed top-0 left-0 w-screen h-screen overflow-hidden flex items-center justify-center">
+      <div className="w-full max-w-[200rem] px-4">
+        {" "}
+        <div
+          ref={containerRef}
+          className="w-full relative select-none"
+          onMouseDown={(e) => handleStart(e.clientX)}
+          onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
         >
-          {portfolioItems.map((item) => (
-            <SwiperSlide key={item.id}>
-              <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
-                <Link
-                  href={`/portfolio/${item.id}`}
-                  draggable={false}
-                  onDragStart={(e) => e.preventDefault()}
-                >
-                  {" "}
-                  <div className="bg-white overflow-hidden text-start w-full">
-                    <div className="w-full aspect-square relative">
-                      <Image
-                        src={item.imageSrc}
-                        alt={item.title}
-                        width={800}
-                        height={800}
-                        draggable={false}
-                      />
+          <Swiper
+            className="min-h-[400px]"
+            modules={[Navigation, Pagination, Autoplay]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            slidesPerView={3}
+            spaceBetween={24}
+            speed={600}
+            allowTouchMove={false}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              0: { slidesPerView: 1, centeredSlides: true },
+              640: { slidesPerView: 2.2, centeredSlides: false },
+              800: { slidesPerView: 3.5, centeredSlides: false },
+              1100: { slidesPerView: 4.3, centeredSlides: false },
+            }}
+          >
+            {portfolioItems.map((item) => (
+              <SwiperSlide key={item.id}>
+                <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
+                  <Link
+                    href={`/portfolio/${item.id}`}
+                    draggable={false}
+                    onDragStart={(e) => e.preventDefault()}
+                  >
+                    {" "}
+                    <div className="bg-white overflow-hidden text-start w-full">
+                      <div className="w-full aspect-square relative">
+                        <Image
+                          src={item.imageSrc}
+                          alt={item.title}
+                          width={800}
+                          height={800}
+                          draggable={false}
+                        />
+                      </div>
+                      <div className="py-4  select-none">
+                        <h3 className="text-2xl text-gray-700 font-500 mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm pf_xs:ml-1">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    <div className="py-4  select-none">
-                      <h3 className="text-2xl text-gray-700 font-500 mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm pf_xs:ml-1">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>{" "}
-      <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
-        <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
+                  </Link>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>{" "}
+        <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
+          <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
+        </div>
+        <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
+          <NextArrow onClick={() => swiperRef.current?.slideNext()} />
+        </div>
       </div>
-      <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
-        <NextArrow onClick={() => swiperRef.current?.slideNext()} />
-      </div>
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ export default function PortfolioPage() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsSliderReady(true); // 일정 시간 후 슬라이더 보여주기
-    }, 500); // 0.5초 정도 기다렸다가 교체
+    }, 100); // 0.5초 정도 기다렸다가 교체
 
     return () => clearTimeout(timeout);
   }, []);
