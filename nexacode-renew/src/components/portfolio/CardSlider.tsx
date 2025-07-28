@@ -11,6 +11,7 @@ import { portfolioItems } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
 // import "../../styles/swiper-custom.css";
 import Link from "next/link";
+import "../../styles/swiper-custom.css";
 
 const CardSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);

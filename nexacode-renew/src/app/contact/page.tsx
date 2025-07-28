@@ -4,6 +4,7 @@
 import Footer from "@/src/components/blog/Footer";
 import Link from "next/link";
 import { contactSampleData } from "@/src/components/contact/contactSampleData";
+import "@/src/styles/blog.css";
 
 export default function ContactPage() {
   return (

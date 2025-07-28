@@ -9,6 +9,7 @@ import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
 import { steps } from "@/src/components/blog/blogSteps";
 import { portfolioItems } from "@/src/components/portfolio/portfolioItems";
 import Image from "next/image";
+import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 
 export default function PortfolioPage({ params }: { params: { id: string } }) {
   const portfolio = portfolioItems[Number(params.id)];
