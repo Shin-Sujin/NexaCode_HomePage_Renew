@@ -29,8 +29,7 @@ const TextEditor = ({
   setData,
   setTitle,
   setDescription,
-  setPrologueTitle,
-  setPrologueContent,
+  setPrologueData,
   setKeywords,
   post,
   setThumbnailPath,
@@ -138,6 +137,7 @@ const TextEditor = ({
   const [form] = Form.useForm();
   // const [editorData, setEditorData] = useState("");
   const [content, setContent] = useState(""); // Add this line
+  const [prologueContent, setPrologueContent] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [isReserved, setIsReserved] = useState(false); // 예약 발행 버튼 색상 상태
 
@@ -161,7 +161,7 @@ const TextEditor = ({
     setThumbnail(null); // If setThumbnail is a state setter for thumbnail, you'll want to nullify it
     setKeywords([]);
     setDescription("");
-    setPrologueTitle("");
+
     setPrologueContent("");
     setBlogStatus(null);
   };
@@ -182,22 +182,17 @@ const TextEditor = ({
 
         if (data) {
           console.log(data);
-          const {
-            title,
-            content,
-            description,
-            keywords,
-            prologueTitle,
-            prologueContent,
-          } = data.data;
+          const { title, content, description, keywords, prologueContent } =
+            data.data;
 
           setTitle(title);
           setData(content);
           setContent(content);
           setDescription(description);
           setKeywords(keywords);
-          setPrologueTitle(prologueTitle);
           setPrologueContent(prologueContent);
+          setPrologueData(prologueContent);
+
           if (contentType !== "portfolio") {
             form.setFieldsValue({
               title,
@@ -341,7 +336,6 @@ const TextEditor = ({
       setThumbnail(null); // Clear thumbnail
       setKeywords([]);
       setDescription("");
-      setPrologueTitle("");
       setPrologueContent("");
       setResetEditorForm(false); // Prevents infinite loop
     }
@@ -423,29 +417,6 @@ const TextEditor = ({
             </Form.Item>
           </Col>
         )}{" "}
-        {contentType !== "portfolio" && (
-          <Col md={24}>
-            <h3 className="mb-2 text-base font-bold">Prologue 제목</h3>
-            <Form.Item name="prologueTitle">
-              <Input
-                placeholder="Editor's Note"
-                onChange={(e) => setPrologueTitle(e.target.value)}
-              />
-            </Form.Item>
-          </Col>
-        )}{" "}
-        {contentType !== "portfolio" && (
-          <Col md={24}>
-            <h3 className="mb-2 text-base font-bold">Prologue</h3>
-            <Form.Item name="prologueContent">
-              <Input.TextArea
-                placeholder="Editor's Note"
-                autoSize={{ minRows: 1, maxRows: 30 }}
-                onChange={(e) => setPrologueContent(e.target.value)}
-              />
-            </Form.Item>
-          </Col>
-        )}
         <Col md={24}>
           <h3 className="mb-2 text-base font-bold">썸네일</h3>
           <Form.Item name="thumbnail">
@@ -524,6 +495,7 @@ const TextEditor = ({
           </div>
         </Col>
         <Col>
+          <h3 className="mb-2 text-lg font-bold">Content</h3>
           <Form.Item name="content">
             <CKEditor
               editor={Editor}
@@ -537,6 +509,24 @@ const TextEditor = ({
               }}
             />
           </Form.Item>
+        </Col>
+        <Col>
+          <h3 className="mb-2 text-lg font-bold">Prologue</h3>
+          {contentType !== "portfolio" && (
+            <Form.Item name="content">
+              <CKEditor
+                editor={Editor}
+                config={edrtorConfiguration}
+                data={prologueContent}
+                onReady={onReadyEditor}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setPrologueData(data); // 에디터에서의 변경사항을 상태에 저장
+                  setPrologueContent(data); // 상위 컴포넌트에 에디터 데이터 전달
+                }}
+              />
+            </Form.Item>
+          )}
         </Col>
       </Form>
       {isReserved && (

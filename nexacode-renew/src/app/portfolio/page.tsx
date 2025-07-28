@@ -17,7 +17,7 @@ interface PortfolioItem {
   thumbnailPath: string;
   description: string;
   keywords: string[];
-  prologueTitle: string;
+
   prologueContent: string;
   blogStatus: string | null;
   date: string;
@@ -33,7 +33,7 @@ export default function PortfolioPage() {
   const [thumbnailPath, setThumbnailPath] = useState("");
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState([]);
-  const [prologueTitle, setPrologueTitle] = useState("");
+
   const [prologueContent, setPrologueContent] = useState("");
   const [blogStatus, setBlogStatus] = useState(null);
   const [portfolioList, setPortfolioList] = useState<PortfolioItem[]>([]); // 타입 명시
@@ -45,7 +45,7 @@ export default function PortfolioPage() {
     setThumbnailPath("");
     setDescription("");
     setKeywords([]);
-    setPrologueTitle("");
+
     setPrologueContent("");
     setBlogStatus(null);
     setIsModalOpen(true);
@@ -59,7 +59,7 @@ export default function PortfolioPage() {
       thumbnailPath,
       description,
       keywords,
-      prologueTitle,
+
       prologueContent,
       blogStatus,
       date: new Date().toLocaleDateString("ko-KR", {
@@ -144,8 +144,7 @@ export default function PortfolioPage() {
             setThumbnailPath={setThumbnailPath}
             setKeywords={setKeywords}
             setDescription={setDescription}
-            setPrologueTitle={setPrologueTitle}
-            setPrologueContent={setPrologueContent}
+            setPrologueData={setPrologueContent}
             resetEditorForm={resetEditorForm}
             setResetEditorForm={setResetEditorForm}
             editorKey={editorKey}

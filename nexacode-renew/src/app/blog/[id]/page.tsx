@@ -21,7 +21,7 @@ interface BlogDetail {
   viewCount: number;
   createdAt: string;
   date?: string;
-  prologueTitle?: string;
+
   prologueContent?: string;
 }
 
@@ -45,8 +45,8 @@ export default function BlogPage({ params }: { params: { id: string } }) {
           setBlog({
             ...data,
             date: data.createdAt,
-            prologueTitle: "Editor's Note",
-            prologueContent: "이 글은 NexaCode 블로그의 공식 포스트입니다.",
+
+            prologueContent: data.prologueContent,
           });
         } else {
           setBlog(null);
@@ -85,14 +85,17 @@ export default function BlogPage({ params }: { params: { id: string } }) {
           <FloatingLeft />
           <div style={{ flex: 1 }}>
             <div className="content">
-              <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
-                <h2 className="font-semibold text-2xl mb-6 text-gray-800">
-                  {blog.prologueTitle}
-                </h2>
-                <p className="text-xl leading-relaxed text-gray-600">
-                  {blog.prologueContent}
-                </p>
-              </div>
+              {blog.prologueContent ? (
+                <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
+                  <p className="leading-relaxed text-gray-800">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: blog.prologueContent,
+                      }}
+                    />
+                  </p>
+                </div>
+              ) : null}
               <article className="post-content">
                 <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                 {/* 해시태그 */}

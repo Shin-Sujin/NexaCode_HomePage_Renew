@@ -37,7 +37,7 @@ export const getBlogDetail = async (id: number) => {
       keywords: ["모킹", "프론트엔드", "CKEditor"],
       thumbnailPath: "https://via.placeholder.com/300x200",
       status: "PUBLIC",
-      prologueTitle: "Editor's Note",
+
       prologueContent: "Editor's Note",
     },
   });
@@ -56,7 +56,7 @@ export const getColumnDetail = async (id: number) => {
       keywords: ["칼럼", "테스트"],
       thumbnailPath: "https://via.placeholder.com/300x200",
       status: "TEMP",
-      prologueTitle: "Editor's Note",
+
       prologueContent: "Editor's Note",
     },
   });
@@ -75,7 +75,7 @@ export const getPortfolioDetail = async (id: number) => {
       keywords: [],
       thumbnailPath: "https://via.placeholder.com/300x200",
       status: null,
-      prologueTitle: "Editor's Note",
+
       prologueContent: "Editor's Note",
     },
   });
@@ -88,7 +88,7 @@ export const addBlog = async ({
   thumbnailPath,
   keywords,
   description,
-  prologueTitle,
+
   prologueContent,
 }: {
   title: string;
@@ -96,7 +96,7 @@ export const addBlog = async ({
   thumbnailPath: string;
   keywords: string[];
   description: string;
-  prologueTitle: string;
+
   prologueContent: string;
 }): Promise<{ success: boolean; id: number }> => {
   console.log("[MOCK] addBlog 호출됨", {
@@ -105,7 +105,7 @@ export const addBlog = async ({
     thumbnailPath,
     keywords,
     description,
-    prologueTitle,
+
     prologueContent,
   });
   return new Promise((resolve) => {

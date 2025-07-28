@@ -75,137 +75,137 @@ export const getBlogDetail = async (id: number): Promise<unknown> => {
   return http.get(`/api/v1/admin/blogs/${id}`);
 };
 
-export const addBlog = async (blogData: {
-  title: string;
-  content: string;
-  thumbnailPath: string;
-  description: string;
-  keywords: string[];
-}): Promise<unknown> => {
-  return http.post("/api/v1/admin/blogs", blogData);
-};
+// export const addBlog = async (blogData: {
+//   title: string;
+//   content: string;
+//   thumbnailPath: string;
+//   description: string;
+//   keywords: string[];
+// }): Promise<unknown> => {
+//   return http.post("/api/v1/admin/blogs", blogData);
+// };
 
-export const editBlog = async (
-  id: number,
-  blogData: {
-    title: string;
-    content: string;
-    thumbnailPath: string;
-    description: string;
-    keywords: string[];
-    status: string | null;
-  }
-): Promise<unknown> => {
-  return http.patch(`/api/v1/admin/blogs/${id}`, blogData);
-};
+// export const editBlog = async (
+//   id: number,
+//   blogData: {
+//     title: string;
+//     content: string;
+//     thumbnailPath: string;
+//     description: string;
+//     keywords: string[];
+//     status: string | null;
+//   }
+// ): Promise<unknown> => {
+//   return http.patch(`/api/v1/admin/blogs/${id}`, blogData);
+// };
 
-export const deleteBlog = async (id: number): Promise<void> => {
-  await http.delete(`/api/v1/admin/blogs/${id}`);
-};
-// --- Admin/Blog EndPoint ---
+// export const deleteBlog = async (id: number): Promise<void> => {
+//   await http.delete(`/api/v1/admin/blogs/${id}`);
+// };
+// // --- Admin/Blog EndPoint ---
 
-// --- Admin/Portfolio ---
-export const getPortfolioList = async (page: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/portfolios?page=${page}`);
-};
+// // --- Admin/Portfolio ---
+// export const getPortfolioList = async (page: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/portfolios?page=${page}`);
+// };
 
-export const getPortfolioDetail = async (id: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/portfolios/${id}`);
-};
+// export const getPortfolioDetail = async (id: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/portfolios/${id}`);
+// };
 
-export const addPortfolio = async (portfolioData: {
-  title: string;
-  content: string;
-  thumbnailPath: string;
-}): Promise<unknown> => {
-  return http.post("/api/v1/admin/portfolios", portfolioData);
-};
+// export const addPortfolio = async (portfolioData: {
+//   title: string;
+//   content: string;
+//   thumbnailPath: string;
+// }): Promise<unknown> => {
+//   return http.post("/api/v1/admin/portfolios", portfolioData);
+// };
 
-export const editPortfolio = async (
-  id: number,
-  portfolioData: {
-    title: string;
-    content: string;
-    thumbnailPath: string;
-  }
-): Promise<unknown> => {
-  return http.patch(`/api/v1/admin/portfolios/${id}`, portfolioData);
-};
+// export const editPortfolio = async (
+//   id: number,
+//   portfolioData: {
+//     title: string;
+//     content: string;
+//     thumbnailPath: string;
+//   }
+// ): Promise<unknown> => {
+//   return http.patch(`/api/v1/admin/portfolios/${id}`, portfolioData);
+// };
 
-export const deletePortfolio = async (id: number): Promise<unknown> => {
-  return http.delete(`/api/v1/admin/portfolios/${id}`);
-};
+// export const deletePortfolio = async (id: number): Promise<unknown> => {
+//   return http.delete(`/api/v1/admin/portfolios/${id}`);
+// };
 
-// --- Admin/Portfolio EndPoint ---
+// // --- Admin/Portfolio EndPoint ---
 
-// --- Admin/Inquiries ---
+// // --- Admin/Inquiries ---
 
-export const getInquiries = async (page: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/inquiries?page=${page}`);
-};
+// export const getInquiries = async (page: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/inquiries?page=${page}`);
+// };
 
-export const getInquiriesDetail = async (id: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/inquiries/${id}`);
-};
+// export const getInquiriesDetail = async (id: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/inquiries/${id}`);
+// };
 
-export const addAnswer = async (
-  id: number,
-  answerData: { response: string }
-): Promise<unknown> => {
-  return http.patch(`/api/v1/admin/inquiries/${id}/answer`, answerData);
-};
+// export const addAnswer = async (
+//   id: number,
+//   answerData: { response: string }
+// ): Promise<unknown> => {
+//   return http.patch(`/api/v1/admin/inquiries/${id}/answer`, answerData);
+// };
 
-export const getInquiriesSelectList = async (): Promise<unknown> => {
-  return http.get("/api/v1/inquiries/form");
-};
+// export const getInquiriesSelectList = async (): Promise<unknown> => {
+//   return http.get("/api/v1/inquiries/form");
+// };
 
-export const getInquiryFileDownload = async (
-  path: string,
-  fn: string
-): Promise<unknown> => {
-  return http.get(`/api/v1/admin/files/inquiries/${path}`, {
-    params: { fn },
-    responseType: "blob",
-  });
-};
+// export const getInquiryFileDownload = async (
+//   path: string,
+//   fn: string
+// ): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/files/inquiries/${path}`, {
+//     params: { fn },
+//     responseType: "blob",
+//   });
+// };
 
-// --- Admin/Inquiries EndPoint ---
+// // --- Admin/Inquiries EndPoint ---
 
-// --- Unsaenara/Columns ---
-export const addColumns = async (columnData: {
-  title: string;
-  content: string;
-  thumbnailPath: string;
-  description: string;
-  keywords: string[];
-}): Promise<unknown> => {
-  return http.post("/api/v1/admin/unsaenara/columns", columnData);
-};
+// // --- Unsaenara/Columns ---
+// export const addColumns = async (columnData: {
+//   title: string;
+//   content: string;
+//   thumbnailPath: string;
+//   description: string;
+//   keywords: string[];
+// }): Promise<unknown> => {
+//   return http.post("/api/v1/admin/unsaenara/columns", columnData);
+// };
 
-export const getColumnList = async (page: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/unsaenara/columns?page=${page}`);
-};
+// export const getColumnList = async (page: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/unsaenara/columns?page=${page}`);
+// };
 
-export const getColumnDetail = async (id: number): Promise<unknown> => {
-  return http.get(`/api/v1/admin/unsaenara/columns/${id}`);
-};
+// export const getColumnDetail = async (id: number): Promise<unknown> => {
+//   return http.get(`/api/v1/admin/unsaenara/columns/${id}`);
+// };
 
-export const editColumns = async (
-  id: number,
-  columnData: {
-    title: string;
-    content: string;
-    thumbnailPath: string;
-    description: string;
-    keywords: string[];
-  }
-): Promise<unknown> => {
-  return http.patch(`/api/v1/admin/unsaenara/columns/${id}`, columnData);
-};
+// export const editColumns = async (
+//   id: number,
+//   columnData: {
+//     title: string;
+//     content: string;
+//     thumbnailPath: string;
+//     description: string;
+//     keywords: string[];
+//   }
+// ): Promise<unknown> => {
+//   return http.patch(`/api/v1/admin/unsaenara/columns/${id}`, columnData);
+// };
 
-export const deleteColumns = async (id: number): Promise<unknown> => {
-  return http.delete(`/api/v1/admin/unsaenara/columns/${id}`);
-};
+// export const deleteColumns = async (id: number): Promise<unknown> => {
+//   return http.delete(`/api/v1/admin/unsaenara/columns/${id}`);
+// };
 // --- Unsaenara/Columns EndPoint ---
 
 // --- Public/Blogs ---
