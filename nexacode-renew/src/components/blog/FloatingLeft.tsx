@@ -14,9 +14,9 @@ export default function FloatingLeft() {
         {/* <button className="button">
           <i data-feather="message-circle"></i>3
         </button> */}
-        <button className="button">
+        {/* <button className="button">
           <i data-feather="heart"></i>9
-        </button>
+        </button> */}
         <button className="button">
           <i data-feather="share-2"></i>
         </button>

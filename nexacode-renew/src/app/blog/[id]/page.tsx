@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import feather from "feather-icons";
+
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 import FloatingLeft from "@/src/components/blog/FloatingLeft";
 import FloatingRight from "@/src/components/blog/FloatingRight";
@@ -62,10 +62,6 @@ export default function BlogPage({ params }: { params: { id: string } }) {
   }, [params.id]);
 
   useEffect(() => {
-    if (blog) feather.replace(); // feather 아이콘 초기화
-  }, [blog]);
-
-  useEffect(() => {
     if (blog) {
       console.log("BlogDetail:", blog);
     }
@@ -100,7 +96,6 @@ export default function BlogPage({ params }: { params: { id: string } }) {
                 <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                 {/* 해시태그 */}
                 <div className="hashtag">
-                  <i data-feather="hash"></i>
                   <ul>
                     {(blog.keywords && blog.keywords.length > 0
                       ? blog.keywords[0].split("#").filter(Boolean)
