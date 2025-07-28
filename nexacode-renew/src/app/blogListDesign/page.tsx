@@ -1,34 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "@/src/styles/blog.css";
 
 import Footer from "@/src/components/blog/Footer";
 import { useBlogStore } from "@/src/stores/store";
 import BlogListItem from "@/src/components/blog/BlogListItem";
 import dynamic from "next/dynamic";
+import BlogListItemDesign from "@/src/components/blog/BlogListItemDesign";
 const TextEditor = dynamic(() => import("@/src/components/blog/TextEditor"), {
   ssr: false,
 });
 // import TextEditor from "@/src/components/blog/TextEditor";
 import { Modal, Button, message } from "antd";
-import { fetchPublicBlogs } from "@/src/apis";
 
 // Define types for the blog list item and API response
 type BlogListItem = {
   id: number;
   title: string;
-  thumbnailPath: string;
-  content: string;
+  viewCount?: number; // Optional if not always present
   createdAt: string;
+  status: string | null;
 };
 
-interface BlogApiResponse {
-  data: BlogListItem[];
-  totalCount?: number;
-}
-
-export default function BlogListPage() {
+export default function BlogListDesignPage() {
   const [selectedPost, setSelectedPost] = useState<BlogListItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [resetEditorForm, setResetEditorForm] = useState(false);
@@ -42,36 +37,6 @@ export default function BlogListPage() {
   const [prologueContent, setPrologueContent] = useState("");
   const [editorKey] = useState<number>(0); // 이걸 추가!
   const resetBlogList = useBlogStore((state) => state.resetBlogList);
-  const [blogList, setBlogList] = useState<BlogListItem[]>([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = (await fetchPublicBlogs(currentPage)) as {
-          data: BlogApiResponse;
-        };
-        const items = res.data?.data || [];
-        setBlogList(items);
-        if (typeof res.data?.totalCount === "number") {
-          setTotalCount(res.data.totalCount);
-        }
-      } catch {
-        setError("블로그 데이터를 불러오지 못했습니다.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [currentPage]);
-
-  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 1;
 
   const openModalToCreate = () => {
     console.log("작성하기 버튼 클릭됨, 모달 오픈 시도"); // 이 줄 추가
@@ -152,60 +117,9 @@ export default function BlogListPage() {
           </h2>
           <div className="space-y-6 max-md:space-y-2">
             <hr className="flex items-start justify-between border-[0.5px] border-gray-200 y-1 " />
-            {loading ? (
-              <div className="text-center py-10 text-gray-400">로딩 중...</div>
-            ) : error ? (
-              <div className="text-center py-10 text-red-400">{error}</div>
-            ) : blogList.length === 0 ? (
-              <div className="text-center py-10 text-gray-400">
-                블로그가 없습니다.
-              </div>
-            ) : (
-              blogList.map((item: BlogListItem) => (
-                <BlogListItem
-                  key={item.id}
-                  index={item.id}
-                  category="Tech"
-                  desc="설명 고정"
-                  author="nexacode"
-                  date={item.createdAt}
-                  title={item.title}
-                  thumbnailPath={item.thumbnailPath}
-                />
-              ))
-            )}
-          </div>
-          {/* 페이지네이션 UI */}
-          <div className="flex justify-center mt-8 gap-2">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              이전
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === i + 1
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
-              >
-                {i + 1}
-              </button>
+            {useBlogStore((state) => state.blogList).map((item, idx) => (
+              <BlogListItemDesign key={idx} index={idx} {...item} />
             ))}
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              다음
-            </button>
           </div>
         </main>
       </main>
