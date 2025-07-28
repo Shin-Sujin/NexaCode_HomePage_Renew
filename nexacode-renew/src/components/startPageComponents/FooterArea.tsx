@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "../../styles/FooterArea.module.css";
-
+// import styles from "@/src/styles/globals.css";
 export default function FooterArea() {
   return (
     <section className={styles.footerAreaWrapper}>
