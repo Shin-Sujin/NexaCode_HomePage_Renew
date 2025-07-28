@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import "@/src/styles/blog.css";
 
 import Footer from "@/src/components/blog/Footer";
 import { useBlogStore } from "@/src/stores/store";
@@ -37,6 +38,7 @@ export default function BlogListPage() {
   const resetBlogList = useBlogStore((state) => state.resetBlogList);
 
   const openModalToCreate = () => {
+    console.log("작성하기 버튼 클릭됨, 모달 오픈 시도"); // 이 줄 추가
     // 새 게시물을 추가하기 위해 모달을 여는 함수
     setSelectedPost(null); // Clear the selected post
     clearModalData(); // Clear any existing modal data
