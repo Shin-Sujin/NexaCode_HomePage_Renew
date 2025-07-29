@@ -67,8 +67,14 @@ h3 strong {
   font-size: 20px;
 }
 
-.post-content h2 {
+.post-content h1 {
   font-size: 30px;
+  font-weight: 600;
+  color: #383838;
+}
+
+.post-content h2 {
+  font-size: 25px;
   font-weight: 600;
   color: #383838;
 }

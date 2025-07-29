@@ -79,8 +79,9 @@ const chiron = localFont({
 });
 
 export const metadata = {
-  title: "Demo Project",
-  description: "My first Next.js project",
+  title: "앱개발 업체 | 홈페이지 제작 업체 - 넥사코드",
+  description:
+    "넥사코드는 앱개발 업체로서 홈페이지 제작 업체로서 활동하고 있습니다.",
 };
 
 export default function RootLayout({

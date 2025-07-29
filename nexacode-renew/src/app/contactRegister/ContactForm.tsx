@@ -13,13 +13,7 @@ export default function ContactForm() {
           </div>
           <div className="flex flex-col gap-2">
             <label>
-              <input
-                type="checkbox"
-                name="area"
-                value="앱 개발"
-                defaultChecked
-              />{" "}
-              앱 개발
+              <input type="checkbox" name="area" /> 앱 개발
             </label>
             <label>
               <input type="checkbox" name="area" value="SEO" /> 검색 엔진
@@ -43,12 +37,7 @@ export default function ContactForm() {
           </div>
           <div className="flex flex-col gap-2">
             <label>
-              <input
-                type="checkbox"
-                name="step"
-                value="아이디어만 있음"
-                defaultChecked
-              />{" "}
+              <input type="checkbox" name="step" value="아이디어만 있음" />{" "}
               아이디어만 있음
             </label>
             <label>
@@ -97,13 +86,7 @@ export default function ContactForm() {
               <input type="radio" name="pageCount" value="11~" /> 11~
             </label>
             <label>
-              <input
-                type="radio"
-                name="pageCount"
-                value="모름"
-                defaultChecked
-              />{" "}
-              모름
+              <input type="radio" name="pageCount" /> 모름
             </label>
           </div>
         </div>
@@ -187,7 +170,7 @@ export default function ContactForm() {
         {/* 8. 참고자료 */}
         <div className="mb-10">
           <div className="font-bold text-[1.1rem] mb-2">8. 참고자료</div>
-          <div className="border border-[#ccc] rounded p-6 flex flex-col items-center bg-[#fafafa]">
+          <div className="border border-[#ccc] rounded p-6 flex flex-col items-center ">
             <label
               htmlFor="referenceFile"
               className="flex flex-col items-center cursor-pointer"
@@ -217,7 +200,7 @@ export default function ContactForm() {
             name="company"
             required
             placeholder="ex) 넥사코드"
-            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+            className="w-full p-2 border border-[#ccc] rounded "
           />
         </div>
 
@@ -231,7 +214,7 @@ export default function ContactForm() {
             name="name"
             required
             placeholder="ex) 홍길동"
-            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+            className="w-full p-2 border border-[#ccc] rounded "
           />
         </div>
 
@@ -245,7 +228,7 @@ export default function ContactForm() {
             name="phone"
             required
             placeholder="ex) 010-0000-0000"
-            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+            className="w-full p-2 border border-[#ccc] rounded "
           />
         </div>
 
@@ -259,7 +242,7 @@ export default function ContactForm() {
             name="email"
             required
             placeholder="ex) nexacode@nexacode.co.kr"
-            className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
+            className="w-full p-2 border border-[#ccc] rounded "
           />
         </div>
 
