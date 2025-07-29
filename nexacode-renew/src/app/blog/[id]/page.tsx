@@ -82,8 +82,8 @@ export default function BlogPage({ params }: { params: { id: string } }) {
           <div style={{ flex: 1 }}>
             <div className="content">
               {blog.prologueContent ? (
-                <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
-                  <p className="leading-relaxed text-gray-800">
+                <div className="bg-gray-100 rounded-2xl p-12 mb-10 max-pf_md:mx-3 prologue-content">
+                  <p>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: blog.prologueContent,

@@ -129,6 +129,16 @@ h3 strong {
   white-space: nowrap; /* 해시태그 내부 텍스트 줄바꿈 방지 */
 }
 
+.prologue-content {
+  color: #454545;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.prologue-content h1 {
+  color: #222;
+}
+
 /* 사이드바 */
 
 .floating.left {
