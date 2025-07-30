@@ -33,7 +33,7 @@ export default function Header() {
           <a
             key={item.label}
             href={item.href}
-            className={`nav-link nav-underline transition-opacity duration-200 ${
+            className={`nav-link nav-underline transition-opacity duration-200 whitespace-nowrap ${
               hoveredIdx !== null && hoveredIdx !== idx ? "opacity-50" : ""
             } ${hoveredIdx === idx ? "nav-underline-hovered" : ""}`}
             onMouseEnter={() => setHoveredIdx(idx)}

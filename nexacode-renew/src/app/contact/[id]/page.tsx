@@ -2,6 +2,7 @@ import { contactItems } from "@/src/components/contact/contactItem";
 import { contactSampleData } from "@/src/components/contact/contactSampleData";
 import Link from "next/link";
 import React from "react";
+import Footer from "@/src/components/blog/Footer";
 
 interface Props {
   params: { id: string };
@@ -94,7 +95,7 @@ export default function ContactAnswerPage({ params }: Props) {
                     value={typeof value === "string" ? value : ""}
                     readOnly
                     disabled
-                    rows={3}
+                    rows={7}
                     className="w-full p-2 border border-[#ccc] rounded bg-[#f5f5f5]"
                   />
                 )}
@@ -134,6 +135,7 @@ export default function ContactAnswerPage({ params }: Props) {
           </div>
         </form>
       </main>
+      <Footer />
     </main>
   );
 }
