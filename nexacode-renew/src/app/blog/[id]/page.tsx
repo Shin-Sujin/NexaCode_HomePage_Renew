@@ -53,10 +53,12 @@ export default function BlogPage({ params }: { params: { id: string } }) {
         console.log("API 응답:", res);
         const data = res.data;
         if (data) {
+          if (data.prologueContent === "<p>&nbsp;</p>") {
+            data.prologueContent = undefined;
+          }
           setBlog({
             ...data,
             date: data.createdAt,
-
             prologueContent: data.prologueContent,
           });
         } else {
