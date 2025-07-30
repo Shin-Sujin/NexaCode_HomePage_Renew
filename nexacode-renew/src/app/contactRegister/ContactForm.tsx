@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 // import Footer from "@/src/components/blog/Footer";
 // import Link from "next/link";

@@ -66,7 +66,6 @@ export const fetchPublicBlogs = async (
 ): Promise<unknown> => {
   const params: Record<string, unknown> = { page };
   if (search) params.search = search;
-
   return http.get("/api/v1/blogs", { params });
 };
 
@@ -74,6 +73,7 @@ export const fetchPublicBlogDetail = async (id: number): Promise<unknown> => {
   return http.get(`/api/v1/blogs/${id}`);
 };
 
+// --- Public/Inquiries ---
 export const registerInquiry = async (
   data: Record<string, unknown>
 ): Promise<unknown> => {
@@ -82,4 +82,13 @@ export const registerInquiry = async (
       "Content-Type": "application/json",
     },
   });
+};
+
+export const fetchInquiryList = async (page: number): Promise<unknown> => {
+  const params: Record<string, unknown> = { page };
+  return http.get("/api/v1/inquiries", { params });
+};
+
+export const fetchInquiryDetail = async (id: number): Promise<unknown> => {
+  return http.get(`/api/v1/inquiries/${id}`);
 };

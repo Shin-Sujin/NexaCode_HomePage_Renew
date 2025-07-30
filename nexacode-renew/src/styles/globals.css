@@ -905,3 +905,16 @@ body {
   overflow-wrap: break-word;
   position: relative;
 }
+
+.ant-checkbox-wrapper-disabled .ant-checkbox-inner::after {
+  border-color: #313131; /* 원하는 텍스트 색상 */
+}
+
+.ant-checkbox-wrapper-disabled span {
+  color: #313131; /* 원하는 텍스트 색상 */
+}
+
+.ant-input-disabled {
+  color: #313131 !important; /* 원하는 텍스트 색상 */
+  font-size: 1rem !important;
+}

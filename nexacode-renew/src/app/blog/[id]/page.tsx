@@ -21,7 +21,6 @@ interface BlogDetail {
   viewCount: number;
   createdAt: string;
   date?: string;
-
   prologueContent?: string;
 }
 
@@ -72,18 +71,6 @@ export default function BlogPage({ params }: { params: { id: string } }) {
     };
     fetchData();
   }, [params.id]);
-
-  useEffect(() => {
-    if (blog) {
-      console.log("BlogDetail:", blog);
-    }
-  }, [blog]);
-
-  useEffect(() => {
-    if (blog && blog.keywords) {
-      console.log("Keywords:", blog.keywords);
-    }
-  }, [blog]);
 
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
