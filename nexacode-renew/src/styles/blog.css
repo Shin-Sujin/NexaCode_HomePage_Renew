@@ -67,8 +67,14 @@ h3 strong {
   font-size: 20px;
 }
 
-.post-content h2 {
+.post-content h1 {
   font-size: 30px;
+  font-weight: 600;
+  color: #383838;
+}
+
+.post-content h2 {
+  font-size: 25px;
   font-weight: 600;
   color: #383838;
 }
@@ -127,6 +133,16 @@ h3 strong {
   color: #222;
   border-radius: 4px;
   white-space: nowrap; /* 해시태그 내부 텍스트 줄바꿈 방지 */
+}
+
+.prologue-content {
+  color: #454545;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.prologue-content h1 {
+  color: #222;
 }
 
 /* 사이드바 */

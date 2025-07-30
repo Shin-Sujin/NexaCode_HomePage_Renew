@@ -159,7 +159,7 @@ export default function BlogListPage() {
             <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
               넥사코드 이야기
             </h1>
-            <div className="flex gap-2">
+            <div className="gap-2 hidden">
               <a
                 href="#"
                 onClick={openModalToCreate}

@@ -3,10 +3,56 @@
 // import "@/src/styles/blog.css";
 import Footer from "@/src/components/blog/Footer";
 import Link from "next/link";
-import { contactSampleData } from "@/src/components/contact/contactSampleData";
+
 import "@/src/styles/blog.css";
+import { fetchInquiryList } from "@/src/apis";
+import { useState, useEffect } from "react";
 
 export default function ContactPage() {
+  const [inquiries, setInquiries] = useState<InquiryApiResponse>({ data: [] });
+  const page = 1;
+  type InquiryListItem = {
+    id: number;
+    developmentAreaId: number | number[];
+    serviceSummary: string;
+    name: string;
+    status: string;
+    developmentArea: string;
+  };
+
+  interface InquiryApiResponse {
+    data: InquiryListItem[];
+    totalCount?: number;
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = (await fetchInquiryList(page)) as {
+        data: InquiryApiResponse;
+      };
+
+      const data = response.data.data.map((inquiry) => {
+        let developmentArea = "";
+        if (inquiry.developmentAreaId === 1) {
+          developmentArea = "앱 개발";
+        } else if (inquiry.developmentAreaId === 2) {
+          developmentArea = "검색 엔진 최적화(SEO)";
+        } else if (inquiry.developmentAreaId === 3) {
+          developmentArea = "랜딩페이지";
+        } else if (inquiry.developmentAreaId === 4) {
+          developmentArea = "홈페이지/웹페이지";
+        }
+        return { ...inquiry, developmentArea };
+      });
+      setInquiries({ data });
+    };
+    fetchData();
+  }, [page]);
+
   return (
     <div>
       <main className="max-w-5xl mx-auto pt-48 pb-20  px-10 max-md:pt-36 max-md:pb-10">
@@ -46,42 +92,43 @@ export default function ContactPage() {
                 </tr>
               </thead>
               <tbody>
-                {contactSampleData
-                  .slice()
-                  .reverse()
-                  .map((item) => (
-                    <tr key={item.id}>
-                      <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
-                        {Array.isArray(item.answers.area)
-                          ? item.answers.area.join(", ")
-                          : item.answers.area}
-                      </td>
-                      <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
-                        <Link
-                          href={`/contact/${item.id}`}
-                          className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
-                        >
-                          {item.answers.serviceIntro}
-                        </Link>
-                      </td>
-                      <td className="py-4 text-base text-gray-800 align-middle text-center">
-                        {item.answers.name}
-                      </td>
-                      <td className="py-4 text-sm align-middle text-center">
-                        <div>
-                          {item.status === "답변 완료" ? (
-                            <span className="bg-gray-300 text-black px-1 py-1">
-                              답변 완료
-                            </span>
-                          ) : (
-                            <span className="bg-gray-700 text-gray-200 px-3 py-1 ">
-                              대기중
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                {inquiries.data.reverse().map((item) => (
+                  <tr key={item.id}>
+                    {/* 분류 */}
+                    <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
+                      {Array.isArray(item.developmentAreaId)
+                        ? item.developmentArea
+                        : item.developmentArea}
+                    </td>
+                    {/* 서비스 요약 */}
+                    <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
+                      <Link
+                        href={`/contact/${item.id}`}
+                        className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
+                      >
+                        {item.serviceSummary}
+                      </Link>
+                    </td>
+                    {/* 성함 */}
+                    <td className="py-4 text-base text-gray-800 align-middle text-center">
+                      {item.name}
+                    </td>
+                    {/* 답변여부 */}
+                    <td className="py-4 text-sm align-middle text-center">
+                      <div>
+                        {item.status === "COMPLETED" ? (
+                          <span className="bg-gray-300 text-black px-1 py-1">
+                            답변 완료
+                          </span>
+                        ) : (
+                          <span className="bg-gray-700 text-gray-200 px-3 py-1 ">
+                            대기중
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -93,23 +140,23 @@ export default function ContactPage() {
           </h3>
           <hr className="border-t-1 border-gray-200 my-5" />
           <div className="flex flex-col gap-4 text-gray-800">
-            {contactSampleData.map((item) => (
+            {inquiries.data.reverse().map((item) => (
               <div key={item.id} className="flex flex-col gap-2">
                 <h3 className="text-lg font-semibold mt-2">
-                  {Array.isArray(item.answers.area)
-                    ? item.answers.area.join(", ")
-                    : item.answers.area}
+                  {Array.isArray(item.developmentArea)
+                    ? item.developmentArea.join(", ")
+                    : item.developmentArea}
                 </h3>
                 <p className="text-gray-700">
                   <Link
                     href={`/contact/${item.id}`}
                     className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
                   >
-                    {item.answers.serviceIntro}
+                    {item.serviceSummary}
                   </Link>
                 </p>
                 <div className="flex justify-end gap-2 mt-2">
-                  <a className="text-gray-700 mt-1">{item.answers.name}</a>
+                  <a className="text-gray-700 mt-1">{item.name}</a>
                   <Link
                     href={`/contact/${item.id}`}
                     className="text-gray-100 ml-3 bg-gray-400 p-2 text-xs rounded-lg"
@@ -121,22 +168,20 @@ export default function ContactPage() {
             ))}
           </div>
         </div>
-        <div className="max-md:block hidden">
-          {/* 페이지네이션 */}
-          <div className="flex justify-center items-center mt-40 gap-2 max-md:mt-20">
-            <button
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-semibold"
-              disabled
-            >
-              1
-            </button>
-            <button
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 font-semibold"
-              disabled
-            >
-              &gt;
-            </button>
-          </div>
+        {/* 페이지네이션 */}
+        <div className="flex justify-center items-center mt-40 gap-2 max-md:mt-20">
+          <button
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-semibold"
+            disabled
+          >
+            1
+          </button>
+          <button
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 font-semibold"
+            disabled
+          >
+            &gt;
+          </button>
         </div>
       </main>{" "}
       <Footer />

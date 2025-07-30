@@ -8,16 +8,24 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const menuItems = [
-    { label: "ABOUT", href: "/" },
-    { label: "PORTFOLIO", href: "/portfolio" },
-    { label: "BLOG", href: "/blog" },
-    { label: "CONTACT", href: "/contact" },
+    { label: "서비스 특징", href: "/" },
+    { label: "강점", href: "/" },
+    { label: "진행과정", href: "/" },
+    { label: "서비스 특징", href: "/" },
+    { label: "포트폴리오", href: "/portfolio" },
+    { label: "블로그", href: "/blog" },
+    { label: "문의하기", href: "/contact" },
   ];
   return (
     <header className="grid grid-cols-3 items-center w-full bg-white fixed top-0 left-0 right-0 z-50 h-[4.375rem] px-3 max-lg:px-2">
       {/* 로고 */}
-      <a href="/" className="flex items-center">
-        <Image src="/images/siteLogo.png" alt="logo" width={120} height={36} />
+      <a href="/" className="flex items-center ml-2">
+        <Image
+          src="/images/nexacode_logo.webp"
+          alt="logo"
+          width={120}
+          height={36}
+        />
       </a>
       {/* 네비게이션 */}
       <nav className="hidden lg:flex justify-center items-center gap-10">
@@ -25,7 +33,7 @@ export default function Header() {
           <a
             key={item.label}
             href={item.href}
-            className={`nav-link nav-underline transition-opacity duration-200 ${
+            className={`nav-link nav-underline transition-opacity duration-200 whitespace-nowrap ${
               hoveredIdx !== null && hoveredIdx !== idx ? "opacity-50" : ""
             } ${hoveredIdx === idx ? "nav-underline-hovered" : ""}`}
             onMouseEnter={() => setHoveredIdx(idx)}

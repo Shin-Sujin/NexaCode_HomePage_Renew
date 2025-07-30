@@ -84,7 +84,7 @@ export default function PortfolioPage() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen">
       {/* 상단 작성하기 버튼 */}
-      <div className="w-full max-w-[200rem] px-4 flex justify-end mt-32">
+      <div className="w-full max-w-[200rem] px-4 hidden justify-end mt-32">
         <a
           href="#"
           onClick={openModalToCreate}

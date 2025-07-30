@@ -21,8 +21,19 @@ interface BlogDetail {
   viewCount: number;
   createdAt: string;
   date?: string;
-
   prologueContent?: string;
+}
+
+// keywords를 배열로 변환하는 유틸리티 함수
+function ensureArray(keywords: string | string[]): string[] {
+  if (Array.isArray(keywords)) {
+    return keywords.flatMap((keyword) =>
+      typeof keyword === "string" ? keyword.split(/[# ,]+/).filter(Boolean) : []
+    );
+  } else if (typeof keywords === "string") {
+    return keywords.split(/[# ,]+/).filter(Boolean);
+  }
+  return [];
 }
 
 export default function BlogPage({ params }: { params: { id: string } }) {
@@ -61,12 +72,6 @@ export default function BlogPage({ params }: { params: { id: string } }) {
     fetchData();
   }, [params.id]);
 
-  useEffect(() => {
-    if (blog) {
-      console.log("BlogDetail:", blog);
-    }
-  }, [blog]);
-
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
   if (!blog) return <div>존재하지 않는 글입니다.</div>;
@@ -82,8 +87,8 @@ export default function BlogPage({ params }: { params: { id: string } }) {
           <div style={{ flex: 1 }}>
             <div className="content">
               {blog.prologueContent ? (
-                <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
-                  <p className="leading-relaxed text-gray-800">
+                <div className="bg-gray-100 rounded-2xl p-12 mb-10 max-pf_md:mx-3 prologue-content">
+                  <p>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: blog.prologueContent,
@@ -97,10 +102,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
                 {/* 해시태그 */}
                 <div className="hashtag">
                   <ul>
-                    {(blog.keywords && blog.keywords.length > 0
-                      ? blog.keywords[0].split("#").filter(Boolean)
-                      : []
-                    ).map((keyword, idx) => (
+                    {ensureArray(blog.keywords).map((keyword, idx) => (
                       <li className="hashtag__item" key={idx}>
                         #{keyword.trim()}
                       </li>
