@@ -50,42 +50,27 @@ body {
   filter: drop-shadow(0px 4px 4px #d2dae5);
 }
 h1,
-h1 i,
 h1 strong {
   font-size: 30px;
+  font-weight: 600;
+  color: #383838;
 }
 
 h2,
-h2 i,
 h2 strong {
   font-size: 25px;
+  font-weight: 600;
+  color: #383838;
 }
 
 h3,
-h3 i,
 h3 strong {
   font-size: 20px;
-}
-
-.post-content h1 {
-  font-size: 30px;
   font-weight: 600;
   color: #383838;
 }
 
-.post-content h2 {
-  font-size: 25px;
-  font-weight: 600;
-  color: #383838;
-}
-
-.post-content h3 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #383838;
-}
-
-.post-content p {
+p {
   line-height: 150%;
   color: #454545;
   font-size: 20px;
@@ -112,11 +97,11 @@ h3 strong {
   margin-top: 50px;
 }
 
-.post-content .hashtag .feather {
+.hashtag .feather {
   color: #555555;
 }
 
-.post-content .hashtag ul {
+.hashtag ul {
   list-style: none;
   display: flex;
   gap: 16px;
@@ -124,7 +109,7 @@ h3 strong {
   flex-wrap: wrap; /* 해시태그가 화면을 넘어가면 다음 줄로 */
 }
 
-.post-content .hashtag__item {
+.hashtag__item {
   padding-top: 6px;
   padding-left: 12px;
   padding-right: 12px;
@@ -139,10 +124,6 @@ h3 strong {
   color: #454545;
   font-size: 18px;
   line-height: 1.7;
-}
-
-.prologue-content h1 {
-  color: #222;
 }
 
 /* 사이드바 */
@@ -175,25 +156,6 @@ h3 strong {
   font-size: 14px;
   font-weight: 500;
   padding: 0;
-}
-
-/* 사이트 푸터 */
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 96px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 96px;
-}
-.footer .site__information {
-  font-size: 18px;
-  color: #6d6d6d;
-  font-weight: bold;
-}
-.feather {
-  margin-right: 8px;
 }
 
 /* 모든 텍스트에 단어 단위 줄바꿈 적용 */
