@@ -3,7 +3,7 @@ import Header from "@/src/components/Header";
 import Lenis from "./lenis";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import "antd/dist/reset.css";
+// import "antd/dist/reset.css";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],

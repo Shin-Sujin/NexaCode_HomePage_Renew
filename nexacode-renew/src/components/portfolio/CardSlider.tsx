@@ -2,16 +2,11 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
 import { portfolioItems } from "./portfolioItems";
 import { Swiper as SwiperClass } from "swiper";
-// import "../../styles/swiper-custom.css";
 import Link from "next/link";
-import "../../styles/swiper-custom.css";
 
 const CardSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
@@ -129,10 +124,10 @@ const CardSlider = () => {
             ))}
           </Swiper>
         </div>{" "}
-        <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
+        <div className="fixed  bottom-5 left-2 -translate-y-1/2 z-10 px-4">
           <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
         </div>
-        <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
+        <div className="fixed bottom-5 right-2 -translate-y-1/2 z-10 px-4">
           <NextArrow onClick={() => swiperRef.current?.slideNext()} />
         </div>
       </div>
