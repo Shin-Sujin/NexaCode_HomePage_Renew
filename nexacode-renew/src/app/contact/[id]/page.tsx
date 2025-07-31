@@ -35,7 +35,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPage({ params }: { params: { id: string } }) {
+export default async function ContactPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const res = (await fetchInquiryDetail(Number(params.id))) as {
     data: InquiryDetail;
   };

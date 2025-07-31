@@ -98,3 +98,7 @@ export const fetchPortfolios = async (page: number = 1): Promise<unknown> => {
   const params: Record<string, unknown> = { page };
   return http.get("/api/v1/portfolios", { params });
 };
+
+export const fetchPortfolioDetail = async (id: number): Promise<unknown> => {
+  return http.get(`/api/v1/portfolios/${id}`);
+};
