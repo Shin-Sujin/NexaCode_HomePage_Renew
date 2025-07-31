@@ -36,7 +36,7 @@ export const BlogListItem = ({
       className="block"
       onClick={() => console.log("클릭한 블로그 index:", index)}
     >
-      <div className="flex flex-col md:flex-row items-center mx-auto justify-between gap-6 border-b border-gray-200 py-8 cursor-pointer group max-md:gap-1 max-md:px-4 ">
+      <div className="flex flex-col md:flex-row items-center mx-auto justify-between border-b border-gray-200 py-10 cursor-pointer group max-md:gap-1 max-md:px-4 ">
         <div className="w-full  md:w-[210px] h-[187px] max-w-[210px] max-h-[187px] flex-shrink-0 relative overflow-hidden md:order-2 order-1 max-md:w-full max-md:h-[187px] max-lg:h-[500px] ">
           <Image
             src={thumbnailPath}
@@ -46,10 +46,10 @@ export const BlogListItem = ({
           />
         </div>
         <div className="flex-1 flex flex-col md:order-1 order-2 w-full">
-          <span className="text-sm text-gray-500 font-medium mb-3 block">
+          <span className="text-sm text-gray-500 font-medium mb-1 block">
             {category}
           </span>
-          <h3 className="text-3xl font-500 break-keep leading-normal text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
+          <h3 className="blog-list-title text-3xl font-500 break-keep leading-normal text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
             {title}
           </h3>
           <p className="text-gray-500 text-lg pr-32 break-keep max-md:text-base max-md:hidden">
