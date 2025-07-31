@@ -1,5 +1,3 @@
-// "use client";
-
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 import FloatingLeft from "@/src/components/blog/FloatingLeft";
 import Footer from "@/src/components/blog/Footer";
