@@ -82,7 +82,7 @@ const chiron = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "신수진앱개발 업체 | 홈페이지 제작 업체 - 넥사코드",
+  title: "앱개발 업체 | 홈페이지 제작 업체 - 넥사코드",
   description:
     "넥사코드는 앱개발 업체로서 홈페이지 제작 업체로서 활동하고 있습니다.",
 };

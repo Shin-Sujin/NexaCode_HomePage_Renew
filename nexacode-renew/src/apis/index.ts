@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 import config from "../config/config";
 // import cookieHelper from "../utils/cookieHelper";
+// import { PortfolioListResponse } from "../app/portfolio/page";
 
 const http = axios.create({
   baseURL: config.apiUrl,
@@ -91,4 +92,9 @@ export const fetchInquiryList = async (page: number): Promise<unknown> => {
 
 export const fetchInquiryDetail = async (id: number): Promise<unknown> => {
   return http.get(`/api/v1/inquiries/${id}`);
+};
+
+export const fetchPortfolios = async (page: number = 1): Promise<unknown> => {
+  const params: Record<string, unknown> = { page };
+  return http.get("/api/v1/portfolios", { params });
 };

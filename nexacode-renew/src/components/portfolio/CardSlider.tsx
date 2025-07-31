@@ -4,11 +4,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
-import { portfolioItems } from "./portfolioItems";
+import { PortfolioListItem } from "../../app/portfolio/page";
 import { Swiper as SwiperClass } from "swiper";
 import Link from "next/link";
 
-const CardSlider = () => {
+interface CardSliderProps {
+  portfolios: PortfolioListItem[];
+}
+
+const CardSlider: React.FC<CardSliderProps> = ({ portfolios }) => {
+  console.log("portfolios", portfolios);
   const swiperRef = useRef<SwiperClass | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -60,7 +65,6 @@ const CardSlider = () => {
   return (
     <div className="relative w-full flex items-center justify-center">
       <div className="w-full max-w-[200rem] px-4">
-        {" "}
         <div
           ref={containerRef}
           className="w-full relative select-none"
@@ -90,7 +94,7 @@ const CardSlider = () => {
               1100: { slidesPerView: 4.3, centeredSlides: false },
             }}
           >
-            {portfolioItems.map((item) => (
+            {portfolios.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
                   <Link
@@ -98,11 +102,10 @@ const CardSlider = () => {
                     draggable={false}
                     onDragStart={(e) => e.preventDefault()}
                   >
-                    {" "}
                     <div className="bg-white overflow-hidden text-start w-full">
                       <div className="w-full aspect-square relative">
                         <Image
-                          src={item.imageSrc}
+                          src={item.thumbnailPath}
                           alt={item.title}
                           width={800}
                           height={800}
@@ -114,7 +117,7 @@ const CardSlider = () => {
                           {item.title}
                         </h3>
                         <p className="text-gray-500 text-sm pf_xs:ml-1">
-                          {item.description}
+                          BRANDING – {item.createdAt}
                         </p>
                       </div>
                     </div>
@@ -123,7 +126,7 @@ const CardSlider = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>{" "}
+        </div>
         <div className="fixed  bottom-5 left-2 -translate-y-1/2 z-10 px-4">
           <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
         </div>
