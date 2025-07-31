@@ -2,18 +2,18 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import Image from "next/image";
 import { PrevArrow, NextArrow } from "@/src/components/portfolio/CustomArrows";
-import { portfolioItems } from "./portfolioItems";
+import { PortfolioListItem } from "../../app/portfolio/page";
 import { Swiper as SwiperClass } from "swiper";
-// import "../../styles/swiper-custom.css";
 import Link from "next/link";
-import "../../styles/swiper-custom.css";
 
-const CardSlider = () => {
+interface CardSliderProps {
+  portfolios: PortfolioListItem[];
+}
+
+const CardSlider: React.FC<CardSliderProps> = ({ portfolios }) => {
+  console.log("portfolios", portfolios);
   const swiperRef = useRef<SwiperClass | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -65,7 +65,6 @@ const CardSlider = () => {
   return (
     <div className="relative w-full flex items-center justify-center">
       <div className="w-full max-w-[200rem] px-4">
-        {" "}
         <div
           ref={containerRef}
           className="w-full relative select-none"
@@ -95,7 +94,7 @@ const CardSlider = () => {
               1100: { slidesPerView: 4.3, centeredSlides: false },
             }}
           >
-            {portfolioItems.map((item) => (
+            {portfolios.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="px-3 inline-block align-top cursor-grab active:cursor-grabbing">
                   <Link
@@ -103,11 +102,10 @@ const CardSlider = () => {
                     draggable={false}
                     onDragStart={(e) => e.preventDefault()}
                   >
-                    {" "}
                     <div className="bg-white overflow-hidden text-start w-full">
                       <div className="w-full aspect-square relative">
                         <Image
-                          src={item.imageSrc}
+                          src={item.thumbnailPath}
                           alt={item.title}
                           width={800}
                           height={800}
@@ -115,11 +113,11 @@ const CardSlider = () => {
                         />
                       </div>
                       <div className="py-4  select-none">
-                        <h3 className="text-2xl text-gray-700 font-500 mb-2">
+                        <h3 className="list-title  text-2xl text-gray-700 font-500 mb-2">
                           {item.title}
                         </h3>
                         <p className="text-gray-500 text-sm pf_xs:ml-1">
-                          {item.description}
+                          BRANDING – {item.createdAt}
                         </p>
                       </div>
                     </div>
@@ -128,11 +126,11 @@ const CardSlider = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>{" "}
-        <div className="absolute bottom-5 left-2 -translate-y-1/2 z-10 px-4">
+        </div>
+        <div className="fixed  bottom-5 left-2 -translate-y-1/2 z-10 px-4">
           <PrevArrow onClick={() => swiperRef.current?.slidePrev()} />
         </div>
-        <div className="absolute bottom-5 right-2 -translate-y-1/2 z-10 px-4">
+        <div className="fixed bottom-5 right-2 -translate-y-1/2 z-10 px-4">
           <NextArrow onClick={() => swiperRef.current?.slideNext()} />
         </div>
       </div>

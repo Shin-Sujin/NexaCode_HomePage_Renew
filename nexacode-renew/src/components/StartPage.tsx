@@ -18,6 +18,7 @@ import AchievementTable from "@/src/components/startPageComponents/AchievementTa
 import WorkGallery from "@/src/components/startPageComponents/WorkGallery";
 import OverlapCard from "@/src/components/startPageComponents/OverlapCard";
 import FooterArea from "@/src/components/startPageComponents/FooterArea";
+import Link from "next/link";
 
 export default function StartPage() {
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -88,26 +89,30 @@ export default function StartPage() {
             >
               <div className="flex flex-row items-start justify-between pb-10 max-md:flex-col max-md:pb-5 max-md:gap-8 ">
                 {/* ================================ 1번 요소 ================================ */}
-                <div
-                  ref={fadeRef}
-                  className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-lg:w-[20rem] max-sm:w-[25rem] max-md:mt-10"
-                >
-                  {/* 윗부분 선 */}
-                  <div className="w-full mb-4 border-t border-white" />
-                  {/* 텍스트 + 화살표 한 줄 */}
-                  <div className="flex justify-between w-full">
-                    <span className="text-xl font-normal tracking-wider text-white">
-                      Arolax™
-                    </span>
-                    <span className="text-xl font-extrabold text-white">↗</span>
+                <Link href="/contact">
+                  <div
+                    ref={fadeRef}
+                    className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-lg:w-[20rem] max-sm:w-[25rem] max-md:mt-10"
+                  >
+                    {/* 윗부분 선 */}
+                    <div className="w-full mb-4 border-t border-white" />
+                    {/* 텍스트 + 화살표 한 줄 */}
+                    <div className="flex justify-between w-full">
+                      <span className="text-xl font-normal tracking-wider text-white">
+                        Arolax™
+                      </span>
+                      <span className="text-xl font-extrabold text-white">
+                        ↗
+                      </span>
+                    </div>
+                    {/* 주소 */}
+                    <div className="text-white font-medium text-xl leading-[1.3]">
+                      1772 Street Charleston,
+                      <br />
+                      New York
+                    </div>
                   </div>
-                  {/* 주소 */}
-                  <div className="text-white font-medium text-xl leading-[1.3]">
-                    1772 Street Charleston,
-                    <br />
-                    New York
-                  </div>
-                </div>
+                </Link>
                 {/* ================================ 2번 요소 ================================ */}
                 <div
                   ref={textRef}

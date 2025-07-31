@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface PaginationProps {
   currentPage: number;
@@ -17,13 +20,22 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   setCurrentPage,
 }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     scrollToTop();
+
+    // 기존 쿼리스트링을 유지하면서 page만 교체
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", String(page));
+
+    router.push(`?${params.toString()}`);
   };
 
   return (
-    <div className="flex justify-center mt-8 gap-2">
+    <div className="flex justify-center mt-8 gap-2 mb-10">
       {/* 맨 처음으로 */}
       <button
         onClick={() => handlePageChange(1)}

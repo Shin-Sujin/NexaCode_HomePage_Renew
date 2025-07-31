@@ -1,7 +1,7 @@
 export const portfolioItems = [
   {
     id: 1,
-    imageSrc: "/images/portfolio/nextPortfoilo.webp",
+    imageSrc: "/images/portfolio/nexaPortfolio.webp",
     title: "헬스 친구 매칭, 커머스 앱",
     description: "BRANDING – 2014",
   },

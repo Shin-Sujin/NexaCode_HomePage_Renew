@@ -1,3 +1,6 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/autoplay";
 /* 공통 bullet 스타일 */
 .swiper-pagination-bullet {
   opacity: 1;
