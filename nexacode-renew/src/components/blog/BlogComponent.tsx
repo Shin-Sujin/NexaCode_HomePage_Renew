@@ -3,6 +3,7 @@ import FloatingLeft from "@/src/components/blog/FloatingLeft";
 import Footer from "@/src/components/blog/Footer";
 import Title from "@/src/components/blog/Title";
 import ScrollProgressBar from "@/src/components/blog/ScrollProgressBar";
+
 interface BlogDetail {
   id: number;
   title: string;

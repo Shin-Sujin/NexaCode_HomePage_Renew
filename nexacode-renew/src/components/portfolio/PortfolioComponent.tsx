@@ -1,4 +1,5 @@
 "use client";
+
 import Footer from "@/src/components/blog/Footer";
 import Image from "next/image";
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
@@ -40,9 +41,6 @@ export default function PortfolioComponent({
           <h1 className="text-7xl md:text-5xl font-semibold text-white drop-shadow-lg mb-6 text-center max-pf_md:text-5xl max-pf_xs:text-3xl">
             {portfolio.title}
           </h1>
-          <div className="flex items-center text-white/90 text-lg drop-shadow">
-            <span>🗓️ {portfolio.createdAt}</span>
-          </div>
         </div>
       </div>
 

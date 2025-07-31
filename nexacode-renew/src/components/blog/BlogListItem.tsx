@@ -49,7 +49,7 @@ export const BlogListItem = ({
           <span className="text-sm text-gray-500 font-medium mb-1 block">
             {category}
           </span>
-          <h3 className="blog-list-title text-3xl font-500 break-keep leading-normal text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
+          <h3 className="list-title text-3xl font-500 break-keep leading-normal text-gray-900 mb-2 max-md:text-2xl max-md:mb-1 max-md:mt-2">
             {title}
           </h3>
           <p className="text-gray-500 text-lg pr-32 break-keep max-md:text-base max-md:hidden">

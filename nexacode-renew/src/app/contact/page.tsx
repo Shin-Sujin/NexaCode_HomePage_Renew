@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </tr>
               </thead>
               <tbody>
-                {inquiries.data.reverse().map((item) => (
+                {inquiries.data.map((item) => (
                   <tr key={item.id}>
                     {/* 분류 */}
                     <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
@@ -140,7 +140,7 @@ export default function ContactPage() {
           </h3>
           <hr className="border-t-1 border-gray-200 my-5" />
           <div className="flex flex-col gap-4 text-gray-800">
-            {inquiries.data.reverse().map((item) => (
+            {inquiries.data.map((item) => (
               <div key={item.id} className="flex flex-col gap-2">
                 <h3 className="text-lg font-semibold mt-2">
                   {Array.isArray(item.developmentArea)
