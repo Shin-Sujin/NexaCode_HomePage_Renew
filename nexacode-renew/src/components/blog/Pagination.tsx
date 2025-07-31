@@ -35,7 +35,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex justify-center mt-8 gap-2">
+    <div className="flex justify-center mt-8 gap-2 mb-10">
       {/* 맨 처음으로 */}
       <button
         onClick={() => handlePageChange(1)}

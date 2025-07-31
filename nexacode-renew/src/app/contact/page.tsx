@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 
 export default function ContactPage() {
   const [inquiries, setInquiries] = useState<InquiryApiResponse>({ data: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const page = 1;
   type InquiryListItem = {
     id: number;
@@ -31,6 +33,8 @@ export default function ContactPage() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       const response = (await fetchInquiryList(page)) as {
         data: InquiryApiResponse;
       };
@@ -49,13 +53,14 @@ export default function ContactPage() {
         return { ...inquiry, developmentArea };
       });
       setInquiries({ data });
+      setLoading(false);
     };
     fetchData();
   }, [page]);
 
   return (
     <div>
-      <main className="w-full overflow-x-hidden m-0 p-0 max-w-5xl mx-auto px-4 py-48 max-md:w-full max-md:pb-20">
+      <main className="w-full overflow-x-hidden min-h-screen m-0 p-0 max-w-5xl mx-auto px-4 pt-48 pb-10 max-md:w-full max-md:pb-20">
         <h1 className="text-6xl text-gray-800 font-600 mb-6 max-md:text-4xl max-md:px-2 ">
           문의하기
         </h1>
@@ -72,66 +77,73 @@ export default function ContactPage() {
               </button>
             </Link>
           </div>
-          {/* 문의 리스트 테이블 */}
-          <div className="overflow-x-auto bg-white max-md:hidden">
-            <table className="min-w-full text-left border-separate border-spacing-y-2  ">
-              <thead>
-                <tr>
-                  <th className="pl-4 py-4 font-semibold text-lg w-32 text-left border-b-2 border-t-2 border-gray-500">
-                    분류
-                  </th>
-                  <th className="py-4 font-semibold text-lg text-left border-b-2 border-t-2 border-gray-500">
-                    서비스 요약
-                  </th>
-                  <th className="py-4 font-semibold text-lg w-24 text-center border-b-2 border-t-2 border-gray-500">
-                    성함
-                  </th>
-                  <th className="py-4 font-semibold text-lg w-32 text-center border-b-2 border-t-2 border-gray-500">
-                    답변여부
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {inquiries.data.map((item) => (
-                  <tr key={item.id}>
-                    {/* 분류 */}
-                    <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
-                      {Array.isArray(item.developmentAreaId)
-                        ? item.developmentArea
-                        : item.developmentArea}
-                    </td>
-                    {/* 서비스 요약 */}
-                    <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
-                      <Link
-                        href={`/contact/${item.id}`}
-                        className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
-                      >
-                        {item.serviceSummary}
-                      </Link>
-                    </td>
-                    {/* 성함 */}
-                    <td className="py-4 text-base text-gray-800 align-middle text-center">
-                      {item.name}
-                    </td>
-                    {/* 답변여부 */}
-                    <td className="py-4 text-sm align-middle text-center">
-                      <div>
-                        {item.status === "COMPLETED" ? (
-                          <span className="bg-gray-300 text-black px-1 py-1">
-                            답변 완료
-                          </span>
-                        ) : (
-                          <span className="bg-gray-700 text-gray-200 px-3 py-1 ">
-                            대기중
-                          </span>
-                        )}
-                      </div>
-                    </td>
+          {loading ? (
+            <div className="loader"></div>
+          ) : error ? (
+            <div className="text-center py-10 text-red-400">{error}</div>
+          ) : inquiries.data.length === 0 ? (
+            <div className="loader"></div>
+          ) : (
+            <div className="overflow-x-auto bg-white max-md:hidden">
+              <table className="min-w-full text-left border-separate border-spacing-y-2  ">
+                <thead>
+                  <tr>
+                    <th className="pl-4 py-4 font-semibold text-lg w-32 text-left border-b-2 border-t-2 border-gray-500">
+                      분류
+                    </th>
+                    <th className="py-4 font-semibold text-lg text-left border-b-2 border-t-2 border-gray-500">
+                      서비스 요약
+                    </th>
+                    <th className="py-4 font-semibold text-lg w-24 text-center border-b-2 border-t-2 border-gray-500">
+                      성함
+                    </th>
+                    <th className="py-4 font-semibold text-lg w-32 text-center border-b-2 border-t-2 border-gray-500">
+                      답변여부
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {inquiries.data.map((item) => (
+                    <tr key={item.id}>
+                      {/* 분류 */}
+                      <td className="pl-4 py-4 text-base text-gray-800 align-middle ">
+                        {Array.isArray(item.developmentAreaId)
+                          ? item.developmentArea
+                          : item.developmentArea}
+                      </td>
+                      {/* 서비스 요약 */}
+                      <td className="py-4 text-base text-gray-700 align-middle max-w-xl pr-10">
+                        <Link
+                          href={`/contact/${item.id}`}
+                          className="cursor-pointer hover:underline block w-full h-full overflow-hidden whitespace-nowrap text-ellipsis"
+                        >
+                          {item.serviceSummary}
+                        </Link>
+                      </td>
+                      {/* 성함 */}
+                      <td className="py-4 text-base text-gray-800 align-middle text-center">
+                        {item.name}
+                      </td>
+                      {/* 답변여부 */}
+                      <td className="py-4 text-sm align-middle text-center">
+                        <div>
+                          {item.status === "COMPLETED" ? (
+                            <span className="bg-gray-300 text-black px-1 py-1">
+                              답변 완료
+                            </span>
+                          ) : (
+                            <span className="bg-gray-700 text-gray-200 px-3 py-1 ">
+                              대기중
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
         {/* 모바일 버전 */}
         <div className="max-md:block hidden">

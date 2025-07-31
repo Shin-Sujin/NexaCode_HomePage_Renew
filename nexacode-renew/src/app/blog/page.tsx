@@ -78,10 +78,10 @@ export default function BlogListPage() {
   }, [currentPage, debouncedSearch]);
 
   const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 7;
-
+  console.log(blogList);
   return (
     <div>
-      <main className="w-full overflow-x-hidden m-0 p-0 max-w-5xl mx-auto px-4 py-48 max-md:w-full max-md:pb-20">
+      <main className="w-full overflow-x-hidden min-h-screen m-0 p-0 max-w-5xl mx-auto px-4 pt-48 pb-10 max-md:w-full max-md:pb-20">
         <div className="flex items-center justify-between mb-6 max-md:flex-col max-md:items-start max-md:gap-4">
           <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
             넥사코드 이야기
@@ -97,13 +97,11 @@ export default function BlogListPage() {
           onSearch={handleSearch}
         />
         {loading ? (
-          <div className="text-center py-10 text-gray-400">로딩 중...</div>
+          <div className="loader"></div>
         ) : error ? (
           <div className="text-center py-10 text-red-400">{error}</div>
         ) : blogList.length === 0 ? (
-          <div className="text-center py-10 text-gray-400">
-            블로그가 없습니다.
-          </div>
+          <div className="loader"></div>
         ) : (
           blogList.map((item: BlogListItem) => (
             <BlogListItem
@@ -118,13 +116,12 @@ export default function BlogListPage() {
             />
           ))
         )}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          setCurrentPage={setCurrentPage}
-        />
       </main>
-
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
       <Footer />
     </div>
   );
