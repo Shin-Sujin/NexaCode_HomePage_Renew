@@ -18,7 +18,7 @@ interface BlogDetail {
   date?: string;
 }
 
-// keywords를 배열로 변환하는 유틸리티 함수
+// keywords를 배열로 변환
 export function ensureArray(keywords: string | string[]): string[] {
   if (Array.isArray(keywords)) {
     return keywords.flatMap((keyword) =>
@@ -57,7 +57,6 @@ export default function BlogComponent({ blog }: { blog: BlogDetail }) {
               ) : null}
               <article className="post-content">
                 <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-                {/* 해시태그 */}
                 <div className="hashtag">
                   <ul>
                     {ensureArray(blog.keywords).map((keyword, idx) => (
@@ -70,7 +69,6 @@ export default function BlogComponent({ blog }: { blog: BlogDetail }) {
               </article>
             </div>
           </div>
-          {/* <FloatingRight steps={steps} /> */}
         </div>
       </main>
       <Footer />
