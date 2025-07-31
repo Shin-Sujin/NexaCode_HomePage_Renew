@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import styles from "../../styles/FooterArea.module.css";
 // import styles from "@/src/styles/globals.css";
 export default function FooterArea() {
@@ -38,9 +38,11 @@ export default function FooterArea() {
                 placeholder="Enter your email"
                 className={styles.input}
               />
-              <button type="submit" className={styles.button}>
-                →
-              </button>
+              <Link href="/contact">
+                <button type="submit" className={styles.button}>
+                  →
+                </button>
+              </Link>
             </form>
           </div>
         </div>
