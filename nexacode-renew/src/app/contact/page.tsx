@@ -55,13 +55,13 @@ export default function ContactPage() {
 
   return (
     <div>
-      <main className="max-w-5xl mx-auto pt-48 pb-20  px-10 max-md:pt-36 max-md:pb-10">
+      <main className="w-full overflow-x-hidden m-0 p-0 max-w-5xl mx-auto px-4 py-48 max-md:w-full max-md:pb-20">
         <h1 className="text-6xl text-gray-800 font-600 mb-6 max-md:text-4xl max-md:px-2 ">
           문의하기
         </h1>
-        <h2 className="text-xl text-gray-600 font-400 mb-50 max-md:text-lg max-md:px-3 max-md:mb-0">
+        <div className="text-xl text-gray-600 font-400 mb-50 max-md:text-lg max-md:px-3 max-md:mb-0">
           무엇이든 물어보세요, 상세하게 답변하겠습니다
-        </h2>
+        </div>
         {/* 실제 콘텐츠 */}
         <div className="relative z-10 w-full max-w-6xl  mt-24 ">
           {/* 상단 제목 및 버튼 */}

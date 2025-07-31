@@ -1,7 +1,6 @@
 "use client";
 
 import CardSlider from "../../components/portfolio/CardSlider";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import "../../styles/portfolio.css";
 import { fetchPortfolios } from "../../apis";

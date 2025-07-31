@@ -81,53 +81,50 @@ export default function BlogListPage() {
 
   return (
     <div>
-      <main className="w-full max-w-full overflow-x-hidden m-0 p-0">
-        <main className="max-w-5xl mx-auto px-4 py-48 max-md:w-full max-md:pb-20">
-          <div className="flex items-center justify-between mb-6 max-md:flex-col max-md:items-start max-md:gap-4">
-            <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
-              넥사코드 이야기
-            </h1>
+      <main className="w-full overflow-x-hidden m-0 p-0 max-w-5xl mx-auto px-4 py-48 max-md:w-full max-md:pb-20">
+        <div className="flex items-center justify-between mb-6 max-md:flex-col max-md:items-start max-md:gap-4">
+          <h1 className="text-6xl text-gray-800 font-600 max-md:text-4xl max-md:px-2">
+            넥사코드 이야기
+          </h1>
+        </div>
+        <div className="text-xl text-gray-600 font-400 pl-2 mb-20 max-md:text-lg max-md:px-3 ">
+          IT 외주, 개발 비즈니스 꿀팁 블로그 서비스{" "}
+        </div>
+        {/* 검색하기 컴포넌트 추가 */}
+        <SearchBar
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onSearch={handleSearch}
+        />
+        {loading ? (
+          <div className="text-center py-10 text-gray-400">로딩 중...</div>
+        ) : error ? (
+          <div className="text-center py-10 text-red-400">{error}</div>
+        ) : blogList.length === 0 ? (
+          <div className="text-center py-10 text-gray-400">
+            블로그가 없습니다.
           </div>
-          <h2 className="text-xl text-gray-600 font-400 pl-2 mb-20 max-md:text-lg max-md:px-3 ">
-            IT 외주, 개발 비즈니스 꿀팁 블로그 서비스{" "}
-          </h2>
-          <div className="space-y-6 max-md:space-y-2">
-            {/* 검색하기 컴포넌트 추가 */}
-            <SearchBar
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onSearch={handleSearch}
+        ) : (
+          blogList.map((item: BlogListItem) => (
+            <BlogListItem
+              key={item.id}
+              index={item.id}
+              category="Tech"
+              description={item.description}
+              author="nexacode"
+              date={item.createdAt}
+              title={item.title}
+              thumbnailPath={item.thumbnailPath}
             />
-            {loading ? (
-              <div className="text-center py-10 text-gray-400">로딩 중...</div>
-            ) : error ? (
-              <div className="text-center py-10 text-red-400">{error}</div>
-            ) : blogList.length === 0 ? (
-              <div className="text-center py-10 text-gray-400">
-                블로그가 없습니다.
-              </div>
-            ) : (
-              blogList.map((item: BlogListItem) => (
-                <BlogListItem
-                  key={item.id}
-                  index={item.id}
-                  category="Tech"
-                  description={item.description}
-                  author="nexacode"
-                  date={item.createdAt}
-                  title={item.title}
-                  thumbnailPath={item.thumbnailPath}
-                />
-              ))
-            )}
-          </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-          />
-        </main>
+          ))
+        )}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </main>
+
       <Footer />
     </div>
   );
