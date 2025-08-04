@@ -6,13 +6,11 @@ import { useEffect, useRef } from "react";
 type CounterUpProps = {
   targetNumber: number;
   duration?: number; // in ms
-  className?: string;
 };
 
 export default function CounterUp({
   targetNumber,
-  duration = 3000, // 속도 살짝 빠르게
-  className = "text-5xl font-bold",
+  duration = 500,
 }: CounterUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -56,9 +54,5 @@ export default function CounterUp({
     return () => observer.disconnect();
   }, [targetNumber, duration]);
 
-  return (
-    <span ref={ref} className={className}>
-      0
-    </span>
-  );
+  return <span ref={ref}>0</span>;
 }

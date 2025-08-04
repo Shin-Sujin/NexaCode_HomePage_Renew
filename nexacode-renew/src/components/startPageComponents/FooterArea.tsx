@@ -6,29 +6,31 @@ export default function FooterArea() {
   return (
     <section className={styles.footerAreaWrapper}>
       <div className={styles.inner}>
-        <h2 className={styles.title}>
-          Get started <br />
-          now
-        </h2>
-        <p className={styles.subtitle}>
-          If you would like to work with us or just want to get in touch,
-          we&apos;d love to hear from you!
+        <div className="text-6xl font-normal mt-20">
+          누구나 IT 개발 전문 부서를 가질 수 있도록,
+        </div>
+        <div className="text-7xl font-normal mt-4">
+          당신만의 개발 파트너 <strong>넥사코드</strong>입니다.
+        </div>
+        <p className="text-3xl text-gray-400 mt-5 mb-10">
+          처음의 기대가 끝까지 이어지도록, 넥사코드는{" "}
+          <strong>끝까지 책임지는 개발</strong>을 약속드립니다.
         </p>
         <div className={styles.ctaArea}>
           <div className={styles.locationBlock}>
-            <h3>London</h3>
+            <h3>오시는 길</h3>
             <p>
-              Baltia Squar, Mark Street,
+              서울시 금천구 디지털로 178
               <br />
-              London
+              가산 퍼블릭 A동 1515~1516호
             </p>
           </div>
           <div className={styles.locationBlock}>
-            <h3>New York</h3>
+            <h3>CONTACT</h3>
             <p>
-              Nenuya Centre, Elia Street,
+              전화번호: 010-4009-2398
               <br />
-              New York, USA
+              Email:  nexacode@nexacode.co.kr
             </p>
           </div>
           <div className={styles.newsletter}>

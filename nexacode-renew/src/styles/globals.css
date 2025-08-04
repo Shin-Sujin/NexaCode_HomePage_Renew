@@ -46,12 +46,12 @@ body {
   }
 
   .service-item-top {
-    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-medium tracking-wide
+    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-bold tracking-wide
     max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg;
   }
 
   .service-item {
-    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
+    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-bold tracking-wide
     max-md:mb-3 max-md:pb-3 max-md:text-xl;
   }
 
@@ -283,22 +283,6 @@ body {
       transition: transform 0.5s ease 0.2s;
     }
   }
-
-  .title {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #121212;
-  }
-
-  .tag {
-    margin-top: 6px;
-    margin-bottom: 4rem;
-
-    font-size: 14px;
-    color: #666;
-    display: inline-block;
-  }
 }
 
 .testimonial-box-wrapper {
@@ -320,7 +304,7 @@ body {
 }
 
 .meta-info {
-  width: 405px;
+  width: 500px;
   border-right: 1px solid #2e2e2e;
   padding-bottom: 10px;
   position: absolute;
@@ -345,8 +329,6 @@ body {
   &:after {
     position: absolute;
     content: "";
-    width: 1px;
-    height: 1000px;
     background-color: rgba(255, 255, 255, 0.08);
     inset-inline-end: -1px;
     top: -150px;
@@ -357,27 +339,13 @@ body {
   }
 
   .testimonial-count {
-    font-size: 140px;
     font-family: "BeatriceTRIAL-Regular-BF64829e8f591fb";
-    line-height: 0.87;
-    font-weight: 600;
-    margin-bottom: 35px;
-    color: white;
-
     @media (max-width: 1279px) {
       font-size: 100px;
     }
-
     @media (max-width: 639px) {
       font-size: 70px;
     }
-  }
-
-  .text {
-    font-size: 18px;
-    line-height: 1.44;
-    margin-bottom: 43px;
-    color: var(--white-2);
   }
 }
 
@@ -427,4 +395,12 @@ body {
   to {
     transform: rotate(1turn);
   }
+}
+
+.grid-container-portfolio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* 그리드 아이템 간의 간격 */
+  column-gap: 100px; /* 열 간의 간격 */
+  row-gap: 30px; /* 행 간의 간격 */
 }

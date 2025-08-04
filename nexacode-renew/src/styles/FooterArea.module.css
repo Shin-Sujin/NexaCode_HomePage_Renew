@@ -10,19 +10,11 @@
 }
 
 .title {
-  font-size: 110px;
+  font-size: 80px;
   line-height: 0.9;
   margin: 0 0 30px;
   color: #fff;
   letter-spacing: 5px;
-}
-
-.subtitle {
-  font-size: 30px;
-  max-width: 900px;
-  margin-bottom: 50px;
-  letter-spacing: 1px;
-  color: #999;
 }
 
 .ctaArea {
