@@ -1,21 +1,58 @@
 "use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "../../styles/FooterArea.module.css";
-// import styles from "@/src/styles/globals.css";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 export default function FooterArea() {
+  const rotatingRef = useRef<HTMLSpanElement | null>(null);
+  const animatedTextRef = useRef<HTMLParagraphElement | null>(null);
+  useEffect(() => {
+    if (!rotatingRef.current || !animatedTextRef.current) return;
+
+    gsap.fromTo(
+      rotatingRef.current,
+      {
+        rotation: -75,
+        y: -80,
+        opacity: 0,
+        transformOrigin: "left center", // ← 회전축 설정
+      },
+      {
+        scrollTrigger: {
+          trigger: animatedTextRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reset",
+        },
+        rotation: 0,
+        y: 0,
+        opacity: 1,
+        ease: "bounce.out",
+        duration: 1.5,
+      }
+    );
+  }, []);
   return (
     <div className="container h-screen max-md:h-auto max-md:mx-10">
       <section className={styles.footerAreaWrapper}>
         <div className={styles.inner}>
-          <div className="text-8xl font-normal max-xxxl:text-6xl max-lg:text-4xl max-md:text-xl max-md:pt-10">
+          <div className="text-7xl font-normal max-xxxl:text-5xl max-lg:text-4xl max-md:text-xl max-md:pt-10">
             누구나 IT 개발 전문 부서를 가질 수 있도록,
           </div>
-          <div className="text-9xl font-normal mt-8 max-xxxl:text-7xl max-lg:text-5xl max-md:text-4xl">
+          <div
+            ref={animatedTextRef}
+            className="text-9xl font-normal mt-8 max-xxxl:text-7xl max-lg:text-5xl max-md:text-4xl"
+          >
             당신만의 개발 파트너
-            <br className="max-md:block hidden" /> <strong>넥사코드</strong>
+            <br className="max-md:block hidden" />{" "}
+            <span className="rotating-word" ref={rotatingRef}>
+              <strong>넥사코드</strong>
+            </span>
             입니다.
           </div>
-          <p className="text-5xl text-gray-400 mt-10 mb-40 max-xxxl:text-4xl max-xxxl:mb-20 max-lg:text-xl max-lg:mb-20 max-lg:mt-5 max-md:text-xl">
+          <p className="text-5xl animated-text text-gray-400 mt-10 mb-40 max-xxxl:text-4xl max-xxxl:mb-20 max-lg:text-xl max-lg:mb-20 max-lg:mt-5 max-md:text-xl">
             처음의 기대가 끝까지 이어지도록,{" "}
             <br className="max-md:block hidden" />
             넥사코드는

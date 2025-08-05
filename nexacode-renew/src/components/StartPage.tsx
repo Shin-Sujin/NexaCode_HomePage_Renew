@@ -10,17 +10,17 @@ import Section06 from "./startPage/Section06";
 import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
-
+import ButtonPage02 from "./startPageComponents/ButtonPage02";
 export default function StartPage() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const currentIndexRef = useRef(0);
-  const [currentIndex, setCurrentIndex] = useState(4); // Section04라고 가정
+  const [currentIndex, setCurrentIndex] = useState(0);
   const section04TopRef = useRef<HTMLDivElement | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
 
   // 원페이지 효과를 줄 섹션 인덱스
   const isFullPageSection = (index: number) => {
-    return [0, 1, 2, 5, 6, 7, 8, 9].includes(index); // Section03, 04는 제외
+    return [0, 1, 2, 3, 6, 7, 8, 9, 10].includes(index); // Section03, 04는 제외
   };
 
   const scrollToSection = (index: number) => {
@@ -48,20 +48,20 @@ export default function StartPage() {
     e.preventDefault();
 
     // Section02 → Section03으로 강제 이동
-    if (currentIndex === 2 && direction === "down") {
-      setCurrentIndex(3);
-      scrollToSection(3);
-      return;
-    }
-    // Section05 → Section04로 이동 (휠 위로)
-    if (currentIndex === 5 && direction === "up") {
+    if (currentIndex === 3 && direction === "down") {
       setCurrentIndex(4);
       scrollToSection(4);
       return;
     }
+    // Section05 → Section04로 이동 (휠 위로)
+    if (currentIndex === 6 && direction === "up") {
+      setCurrentIndex(5);
+      scrollToSection(5);
+      return;
+    }
 
     // Section04 → Section03 (스크롤 맨 위에서 휠을 올릴 때)
-    if (currentIndex === 4 && direction === "up") {
+    if (currentIndex === 5 && direction === "up") {
       const sectionTopElement = document.getElementById("section04-top");
 
       if (sectionTopElement) {
@@ -70,8 +70,8 @@ export default function StartPage() {
         // 스크롤이 Section04의 맨 꼭대기에 도달했는지 판단
         if (rect.top <= 10) {
           console.log("🔥 Section04 맨 위에서 휠 업 → Section03으로 이동");
-          setCurrentIndex(3);
-          scrollToSection(3);
+          setCurrentIndex(4);
+          scrollToSection(4);
           return;
         }
       }
@@ -160,9 +160,9 @@ export default function StartPage() {
     if (isScrolling) return;
 
     // Section02에서 Section03으로 넘어가는 예외 처리
-    if (currentIndex === 2 && direction === "down") {
-      scrollToSection(3);
-      currentIndexRef.current = 3;
+    if (currentIndex === 3 && direction === "down") {
+      scrollToSection(4);
+      currentIndexRef.current = 4;
       return;
     }
 
@@ -183,22 +183,24 @@ export default function StartPage() {
   return (
     <div className="flex flex-col">
       {/* Title ~ Section03 */}
-      {[Title, Section01, Section02, Section03].map((Component, i) => (
-        <div
-          key={i}
-          ref={(el) => {
-            sectionRefs.current[i] = el;
-          }}
-        >
-          <div className="flex justify-center">
-            <Component />
-          </div>{" "}
-        </div>
-      ))}
+      {[Title, Section01, ButtonPage02, Section02, Section03].map(
+        (Component, i) => (
+          <div
+            key={i}
+            ref={(el) => {
+              sectionRefs.current[i] = el;
+            }}
+          >
+            <div className="flex justify-center">
+              <Component />
+            </div>{" "}
+          </div>
+        )
+      )}
 
       <div
         ref={(el) => {
-          sectionRefs.current[4] = el;
+          sectionRefs.current[5] = el;
         }}
       >
         <div className="flex justify-center">
@@ -209,9 +211,9 @@ export default function StartPage() {
       {/* Section05 ~ FooterVideo */}
       {[Section05, Section06, Section07, FooterVideo].map((Component, i) => (
         <div
-          key={i + 5}
+          key={i + 6}
           ref={(el) => {
-            sectionRefs.current[i + 5] = el;
+            sectionRefs.current[i + 6] = el;
           }}
           className={`w-full ${i === 0 ? "bg-black" : ""}`} // Section05에만 bg-black 적용
         >
@@ -224,7 +226,7 @@ export default function StartPage() {
       {/* FooterArea */}
       <div
         ref={(el) => {
-          sectionRefs.current[9] = el;
+          sectionRefs.current[10] = el;
         }}
       >
         <div className="bg-[#161616] flex justify-center max-xxxl:pt-10">

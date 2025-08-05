@@ -36,6 +36,7 @@ export const useSectionTitleAnimation = (
           end: "top 20%",
           scroller: "body",
           markers: false,
+          toggleActions: "play none none reset",
         },
       });
     }

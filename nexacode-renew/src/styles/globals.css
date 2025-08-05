@@ -415,3 +415,7 @@ body {
   align-items: center; /* 수직 가운데 정렬 */
   justify-content: center; /* 수평 가운데 정렬 */
 }
+
+.rotating-word {
+  display: inline-block;
+}

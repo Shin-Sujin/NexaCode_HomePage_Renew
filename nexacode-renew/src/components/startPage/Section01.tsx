@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ButtonPage02 from "../startPageComponents/ButtonPage02";
+// import ButtonPage02 from "../startPageComponents/ButtonPage02";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
@@ -41,7 +41,6 @@ export default function Section01() {
               height={800}
               className="w-[80%]"
             />
-            <ButtonPage02 />
           </div>
         </div>
       </div>
