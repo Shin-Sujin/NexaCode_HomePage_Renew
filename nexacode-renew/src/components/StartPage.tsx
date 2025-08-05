@@ -118,8 +118,21 @@ export default function StartPage() {
   }, []);
   // wheel 이벤트를 섹션 변경될 때마다 등록/해제
   useEffect(() => {
-    window.addEventListener("wheel", wheelHandler, { passive: false });
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        // max-md 이하
+        window.removeEventListener("wheel", wheelHandler);
+      } else {
+        window.addEventListener("wheel", wheelHandler, { passive: false });
+      }
+    };
+
+    handleResize(); // 초기 실행 시 크기 확인
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("wheel", wheelHandler);
     };
   }, [currentIndex, isScrolling]);
@@ -200,7 +213,7 @@ export default function StartPage() {
           ref={(el) => {
             sectionRefs.current[i + 5] = el;
           }}
-          className="w-full"
+          className={`w-full ${i === 0 ? "bg-black" : ""}`} // Section05에만 bg-black 적용
         >
           <div className="flex justify-center">
             <Component />
@@ -214,7 +227,7 @@ export default function StartPage() {
           sectionRefs.current[9] = el;
         }}
       >
-        <div className="bg-[#161616] flex justify-center">
+        <div className="bg-[#161616] flex justify-center max-xxxl:pt-10">
           <FooterArea />
         </div>
       </div>

@@ -48,17 +48,17 @@ body {
 
   .service-item {
     @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl;
+    max-md:mb-3 max-md:pb-3 max-md:text-xl max-lg:text-lg;
   }
 
   .service-item-top {
     @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg;
+    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg max-xl:text-xl max-lg:text-lg;
   }
 
   .service-item {
     @apply border-b border-black/80 pb-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl;
+    max-md:mb-3 max-md:pb-3 max-md:text-xl max-xl:text-xl max-lg:text-lg;
   }
 
   .section-subtitle-white {
@@ -323,7 +323,7 @@ body {
   }
 
   @media (max-width: 1023px) {
-    width: 235px;
+    width: 450px;
   }
 
   @media (max-width: 639px) {
@@ -408,7 +408,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px; /* 그리드 아이템 간의 간격 */
   column-gap: 100px; /* 열 간의 간격 */
-  row-gap: 30px; /* 행 간의 간격 */
+  row-gap: 40px; /* 행 간의 간격 */
 }
 /* .container {
   display: grid;

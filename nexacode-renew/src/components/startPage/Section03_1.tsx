@@ -1,4 +1,4 @@
-import TableSection03 from "./TableSection03";
+// import TableSection03 from "./TableSection03";
 import CounterUp from "../startPageComponents/CounterUp";
 import Image from "next/image";
 

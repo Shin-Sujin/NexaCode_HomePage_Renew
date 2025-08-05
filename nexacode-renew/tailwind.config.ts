@@ -33,6 +33,7 @@ const config: Config = {
         sm: "768px",
         xs: "576px",
 
+        "max-xxxl": { raw: "(max-width: 1999px)" },
         "max-xxl": { raw: "(max-width: 1919px)" },
         "max-xl": { raw: "(max-width: 1399px)" },
         "max-lg": { raw: "(max-width: 1199px)" },

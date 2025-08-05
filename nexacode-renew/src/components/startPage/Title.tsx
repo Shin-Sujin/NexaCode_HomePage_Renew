@@ -51,20 +51,19 @@ export default function Title() {
           className="absolute top-0 left-0 w-full h-full object-cover z-[0]"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black/80 z-[1] flex" />
-        {/* 컨테이너 내용을 동영상 위에 겹치도록 배치 */}
         <div className="container relative z-[2] h-full flex">
           <div className="w-full mt-5 mb-5 section-spacing-top ">
             <div
-              className="flex flex-col h-full xl:ml-20 max-xl:ml-20 max-lg:ml-6 
-             max-md:ml-10 max-md:mr-10 max-sm:ml-6 max-sm:mr-6 max-sm:mt-5"
+              className="flex flex-col h-full max-xl:ml-20 max-lg:ml-16 
+             max-md:mx-20 "
             >
               {/* ================================ 1번 요소 ================================ */}
-              <div className="flex flex-row justify-end">
-                <div className="flex flex-row justify-between pb-10 max-md:flex-col max-md:pb-5 max-md:gap-8 ">
+              <div className="flex flex-row justify-end max-md:justify-center ">
+                <div className="flex flex-row justify-between mb-60 max-xxxl:mb-40 max-xl:mb-5 max-md:mb-5">
                   <Link href="/contact">
                     <div
                       ref={fadeRef}
-                      className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-lg:w-[20rem] max-sm:w-[25rem] max-md:mt-10"
+                      className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-lg:w-[20rem] max-sm:w-[15rem] max-md:mt-10"
                     >
                       {/* 윗부분 선 */}
                       <div className="w-full mb-2 border-t border-white" />
@@ -87,24 +86,26 @@ export default function Title() {
                 </div>
               </div>
               {/* ================================ 3번 요소 ================================ */}
-              <div className="flex items-end mt-24">
-                <div className="text-white text-xl font-thin">
+              <div className="flex items-end mt-24 max-md:items-center max-md:mt-2">
+                <div className="text-white text-3xl font-thin max-xxxl:text-2xl max-lg:text-xl max-md:text-lg">
                   <div>개발이 필요한 순간, 디지털 전환이 필요한 지금</div>
-                  <div className="mt-5 text-[2rem] leading-[2rem] font-thin">
-                    <strong>앱개발·홈페이지제작 전문팀 넥사코드</strong>가
+                  <div className="mt-5  max-xxxl:mt-3 text-5xl leading-[2rem] font-thin max-xxxl:text-4xl max-lg:text-3xl max-lg:leading-[2.5rem] max-md:text-lg">
+                    <strong>앱개발·홈페이지제작 전문팀 넥사코드</strong>가{" "}
+                    <br className="hidden max-lg:block" />
                     당신만의 IT 개발 부서가 되어드립니다
                   </div>
                 </div>
               </div>
-              <div
-                className="flex items-end justify-end flex-1 xl:items-start xl:justify-start xl:mt-8 
-              max-md:flex-none max-xl:items-start max-xl:justify-start "
-              >
+              <div className="flex flex-1 items-start justify-start max-xxxl:mt-5 max-md:justify-center">
                 <div
-                  className="text-white tracking-tight font-normal text-[8rem] flex flex-col items-start  
+                  className="text-white tracking-tight font-normal  flex flex-col items-start  text-[12rem] max-xxxl:text-[10rem] max-xxl:text-[8rem] max-lg:text-8xl max-md:text-8xl
                 "
                 >
-                  <div ref={creativeRef}>Digital Starts Here</div>
+                  <div ref={creativeRef}>
+                    Digital <br className="hidden max-md:block" />
+                    Starts <br className="hidden max-md:block" />
+                    Here
+                  </div>
                 </div>
               </div>
             </div>
