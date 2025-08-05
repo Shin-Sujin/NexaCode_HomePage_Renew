@@ -4,11 +4,11 @@ import TableSection03 from "./TableSection03";
 
 export default function Section03() {
   return (
-    <div className="relative w-full flex flex-col justify-center items-center xl:px-20 max-xl:px-10 py-36 ">
-      <div className="flex flex-col    max-lg:gap-10 ">
+    <div className=" container relative  justify-center bg-green-300 items-center xl:px-20 max-xl:px-10 py-36">
+      <div className="flex flex-col max-lg:gap-10 w-full">
         <div className="text-2xl mt-10">03. WHAT WE DO</div>
         <div className="w-full h-[20vh] text-center">
-          <h2 className="mt-20 text-center max-md:w-[50rem] text-[5rem] font-normal">
+          <h2 className="mt-20 text-center max-md:w-[50rem] text-[5rem] font-normal bg-green-200">
             우리는 당신의&nbsp;
             <span className="font-bold ">IT 개발팀이 되어드립니다 </span>
           </h2>

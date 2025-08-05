@@ -410,3 +410,12 @@ body {
   column-gap: 100px; /* 열 간의 간격 */
   row-gap: 30px; /* 행 간의 간격 */
 }
+/* .container {
+  display: grid;
+  place-items: center;
+} */
+.container {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}

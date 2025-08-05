@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React, { forwardRef } from "react";
 
-const Section04 = forwardRef<HTMLDivElement>((_, ref) => {
+const Section04 = forwardRef<HTMLDivElement>(() => {
   return (
-    <div className="container relative xl:px-20 max-xl:px-10 py-36 w-full">
-      <div id="section04-top" ref={ref} className="h-1" />
-      <div className="flex flex-col max-lg:gap-10">
-        <div>04. PORTFOLIO</div>
+    <div className=" container relative  justify-center bg-green-300 items-center xl:px-20 max-xl:px-10 py-36">
+      <div className="flex flex-col max-lg:gap-10 w-full">
+        <div className="text-2xl mt-10">04. PORTFOLIO</div>
         <hr className="w-full h-[1px] bg-[#E5E5E5] mt-3 mb-10" />
         <div className="grid-container-portfolio">
           <div className="flex justify-center items-center">

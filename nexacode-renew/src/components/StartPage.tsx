@@ -168,7 +168,7 @@ export default function StartPage() {
   }, [isScrolling]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       {/* Title ~ Section03 */}
       {[Title, Section01, Section02, Section03].map((Component, i) => (
         <div
@@ -176,20 +176,21 @@ export default function StartPage() {
           ref={(el) => {
             sectionRefs.current[i] = el;
           }}
-          className="min-h-screen w-full"
         >
-          <Component />
+          <div className="flex justify-center">
+            <Component />
+          </div>{" "}
         </div>
       ))}
 
-      {/* ✅ Section04만 별도로 렌더해서 ref 연결 */}
       <div
         ref={(el) => {
           sectionRefs.current[4] = el;
         }}
-        className="min-h-screen w-full"
       >
-        <Section04 ref={section04TopRef} />
+        <div className="flex justify-center">
+          <Section04 ref={section04TopRef} />
+        </div>{" "}
       </div>
 
       {/* Section05 ~ FooterVideo */}
@@ -199,9 +200,11 @@ export default function StartPage() {
           ref={(el) => {
             sectionRefs.current[i + 5] = el;
           }}
-          className="min-h-screen w-full"
+          className="w-full"
         >
-          <Component />
+          <div className="flex justify-center">
+            <Component />
+          </div>{" "}
         </div>
       ))}
 
@@ -210,12 +213,16 @@ export default function StartPage() {
         ref={(el) => {
           sectionRefs.current[9] = el;
         }}
-        className="min-h-screen w-full"
       >
         <div className="bg-[#161616] flex justify-center">
           <FooterArea />
         </div>
       </div>
+      <style jsx>{`
+        * {
+          font-family: "Noto Sans", sans-serif;
+        }
+      `}</style>
     </div>
   );
 }
