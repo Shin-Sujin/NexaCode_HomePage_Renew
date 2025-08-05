@@ -1,179 +1,221 @@
 "use client";
-import Link from "next/link";
-import React, { useRef } from "react";
-import TextSlideBar from "./startPage/TextSlideBar";
-import {
-  useStartPageAnimations,
-  useScrollClippingEffect,
-} from "@/src/animations/animations_StartPage";
-import { useTextSlide } from "@/src/animations/textSlide";
-import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
-import "splitting/dist/splitting.css";
-
-// import WorkGallery from "@/src/components/startPageComponents/WorkGallery";
-import FooterArea from "@/src/components/startPageComponents/FooterArea";
-import Section06 from "./startPage/Section06";
-import Section02 from "./startPage/Section02";
+import React, { useRef, useState, useEffect } from "react";
+import Title from "./startPage/Title";
 import Section01 from "./startPage/Section01";
+import Section02 from "./startPage/Section02";
 import Section03 from "./startPage/Section03";
-import Section07 from "./startPage/Section07";
-import Section05 from "./startPage/Section05";
 import Section04 from "./startPage/Section04";
-
-// import Section09 from "./startPage/Section04";
+import Section05 from "./startPage/Section05";
+import Section06 from "./startPage/Section06";
+import Section07 from "./startPage/Section07";
+import FooterVideo from "./startPage/FooterVideo";
+import FooterArea from "./startPage/FooterArea";
 
 export default function StartPage() {
-  const fadeRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const creativeRef = useRef<HTMLDivElement>(null);
-  const studioRef = useRef<HTMLDivElement>(null);
-  const slideRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<HTMLDivElement>(null);
-  const whoWeAreRef = useRef<HTMLDivElement>(null);
-  const sectionTitleRef = useRef<HTMLDivElement>(null);
-  const workTitleRef = useRef<HTMLDivElement>(null);
-  const recentPostTitleRef = useRef<HTMLDivElement>(null);
-  const whetherRef = useRef<HTMLDivElement>(null);
-  const ourTeamRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
-  const backgroundImageRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const currentIndexRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(4); // Section04라고 가정
+  const section04TopRef = useRef<HTMLDivElement | null>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
-  useStartPageAnimations({
-    fadeRef,
-    textRef,
-    creativeRef,
-    studioRef,
-    whoWeAreRef,
-    sectionTitleRef,
-    workTitleRef,
-    recentPostTitleRef,
-    whetherRef,
-    ourTeamRef,
-    imgRef,
-  });
-  useTextSlide({ slideRef });
-  useFadeInOnScroll({ targetRef });
+  // 원페이지 효과를 줄 섹션 인덱스
+  const isFullPageSection = (index: number) => {
+    return [0, 1, 2, 5, 6, 7, 8, 9].includes(index); // Section03, 04는 제외
+  };
 
-  // 스크롤 클리핑 효과 훅 사용
-  const imageClip = useScrollClippingEffect(backgroundImageRef);
+  const scrollToSection = (index: number) => {
+    const target = sectionRefs.current[index];
+    if (!target) return;
+
+    setIsScrolling(true);
+    target.scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 1000);
+  };
+  const wheelHandler = (e: WheelEvent) => {
+    if (isScrolling) return;
+
+    const direction = e.deltaY > 0 ? "down" : "up";
+    const nextIndex =
+      direction === "down" ? currentIndex + 1 : currentIndex - 1;
+
+    // Section03, 04에서는 기본 스크롤 허용
+    if (!isFullPageSection(currentIndex)) return;
+
+    // 기본 스크롤 막기
+    e.preventDefault();
+
+    // Section02 → Section03으로 강제 이동
+    if (currentIndex === 2 && direction === "down") {
+      setCurrentIndex(3);
+      scrollToSection(3);
+      return;
+    }
+    // Section05 → Section04로 이동 (휠 위로)
+    if (currentIndex === 5 && direction === "up") {
+      setCurrentIndex(4);
+      scrollToSection(4);
+      return;
+    }
+
+    // Section04 → Section03 (스크롤 맨 위에서 휠을 올릴 때)
+    if (currentIndex === 4 && direction === "up") {
+      const sectionTopElement = document.getElementById("section04-top");
+
+      if (sectionTopElement) {
+        const rect = sectionTopElement.getBoundingClientRect();
+
+        // 스크롤이 Section04의 맨 꼭대기에 도달했는지 판단
+        if (rect.top <= 10) {
+          console.log("🔥 Section04 맨 위에서 휠 업 → Section03으로 이동");
+          setCurrentIndex(3);
+          scrollToSection(3);
+          return;
+        }
+      }
+    }
+
+    // 다음 섹션으로 스크롤 이동
+    if (
+      nextIndex >= 0 &&
+      nextIndex < sectionRefs.current.length &&
+      isFullPageSection(nextIndex)
+    ) {
+      setCurrentIndex(nextIndex);
+      scrollToSection(nextIndex);
+    }
+  };
+  // 현재 보이는 섹션 추적
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries.find((entry) => entry.isIntersecting);
+        if (visibleEntry) {
+          const index = sectionRefs.current.findIndex(
+            (ref) => ref === visibleEntry.target
+          );
+          if (index !== -1) {
+            setCurrentIndex(index);
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.6, // 60% 보이면 감지
+      }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  // wheel 이벤트를 섹션 변경될 때마다 등록/해제
+  useEffect(() => {
+    window.addEventListener("wheel", wheelHandler, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", wheelHandler);
+    };
+  }, [currentIndex, isScrolling]);
+  const handleWheel = (e: WheelEvent) => {
+    const direction = e.deltaY > 0 ? "down" : "up";
+    const currentIndex = currentIndexRef.current;
+    const nextIndex =
+      direction === "down" ? currentIndex + 1 : currentIndex - 1;
+
+    if (
+      nextIndex < 0 ||
+      nextIndex >= sectionRefs.current.length ||
+      !sectionRefs.current[nextIndex]
+    )
+      return;
+
+    // Section03(3), Section04(4) → 일반 스크롤 허용
+    if (!isFullPageSection(currentIndex)) {
+      return; // preventDefault 없이 통과
+    }
+
+    // 기본 스크롤 막기
+    e.preventDefault();
+
+    if (isScrolling) return;
+
+    // Section02에서 Section03으로 넘어가는 예외 처리
+    if (currentIndex === 2 && direction === "down") {
+      scrollToSection(3);
+      currentIndexRef.current = 3;
+      return;
+    }
+
+    // 원페이지 스크롤 적용 구간만 이동
+    if (isFullPageSection(nextIndex)) {
+      scrollToSection(nextIndex);
+      currentIndexRef.current = nextIndex;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [isScrolling]);
 
   return (
-    <div className="flex flex-col items-center w-full">
-      {/* ================================ Title ================================ */}
-      <div className="relative w-full h-[55rem] flex items-center justify-center max-lg:h-[45rem] xl:pr-20 max-md:h-[55rem] max-sm:h-[45rem] max-xl:pr-20 max-xl:mt-16 max-xl:h-[50rem] max-lg:pr-20  ">
-        <video
-          src="/videoes/production_id.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-[0]"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/80 z-[1] flex" />
-        {/* 컨테이너 내용을 동영상 위에 겹치도록 배치 */}
-        <div className="container relative z-[2] h-full flex">
-          <div className="w-full mt-5 mb-5 section-spacing-top ">
-            <div
-              className="flex flex-col h-full xl:ml-20 max-xl:ml-20 max-lg:ml-6 
-             max-md:ml-10 max-md:mr-10 max-sm:ml-6 max-sm:mr-6 max-sm:mt-5"
-            >
-              {/* ================================ 1번 요소 ================================ */}
-              <div className="flex flex-row justify-end">
-                <div className="flex flex-row justify-between pb-10 max-md:flex-col max-md:pb-5 max-md:gap-8 ">
-                  <Link href="/contact">
-                    <div
-                      ref={fadeRef}
-                      className=" flex flex-col gap-4 z-[2] max-w-[90vw] w-[23.125rem] max-lg:w-[20rem] max-sm:w-[25rem] max-md:mt-10"
-                    >
-                      {/* 윗부분 선 */}
-                      <div className="w-full mb-2 border-t border-white" />
-                      {/* 텍스트 + 화살표 한 줄 */}
-                      <div className="flex justify-between w-full">
-                        <span className="text-xl font-normal tracking-wider text-white">
-                          NEXACODE™
-                        </span>
-                        <span className="text-xl font-extrabold text-white">
-                          ↗
-                        </span>
-                      </div>
-                      <div className="text-white font-normal text-xl leading-[1.3] tracking-wider">
-                        서울시 금천구 디지털로 178
-                        <br />
-                        가산 퍼블릭 A동 1515~1516호
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              {/* ================================ 3번 요소 ================================ */}
-              <div className="flex items-end mt-24">
-                <div className="text-white text-xl font-thin">
-                  <div>개발이 필요한 순간, 디지털 전환이 필요한 지금</div>
-                  <div className="mt-5 text-[2rem] leading-[2rem] font-thin">
-                    <strong>앱개발·홈페이지제작 전문팀 넥사코드</strong>가
-                    당신만의 IT 개발 부서가 되어드립니다
-                  </div>
-                </div>
-              </div>
-              <div
-                className="flex items-end justify-end flex-1 xl:items-start xl:justify-start xl:mt-8 
-              max-md:flex-none max-xl:items-start max-xl:justify-start "
-              >
-                <div
-                  className="text-white tracking-tight font-normal text-[8rem] flex flex-col items-start  
-                "
-                >
-                  <div ref={creativeRef}>Digital Starts Here</div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="flex flex-col items-center">
+      {/* Title ~ Section03 */}
+      {[Title, Section01, Section02, Section03].map((Component, i) => (
+        <div
+          key={i}
+          ref={(el) => {
+            sectionRefs.current[i] = el;
+          }}
+          className="min-h-screen w-full"
+        >
+          <Component />
         </div>
-      </div>
-      <TextSlideBar />
-      <Section01 />
-      <Section02 />
-      <Section03 />
-      <Section04 />
+      ))}
+
+      {/* ✅ Section04만 별도로 렌더해서 ref 연결 */}
       <div
-        className="w-full flex justify-center"
-        style={{ background: "#161616" }}
-      >
-        <Section05 />
-      </div>{" "}
-      <Section06 />
-      <Section07 />
-      <div
-        ref={backgroundImageRef}
-        className="relative w-full h-auto overflow-hidden"
-        style={{
-          clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
-          transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        ref={(el) => {
+          sectionRefs.current[4] = el;
         }}
+        className="min-h-screen w-full"
       >
-        <video
-          src="/videoes/footer.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="object-cover w-full h-auto"
-          data-lag="0"
-          width={1500}
-          height={1000}
-        />
-      </div>{" "}
-      {/* ================================ FooterArea ================================ */}
-      <div className="flex items-center justify-center w-full  xl:px-20 max-xl:px-10 bg-[#161616]">
-        <div className="container">
+        <Section04 ref={section04TopRef} />
+      </div>
+
+      {/* Section05 ~ FooterVideo */}
+      {[Section05, Section06, Section07, FooterVideo].map((Component, i) => (
+        <div
+          key={i + 5}
+          ref={(el) => {
+            sectionRefs.current[i + 5] = el;
+          }}
+          className="min-h-screen w-full"
+        >
+          <Component />
+        </div>
+      ))}
+
+      {/* FooterArea */}
+      <div
+        ref={(el) => {
+          sectionRefs.current[9] = el;
+        }}
+        className="min-h-screen w-full"
+      >
+        <div className="bg-[#161616] flex justify-center">
           <FooterArea />
         </div>
-      </div>{" "}
-      <style jsx>{`
-        * {
-          font-family: "Noto Sans", sans-serif;
-        }
-      `}</style>
+      </div>
     </div>
   );
 }

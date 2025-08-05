@@ -1,24 +1,24 @@
 import Image from "next/image";
 import CounterUp from "../startPageComponents/CounterUp";
 import TableSection03 from "./TableSection03";
+
 export default function Section03() {
   return (
-    <div className="container relative xl:px-20 max-xl:px-10 py-36">
-      <div className="flex flex-col max-lg:gap-10">
-        <div>03. WHAT WE DO</div>
-        <h2 className="has_text_move_anim mt-10 text-center perspective-[400px] max-md:w-[50rem] text-[3rem] font-normal">
-          <div
-            className="has_fade_anim w-full"
-            data-fade-from="bottom"
-            data-duration="0.5"
-          >
+    <div className="relative w-full flex flex-col justify-center items-center xl:px-20 max-xl:px-10 py-36 ">
+      <div className="flex flex-col    max-lg:gap-10 ">
+        <div className="text-2xl mt-10">03. WHAT WE DO</div>
+        <div className="w-full h-[20vh] text-center">
+          <h2 className="mt-20 text-center max-md:w-[50rem] text-[5rem] font-normal">
             우리는 당신의&nbsp;
             <span className="font-bold ">IT 개발팀이 되어드립니다 </span>
+          </h2>
+        </div>
+        <div className="w-full flex items-center justify-center">
+          <div className="relative w-full flex justify-center items-center h-full">
+            <TableSection03 />
           </div>
-        </h2>
-        {/* 내용시작 */}
+        </div>
         <div className="relative w-full pt-20 mx-auto">
-          <TableSection03 />
           <div className="flex items-center justify-center pt-40 pb-20">
             <div className="flex flex-col items-center w-[500px]">
               <div

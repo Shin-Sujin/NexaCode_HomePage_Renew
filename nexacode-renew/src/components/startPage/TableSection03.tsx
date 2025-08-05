@@ -1,10 +1,6 @@
 export default function TableSection03() {
   return (
-    <div
-      className="grid w-full grid-cols-2 gap-x-24 has_fade_anim max-md:gap-x-16 max-sm:hidden px-20"
-      data-fade-from="left"
-      data-duration="0.5"
-    >
+    <div className="grid w-full grid-cols-2 gap-x-24 max-md:gap-x-16 max-sm:hidden justify-center items-center ">
       <div>
         <div className="service-item-top">
           앱 개발{" "}

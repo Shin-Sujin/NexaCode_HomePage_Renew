@@ -2,21 +2,14 @@ import OverlapCard from "../startPageComponents/OverlapCard";
 
 export default function Section07() {
   return (
-    <div className="container relative xl:px-20 max-xl:px-10 py-36">
-      <div className="flex flex-col max-lg:gap-10">
-        <div>07. OUR VALUES</div>
-        <h2
-          className="has_text_move_anim mt-10 text-center perspective-[400px] 
-        max-md:w-[50rem] text-[3rem] font-normal"
-        >
-          <div
-            className="has_fade_anim w-full"
-            data-fade-from="bottom"
-            data-duration="0.5"
-          >
+    <div className="relative w-full flex flex-col justify-center items-center xl:px-20 max-xl:px-10 py-36 h-screen overflow-y-hidden">
+      <div className="flex flex-col    max-lg:gap-10 ">
+        <div className="text-2xl mt-10">07. OUR VALUES</div>
+        <div className="w-full h-[20vh] text-center">
+          <h2 className="mt-20 text-center max-md:w-[50rem] text-[5rem] font-normal">
             <span className="font-bold ">개발 이상의 가치</span>를 약속합니다
-          </div>
-        </h2>
+          </h2>
+        </div>
         <div className="relative w-full pt-20">
           <div className="flex justify-around w-full gap-20 max-lg:gap-10 max-sm:gap-0 max-xs:flex-col">
             <OverlapCard

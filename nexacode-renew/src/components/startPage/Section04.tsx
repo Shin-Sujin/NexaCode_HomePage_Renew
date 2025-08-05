@@ -1,8 +1,10 @@
 import Image from "next/image";
+import React, { forwardRef } from "react";
 
-export default function Section04() {
+const Section04 = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div className="container relative xl:px-20 max-xl:px-10 py-36 w-full">
+      <div id="section04-top" ref={ref} className="h-1" />
       <div className="flex flex-col max-lg:gap-10">
         <div>04. PORTFOLIO</div>
         <hr className="w-full h-[1px] bg-[#E5E5E5] mt-3 mb-10" />
@@ -90,4 +92,8 @@ export default function Section04() {
       </div>
     </div>
   );
-}
+});
+
+Section04.displayName = "Section04";
+
+export default Section04;

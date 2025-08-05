@@ -116,7 +116,7 @@ const CardSlider: React.FC<CardSliderProps> = ({ portfolios }) => {
                         <h3 className="list-title  text-2xl text-gray-700 font-500 mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-gray-500 text-sm pf_xs:ml-1">
+                        <p className="text-gray-500 text-sm xs:ml-1">
                           BRANDING – {item.createdAt}
                         </p>
                       </div>

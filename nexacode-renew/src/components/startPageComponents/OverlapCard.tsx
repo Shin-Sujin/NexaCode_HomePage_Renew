@@ -17,12 +17,7 @@ export default function OverlapCard({
 }: OverlapCardProps) {
   return (
     <>
-      <div
-        className="block max-lg:hidden relative w-full max-w-xl work-box has_fade_anim"
-        data-fade-from="bottom"
-        data-duration="0.5"
-        data-delay="0.3"
-      >
+      <div className="block max-lg:hidden relative w-full max-w-xl work-box">
         {/* 뒤에 있는 이미지 */}
         <div className="w-[18.5rem] h-[28rem] relative overflow-hidden thumb ">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
@@ -41,12 +36,7 @@ export default function OverlapCard({
           </p>
         </div>
       </div>
-      <div
-        className="hidden max-lg:flex max-lg:flex-col w-full max-w-xl work-box has_fade_anim"
-        data-fade-from="bottom"
-        data-duration="0.5"
-        data-delay="0.3"
-      >
+      <div className="hidden max-lg:flex max-lg:flex-col w-full max-w-xl work-box">
         {/* 뒤에 있는 이미지 */}
         <div className="w-[18.9375rem] h-[25.8125rem] thumb max-sm:w-[15rem] max-sm:h-[23rem] max-xs:w-[15rem] max-xs:h-[15rem] max-xs:mt-[2rem]">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />

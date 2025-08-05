@@ -28,6 +28,12 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
+/* .section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+} */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
