@@ -1,17 +1,31 @@
 import Image from "next/image";
-
+import { useRef } from "react";
+import { useSectionNumberAnimation } from "../../animations/sectionNumber";
+import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 export default function Section02() {
+  const sectionNumberRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLDivElement>(null);
+  useSectionNumberAnimation(sectionNumberRef);
+  useSectionTitleAnimation(sectionTitleRef);
+
   return (
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg ">
-          02. SOLUTION
+          <div ref={sectionNumberRef} data-stagger="0.05">
+            02. SOLUTION
+          </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">
-          <h2 className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl">
-            고민의 끝에서 마주하는 진짜 파트너,&nbsp;
-            <span className="font-bold ">넥사코드 </span>
-            입니다
+          <h2
+            ref={sectionTitleRef}
+            className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl"
+          >
+            <div className="section-title-line ">
+              고민의 끝에서 마주하는 진짜 파트너,&nbsp;
+              <span className="font-bold ">넥사코드 </span>
+              입니다
+            </div>
           </h2>
         </div>
         <div className="w-full h-[50vh] flex items-center justify-center max-lg:pt-24 max-md:h-auto">

@@ -1,18 +1,31 @@
 import Image from "next/image";
 import CounterUp from "../startPageComponents/CounterUp";
 import TableSection03 from "./TableSection03";
-
+import { useRef } from "react";
+import { useSectionNumberAnimation } from "../../animations/sectionNumber";
+import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 export default function Section03() {
+  const sectionNumberRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLDivElement>(null);
+  useSectionNumberAnimation(sectionNumberRef);
+  useSectionTitleAnimation(sectionTitleRef);
   return (
     <div className="container relative justify-center  items-center py-36 ">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg">
-          03. WHAT WE DO
+          <div ref={sectionNumberRef} data-stagger="0.05">
+            03. WHAT WE DO
+          </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">
-          <h2 className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl">
-            우리는 당신의&nbsp;
-            <span className="font-bold ">IT 개발팀이 되어드립니다 </span>
+          <h2
+            ref={sectionTitleRef}
+            className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl"
+          >
+            <div className="section-title-line ">
+              우리는 당신의&nbsp;
+              <span className="font-bold ">IT 개발팀이 되어드립니다 </span>
+            </div>
           </h2>
         </div>
         <div className="w-full flex items-center justify-center">

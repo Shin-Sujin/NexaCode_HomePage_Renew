@@ -1,12 +1,17 @@
 import Image from "next/image";
 import React, { forwardRef } from "react";
-
+import { useRef } from "react";
+import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 const Section04 = forwardRef<HTMLDivElement>(() => {
+  const sectionNumberRef = useRef<HTMLDivElement>(null);
+  useSectionNumberAnimation(sectionNumberRef);
   return (
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col max-lg:gap-10 w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg">
-          04. PORTFOLIO
+          <div ref={sectionNumberRef} data-stagger="0.05">
+            04. PORTFOLIO
+          </div>
         </div>
         <hr className="w-full h-[1px] bg-[#E5E5E5] mt-3 mb-10" />
         <div className="grid-container-portfolio max-md:grid-cols-1">

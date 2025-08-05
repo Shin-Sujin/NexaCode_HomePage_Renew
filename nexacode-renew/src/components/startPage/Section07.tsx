@@ -1,15 +1,28 @@
 import OverlapCard from "../startPageComponents/OverlapCard";
-
+import { useRef } from "react";
+import { useSectionNumberAnimation } from "../../animations/sectionNumber";
+import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 export default function Section07() {
+  const sectionNumberRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLDivElement>(null);
+  useSectionTitleAnimation(sectionTitleRef);
+  useSectionNumberAnimation(sectionNumberRef);
   return (
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg">
-          07. OUR VALUES
+          <div ref={sectionNumberRef} data-stagger="0.05">
+            07. OUR VALUES
+          </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">
-          <h2 className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl">
-            <span className="font-bold ">개발 이상의 가치</span>를 약속합니다
+          <h2
+            ref={sectionTitleRef}
+            className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl"
+          >
+            <div className="section-title-line ">
+              <span className="font-bold ">개발 이상의 가치</span>를 약속합니다
+            </div>
           </h2>
         </div>
         <div className="relative w-full pt-32 max-xxxl:pt-20 max-lg:pt-10">
