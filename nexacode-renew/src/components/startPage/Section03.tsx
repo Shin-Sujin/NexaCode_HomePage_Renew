@@ -21,7 +21,7 @@ export default function Section03() {
           </div>
         </div>
         <div className="relative w-full pt-20 mx-auto">
-          <div className="flex items-center justify-center mt-40 mb-60 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0">
+          <div className="flex items-center justify-center mt-40 mb-60 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0 ">
             <div className="flex flex-col items-center w-[500px]">
               <div
                 className=" flex testimonial-count font-bold tracking-[-0.1em]  md:text-[100px] 
@@ -111,9 +111,9 @@ export default function Section03() {
               넥사코드가 진행한 <br /> 프로젝트
             </div>
           </div>
-          <div className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center">
-            <div className="flex flex-col items-end w-[400px] max-md:items-center">
-              <div className=" flex testimonial-count font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
+          <div className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center  max-xxxl:ml-20 max-md:ml-0">
+            <div className="flex flex-col items-end w-[400px] max-md:items-center ">
+              <div className=" flex testimonial-count font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl ">
                 <CounterUp targetNumber={100} duration={500} />
                 <span>+</span>
               </div>

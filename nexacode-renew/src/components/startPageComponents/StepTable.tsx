@@ -60,10 +60,10 @@ export default function StepTable() {
               key={step.id}
               className="border-b border-[#e5e5e5]  flex max-md:flex-col"
             >
-              <td className="py-7 pr-32 text-left text-2xl font-semibold max-xxxl:py-5 max-xxxl:pr-24 max-xxxl:text-xl max-xl:text-lg max-xl:py-5 max-xl:pr-24">
+              <td className="py-7 pr-32 text-left text-2xl font-semibold max-xxxl:py-5 max-xxxl:pr-16 max-xxxl:text-xl max-xl:text-lg max-xl:py-5 max-xl:pr-24 w-[300px]">
                 {index + 1}.&nbsp;{step.title}
               </td>
-              <td className="px-6 text-left text-2xl max-xxxl:px-3 max-xxxl:text-xl max-xl:text-lg max-xl:px-3 max-lg:whitespace-pre-line max-md:text-base max-md:pb-3">
+              <td className="px-6 text-left text-2xl max-xxxl:py-5 max-xxxl:text-xl max-xl:text-lg max-xl:px-3 max-lg:whitespace-pre-line max-md:text-base max-md:pb-3">
                 {step.description}
               </td>
             </tr>
