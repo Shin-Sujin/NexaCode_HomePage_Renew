@@ -4,35 +4,16 @@ import Link from "next/link";
 import styles from "../../styles/FooterArea.module.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { createRotatingAnimation } from "../../animations/rotatingWord";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FooterArea() {
   const rotatingRef = useRef<HTMLSpanElement | null>(null);
   const animatedTextRef = useRef<HTMLParagraphElement | null>(null);
   useEffect(() => {
-    if (!rotatingRef.current || !animatedTextRef.current) return;
-
-    gsap.fromTo(
-      rotatingRef.current,
-      {
-        rotation: -75,
-        y: -80,
-        opacity: 0,
-        transformOrigin: "left center", // ← 회전축 설정
-      },
-      {
-        scrollTrigger: {
-          trigger: animatedTextRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reset",
-        },
-        rotation: 0,
-        y: 0,
-        opacity: 1,
-        ease: "bounce.out",
-        duration: 1.5,
-      }
-    );
+    if (rotatingRef.current && animatedTextRef.current) {
+      createRotatingAnimation(rotatingRef.current, animatedTextRef.current);
+    }
   }, []);
   return (
     <div className="container h-screen max-md:h-auto max-md:mx-10">
