@@ -19,7 +19,7 @@ export const useBounceSection1 = (bounceRef: React.RefObject<HTMLElement>) => {
           opacity: 1,
           ease: "bounce.out",
           duration: 1,
-          delay: 0.3,
+          delay: 0.1,
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
@@ -42,7 +42,7 @@ export const useBounceSection2 = (bounceRef: React.RefObject<HTMLElement>) => {
           opacity: 1,
           ease: "bounce.out",
           duration: 1,
-          delay: 0.5,
+          delay: 0.3,
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
@@ -65,7 +65,7 @@ export const useBounceSection3 = (bounceRef: React.RefObject<HTMLElement>) => {
           opacity: 1,
           ease: "bounce.out",
           duration: 1,
-          delay: 1,
+          delay: 0.4,
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
