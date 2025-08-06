@@ -11,16 +11,18 @@ import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
 import ButtonPage02 from "./startPageComponents/ButtonPage02";
+import { useAppStore } from "@/src/stores/store";
+
 export default function StartPage() {
+  const { currentIndex, setCurrentIndex } = useAppStore();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const currentIndexRef = useRef(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const section04TopRef = useRef<HTMLDivElement | null>(null);
+  const currentIndexRef = useRef(currentIndex);
   const [isScrolling, setIsScrolling] = useState(false);
+  const section04TopRef = useRef<HTMLDivElement | null>(null);
 
   // 원페이지 효과를 줄 섹션 인덱스
   const isFullPageSection = (index: number) => {
-    return [0, 1, 2, 3, 6, 7, 8, 9, 10].includes(index); // Section03, 04는 제외
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(index); // Section03, 04는 제외
   };
 
   const scrollToSection = (index: number) => {
@@ -34,6 +36,7 @@ export default function StartPage() {
       setIsScrolling(false);
     }, 1000);
   };
+
   const wheelHandler = (e: WheelEvent) => {
     if (isScrolling) return;
 
@@ -136,11 +139,13 @@ export default function StartPage() {
       window.removeEventListener("wheel", wheelHandler);
     };
   }, [currentIndex, isScrolling]);
+
   const handleWheel = (e: WheelEvent) => {
     const direction = e.deltaY > 0 ? "down" : "up";
-    const currentIndex = currentIndexRef.current;
     const nextIndex =
       direction === "down" ? currentIndex + 1 : currentIndex - 1;
+
+    console.log("현재 인덱스:", currentIndex);
 
     if (
       nextIndex < 0 ||
@@ -149,26 +154,24 @@ export default function StartPage() {
     )
       return;
 
-    // Section03(3), Section04(4) → 일반 스크롤 허용
     if (!isFullPageSection(currentIndex)) {
-      return; // preventDefault 없이 통과
+      return;
     }
 
-    // 기본 스크롤 막기
     e.preventDefault();
 
     if (isScrolling) return;
 
-    // Section02에서 Section03으로 넘어가는 예외 처리
     if (currentIndex === 3 && direction === "down") {
       scrollToSection(4);
+      setCurrentIndex(4);
       currentIndexRef.current = 4;
       return;
     }
 
-    // 원페이지 스크롤 적용 구간만 이동
     if (isFullPageSection(nextIndex)) {
       scrollToSection(nextIndex);
+      setCurrentIndex(nextIndex);
       currentIndexRef.current = nextIndex;
     }
   };
