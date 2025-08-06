@@ -28,6 +28,12 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
+/* .section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+} */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -42,17 +48,17 @@ body {
 
   .service-item {
     @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl;
+    max-md:mb-3 max-md:pb-3 max-md:text-xl max-lg:text-lg;
   }
 
   .service-item-top {
     @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg;
+    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg max-xl:text-xl max-lg:text-lg;
   }
 
   .service-item {
     @apply border-b border-black/80 pb-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl;
+    max-md:mb-3 max-md:pb-3 max-md:text-xl max-xl:text-xl max-lg:text-lg;
   }
 
   .section-subtitle-white {
@@ -60,10 +66,6 @@ body {
   }
 
   .section-title-line {
-    @apply block text-start relative opacity-100 text-[#121212] font-["beatricetrial"] text-6xl 
-    font-medium leading-[3.8rem] max-md:text-[3.2rem] max-lg:leading-[3rem];
-    width: 100%;
-    max-width: 100vw;
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: normal;
@@ -317,7 +319,7 @@ body {
   }
 
   @media (max-width: 1023px) {
-    width: 235px;
+    width: 450px;
   }
 
   @media (max-width: 639px) {
@@ -402,5 +404,50 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px; /* 그리드 아이템 간의 간격 */
   column-gap: 100px; /* 열 간의 간격 */
-  row-gap: 30px; /* 행 간의 간격 */
+  row-gap: 40px; /* 행 간의 간격 */
+}
+/* .container {
+  display: grid;
+  place-items: center;
+} */
+.container {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.rotating-word {
+  display: inline-block;
+}
+.animated-border-b {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border-b::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #747474,
+    #ffffff,
+    #747474,
+    #ffffff
+  );
+  background-size: 300% 100%;
+  animation: border-gradient-move 4s linear infinite;
+}
+
+@keyframes border-gradient-move {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }

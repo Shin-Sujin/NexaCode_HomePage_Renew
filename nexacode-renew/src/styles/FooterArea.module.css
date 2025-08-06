@@ -34,16 +34,9 @@
   left: calc(250px + 250px + 30px + 30px + 30px);
   width: 1px;
   background: rgba(255, 255, 255, 0.1);
-}
-
-.locationBlock h3 {
-  font-size: 23px;
-  margin-bottom: 10px;
-}
-
-.locationBlock p {
-  font-size: 16px;
-  color: #ccc;
+  @media (max-width: 1199px) {
+    display: none;
+  }
 }
 
 .newsletter {
@@ -80,17 +73,13 @@
 
 .footerLinks {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 30px;
+  padding-top: 60px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   font-size: 16px;
   color: #999;
   margin-top: 40px;
-}
-
-.footerLinks p {
-  margin: 0;
 }
 
 .linkList {
