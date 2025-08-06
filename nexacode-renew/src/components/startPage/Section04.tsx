@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
-
+import { useLetterBounceAnimation } from "../../animations/letterBounceAnimation";
 import { useFadeInIntersection } from "../../animations/fadeInOnScroll";
 
 interface Section04Props {
@@ -21,10 +21,14 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
   const imageRef5 = useRef<HTMLDivElement>(null);
   // 원페이지 구조에서는 Intersection 기반 사용
   useFadeInIntersection({ ref: imageRef1, delay: 0.2 });
-  useFadeInIntersection({ ref: imageRef2, delay: 0.4 });
-  useFadeInIntersection({ ref: imageRef3, delay: 0.5 });
-  useFadeInIntersection({ ref: imageRef4, delay: 0.7 });
-  useFadeInIntersection({ ref: imageRef5, delay: 0.8 });
+  useFadeInIntersection({ ref: imageRef2, delay: 0.2 });
+  useFadeInIntersection({ ref: imageRef3, delay: 0.3 });
+  useFadeInIntersection({ ref: imageRef4, delay: 0.2 });
+  useFadeInIntersection({ ref: imageRef5, delay: 0.3 });
+
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const text = "PORTFOLIO";
+  useLetterBounceAnimation(triggerRef);
 
   return (
     <div className="container relative justify-center items-center py-36">
@@ -46,9 +50,13 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
         <hr className="w-full h-[1px] bg-[#E5E5E5] mt-3 mb-10" />
         <div className="grid-container-portfolio max-md:grid-cols-1">
           {/* 1번------------ */}
-          <div className="flex justify-center items-center">
-            <div className="text-9xl tracking-tighter font-black max-xl:text-7xl">
-              PORTFOLIO
+          <div ref={triggerRef} className="flex justify-center items-center">
+            <div className="text-9xl tracking-tighter font-black max-xl:text-7xl word ">
+              {text.split("").map((char, index) => (
+                <span key={index} className="inline-block">
+                  {char}
+                </span>
+              ))}
             </div>
           </div>
           {/* 2번------------ */}
