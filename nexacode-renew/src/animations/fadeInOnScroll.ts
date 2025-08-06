@@ -26,7 +26,7 @@ export const useFadeInOnScroll = ({
         {
           opacity: 0,
           y: y, // 아래에서 시작
-          scale: 0.95, // 약간 작게 시작
+          scale: 0.9, // 약간 작게 시작
         },
         {
           opacity: 1,
@@ -75,8 +75,8 @@ export const useFadeInOnScrollFromDirection = ({
           ease: "power3.out",
           scrollTrigger: {
             trigger: targetRef.current,
-            start: "bottom 95%", // 화면 하단에서 약간이라도 등장하는 순간
-            end: "top 20%",
+            start: "bottom 99%", // 화면 하단에서 약간이라도 등장하는 순간
+            end: "top 10%",
             markers: false,
           },
         }

@@ -16,7 +16,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
   useFadeInOnScrollFromDirection({
     targetRef: imageRef1,
     direction: "right",
-    delay: 0.2,
+    delay: 0.1,
   });
   useFadeInOnScrollFromDirection({
     targetRef: imageRef2,
@@ -26,17 +26,17 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
   useFadeInOnScrollFromDirection({
     targetRef: imageRef3,
     direction: "right",
-    delay: 0.3,
+    delay: 0.2,
   });
   useFadeInOnScrollFromDirection({
     targetRef: imageRef4,
     direction: "left",
-    delay: 0.2,
+    delay: 0.1,
   });
   useFadeInOnScrollFromDirection({
     targetRef: imageRef5,
     direction: "right",
-    delay: 0.4,
+    delay: 0.3,
   });
 
   return (
