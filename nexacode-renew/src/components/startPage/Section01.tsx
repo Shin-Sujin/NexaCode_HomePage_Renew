@@ -4,8 +4,12 @@ import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 import { useGradientTextAnimation } from "../../animations/gradientText";
+interface Section01Props {
+  sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  startIndex: number;
+}
 
-export default function Section01() {
+export default function Section01({ sectionRefs, startIndex }: Section01Props) {
   const textRef = useRef<HTMLDivElement | null>(null);
   useGradientTextAnimation(textRef);
 
@@ -18,8 +22,16 @@ export default function Section01() {
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg ">
-          <div ref={sectionNumberRef} data-stagger="0.05">
-            01. ISSUES
+          <div
+            ref={(el) => {
+              if (sectionRefs.current) {
+                sectionRefs.current[startIndex] = el;
+              }
+            }}
+          >
+            <div ref={sectionNumberRef} data-stagger="0.05">
+              01. ISSUES
+            </div>
           </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">

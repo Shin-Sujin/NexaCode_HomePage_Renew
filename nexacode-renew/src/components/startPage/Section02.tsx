@@ -9,7 +9,12 @@ import {
 } from "../../animations/bounce";
 // import { gsap } from "gsap";
 
-export default function Section02() {
+interface Section02Props {
+  sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  startIndex: number;
+}
+
+export default function Section02({ sectionRefs, startIndex }: Section02Props) {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
@@ -27,8 +32,16 @@ export default function Section02() {
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg ">
-          <div ref={sectionNumberRef} data-stagger="0.05">
-            02. SOLUTION
+          <div
+            ref={(el) => {
+              if (sectionRefs.current) {
+                sectionRefs.current[startIndex] = el;
+              }
+            }}
+          >
+            <div ref={sectionNumberRef} data-stagger="0.05">
+              02. SOLUTION
+            </div>
           </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">

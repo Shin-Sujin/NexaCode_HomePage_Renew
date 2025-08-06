@@ -265,13 +265,13 @@ body {
   overflow: hidden;
   position: relative;
 }
-.works-wrapper-box {
-  @apply mt-[50px] grid justify-end grid-cols-[880px] 
-  max-lg:grid-cols-[55rem] max-lg:justify-center
+/* .works-wrapper-box {
+  /* @apply mt-[50px] grid justify-end grid-cols-[880px]  */
+/* max-lg:grid-cols-[55rem] max-lg:justify-center
   max-md:grid max-md:grid-cols-[700px] max-md:justify-center
   max-sm:grid max-sm:grid-cols-[500px] max-sm:justify-center
   max-xs:grid max-xs:grid-cols-[100%] max-xs:justify-center;
-}
+} */
 
 .work-box {
   cursor: pointer;
@@ -434,9 +434,9 @@ body {
   background: linear-gradient(
     to right,
     #ffffff,
-    #747474,
+    #979797,
     #ffffff,
-    #747474,
+    #979797,
     #ffffff
   );
   background-size: 300% 100%;
