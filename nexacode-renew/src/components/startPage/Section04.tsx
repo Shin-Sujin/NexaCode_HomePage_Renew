@@ -2,7 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
-import { useFadeInOnScrollFromDirection } from "../../animations/fadeInOnScroll";
+
+import { useFadeInIntersection } from "../../animations/fadeInOnScroll";
 
 interface Section04Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
@@ -18,32 +19,12 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
   const imageRef3 = useRef<HTMLDivElement>(null);
   const imageRef4 = useRef<HTMLDivElement>(null);
   const imageRef5 = useRef<HTMLDivElement>(null);
-
-  useFadeInOnScrollFromDirection({
-    targetRef: imageRef1,
-    direction: "right",
-    delay: 0.1,
-  });
-  useFadeInOnScrollFromDirection({
-    targetRef: imageRef2,
-    direction: "left",
-    delay: 0,
-  });
-  useFadeInOnScrollFromDirection({
-    targetRef: imageRef3,
-    direction: "right",
-    delay: 0.2,
-  });
-  useFadeInOnScrollFromDirection({
-    targetRef: imageRef4,
-    direction: "left",
-    delay: 0.1,
-  });
-  useFadeInOnScrollFromDirection({
-    targetRef: imageRef5,
-    direction: "right",
-    delay: 0.3,
-  });
+  // 원페이지 구조에서는 Intersection 기반 사용
+  useFadeInIntersection({ ref: imageRef1, delay: 0.2 });
+  useFadeInIntersection({ ref: imageRef2, delay: 0.4 });
+  useFadeInIntersection({ ref: imageRef3, delay: 0.5 });
+  useFadeInIntersection({ ref: imageRef4, delay: 0.7 });
+  useFadeInIntersection({ ref: imageRef5, delay: 0.8 });
 
   return (
     <div className="container relative justify-center items-center py-36">
