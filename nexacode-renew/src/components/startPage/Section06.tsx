@@ -2,7 +2,13 @@ import StepTable from "../startPageComponents/StepTable";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
-export default function Section06() {
+
+interface Section06Props {
+  sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  startIndex: number;
+}
+
+export default function Section06({ sectionRefs, startIndex }: Section06Props) {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
@@ -11,8 +17,16 @@ export default function Section06() {
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg">
-          <div ref={sectionNumberRef} data-stagger="0.05">
-            06. HOW WE WORK
+          <div
+            ref={(el) => {
+              if (sectionRefs.current) {
+                sectionRefs.current[startIndex] = el;
+              }
+            }}
+          >
+            <div ref={sectionNumberRef} data-stagger="0.05">
+              06. HOW WE WORK
+            </div>
           </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">

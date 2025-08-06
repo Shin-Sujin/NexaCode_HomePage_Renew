@@ -2,7 +2,13 @@ import TestimonialRotator from "../startPageComponents/TestimonialRotator";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
-export default function Section05() {
+
+interface Section05Props {
+  sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  startIndex: number;
+}
+
+export default function Section05({ sectionRefs, startIndex }: Section05Props) {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
@@ -11,8 +17,16 @@ export default function Section05() {
     <div className="container relative justify-center  items-center py-36 max-lg:py-10 max-lg:h-screen">
       <div className="flex flex-col max-lg:gap-10 w-full max-md:mx-10">
         <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg text-white max-md:pt-32">
-          <div ref={sectionNumberRef} data-stagger="0.05">
-            05. WHAT OUR CLIENTS SAY
+          <div
+            ref={(el) => {
+              if (sectionRefs.current) {
+                sectionRefs.current[startIndex] = el;
+              }
+            }}
+          >
+            <div ref={sectionNumberRef} data-stagger="0.05">
+              05. WHAT OUR CLIENTS SAY
+            </div>
           </div>
         </div>
         <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh]">

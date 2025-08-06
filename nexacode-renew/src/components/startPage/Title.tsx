@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import TextSlideBar from "../startPage/TextSlideBar";
 import { useGradientTextAnimation } from "../../animations/gradientText";
 import { useStartPageAnimations } from "@/src/animations/animations_StartPage";

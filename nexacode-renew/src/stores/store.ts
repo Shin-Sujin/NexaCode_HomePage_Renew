@@ -102,20 +102,3 @@ export const useBlogStore = create<BlogStore>()(
     }
   )
 );
-
-interface AppState {
-  currentIndex: number;
-  setCurrentIndex: (index: number) => void;
-}
-
-export const useAppStore = create<AppState>()(
-  persist(
-    (set) => ({
-      currentIndex: 0,
-      setCurrentIndex: (index: number) => set({ currentIndex: index }),
-    }),
-    {
-      name: "app-storage",
-    }
-  )
-);

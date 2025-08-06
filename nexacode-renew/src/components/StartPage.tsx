@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Title from "./startPage/Title";
 import Section01 from "./startPage/Section01";
 import Section02 from "./startPage/Section02";
@@ -11,225 +11,97 @@ import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
 import ButtonPage02 from "./startPageComponents/ButtonPage02";
-import { useAppStore } from "@/src/stores/store";
+import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
+import { useStartPageStore } from "@/src/stores/startPageStore";
 
 export default function StartPage() {
-  const { currentIndex, setCurrentIndex } = useAppStore();
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const currentIndexRef = useRef(currentIndex);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const section04TopRef = useRef<HTMLDivElement | null>(null);
-
-  // 원페이지 효과를 줄 섹션 인덱스
-  const isFullPageSection = (index: number) => {
-    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(index); // Section03, 04는 제외
-  };
-
-  const scrollToSection = (index: number) => {
-    const target = sectionRefs.current[index];
-    if (!target) return;
-
-    setIsScrolling(true);
-    target.scrollIntoView({ behavior: "smooth" });
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 1000);
-  };
-
-  const wheelHandler = (e: WheelEvent) => {
-    if (isScrolling) return;
-
-    const direction = e.deltaY > 0 ? "down" : "up";
-    const nextIndex =
-      direction === "down" ? currentIndex + 1 : currentIndex - 1;
-
-    // Section03, 04에서는 기본 스크롤 허용
-    if (!isFullPageSection(currentIndex)) return;
-
-    // 기본 스크롤 막기
-    e.preventDefault();
-
-    // Section02 → Section03으로 강제 이동
-    if (currentIndex === 3 && direction === "down") {
-      setCurrentIndex(4);
-      scrollToSection(4);
-      return;
-    }
-    // Section05 → Section04로 이동 (휠 위로)
-    if (currentIndex === 6 && direction === "up") {
-      setCurrentIndex(5);
-      scrollToSection(5);
-      return;
-    }
-
-    // Section04 → Section03 (스크롤 맨 위에서 휠을 올릴 때)
-    if (currentIndex === 5 && direction === "up") {
-      const sectionTopElement = document.getElementById("section04-top");
-
-      if (sectionTopElement) {
-        const rect = sectionTopElement.getBoundingClientRect();
-
-        // 스크롤이 Section04의 맨 꼭대기에 도달했는지 판단
-        if (rect.top <= 10) {
-          console.log("🔥 Section04 맨 위에서 휠 업 → Section03으로 이동");
-          setCurrentIndex(4);
-          scrollToSection(4);
-          return;
-        }
-      }
-    }
-
-    // 다음 섹션으로 스크롤 이동
-    if (
-      nextIndex >= 0 &&
-      nextIndex < sectionRefs.current.length &&
-      isFullPageSection(nextIndex)
-    ) {
-      setCurrentIndex(nextIndex);
-      scrollToSection(nextIndex);
-    }
-  };
-  // 현재 보이는 섹션 추적
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries.find((entry) => entry.isIntersecting);
-        if (visibleEntry) {
-          const index = sectionRefs.current.findIndex(
-            (ref) => ref === visibleEntry.target
-          );
-          if (index !== -1) {
-            setCurrentIndex(index);
-          }
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.6, // 60% 보이면 감지
-      }
-    );
-
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-  // wheel 이벤트를 섹션 변경될 때마다 등록/해제
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        // max-md 이하
-        window.removeEventListener("wheel", wheelHandler);
-      } else {
-        window.addEventListener("wheel", wheelHandler, { passive: false });
-      }
-    };
-
-    handleResize(); // 초기 실행 시 크기 확인
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("wheel", wheelHandler);
-    };
-  }, [currentIndex, isScrolling]);
-
-  const handleWheel = (e: WheelEvent) => {
-    const direction = e.deltaY > 0 ? "down" : "up";
-    const nextIndex =
-      direction === "down" ? currentIndex + 1 : currentIndex - 1;
-
-    console.log("현재 인덱스:", currentIndex);
-
-    if (
-      nextIndex < 0 ||
-      nextIndex >= sectionRefs.current.length ||
-      !sectionRefs.current[nextIndex]
-    )
-      return;
-
-    if (!isFullPageSection(currentIndex)) {
-      return;
-    }
-
-    e.preventDefault();
-
-    if (isScrolling) return;
-
-    if (currentIndex === 3 && direction === "down") {
-      scrollToSection(4);
-      setCurrentIndex(4);
-      currentIndexRef.current = 4;
-      return;
-    }
-
-    if (isFullPageSection(nextIndex)) {
-      scrollToSection(nextIndex);
-      setCurrentIndex(nextIndex);
-      currentIndexRef.current = nextIndex;
-    }
-  };
+  const setCurrentIndex = useStartPageStore((state) => state.setCurrentIndex);
 
   useEffect(() => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
+    setCurrentIndex(0);
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    const preventScroll = (e: WheelEvent) => {
+      e.preventDefault();
     };
-  }, [isScrolling]);
+
+    window.addEventListener("wheel", preventScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", preventScroll);
+    };
+  }, [setCurrentIndex]);
+
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>(
+    new Array(18).fill(null)
+  );
+
+  useStartPageScroll(sectionRefs);
 
   return (
     <div className="flex flex-col">
-      {/* Title ~ Section03 */}
-      {[Title, Section01, ButtonPage02, Section02, Section03].map(
-        (Component, i) => (
-          <div
-            key={i}
-            ref={(el) => {
-              sectionRefs.current[i] = el;
-            }}
-          >
-            <div className="flex justify-center">
-              <Component />
-            </div>{" "}
-          </div>
-        )
-      )}
-
       <div
         ref={(el) => {
-          sectionRefs.current[5] = el;
+          sectionRefs.current[0] = el;
         }}
       >
         <div className="flex justify-center">
-          <Section04 ref={section04TopRef} />
-        </div>{" "}
+          <Title />
+        </div>
       </div>
 
-      {/* Section05 ~ FooterVideo */}
-      {[Section05, Section06, Section07, FooterVideo].map((Component, i) => (
-        <div
-          key={i + 6}
-          ref={(el) => {
-            sectionRefs.current[i + 6] = el;
-          }}
-          className={`w-full ${i === 0 ? "bg-black" : ""}`} // Section05에만 bg-black 적용
-        >
-          <div className="flex justify-center">
-            <Component />
-          </div>{" "}
-        </div>
-      ))}
+      <div className="flex justify-center">
+        <Section01 sectionRefs={sectionRefs} startIndex={1} />
+      </div>
 
-      {/* FooterArea */}
       <div
         ref={(el) => {
-          sectionRefs.current[10] = el;
+          sectionRefs.current[2] = el;
+        }}
+      >
+        <div className="flex justify-center">
+          <ButtonPage02 />
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <Section02 sectionRefs={sectionRefs} startIndex={3} />
+      </div>
+
+      <div className="flex justify-center">
+        <Section03 sectionRefs={sectionRefs} startIndex={4} />
+      </div>
+
+      <div className="flex justify-center">
+        <Section04 sectionRefs={sectionRefs} startIndex={10} />
+      </div>
+
+      <div className="w-full bg-black">
+        <div className="flex justify-center">
+          <Section05 sectionRefs={sectionRefs} startIndex={13} />
+        </div>
+      </div>
+
+      <div className="flex justify-center">
+        <Section06 sectionRefs={sectionRefs} startIndex={14} />
+      </div>
+
+      <div className="flex justify-center">
+        <Section07 sectionRefs={sectionRefs} startIndex={15} />
+      </div>
+
+      <div
+        ref={(el) => {
+          sectionRefs.current[16] = el;
+        }}
+        className="w-full"
+      >
+        <div className="flex justify-center">
+          <FooterVideo />
+        </div>
+      </div>
+      <div
+        ref={(el) => {
+          sectionRefs.current[17] = el;
         }}
       >
         <div className="bg-[#161616] flex justify-center max-xxxl:pt-10">
