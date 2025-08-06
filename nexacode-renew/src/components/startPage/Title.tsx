@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import TextSlideBar from "../startPage/TextSlideBar";
-
+import { useGradientTextAnimation } from "../../animations/gradientText";
 import { useStartPageAnimations } from "@/src/animations/animations_StartPage";
 import { useTextSlide } from "@/src/animations/textSlide";
 import { useFadeInOnScroll } from "@/src/animations/fadeInOnScroll";
+
 import "splitting/dist/splitting.css";
 
 export default function Title() {
@@ -22,6 +23,8 @@ export default function Title() {
   const whetherRef = useRef<HTMLDivElement>(null);
   const ourTeamRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+  const textRef2 = useRef<HTMLDivElement | null>(null);
+  useGradientTextAnimation(textRef2);
 
   useStartPageAnimations({
     fadeRef,
@@ -89,7 +92,10 @@ export default function Title() {
               <div className="flex items-end mt-24 max-md:items-center max-md:mt-2">
                 <div className="text-white text-3xl font-thin max-xxxl:text-2xl max-lg:text-xl max-md:text-lg">
                   <div>개발이 필요한 순간, 디지털 전환이 필요한 지금</div>
-                  <div className="mt-5  max-xxxl:mt-3 text-5xl leading-[2rem] font-thin max-xxxl:text-4xl max-lg:text-3xl max-lg:leading-[2.5rem] max-md:text-lg">
+                  <div
+                    ref={textRef2}
+                    className="textGradient__header mt-5  max-xxxl:mt-3 text-5xl  font-thin max-xxxl:text-4xl max-lg:text-3xl max-lg:leading-[2.5rem] max-md:text-lg"
+                  >
                     <strong>앱개발·홈페이지제작 전문팀 넥사코드</strong>가{" "}
                     <br className="hidden max-lg:block" />
                     당신만의 IT 개발 부서가 되어드립니다

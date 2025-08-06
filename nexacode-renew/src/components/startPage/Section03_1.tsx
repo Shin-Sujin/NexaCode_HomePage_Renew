@@ -12,7 +12,7 @@ export default function Section03_1() {
               className=" flex testimonial-count font-bold tracking-[-0.1em] md:text-[100px] 
                 lg:text-[120px] leading-none max-md:items-start "
             >
-              <CounterUp targetNumber={2500} duration={500} />
+              <CounterUp targetNumber={2500} duration={2500} />
               <span>k</span>
             </div>
             <p className="text-center text-lg text-gray-700">
@@ -88,7 +88,7 @@ export default function Section03_1() {
               className=" flex testimonial-count font-bold tracking-[-0.1em] md:text-[100px] 
                 lg:text-[120px] leading-none max-md:items-start "
             >
-              <CounterUp targetNumber={100} duration={500} />
+              <CounterUp targetNumber={100} duration={1500} />
               <span>+</span>
             </div>
             <p className="text-center text-lg text-gray-700">

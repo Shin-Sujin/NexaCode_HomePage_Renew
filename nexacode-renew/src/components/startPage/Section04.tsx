@@ -2,9 +2,43 @@ import Image from "next/image";
 import React, { forwardRef } from "react";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
+import { useFadeInOnScrollFromDirection } from "../../animations/fadeInOnScroll";
 const Section04 = forwardRef<HTMLDivElement>(() => {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
+
+  const imageRef1 = useRef<HTMLDivElement>(null);
+  const imageRef2 = useRef<HTMLDivElement>(null);
+  const imageRef3 = useRef<HTMLDivElement>(null);
+  const imageRef4 = useRef<HTMLDivElement>(null);
+  const imageRef5 = useRef<HTMLDivElement>(null);
+
+  useFadeInOnScrollFromDirection({
+    targetRef: imageRef1,
+    direction: "right",
+    delay: 0.2,
+  });
+  useFadeInOnScrollFromDirection({
+    targetRef: imageRef2,
+    direction: "left",
+    delay: 0,
+  });
+  useFadeInOnScrollFromDirection({
+    targetRef: imageRef3,
+    direction: "right",
+    delay: 0.3,
+  });
+  useFadeInOnScrollFromDirection({
+    targetRef: imageRef4,
+    direction: "left",
+    delay: 0.2,
+  });
+  useFadeInOnScrollFromDirection({
+    targetRef: imageRef5,
+    direction: "right",
+    delay: 0.4,
+  });
+
   return (
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col max-lg:gap-10 w-full max-md:mx-10">
@@ -20,7 +54,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
               PORTFOLIO
             </div>
           </div>
-          <div className="max-md:mx-10">
+          <div ref={imageRef1} className="max-md:mx-10">
             <div className="work-box">
               <Image
                 src="/images/portfolio/nexaPortfolio5.webp"
@@ -36,7 +70,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
               5억 투자 유치 성공
             </div>
           </div>
-          <div className="max-md:mx-10">
+          <div ref={imageRef2} className="max-md:mx-10">
             <div className="work-box">
               <Image
                 src="/images/portfolio/nexaPortfolio6.webp"
@@ -52,7 +86,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
               오픈 1개월 만에 방문자수 4만명 돌파{" "}
             </div>
           </div>
-          <div className="max-md:mx-10">
+          <div ref={imageRef3} className="max-md:mx-10">
             <div className="work-box">
               <Image
                 src="/images/portfolio/nexaPortfolio.webp"
@@ -68,7 +102,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
               3억 무상 지원금 획득
             </div>
           </div>
-          <div className="max-md:mx-10">
+          <div ref={imageRef4} className="max-md:mx-10">
             <div className="work-box">
               <Image
                 src="/images/portfolio/nexaPortfolio2.webp"
@@ -84,7 +118,7 @@ const Section04 = forwardRef<HTMLDivElement>(() => {
               다른 개발사에서 실패한 프로젝트 심폐소생술
             </div>
           </div>
-          <div className="max-md:mx-10">
+          <div ref={imageRef5} className="max-md:mx-10">
             <div className="work-box">
               <Image
                 src="/images/portfolio/nexaPortfolio4.webp"

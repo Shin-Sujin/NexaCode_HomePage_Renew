@@ -34,7 +34,7 @@ export default function Section03() {
           </div>
         </div>
         <div className="relative w-full pt-20 mx-auto">
-          <div className="flex items-center justify-center mt-40 mb-60 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0 ">
+          <div className="flex items-center justify-center mt-40 mb-40 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0 ">
             <div className="flex flex-col items-center w-[500px]">
               <div
                 className=" flex testimonial-count font-bold tracking-[-0.1em]  md:text-[100px] 

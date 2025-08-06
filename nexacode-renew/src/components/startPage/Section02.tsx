@@ -2,11 +2,26 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
+import {
+  useBounceSection1,
+  useBounceSection2,
+  useBounceSection3,
+} from "../../animations/bounce";
+// import { gsap } from "gsap";
+
 export default function Section02() {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
+
+  const bounceRef1 = useRef<HTMLDivElement | null>(null);
+  const bounceRef2 = useRef<HTMLDivElement | null>(null);
+  const bounceRef3 = useRef<HTMLDivElement | null>(null);
+
+  useBounceSection1(bounceRef1);
+  useBounceSection2(bounceRef2);
+  useBounceSection3(bounceRef3);
 
   return (
     <div className="container relative justify-center  items-center py-36">
@@ -30,7 +45,8 @@ export default function Section02() {
         </div>
         <div className="w-full h-[50vh] flex items-center justify-center max-lg:pt-24 max-md:h-auto">
           <div className="flex  gap-10 max-xl:mt-10 max-md:flex-col max-md:mt-0">
-            <div className="text-center">
+            {/* 1번 항목 */}
+            <div className="text-center" ref={bounceRef1}>
               <Image
                 width={100}
                 height={100}
@@ -49,7 +65,8 @@ export default function Section02() {
                 성장성을 함께 고민합니다.
               </p>
             </div>
-            <div className="text-center">
+            {/* 2번 항목 */}
+            <div className="text-center" ref={bounceRef2}>
               <Image
                 width={100}
                 height={100}
@@ -65,7 +82,8 @@ export default function Section02() {
                 전략으로 정확하게 실행합니다.
               </p>
             </div>
-            <div className="text-center">
+            {/* 3번 항목 */}
+            <div className="text-center" ref={bounceRef3}>
               <Image
                 width={100}
                 height={100}

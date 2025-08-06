@@ -1,20 +1,21 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import styles from "../../styles/FooterArea.module.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { createRotatingAnimation } from "../../animations/rotatingWord";
+import { useRotatingAnimation } from "../../animations/rotatingWord";
+import { useGradientTextAnimation } from "../../animations/gradientText";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FooterArea() {
+  const textRef = useRef<HTMLParagraphElement | null>(null);
+  useGradientTextAnimation(textRef);
+
   const rotatingRef = useRef<HTMLSpanElement | null>(null);
   const animatedTextRef = useRef<HTMLParagraphElement | null>(null);
-  useEffect(() => {
-    if (rotatingRef.current && animatedTextRef.current) {
-      createRotatingAnimation(rotatingRef.current, animatedTextRef.current);
-    }
-  }, []);
+  useRotatingAnimation(rotatingRef, animatedTextRef);
+
   return (
     <div className="container h-screen max-md:h-auto max-md:mx-10">
       <section className={styles.footerAreaWrapper}>
@@ -33,7 +34,12 @@ export default function FooterArea() {
             </span>
             입니다.
           </div>
-          <p className="text-5xl animated-text text-gray-400 mt-10 mb-40 max-xxxl:text-4xl max-xxxl:mb-20 max-lg:text-xl max-lg:mb-20 max-lg:mt-5 max-md:text-xl">
+
+          <p
+            ref={textRef}
+            className="textGradient__header text-5xl text-gray-400 mt-10 mb-40 max-xxxl:text-4xl 
+            max-xxxl:mb-20 max-lg:text-xl max-lg:mb-20 max-lg:mt-5 max-md:text-xl"
+          >
             처음의 기대가 끝까지 이어지도록,{" "}
             <br className="max-md:block hidden" />
             넥사코드는
@@ -41,6 +47,7 @@ export default function FooterArea() {
             <br className="max-md:block hidden" />
             약속드립니다.
           </p>
+
           <div className={styles.ctaArea}>
             <div>
               <h3 className="text-2xl text-gray-200 mb-5 max-xxxl:text-xl">

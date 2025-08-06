@@ -3,7 +3,12 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
+import { useGradientTextAnimation } from "../../animations/gradientText";
+
 export default function Section01() {
+  const textRef = useRef<HTMLDivElement | null>(null);
+  useGradientTextAnimation(textRef);
+
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
@@ -28,7 +33,10 @@ export default function Section01() {
               <br />
             </div>
           </h2>
-          <span className="text-gray-500 text-5xl text-center mt-2 max-xxxl:text-4xl max-xl:text-3xl max-lg:text-2xl max-md:text-xl">
+          <span
+            ref={textRef}
+            className="textGradient__header text-gray-500 text-5xl text-center mt-2 max-xxxl:text-4xl max-xl:text-3xl max-lg:text-2xl max-md:text-xl"
+          >
             무엇을 만들지보다, 누구와 함께할지가 더 중요한 고민일지도 모릅니다.
           </span>
         </div>

@@ -34,7 +34,7 @@ const StaticContent = memo(() => {
   return (
     <div>
       <div className="flex items-end testimonial-count font-black text-9xl leading-none mb-4 w-full max-md:items-start text-white">
-        <CounterUp targetNumber={5} duration={500} />
+        <CounterUp targetNumber={5} duration={1000} />
         <span className="text-white text-8xl max-md:text-7xl max-md:mt-4">
           /5
         </span>
