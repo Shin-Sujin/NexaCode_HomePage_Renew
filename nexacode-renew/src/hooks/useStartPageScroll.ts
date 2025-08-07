@@ -1,38 +1,50 @@
-// src/hooks/useStartPageScroll.ts
 import { useEffect } from "react";
 import { useStartPageStore } from "@/src/stores/startPageStore";
 
 export function useStartPageScroll(
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>
-) {
+): void {
   const { currentIndex, setCurrentIndex, isScrolling, scrollToSection } =
     useStartPageStore();
 
-  // wheel 이벤트로 currentIndex 변경
-  const wheelHandler = (e: WheelEvent) => {
-    // 현재 스크롤 중이면 동작을 무시하여 중복 스크롤 방지
-    if (isScrolling) return;
-
-    const direction = e.deltaY > 0 ? "down" : "up";
-    //다음 인덱스 계산
-    const nextIndex =
-      direction === "down" ? currentIndex + 1 : currentIndex - 1;
-
+  // 휠 이벤트 핸들러
+  const wheelHandler = (e: WheelEvent): void => {
     e.preventDefault();
 
-    if (
-      nextIndex >= 0 &&
-      sectionRefs.current &&
-      nextIndex < sectionRefs.current.length
-    ) {
-      setCurrentIndex(nextIndex);
-      scrollToSection(nextIndex, sectionRefs.current || []);
+    const deltaY: number = e.deltaY;
+    const direction: "up" | "down" = deltaY > 0 ? "down" : "up";
+    const intensity: number = Math.abs(deltaY);
+
+    // 기본은 한 페이지 이동
+    let jump: number = 1;
+
+    // deltaY의 크기에 따라 jump 수 조정
+    if (intensity > 1500) {
+      jump = 3;
+    } else if (intensity > 300) {
+      jump = 2;
     }
+
+    // isScrolling 중이고 jump가 1이라면 무시
+    if (isScrolling && jump === 1) return;
+
+    // nextIndex 계산
+    let nextIndex: number =
+      direction === "down" ? currentIndex + jump : currentIndex - jump;
+
+    const maxIndex: number = sectionRefs.current?.length
+      ? sectionRefs.current.length - 1
+      : 0;
+    nextIndex = Math.max(0, Math.min(nextIndex, maxIndex));
+
+    // 스크롤 이동
+    setCurrentIndex(nextIndex);
+    scrollToSection(nextIndex, sectionRefs.current ?? []);
   };
 
-  // wheel 이벤트 등록/해제
+  // 휠 이벤트 등록/해제
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       if (window.innerWidth <= 768) {
         window.removeEventListener("wheel", wheelHandler);
       } else {
@@ -49,7 +61,11 @@ export function useStartPageScroll(
     };
   }, [currentIndex, isScrolling]);
 
+  // 디버깅용 currentIndex 로그
   useEffect(() => {
     console.log("현재 currentIndex:", currentIndex);
   }, [currentIndex]);
 }
+window.addEventListener("wheel", (e) => {
+  console.log(e.deltaY);
+});
