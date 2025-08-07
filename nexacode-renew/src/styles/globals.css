@@ -99,7 +99,7 @@ body {
     @apply relative overflow-hidden;
 
     img {
-      @apply w-full h-auto transition-transform duration-500 ease-out block max-pf_xs:w-[10rem] max-pf_xs:h-[10rem];
+      @apply w-full h-auto transition-transform duration-500 ease-out block max-xs:w-[10rem] max-xs:h-[10rem];
     }
   }
 

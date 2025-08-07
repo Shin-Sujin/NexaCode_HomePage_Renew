@@ -24,7 +24,7 @@ export default function FloatingLeft() {
 
   return (
     <>
-      <aside className="floating left  max-pf_lg:hidden">
+      <aside className="floating left  max-lg:hidden">
         <div className="buttons" style={{ position: "relative" }}>
           <button
             className="button"

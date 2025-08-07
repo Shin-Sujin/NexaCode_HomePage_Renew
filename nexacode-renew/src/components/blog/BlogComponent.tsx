@@ -46,7 +46,7 @@ export default function BlogComponent({ blog }: { blog: BlogDetail }) {
               {blog.prologueContent &&
               blog.prologueContent !== "<p>&nbsp;</p>" &&
               blog.prologueContent !== "<div></div>" ? (
-                <div className="bg-gray-100 rounded-2xl p-12 mb-10 max-pf_md:mx-3 prologue-content">
+                <div className="bg-gray-100 rounded-2xl p-12 mb-10 max-sm:mx-3 prologue-content">
                   <div
                     dangerouslySetInnerHTML={{
                       __html: blog.prologueContent,
