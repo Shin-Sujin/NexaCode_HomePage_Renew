@@ -34,6 +34,41 @@ body {
   align-items: center;
   scroll-snap-align: start;
 } */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 600px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1296px;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -95,7 +130,7 @@ body {
     }
   }
 
-  .thumb {
+  Techeer 검색 .thumb {
     @apply relative overflow-hidden;
 
     img {
@@ -152,14 +187,6 @@ body {
   width: 20px;
   height: 20px;
   display: inline-block;
-}
-
-.section-subtitle {
-  font-size: 16px;
-  text-transform: uppercase;
-  color: var(--primary);
-  display: block;
-  margin-top: -3px;
 }
 
 .section-title {
@@ -221,57 +248,10 @@ body {
     padding-bottom: 60px;
   }
 }
-
-.section-spacing-top {
-  padding-top: 150px;
-
-  @media (max-width: 1535px) {
-    padding-top: 120px;
-  }
-
-  @media (max-width: 1279px) {
-    padding-top: 100px;
-  }
-
-  @media (max-width: 1023px) {
-    padding-top: 80px;
-  }
-
-  @media (max-width: 639px) {
-    padding-top: 60px;
-  }
-}
-
-.section-spacing-bottom {
-  padding-bottom: 150px;
-
-  @media (max-width: 1535px) {
-    padding-bottom: 120px;
-  }
-
-  @media (max-width: 1279px) {
-    padding-bottom: 100px;
-  }
-
-  @media (max-width: 1023px) {
-    padding-bottom: 80px;
-  }
-
-  @media (max-width: 639px) {
-    padding-bottom: 60px;
-  }
-}
 .image-wrapper {
   overflow: hidden;
   position: relative;
 }
-/* .works-wrapper-box {
-  /* @apply mt-[50px] grid justify-end grid-cols-[880px]  */
-/* max-lg:grid-cols-[55rem] max-lg:justify-center
-  max-md:grid max-md:grid-cols-[700px] max-md:justify-center
-  max-sm:grid max-sm:grid-cols-[500px] max-sm:justify-center
-  max-xs:grid max-xs:grid-cols-[100%] max-xs:justify-center;
-} */
 
 .work-box {
   cursor: pointer;

@@ -109,7 +109,7 @@ export const useFadeInIntersection = ({
           gsap.to(el, {
             opacity: 1,
             y: 0,
-            delay, // ✅ 딜레이 추가
+            delay,
             duration,
             ease: "power3.out",
           });

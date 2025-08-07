@@ -1,9 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  // corePlugins: {
-  //   preflight: false,
-  // },
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,24 +11,21 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#C9F31D", // 원하는 색상 코드로 변경
       },
       fontFamily: {
         ibm: ["var(--font-ibm)", "sans-serif"],
         chiron: ["var(--font-chiron)"],
-
         kanit: ["Kanit", "sans-serif"],
         museo: ["MuseoModerno", "sans-serif"],
         noticia: ["NoticiaText", "serif"],
         beatrice: ["BeatriceTRIAL", "sans-serif"],
       },
       screens: {
-        xxl: "1920px",
-        xl: "1400px",
-        lg: "1200px",
-        md: "992px",
-        sm: "768px",
-        xs: "576px",
+        xxl: "1536px",
+        xl: "1280px",
+        lg: "1024px",
+        md: "768px",
+        sm: "640px",
 
         "max-xxxl": { raw: "(max-width: 1999px)" },
         "max-xxl": { raw: "(max-width: 1919px)" },
@@ -41,9 +35,7 @@ const config: Config = {
         "max-sm": { raw: "(max-width: 767px)" },
         "max-xs": { raw: "(max-width: 575px)" },
       },
-      transitionDuration: {
-        "450": "450ms", // 450ms를 커스텀 duration으로 추가
-      },
+
       opacity: {
         "70": ".7",
       },
