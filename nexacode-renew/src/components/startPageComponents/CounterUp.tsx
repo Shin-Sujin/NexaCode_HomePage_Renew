@@ -8,10 +8,7 @@ type CounterUpProps = {
   duration?: number; // in ms
 };
 
-export default function CounterUp({
-  targetNumber,
-  duration = 500,
-}: CounterUpProps) {
+export default function CounterUp({ targetNumber, duration }: CounterUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -26,7 +23,7 @@ export default function CounterUp({
 
             const animate = (currentTime: number) => {
               const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
+              const progress = Math.min(elapsed / (duration || 500), 1);
 
               // linear easing for a direct but smooth feel
               const value = Math.floor(progress * targetNumber);

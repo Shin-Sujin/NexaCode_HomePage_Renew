@@ -29,7 +29,7 @@ export default function OverlapCard({
 
         {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
         <div
-          className="absolute bottom-0 translate-x-[10rem]  bg-white px-10 py-12 w-[28rem] 
+          className="absolute bottom-0 translate-x-[10rem] translate-y-[1rem] bg-white px-10 py-12 w-[28rem] 
         h-[20rem] max-xxxl:w-[25rem] max-xxxl:h-[18rem] max-xxl:w-[24rem] max-xxl:h-[16rem] 
         max-xxl:translate-x-[8rem] max-xl:w-[24rem] max-xl:h-[16rem] max-xl:translate-x-[4rem]"
         >

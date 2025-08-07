@@ -27,13 +27,14 @@ const config: Config = {
         md: "768px",
         sm: "640px",
 
-        "max-xxxl": { raw: "(max-width: 1999px)" },
-        "max-xxl": { raw: "(max-width: 1919px)" },
-        "max-xl": { raw: "(max-width: 1399px)" },
-        "max-lg": { raw: "(max-width: 1199px)" },
-        "max-md": { raw: "(max-width: 991px)" },
+        // ✅ max-width 기준 커스텀 브레이크포인트
+        "max-xs": { raw: "(max-width: 639px)" },
         "max-sm": { raw: "(max-width: 767px)" },
-        "max-xs": { raw: "(max-width: 575px)" },
+        "max-md": { raw: "(max-width: 1023px)" },
+        "max-lg": { raw: "(max-width: 1279px)" },
+        "max-xl": { raw: "(max-width: 1535px)" },
+        "max-2xl": { raw: "(max-width: 1999px)" }, // 예: 듀얼 모니터보다 작은 화면
+        "max-xxxl": { raw: "(max-width: 1999px)" }, // 네가 말한 부분!
       },
 
       opacity: {

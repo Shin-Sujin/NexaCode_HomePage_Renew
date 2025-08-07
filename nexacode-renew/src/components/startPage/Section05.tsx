@@ -16,7 +16,7 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
   return (
     <div className="container relative justify-center  items-center py-36 max-lg:py-10 max-lg:h-screen">
       <div className="flex flex-col max-lg:gap-10 w-full max-md:mx-10">
-        <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg text-white max-md:pt-32">
+        <div className="section-number text-white ">
           <div
             ref={(el) => {
               if (sectionRefs.current) {
@@ -29,11 +29,8 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
             </div>
           </div>
         </div>
-        <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh]">
-          <h2
-            ref={sectionTitleRef}
-            className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl text-white"
-          >
+        <div className="startPage-title-height">
+          <h2 ref={sectionTitleRef} className="startPage-title text-white">
             <div className="section-title-line ">
               고객이 말하는 넥사코드는
               <span className="font-bold ">
@@ -43,8 +40,8 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
           </h2>
         </div>
 
-        <div className="relative w-full pt-20 max-xxxl:pt-10">
-          <div className="flex flex-row justify-center items-center w-full">
+        <div className="relative w-full pt-5 max-xxxl:pt-10">
+          <div className="flex flex-row justify-center items-center w-full ">
             <TestimonialRotator />
           </div>
         </div>

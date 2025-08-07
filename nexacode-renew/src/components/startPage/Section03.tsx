@@ -21,25 +21,23 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
       className="container relative justify-center items-center py-36"
       data-index="2"
     >
-      <div className="flex flex-col w-full max-md:mx-10">
-        {/* 인덱스 번호: startIndex */}
-        <div
-          ref={(el) => {
-            if (sectionRefs.current) {
-              sectionRefs.current[startIndex] = el;
-            }
-          }}
-          className="text-2xl max-xxxl:text-xl max-lg:text-lg"
-        >
-          <div ref={sectionNumberRef} data-stagger="0.05">
-            03. WHAT WE DO
+      <div className="flex flex-col  w-full max-md:mx-10">
+        <div className="section-number">
+          {/* 인덱스 번호: startIndex */}
+          <div
+            ref={(el) => {
+              if (sectionRefs.current) {
+                sectionRefs.current[startIndex] = el;
+              }
+            }}
+          >
+            <div ref={sectionNumberRef} data-stagger="0.05">
+              03. WHAT WE DO
+            </div>
           </div>
         </div>
-        <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">
-          <h2
-            ref={sectionTitleRef}
-            className="mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl max-md:text-2xl"
-          >
+        <div className="startPage-title-height">
+          <h2 ref={sectionTitleRef} className="startPage-title">
             <div className="section-title-line">
               우리는 당신의&nbsp;
               <span className="font-bold">IT 개발팀이 되어드립니다</span>
@@ -61,9 +59,9 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             }}
             className="flex items-center justify-center mt-40 mb-40 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0"
           >
-            <div className="flex flex-col items-center w-[500px]">
-              <div className="flex testimonial-count font-bold tracking-[-0.1em] md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
-                <CounterUp targetNumber={2500} duration={500} />
+            <div className="flex flex-col items-end w-[500px]">
+              <div className="flex testimonial-count font-bold tracking-[-0.1em]   md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
+                <CounterUp targetNumber={2500} duration={10000} />
                 <span>k</span>
               </div>
               <p className="text-center text-lg text-gray-700">
@@ -72,7 +70,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </div>
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-10 bg-gray-200 hidden max-md:block"></hr>
-            <p className="w-full text-3xl text-gray-700 leading-relaxed max-xxl:text-2xl max-xl:text-xl max-lg:text-lg max-md:text-lg max-md:text-center">
+            <p className="startPage-section03-description-text">
               직접 운영해본 적, 성공시켜본 적 없는 개발사가{" "}
               <br className="max-lg:block hidden" />
               과연 &quot;성공하는 서비스&quot;를 만들 수 있을까요?
@@ -101,11 +99,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                   className="w-full"
                 />
               </div>
-              <p className="mt-3 text-4xl font-semibold text-gray-800 max-xxl:text-3xl max-xl:text-2xl max-lg:text-xl">
+              <p className="startPage-section03-service-name">
                 모두의 노래방, <br className="max-lg:block hidden" />
                 직접 운영한 250만 다운로드 앱
               </p>
-              <ul className="list-disc pl-5 text-2xl leading-relaxed text-gray-700 pt-10 max-xxl:text-xl max-xxl:pt-5 max-lg:text-lg">
+              <ul className="startPage-section03-service-description">
                 <li>자사 기획/개발/운영 서비스</li>
                 <li>
                   누적 다운로드 250만, <br className="max-lg:block hidden" />
@@ -123,11 +121,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                   height={200}
                 />
               </div>
-              <p className="mt-3 text-4xl font-semibold text-gray-800 max-xxl:text-3xl max-xl:text-2xl max-lg:text-xl">
+              <p className="startPage-section03-service-name">
                 스마일 코인노래방, <br className="max-lg:block hidden" />
                 O2O 서비스 확장 테스트 베드
               </p>
-              <ul className="list-disc pl-5 text-2xl leading-relaxed text-gray-700 pt-10 max-xxl:text-xl max-xxl:pt-5 max-lg:text-lg">
+              <ul className="startPage-section03-service-description">
                 <li>노래방 DX 시스템 직영 운영/개발</li>
                 <li>21개 호실, 50평 이상의 매장 무인 운영</li>
               </ul>
@@ -142,7 +140,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             }}
             className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
           >
-            <p className="text-3xl text-right text-gray-700 leading-relaxed flex justify-end max-xxl:text-2xl max-xl:text-xl max-lg:text-lg max-md:text-center">
+            <p className="startPage-section03-description-text text-right">
               1개월 내 기획·디자인·개발까지 정교하게 완성합니다.
               <br />
               수많은 프로젝트를 안정적으로 완수하며,{" "}
@@ -155,8 +153,8 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </p>
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
-            <div className="flex flex-col items-start text-6xl font-semibold text-gray-700 leading-2 max-xxl:text-4xl">
-              넥사코드가 진행한 <br /> 프로젝트
+            <div className="flex flex-col items-start text-6xl font-semibold text-gray-700 leading-2 lg:text-4xl">
+              넥사코드가 진행한 프로젝트
             </div>
           </div>
           {/* 인덱스 번호: startIndex + 4 */}
@@ -170,7 +168,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
           >
             <div className="flex flex-col items-end w-[400px] max-md:items-center">
               <div className="flex testimonial-count font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
-                <CounterUp targetNumber={100} duration={500} />
+                <CounterUp targetNumber={100} duration={2500} />
                 <span>+</span>
               </div>
               <p className="text-center text-xl text-gray-700">
@@ -179,7 +177,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </div>
             <div className="w-[3px] mx-12 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
-            <p className="w-full text-3xl text-gray-700 leading-relaxed items-start max-xxl:text-2xl max-xl:text-xl max-lg:text-lg max-md:text-center max-md:mt-5">
+            <p className="startPage-section03-description-text">
               수많은 후속 투자 유치와 정부 지원금 획득 경험,
               <br />
               서비스의 시작부터 확장, 매각까지. <br />

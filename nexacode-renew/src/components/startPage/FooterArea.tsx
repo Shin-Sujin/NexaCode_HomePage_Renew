@@ -20,12 +20,12 @@ export default function FooterArea() {
     <div className="container h-screen max-md:h-auto max-md:mx-10 mb-20">
       <section className={styles.footerAreaWrapper}>
         <div className={styles.inner}>
-          <div className="text-7xl font-normal max-xxxl:text-5xl max-lg:text-4xl max-md:text-xl max-md:pt-10">
+          <div className="lg:text-4xl font-normal max-md:pt-10">
             누구나 IT 개발 전문 부서를 가질 수 있도록,
           </div>
           <div
             ref={animatedTextRef}
-            className="text-9xl font-normal mt-8 max-xxxl:text-7xl max-lg:text-5xl max-md:text-4xl"
+            className="text-9xl font-normal mt-8 lg:text-6xl max-lg:text-5xl max-md:text-4xl"
           >
             당신만의 개발 파트너
             <br className="max-md:block hidden" />{" "}
@@ -37,11 +37,11 @@ export default function FooterArea() {
 
           <p
             ref={textRef}
-            className="textGradient__header text-5xl text-gray-400 mt-10 mb-40 max-xxxl:text-4xl 
-            max-xxxl:mb-20 max-lg:text-xl max-lg:mb-20 max-lg:mt-5 max-md:text-xl"
+            className="textGradient__header text-xl text-gray-400 mt-5 mb-40 lg:text-3xl 
+            max-xxxl:mb-20 max-lg:mb-20 max-lg:mt-5"
           >
             처음의 기대가 끝까지 이어지도록,{" "}
-            <br className="max-md:block hidden" />
+            <br className="lg:block xl:hidden" />
             넥사코드는
             <strong> 끝까지 책임지는 개발</strong>을{" "}
             <br className="max-md:block hidden" />

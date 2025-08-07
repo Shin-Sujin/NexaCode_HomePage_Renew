@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function StepTable() {
   const steps = [
@@ -51,19 +55,53 @@ export default function StepTable() {
     },
   ];
 
+  useEffect(() => {
+    const rows = document.querySelectorAll(".reveal-row");
+    // GSAP 타임라인 생성
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: rows[0], // 첫 번째 행을 트리거로 설정
+        start: "top 80%", // 뷰포트의 80% 지점에서 시작
+        toggleActions: "play none none none", // 스크롤 시 타임라인 재생
+      },
+    });
+    // 모든 행을 타임라인에 순차적으로 추가
+    rows.forEach((row, index) => {
+      tl.fromTo(
+        row,
+        { opacity: 0, y: 30 }, // 시작 상태: 투명하고 아래로 이동
+        {
+          opacity: 1, // 최종 상태: 보이고 제자리로
+          y: 0,
+          duration: 0.5, // 애니메이션 지속 시간
+          ease: "power2.out", // 부드러운 easing 효과
+        },
+        index * 0.1 // 각 행마다 0.1초 지연
+      );
+    });
+  }, []);
+
   return (
-    <div className="w-full px-24 max-xxxl:px-32 max-xl:px-10 max-md:px-0">
+    <div className="w-full px-0 lg:px-12 xxl:px-20 lg:pt-3 xxl:pt-0">
+      <style>
+        {`
+          .reveal-row {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+        `}
+      </style>
       <table className="w-full border-collapse">
         <tbody>
           {steps.map((step, index) => (
             <tr
               key={step.id}
-              className="animated-border-b border-[#e5e5e5]  flex max-md:flex-col"
+              className="reveal-row animated-border-b border-[#e5e5e5] flex max-md:flex-col"
             >
-              <td className="py-7 pr-32 text-left text-2xl font-semibold w-[360px] max-xxxl:py-5 max-xxxl:pr-16 max-xxxl:text-xl max-xl:text-lg max-xl:py-5 max-xl:pr-24 ,max-xxxl:w-[300px]">
+              <td className="text-left text-2xl font-semibold w-[180px] lg:w-[200px] xxl:py-7 lg:py-4 lg:text-lg xxl:text-xl xxl:w-[200px]">
                 {index + 1}.&nbsp;{step.title}
               </td>
-              <td className="px-6 py-7 text-left text-2xl max-xxxl:py-5 max-xxxl:text-xl max-xl:text-lg max-xl:px-3 max-lg:whitespace-pre-line max-md:text-base max-md:pb-3">
+              <td className="px-6 text-left text-2xl xxl:py-7 lg:text-lg lg:py-4 xxl:text-xl max-xl:px-3 max-lg:whitespace-pre-line">
                 {step.description}
               </td>
             </tr>
