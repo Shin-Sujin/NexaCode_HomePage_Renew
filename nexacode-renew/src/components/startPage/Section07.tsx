@@ -17,11 +17,6 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   useSectionTitleAnimation(sectionTitleRef);
   useSectionNumberAnimation(sectionNumberRef);
 
-  // 버튼 DOM 조작 제거 (무한 슬라이드 호버로 대체)
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   // 각 카드의 위치 상태
   const [order, setOrder] = useState<Pos[]>(["left", "center", "right"]);
   const isAnimatingRef = useRef(false);
@@ -74,7 +69,14 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
         rotateFromRight();
       }
     };
-  // 카드 데이터 (3장 고정)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      rotateFromRight();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [rotateFromRight]);
+
   const cards = [
     {
       id: 0,
