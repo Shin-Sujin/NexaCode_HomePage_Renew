@@ -1,5 +1,6 @@
+"use client";
 import OverlapCard from "../startPageComponents/OverlapCard";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 
@@ -8,36 +9,97 @@ interface Section07Props {
   startIndex: number;
 }
 
+type Pos = "left" | "center" | "right";
+
 export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionTitleAnimation(sectionTitleRef);
   useSectionNumberAnimation(sectionNumberRef);
-  const cardContainer = document.querySelector(".cardContainer");
-  const prev = document.querySelector(".prev");
-  const next = document.querySelector(".next");
 
-  prev?.addEventListener("click", () => {
-    const slides = document.querySelectorAll(".slide");
+  // 버튼 DOM 조작 제거 (무한 슬라이드 호버로 대체)
+  useEffect(() => {
+    return () => {};
+  }, []);
 
-    cardContainer?.append(slides[0]);
-  });
+  // 각 카드의 위치 상태
+  const [order, setOrder] = useState<Pos[]>(["left", "center", "right"]);
+  const isAnimatingRef = useRef(false);
+  const DURATION = 500; // transition과 맞춤
 
-  next?.addEventListener("click", () => {
-    const slides = document.querySelectorAll(".slide");
+  const lockDuringAnimation = () => {
+    isAnimatingRef.current = true;
+    setTimeout(() => (isAnimatingRef.current = false), DURATION);
+  };
 
-    cardContainer?.prepend(slides[slides.length - 1]);
-  });
+  const rotateFromRight = useCallback(() => {
+    // right -> center, center -> left, left -> right
+    if (isAnimatingRef.current) return;
+    setOrder((prev) =>
+      prev.map((p) =>
+        p === "right" ? "center" : p === "center" ? "left" : "right"
+      )
+    );
+    lockDuringAnimation();
+  }, []);
+
+  const rotateFromLeft = useCallback(() => {
+    // left -> center, center -> right, right -> left
+    if (isAnimatingRef.current) return;
+    setOrder((prev) =>
+      prev.map((p) =>
+        p === "left" ? "center" : p === "center" ? "right" : "left"
+      )
+    );
+    lockDuringAnimation();
+  }, []);
+
+  const handleHover = (pos: Pos) => {
+    if (pos === "left") rotateFromLeft();
+    else if (pos === "right") rotateFromRight();
+  };
+
+  // 카드 데이터 (3장 고정)
+  const cards = [
+    {
+      id: 0,
+      imageSrc: "/images/startPage/OurValues1.jpg",
+      imageAlt: "넥사코드의 가치 1",
+      category: "우리는 파트너 입니다",
+      title:
+        "당신의 성공이 곧 우리의 목표입니다.<br/>그래서 우리는 <strong>‘개발사’</strong>가 아닌 <br/><strong>‘파트너’</strong>입니다.",
+      sentence: "Build Together, Win Together",
+      className: "bg-[#C1C6D2]/95",
+    },
+    {
+      id: 1,
+      imageSrc: "/images/startPage/OurValues2.jpg",
+      imageAlt: "넥사코드의 가치 2",
+      category: "우리는 약속을 ‘결과’로 보여드립니다",
+      title:
+        "말이 아닌 ‘결과’로 증명합니다.<br/><strong>책임 있게, 끝까지.</strong> <br/>그것이 넥사코드의 방식입니다.",
+      sentence: "With responsibility",
+      className: "bg-[#BEBEC0]/95",
+    },
+    {
+      id: 2,
+      imageSrc: "/images/startPage/OurValues3.jpg",
+      imageAlt: "넥사코드의 가치 3",
+      category: "우리는 ‘성공’에 집중합니다",
+      title:
+        "단순히 만드는 것이 아니라,<br/> <strong>고객의 고객까지 생각하는</strong> <br/>성공 구조를 설계합니다.",
+      sentence: "Built to Deliver",
+      className: "bg-[#807F71]/95",
+    },
+  ];
 
   return (
-    <div className="container relative justify-center  items-center py-36">
+    <div className="container relative justify-center items-center py-36">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           <div
             ref={(el) => {
-              if (sectionRefs.current) {
-                sectionRefs.current[startIndex] = el;
-              }
+              if (sectionRefs.current) sectionRefs.current[startIndex] = el;
             }}
           >
             <div ref={sectionNumberRef} data-stagger="0.05">
@@ -45,6 +107,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
             </div>
           </div>
         </div>
+
         <div className="startPage-title-height">
           <h2 ref={sectionTitleRef} className="startPage-title">
             <div className="section-title-line ">
@@ -52,38 +115,45 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
             </div>
           </h2>
         </div>
-        <div className="relative w-full xxl:pt-20 pt-5 h-[60vh] bg-red-50 p-0 m-0 ">
+
+        <div className="relative w-full pt-5 h-[60vh] p-0 m-0">
           <div className="cardContainer">
-            <div className="slide">
-              <OverlapCard
-                imageSrc="/images/startPage/OurValues1.jpg"
-                imageAlt="넥사코드의 가치 1"
-                category="우리는 파트너 입니다"
-                title="당신의 성공이 곧 우리의 목표입니다.<br/>그래서 우리는 <strong>‘개발사’</strong>가 아닌 <br/><strong>‘파트너’</strong>입니다."
-                sentence="Build Together, Win Together"
-              />
-            </div>{" "}
-            <div className="slide">
-              <OverlapCard
-                imageSrc="/images/startPage/OurValues2.jpg"
-                imageAlt="넥사코드의 가치 2"
-                category="우리는 약속을 ‘결과’로 보여드립니다"
-                title="말이 아닌 ‘결과’로 증명합니다.<br/><strong>책임 있게, 끝까지.</strong> <br/>그것이 넥사코드의 방식입니다."
-                sentence="With responsibility"
-              />
-            </div>{" "}
-            <div className="slide">
-              <OverlapCard
-                imageSrc="/images/startPage/OurValues3.jpg"
-                imageAlt="넥사코드의 가치 3"
-                category="우리는 ‘성공’에 집중합니다"
-                title="단순히 만드는 것이 아니라,<br/> <strong>고객의 고객까지 생각하는</strong> <br/>성공 구조를 설계합니다."
-                sentence="Built to Deliver"
-              />
-            </div>
+            {cards.map((c, idx) => {
+              const pos = order[idx]; // idx번째 카드의 위치
+              const isCenter = pos === "center";
+              return (
+                <div
+                  key={c.id}
+                  className={`slide pos-${pos}`}
+                  onMouseEnter={() => handleHover(pos)}
+                  onFocus={() => handleHover(pos)} // 키보드 접근
+                  onClick={() => !isCenter && handleHover(pos)} // 모바일/터치 대응
+                  role={isCenter ? "img" : "button"}
+                  aria-label={
+                    isCenter
+                      ? c.imageAlt
+                      : pos === "left"
+                      ? "왼쪽으로 이동"
+                      : "오른쪽으로 이동"
+                  }
+                  tabIndex={isCenter ? -1 : 0}
+                >
+                  <OverlapCard
+                    imageSrc={c.imageSrc}
+                    imageAlt={c.imageAlt}
+                    category={c.category}
+                    title={c.title}
+                    sentence={c.sentence}
+                    className={c.className}
+                  />
+                </div>
+              );
+            })}
           </div>
-          <div className="slide-buttons">
-            <button className="next">앞으로</button>{" "}
+
+          {/* 버튼은 숨기거나 제거 */}
+          <div className="slide-buttons mt-20 hidden">
+            <button className="next">앞으로</button>
             <button className="prev">뒤로</button>
           </div>
         </div>

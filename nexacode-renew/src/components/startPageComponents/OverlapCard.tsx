@@ -6,6 +6,7 @@ interface OverlapCardProps {
   category: string;
   title: string;
   sentence: string;
+  className?: string;
 }
 
 export default function OverlapCard({
@@ -14,38 +15,37 @@ export default function OverlapCard({
   category,
   title,
   sentence,
+  className,
 }: OverlapCardProps) {
   return (
     <>
       {" "}
       <div className="block max-lg:hidden relative w-full max-w-xl work-box ">
         {/* 뒤에 있는 이미지 */}
-        <div
-          className="w-[25rem] h-[35rem] relative overflow-hidden thumb max-xxxl:w-[23rem] 
-        max-xxxl:h-[30rem] max-xxl:w-[22rem] max-xxl:h-[28rem] "
-        >
+        <div className="xxl:w-[25rem] xxl:h-[35rem] xl:w-[18rem] xl:h-[22rem] relative overflow-hidden thumb">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
         </div>
 
-        {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
+        {/* 앞에 겹쳐진 텍스트 박스 */}
         <div
-          className="absolute bottom-0 translate-x-[10rem] translate-y-[1rem] bg-white px-10 py-12 w-[28rem] 
-        h-[20rem] max-xxxl:w-[25rem] max-xxxl:h-[18rem] max-xxl:w-[24rem] max-xxl:h-[16rem] 
-        max-xxl:translate-x-[8rem] max-xl:w-[24rem] max-xl:h-[16rem] max-xl:translate-x-[4rem]"
+          className={`absolute bottom-0 translate-x-[8rem] translate-y-[1rem] xxl:px-10 xxl:py-12 xxl:w-[28rem] 
+        xxl:h-[22rem] xl:px-7 xl:py-10 xl:w-[20rem] xl:h-[16rem] w-[25rem] h-[20rem]
+        ${className}`}
         >
-          <p className="text-lg mb-8 text-[#555555] max-xxxl:text-base">
+          <p className="xxl:text-lg xl:text-base xxl:mb-8 xl:mb-5 text-[#555555] ">
             {category}
           </p>
           <h2
-            className="mb-10 text-2xl text-gray-800 leading-relaxed max-xxxl:text-xl"
+            className="xxl:mb-10 xl:mb-5 xxl:text-2xl xl:text-lg text-gray-800 leading-relaxed "
             dangerouslySetInnerHTML={{ __html: title }}
           />
           <hr className="mb-5" />
-          <p className="text-lg font-black text-gray-700 mb-2 max-xxxl:text-base">
+          <p className="xxl:text-lg xl:text-sm font-black text-gray-700 mb-2">
             &quot;{sentence}&quot;
           </p>
         </div>
       </div>
+      {/* 모바일에서는 따로 컴포넌트 작성 */}
       <div className="hidden max-lg:flex max-lg:flex-col w-full max-w-xl work-box">
         {/* 뒤에 있는 이미지 */}
         <div className="w-[18.9375rem] h-[25.8125rem] thumb max-sm:w-[15rem] max-sm:h-[23rem] max-xs:w-[15rem] max-xs:h-[15rem] max-xs:mt-[2rem] mx-auto">
