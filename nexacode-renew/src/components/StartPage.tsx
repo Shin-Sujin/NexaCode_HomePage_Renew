@@ -45,7 +45,7 @@ export default function StartPage() {
           sectionRefs.current[0] = el;
         }}
       >
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-red-50">
           <Title />
         </div>
       </div>
