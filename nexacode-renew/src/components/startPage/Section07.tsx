@@ -150,12 +150,6 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
               );
             })}
           </div>
-
-          {/* 버튼은 숨기거나 제거 */}
-          <div className="slide-buttons mt-20 hidden">
-            <button className="next">앞으로</button>
-            <button className="prev">뒤로</button>
-          </div>
         </div>
       </div>
     </div>
