@@ -30,7 +30,6 @@ export const useLetterBounceAnimation = (
                   index * 0.2
                 );
               });
-              observer.unobserve(entry.target);
             }
           });
         },

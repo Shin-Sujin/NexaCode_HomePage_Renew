@@ -59,7 +59,7 @@ export default function StartPage() {
           sectionRefs.current[2] = el;
         }}
       >
-        <div className="flex justify-center">
+        <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">
           <ButtonPage02 />
         </div>
       </div>
