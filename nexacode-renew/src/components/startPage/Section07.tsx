@@ -53,7 +53,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     if (pos === "left") rotateFromLeft();
     else if (pos === "right") rotateFromRight();
   };
-  // 키보드 접근성: Enter/Space/화살표
+
   const handleKeyDown =
     (pos: Pos) => (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter" || e.key === " ") {
