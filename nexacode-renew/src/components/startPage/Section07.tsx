@@ -13,7 +13,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionTitleAnimation(sectionTitleRef);
   useSectionNumberAnimation(sectionNumberRef);
-  const cardContainer = document.querySelector(".card-container");
+  const cardContainer = document.querySelector(".cardContainer");
   const prev = document.querySelector(".prev");
   const next = document.querySelector(".next");
 
@@ -53,7 +53,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
           </h2>
         </div>
         <div className="relative w-full xxl:pt-20 pt-5 h-[60vh] bg-red-50 p-0 m-0 ">
-          <div className="card-container">
+          <div className="cardContainer">
             <div className="slide">
               <OverlapCard
                 imageSrc="/images/startPage/OurValues1.jpg"
@@ -83,8 +83,8 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
             </div>
           </div>
           <div className="slide-buttons">
+            <button className="next">앞으로</button>{" "}
             <button className="prev">뒤로</button>
-            <button className="next">앞으로</button>
           </div>
         </div>
       </div>
