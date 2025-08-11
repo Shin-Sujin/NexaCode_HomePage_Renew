@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useStartPageStore } from "@/src/stores/startPageStore";
 
 export function useStartPageScroll(
@@ -6,6 +6,9 @@ export function useStartPageScroll(
 ): void {
   const { currentIndex, setCurrentIndex, isScrolling, scrollToSection } =
     useStartPageStore();
+  // 휠 연속 감지를 위한 ref
+  const wheelCountRef = useRef(0);
+  const wheelTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // 휠 이벤트 핸들러
   const wheelHandler = (e: WheelEvent): void => {
@@ -14,15 +17,20 @@ export function useStartPageScroll(
     const deltaY: number = e.deltaY;
     const direction: "up" | "down" = deltaY > 0 ? "down" : "up";
     const intensity: number = Math.abs(deltaY);
+    // 연속 휠 감지
+    wheelCountRef.current += 1;
+    // wheelCount 초기화 타이머
+    if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
+    wheelTimerRef.current = setTimeout(() => {
+      wheelCountRef.current = 0;
+    }, 300); // 300ms 이내 휠 이벤트가 들어오면 연속으로 간주
 
     // 기본은 한 페이지 이동
     let jump: number = 1;
 
     // deltaY의 크기에 따라 jump 수 조정
-    if (intensity > 1500) {
+    if (intensity > 250 && wheelCountRef.current >= 3) {
       jump = 3;
-    } else if (intensity > 300) {
-      jump = 2;
     }
 
     // isScrolling 중이고 jump가 1이라면 무시
@@ -58,6 +66,7 @@ export function useStartPageScroll(
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("wheel", wheelHandler);
+      if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
     };
   }, [currentIndex, isScrolling]);
 
@@ -66,6 +75,3 @@ export function useStartPageScroll(
     console.log("현재 currentIndex:", currentIndex);
   }, [currentIndex]);
 }
-window.addEventListener("wheel", (e) => {
-  console.log(e.deltaY);
-});

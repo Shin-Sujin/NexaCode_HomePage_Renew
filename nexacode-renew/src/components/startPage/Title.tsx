@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+// import Link from "next/link";
 import React, { useRef } from "react";
 import TextSlideBar from "../startPage/TextSlideBar";
 import { useGradientTextAnimation } from "../../animations/gradientText";
