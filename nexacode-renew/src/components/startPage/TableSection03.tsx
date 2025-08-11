@@ -1,6 +1,6 @@
 export default function TableSection03() {
   return (
-    <div className="grid w-full grid-cols-2 gap-x-24 max-md:gap-x-16 max-sm:hidden justify-center items-center ">
+    <div className="grid w-full grid-cols-1 lg:grid-cols-2 xl:gap-x-24 lg:gap-x-16 justify-center items-center ">
       <div>
         <div className="service-item-top">
           앱 개발 <br className="max-lg:block hidden" />

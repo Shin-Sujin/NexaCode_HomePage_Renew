@@ -96,14 +96,10 @@ export default function Title() {
                   당신만의 IT 개발 부서가 되어드립니다
                 </div>
               </div>
-              <div
-                className="text-white tracking-tight font-normal xl:items-start items-center  xxl:text-[12rem] xl:text-[10rem] text-5xl mt-3
-                "
-              >
+              <div className="flex justify-center text-white tracking-tight font-normal xl:items-start items-center xxl:text-[12rem] xl:text-[10rem] text-5xl mt-10 xl:mt-3 text-center">
                 <div ref={creativeRef}>
                   Digital <br className="hidden max-md:block" />
-                  Starts <br className="hidden max-md:block" />
-                  Here
+                  Starts Here
                 </div>
               </div>
             </div>

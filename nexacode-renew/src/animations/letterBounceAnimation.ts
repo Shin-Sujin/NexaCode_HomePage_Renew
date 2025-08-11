@@ -25,7 +25,7 @@ export const useLetterBounceAnimation = (
                     y: -50,
                     duration: 0.4,
                     yoyo: true,
-                    repeat: 2,
+                    repeat: 3,
                   },
                   index * 0.2
                 );

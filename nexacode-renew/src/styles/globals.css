@@ -87,13 +87,13 @@ body {
   }
 
   .service-item-top {
-    @apply border-t border-black/80 border-b border-black/80 mt-6 pb-5 pt-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:pt-3  max-md:text-xl max-sm:text-lg max-xl:text-xl max-lg:text-lg;
+    @apply lg:border-t border-black/80 border-b mt-6 pb-5 pt-5 mb-5 
+    max-md:mb-3 max-md:pb-3 max-md:pt-3  text-lg font-bold tracking-wide xl:text-xl xxl:text-2xl;
   }
 
   .service-item {
-    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-bold tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl max-xl:text-xl max-lg:text-lg;
+    @apply border-b border-black/80 pb-5 mb-5
+    max-md:mb-3 max-md:pb-3 text-lg font-bold tracking-wide xl:text-xl xxl:text-2xl;
   }
 
   .section-subtitle-white {
@@ -433,7 +433,7 @@ body {
 }
 @layer utilities {
   .startPage-title {
-    @apply mt-20 lg:mt-12 lg:mb-2 lg:text-5xl text-center text-[2rem] font-normal xxl:text-6xl xxl:mt-24 text-[#17171B];
+    @apply mt-12 lg:mb-2 lg:text-5xl text-center text-2xl font-normal xxl:text-6xl xxl:mt-24 text-[#17171B];
   }
   .section-number {
     @apply text-base lg:text-lg xxl:text-xl;
@@ -442,14 +442,14 @@ body {
     @apply w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto;
   }
   .startPage-portfolio-image-container {
-    @apply max-md:mx-10;
+    @apply max-md:mx-0;
   }
 
   .startPage-portfolio-title {
-    @apply xxl:text-2xl xl:text-xl text-lg xxl:mt-5 mt-2 font-normal mb-0 max-lg:text-xl text-[#444444];
+    @apply xxl:text-2xl xl:text-xl text-base xxl:mt-5 mt-2 font-normal mb-0  text-[#444444];
   }
   .startPage-portfolio-description {
-    @apply xxl:text-lg xl:text-base text-sm text-gray-600 max-lg:text-base mb-2;
+    @apply xxl:text-lg xl:text-base text-sm text-gray-600 mb-2;
   }
   .startPage-section02-title {
     @apply mt-5 xxl:mt-20 font-medium text-2xl xxl:text-3xl max-lg:mt-10 lg:mt-10;
