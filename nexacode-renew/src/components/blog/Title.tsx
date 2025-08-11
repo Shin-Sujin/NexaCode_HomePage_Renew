@@ -23,8 +23,11 @@ export default function Title({ title, date }: TitleProps) {
         <div className="absolute inset-0 bg-black/30" />
       </div>
       {/* 텍스트 영역 */}
-      <div className="relative z-10 flex flex-col items-center justify-end w-full h-full pb-20 max-pf_md:px-10">
-        <h1 className="text-7xl md:text-5xl font-semibold text-white drop-shadow-lg mb-6 text-center max-pf_md:text-5xl max-pf_xs:text-3xl">
+      <div className="relative z-10 flex flex-col items-center justify-end w-full h-full pb-20 max-sm:px-10">
+        <h1
+          className="text-7xl md:text-5xl font-semibold text-white drop-shadow-lg mb-6 
+        text-center max-sm:text-5xl max-xs:text-3xl"
+        >
           {title}
         </h1>
         <div className="flex items-center text-white/90 text-lg drop-shadow">

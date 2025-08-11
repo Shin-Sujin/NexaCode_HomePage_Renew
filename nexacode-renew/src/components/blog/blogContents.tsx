@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const BlogContent0 = () => (
   <div>
-    <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-pf_md:mx-3">
+    <div className="bg-gray-100 rounded-2xl p-12 mb-20 max-sm:mx-3">
       <h2 className="font-semibold text-2xl mb-6 text-gray-800">
         C2C 앱 고민이라면 꼭 읽어보세요
       </h2>

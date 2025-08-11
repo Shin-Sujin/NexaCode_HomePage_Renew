@@ -8,7 +8,6 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const menuItems = [
-    { label: "서비스 특징", href: "/" },
     { label: "강점", href: "/" },
     { label: "진행과정", href: "/" },
     { label: "서비스 특징", href: "/" },

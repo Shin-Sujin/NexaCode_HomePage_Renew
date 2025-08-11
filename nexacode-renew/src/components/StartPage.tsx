@@ -45,7 +45,7 @@ export default function StartPage() {
           sectionRefs.current[0] = el;
         }}
       >
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-red-50">
           <Title />
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function StartPage() {
           sectionRefs.current[2] = el;
         }}
       >
-        <div className="flex justify-center">
+        <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">
           <ButtonPage02 />
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function StartPage() {
         <Section04 sectionRefs={sectionRefs} startIndex={10} />
       </div>
 
-      <div className="w-full bg-black">
+      <div className="w-full bg-[#17171B]">
         <div className="flex justify-center">
           <Section05 sectionRefs={sectionRefs} startIndex={13} />
         </div>
@@ -104,7 +104,7 @@ export default function StartPage() {
           sectionRefs.current[17] = el;
         }}
       >
-        <div className="bg-[#161616] flex justify-center max-xxxl:pt-10">
+        <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">
           <FooterArea />
         </div>
       </div>

@@ -1,9 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  // corePlugins: {
-  //   preflight: false,
-  // },
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,63 +11,44 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#C9F31D", // 원하는 색상 코드로 변경
       },
       fontFamily: {
         ibm: ["var(--font-ibm)", "sans-serif"],
         chiron: ["var(--font-chiron)"],
-
         kanit: ["Kanit", "sans-serif"],
         museo: ["MuseoModerno", "sans-serif"],
         noticia: ["NoticiaText", "serif"],
         beatrice: ["BeatriceTRIAL", "sans-serif"],
       },
       screens: {
-        xxl: "1920px",
-        xl: "1400px",
-        lg: "1200px",
-        md: "992px",
-        sm: "768px",
-        xs: "576px",
+        xxl: "1536px",
+        xl: "1280px",
+        lg: "1024px",
+        md: "768px",
+        sm: "640px",
 
-        "max-xxxl": { raw: "(max-width: 1999px)" },
-        "max-xxl": { raw: "(max-width: 1919px)" },
-        "max-xl": { raw: "(max-width: 1399px)" },
-        "max-lg": { raw: "(max-width: 1199px)" },
-        "max-md": { raw: "(max-width: 991px)" },
+        // ✅ max-width 기준 커스텀 브레이크포인트
+        "max-xs": { raw: "(max-width: 639px)" },
         "max-sm": { raw: "(max-width: 767px)" },
-        "max-xs": { raw: "(max-width: 575px)" },
+        "max-md": { raw: "(max-width: 1023px)" },
+        "max-lg": { raw: "(max-width: 1279px)" },
+        "max-xl": { raw: "(max-width: 1535px)" },
+        "max-2xl": { raw: "(max-width: 1999px)" }, // 예: 듀얼 모니터보다 작은 화면
+        "max-xxxl": { raw: "(max-width: 1999px)" }, // 네가 말한 부분!
+      },
 
-        "max-pf_md": { raw: "(max-width: 799px)" },
-        "max-pf_sm": { raw: "(max-width: 639px)" },
-        "max-pf_xs": { raw: "(max-width: 575px)" },
-        "max-pf_xxl": { raw: "(max-width: 1919px)" },
-        "max-pf_xl": { raw: "(max-width: 1399px)" },
-        "max-pf_lg": { raw: "(max-width: 1099px)" },
-      },
-      transitionDuration: {
-        "450": "450ms", // 450ms를 커스텀 duration으로 추가
-      },
       opacity: {
         "70": ".7",
       },
       fontWeight: {
         100: "100",
-        150: "150",
         200: "200",
-        250: "250",
         300: "300",
-        350: "350",
         400: "400",
-        450: "450",
         500: "500",
-        550: "550",
         600: "600",
-        650: "650",
         700: "700",
-        750: "750",
         800: "800",
-        850: "850",
         900: "900",
       },
     },

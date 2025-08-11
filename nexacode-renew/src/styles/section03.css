@@ -1,0 +1,18 @@
+.section03-typing {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: ""; /* ← 커서 문자 제거 */
+    position: absolute;
+    right: 0;
+    width: 100%;
+    animation: typing-section03 4s steps(var(--steps, 60)) forwards; /* ← caret 제거 */
+  }
+}
+
+@keyframes typing-section03 {
+  to {
+    width: 0;
+  }
+}

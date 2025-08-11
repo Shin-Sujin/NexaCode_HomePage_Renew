@@ -21,7 +21,7 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
   return (
     <div className="container relative justify-center  items-center py-36">
       <div className="flex flex-col  w-full max-md:mx-10">
-        <div className="text-2xl  max-xxxl:text-xl max-lg:text-lg ">
+        <div className="section-number">
           <div
             ref={(el) => {
               if (sectionRefs.current) {
@@ -34,11 +34,8 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
             </div>
           </div>
         </div>
-        <div className="w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto">
-          <h2
-            ref={sectionTitleRef}
-            className="max-w-full mt-20 text-center text-[5rem] font-normal max-xxxl:text-6xl max-xxxl:mb-2 max-xl:text-5xl max-lg:mt-10 max-lg:text-4xl  max-md:text-2xl"
-          >
+        <div className="startPage-title-height">
+          <h2 ref={sectionTitleRef} className="startPage-title">
             <div className="section-title-line ">
               <span className="font-bold ">개발사 선정에 </span>
               고민이 많으시죠?
@@ -47,12 +44,12 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
           </h2>
           <span
             ref={textRef}
-            className="textGradient__header text-gray-500 text-5xl text-center mt-2 max-xxxl:text-4xl max-xl:text-3xl max-lg:text-2xl max-md:text-xl"
+            className="textGradient__header text-gray-500 text-xl text-center mt-2 xxl:text-4xl lg:text-3xl"
           >
             무엇을 만들지보다, 누구와 함께할지가 더 중요한 고민일지도 모릅니다.
           </span>
         </div>
-        <div className="w-full h-[60vh] max-xxxl:h-[65vh]">
+        <div className="w-full h-[60vh] lg:h-[65vh]">
           <div className="relative w-full pt-20 flex flex-col items-center justify-center gap-10">
             <Image
               src="/images/startPage/Container.svg"

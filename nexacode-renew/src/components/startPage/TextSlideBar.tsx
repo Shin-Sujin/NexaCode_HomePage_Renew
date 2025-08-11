@@ -53,7 +53,7 @@ export default function TextSlideBar() {
   const repeatedNavTexts = Array(3).fill(navTexts).flat();
 
   return (
-    <div className="w-full flex items-center justify-center overflow-hidden h-[4rem] bg-[#000000] z-[10]">
+    <div className="w-full flex items-center justify-center overflow-hidden h-[4rem] bg-[#333333] z-[10]">
       <div ref={slideRef} style={{ display: "flex", alignItems: "center" }}>
         <div className="flex items-center gap-[5rem]">
           {repeatedNavTexts.map((text, idx) => (
