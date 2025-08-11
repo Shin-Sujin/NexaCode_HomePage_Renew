@@ -4,7 +4,7 @@ import TableSection03 from "./TableSection03";
 import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
-
+import { useTypewriterOnView } from "../../animations/useTypewriterOnView";
 interface Section03Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
   startIndex: number;
@@ -15,7 +15,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
-
+  const typingRef = useTypewriterOnView<HTMLParagraphElement>({
+    speed: 24, // 숫자 낮출수록 더 빨라짐
+    rootMargin: "0px 0px -15% 0px",
+    threshold: 0.1,
+  });
   return (
     <div
       className="container relative justify-center items-center py-36"
@@ -140,8 +144,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             }}
             className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
           >
-            <p className="startPage-section03-description-text text-right">
-              1개월 내 기획·디자인·개발까지 정교하게 완성합니다.
+            <p
+              ref={typingRef}
+              className="startPage-section03-description-text text-right"
+            >
+              1개월 내 기획·디자인·개발까지 정교하게 완료합니다.
               <br />
               수많은 프로젝트를 안정적으로 완수하며,{" "}
               <br className="max-lg:block hidden" />

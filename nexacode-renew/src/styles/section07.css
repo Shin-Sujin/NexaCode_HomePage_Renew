@@ -1,0 +1,35 @@
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  perspective: 500px;
+  transform-style: preserve-3d;
+}
+
+.slide {
+  transition: 0.5s !important;
+  box-shadow: 0 10px 50px gray;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 위치 상태 */
+.slide.pos-left {
+  transform: translate(calc(-50% * 3.2), -50%) translateZ(-50px);
+  z-index: 1;
+}
+.slide.pos-center {
+  transform: translate(-50%, -50%) translateZ(50px);
+  z-index: 2;
+}
+.slide.pos-right {
+  transform: translate(calc(-50% * -1.2), -50%) translateZ(-50px);
+  z-index: 1;
+}
+
+/* 호버 가능한 카드만 커서 표시 */
+.slide.pos-left,
+.slide.pos-right {
+  cursor: pointer;
+}

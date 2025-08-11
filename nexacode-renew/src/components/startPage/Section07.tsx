@@ -3,6 +3,7 @@ import OverlapCard from "../startPageComponents/OverlapCard";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
+import "../../styles/section07.css";
 
 interface Section07Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
