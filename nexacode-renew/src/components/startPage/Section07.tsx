@@ -54,11 +54,26 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     lockDuringAnimation();
   }, []);
 
-  const handleHover = (pos: Pos) => {
+  const handleClick = (pos: Pos) => {
     if (pos === "left") rotateFromLeft();
     else if (pos === "right") rotateFromRight();
   };
-
+  // 키보드 접근성: Enter/Space/화살표
+  const handleKeyDown =
+    (pos: Pos) => (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleClick(pos);
+      }
+      if (e.key === "ArrowLeft" && pos !== "center") {
+        e.preventDefault();
+        rotateFromLeft();
+      }
+      if (e.key === "ArrowRight" && pos !== "center") {
+        e.preventDefault();
+        rotateFromRight();
+      }
+    };
   // 카드 데이터 (3장 고정)
   const cards = [
     {
@@ -125,16 +140,15 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
                 <div
                   key={c.id}
                   className={`slide pos-${pos}`}
-                  onMouseEnter={() => handleHover(pos)}
-                  onFocus={() => handleHover(pos)} // 키보드 접근
-                  onClick={() => !isCenter && handleHover(pos)} // 모바일/터치 대응
+                  onClick={() => !isCenter && handleClick(pos)}
+                  onKeyDown={handleKeyDown(pos)}
                   role={isCenter ? "img" : "button"}
                   aria-label={
                     isCenter
                       ? c.imageAlt
                       : pos === "left"
-                      ? "왼쪽으로 이동"
-                      : "오른쪽으로 이동"
+                      ? "왼쪽 카드 선택"
+                      : "오른쪽 카드 선택"
                   }
                   tabIndex={isCenter ? -1 : 0}
                 >
