@@ -52,7 +52,7 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
           <div className="grid-container-portfolio max-md:grid-cols-1">
             {/* 1번------------ */}
             <div ref={triggerRef} className="flex justify-center items-center">
-              <div className="xxl:text-8xl xl:text-7xl text-3xl tracking-tighter font-black word lg:text-8xl">
+              <div className="xxl:text-8xl xl:text-7xl text-3xl tracking-tighter font-black word lg:text-6xl">
                 {text.split("").map((char, index) => (
                   <span key={index} className="inline-block">
                     {char}

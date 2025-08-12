@@ -49,7 +49,7 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
             <div className="section-title-line ">
               고민의 끝에서 마주하는 <br className="lg:hidden" />
               진짜 파트너,&nbsp;
-              <br className="lg:hidden" />
+              <br className="xl:hidden" />
               <span className="font-bold ">넥사코드 </span>
               입니다
             </div>

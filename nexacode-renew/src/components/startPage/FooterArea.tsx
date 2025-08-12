@@ -17,7 +17,7 @@ export default function FooterArea() {
   useRotatingAnimation(rotatingRef, animatedTextRef);
 
   return (
-    <div className="container h-screen max-md:h-auto max-md:mx-10 mb-20">
+    <div className="container xl:h-screen h-full max-md:mx-10 mb-10">
       <section className={styles.footerAreaWrapper}>
         <div className={styles.inner}>
           <div className="lg:text-4xl font-normal max-md:pt-10">
@@ -38,7 +38,7 @@ export default function FooterArea() {
           <p
             ref={textRef}
             className="textGradient__header text-xl text-gray-400 mt-5 mb-40 lg:text-3xl 
-            max-xxxl:mb-20 max-lg:mb-20 max-lg:mt-5"
+             max-lg:mt-5"
           >
             처음의 기대가 끝까지 이어지도록,{" "}
             <br className="lg:block xl:hidden" />

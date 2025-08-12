@@ -160,8 +160,9 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </p>
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
-            <div className="flex flex-col items-start text-3xl font-semibold text-gray-700 leading-2 lg:text-4xl">
-              넥사코드가 진행한 프로젝트
+            <div className="flex flex-col items-start w-[15rem] xl:w-auto text-2xl font-semibold text-gray-700 leading-2 xl:text-4xl">
+              넥사코드가 <br className="xl:hidden" /> 진행한
+              <br className="xl:hidden" /> 프로젝트
             </div>
           </div>
           {/* 인덱스 번호: startIndex + 4 */}
