@@ -22,7 +22,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
   });
   return (
     <div
-      className="container relative justify-center items-center py-36"
+      className="container relative justify-center items-center py-20"
       data-index="2"
     >
       <div className="flex flex-col  w-full max-md:mx-10">

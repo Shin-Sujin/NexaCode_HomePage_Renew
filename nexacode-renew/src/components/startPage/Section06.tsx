@@ -14,7 +14,7 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
   return (
-    <div className="container relative justify-center  items-center py-36">
+    <div className="container relative justify-center  items-center py-20">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           <div

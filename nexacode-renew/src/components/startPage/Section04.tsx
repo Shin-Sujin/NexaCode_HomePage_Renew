@@ -31,7 +31,7 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
   useLetterBounceAnimation(triggerRef);
 
   return (
-    <div className="container relative justify-center items-center py-36">
+    <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col max-lg:gap-10 w-full max-md:mx-10 ">
         <div className="xl:mx-24">
           <div className="section-number">
