@@ -20,7 +20,7 @@ export default function OverlapCard({
   return (
     <>
       {" "}
-      <div className="block max-lg:hidden relative w-full max-w-xl work-box ">
+      <div className="xl:block hidden relative w-full max-w-xl work-box ">
         {/* 뒤에 있는 이미지 */}
         <div className="xxl:w-[25rem] xxl:h-[35rem] xl:w-[18rem] xl:h-[22rem] relative overflow-hidden thumb">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
@@ -46,25 +46,16 @@ export default function OverlapCard({
         </div>
       </div>
       {/* 모바일에서는 따로 컴포넌트 작성 */}
-      <div className="hidden max-lg:flex max-lg:flex-col w-full max-w-xl work-box">
-        {/* 뒤에 있는 이미지 */}
-        <div className="w-[18.9375rem] h-[25.8125rem] thumb max-sm:w-[15rem] max-sm:h-[23rem] max-xs:w-[15rem] max-xs:h-[15rem] max-xs:mt-[2rem] mx-auto">
-          <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
-        </div>
-
+      <div className="xl:hidden flex flex-col w-full max-w-xl justify-center items-center px-auto py-auto">
         {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
-        <div className="bg-white p-2 mt-5 w-[20rem] h-[18.75rem] max-xs:w-[20rem] max-xs:text-2xl max-xs:h-[10rem]  mx-auto">
-          <p className="text-sm text-[#555555] max-lg:font-medium text-center">
-            {category}
-          </p>
+        <div className="bg-white py-20 w-[20rem] h-[23.75rem] text-2xl  text-center">
+          <p className="text-sm text-[#555555] mb-8">{category}</p>
           <h2
-            className="mb-5 text-lg text-gray-800 leading-relaxed max-xxxl:text-sm max-lg:mt-2 text-center"
+            className="mb-16 text-lg text-gray-800 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <hr className="mb-2" />
-          <p className="text-lg font-black text-gray-700 max-lg:text-base text-center">
-            {sentence}
-          </p>
+          <hr className="mb-8" />
+          <p className="text-lg font-black text-gray-700">{sentence}</p>
         </div>
       </div>
     </>
