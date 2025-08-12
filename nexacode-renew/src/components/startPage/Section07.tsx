@@ -134,7 +134,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
           </div>
         </div>
 
-        <div className="relative w-full pt-5 xxl:h-[60vh] xl:h-[40vh] lg:h-[30vh] h-[20vh]  p-0 m-0">
+        <div className="relative w-full pt-5 xxl:h-[60vh] xl:h-[50vh] lg:h-[30vh] h-[20vh]  p-0 m-0">
           <div className="cardContainer">
             {cards.map((c, idx) => {
               const pos = order[idx]; // idx번째 카드의 위치
