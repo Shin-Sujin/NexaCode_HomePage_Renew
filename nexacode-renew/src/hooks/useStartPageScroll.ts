@@ -24,17 +24,17 @@ export function useStartPageScroll(
     // 휠 강도 계산
     const intensity: number = Math.abs(deltaY);
     // 연속 휠 감지
-    wheelCountRef.current += 1;
+    // wheelCountRef.current += 1;
     // wheelCount 초기화 타이머
-    if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
-    wheelTimerRef.current = setTimeout(() => {
-      wheelCountRef.current = 0;
-    }, 300); // 300ms 이내 휠 이벤트가 들어오면 연속으로 간주
+    // if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
+    // wheelTimerRef.current = setTimeout(() => {
+    //   wheelCountRef.current = 0;
+    // }, 300); // 300ms 이내 휠 이벤트가 들어오면 연속으로 간주
     // deltaY의 크기에 따라 jump 수 조정
     let jump: number = 1;
-    if (intensity > 250 && wheelCountRef.current >= 3) {
-      jump = 3;
-    }
+    // if (intensity > 250 && wheelCountRef.current >= 3) {
+    //   jump = 3;
+    // }
     // isScrolling 중이고 jump가 1이라면 무시
     if (isScrolling && jump === 1) return;
 
