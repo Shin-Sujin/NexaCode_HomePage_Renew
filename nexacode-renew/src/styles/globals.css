@@ -446,10 +446,10 @@ body {
   }
 
   .startPage-portfolio-title {
-    @apply xxl:text-2xl xl:text-xl text-base xxl:mt-5 mt-2 font-normal mb-0  text-[#444444];
+    @apply xxl:text-xl xl:text-lg text-base xxl:mt-5 mt-2 font-normal mb-0  text-[#444444];
   }
   .startPage-portfolio-description {
-    @apply xxl:text-lg xl:text-base text-sm text-gray-600 mb-2;
+    @apply xxl:text-base text-sm text-gray-600 mb-2;
   }
   .startPage-section02-title {
     @apply mt-5 xxl:mt-20 font-medium text-2xl xxl:text-3xl max-lg:mt-10 lg:mt-10;
