@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { fetchPublicBlogDetail } from "@/src/apis";
+import Lenis from "@/src/app/lenis";
 
 import BlogComponent from "@/src/components/blog/BlogComponent";
 
@@ -40,5 +41,9 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
   };
   const blog = res.data;
 
-  return <BlogComponent blog={blog} />;
+  return (
+    <Lenis>
+      <BlogComponent blog={blog} />
+    </Lenis>
+  );
 }

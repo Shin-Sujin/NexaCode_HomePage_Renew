@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { fetchInquiryDetail } from "@/src/apis";
-
+import Lenis from "@/src/app/lenis";
 import ContactComponent from "@/src/components/contact/ContactComponent";
 
 interface InquiryDetail {
@@ -45,5 +45,9 @@ export default async function ContactPage({
   };
   const inquiry = res.data;
 
-  return <ContactComponent inquiry={inquiry} />;
+  return (
+    <Lenis>
+      <ContactComponent inquiry={inquiry} />
+    </Lenis>
+  );
 }

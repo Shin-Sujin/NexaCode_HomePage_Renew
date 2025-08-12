@@ -3,7 +3,7 @@
 // import "@/src/styles/blog.css";
 import Footer from "@/src/components/blog/Footer";
 import Link from "next/link";
-
+import Lenis from "@/src/app/lenis";
 import "@/src/styles/blog.css";
 import { fetchInquiryList } from "@/src/apis";
 import { useState, useEffect } from "react";
@@ -59,7 +59,7 @@ export default function ContactPage() {
   }, [page]);
 
   return (
-    <div>
+    <Lenis>
       <main className="w-full overflow-x-hidden min-h-screen m-0 p-0 max-w-5xl mx-auto px-4 pt-48 pb-10 max-md:w-full max-md:pb-20">
         <h1 className="text-6xl text-gray-800 font-600 mb-6 max-md:text-4xl max-md:px-2 ">
           문의하기
@@ -197,6 +197,6 @@ export default function ContactPage() {
         </div>
       </main>{" "}
       <Footer />
-    </div>
+    </Lenis>
   );
 }
