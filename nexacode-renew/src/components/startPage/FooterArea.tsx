@@ -25,10 +25,10 @@ export default function FooterArea() {
           </div>
           <div
             ref={animatedTextRef}
-            className="text-3xl xxl:text-9xl font-normal mt-8 lg:text-6xl"
+            className="text-3xl xxl:text-8xl font-normal mt-8 lg:text-5xl"
           >
             당신만의 개발 파트너
-            <br className="max-md:block hidden" />{" "}
+            <br className="lg:block hidden" />{" "}
             <span className="rotating-word" ref={rotatingRef}>
               <strong>넥사코드</strong>
             </span>
