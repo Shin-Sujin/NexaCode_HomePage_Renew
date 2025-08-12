@@ -24,9 +24,8 @@ export default function ScrollProgressBar() {
 
   return (
     <div className="fixed top-[68px] left-0 w-full h-[4px] bg-gray-200 z-50 max-sm:top-[60px]">
-      {/* transition 제거, transform(scaleX)로 페인트만 */}
       <div
-        className="h-full bg-black origin-left will-change-transform"
+        className="h-full bg-black origin-left"
         style={{ transform: `scaleX(${progress / 100})` }}
       />
     </div>
