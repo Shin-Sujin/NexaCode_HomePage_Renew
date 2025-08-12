@@ -96,7 +96,7 @@ export default function Title() {
                   당신만의 IT 개발 부서가 되어드립니다
                 </div>
               </div>
-              <div className="flex justify-center text-white tracking-tight font-normal xl:items-start items-center xxl:text-[12rem] xl:text-[10rem] text-5xl mt-10 xl:mt-3 text-center">
+              <div className="flex justify-center text-white tracking-tight font-normal xl:justify-start items-center xxl:text-[12rem] xl:text-[10rem] text-5xl mt-10 xl:mt-3">
                 <div ref={creativeRef}>
                   Digital <br className="hidden max-md:block" />
                   Starts Here
