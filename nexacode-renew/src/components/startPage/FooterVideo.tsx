@@ -40,7 +40,7 @@ export default function FooterVideo() {
   return (
     <div
       ref={backgroundImageRef}
-      className="relative w-full h-screen overflow-hidden max-md:h-auto"
+      className="relative w-full overflow-hidden h-auto"
       style={{
         clipPath: `inset(${imageClip}px 0 ${imageClip}px 0)`,
         transition: "clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",

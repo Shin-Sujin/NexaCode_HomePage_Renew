@@ -73,12 +73,12 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                   height={1000}
                 />
               </div>
-              <h2 className="startPage-portfolio-title">
+              <h1 className="startPage-portfolio-title">
                 블루투스 연동, 헬스케어 앱 개발
-              </h2>
-              <div className="startPage-portfolio-description">
+              </h1>
+              <h2 className="startPage-portfolio-description">
                 5억 투자 유치 성공
-              </div>
+              </h2>
             </div>
             {/* 인덱스 번호: startIndex + 1 */}
             {/* 3번------------ */}
@@ -101,12 +101,12 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                     height={1000}
                   />
                 </div>
-                <h2 className="startPage-portfolio-title">
+                <h1 className="startPage-portfolio-title">
                   리워드, 모바일 쿠폰 플랫폼 개발
-                </h2>
-                <div className="startPage-portfolio-description">
+                </h1>
+                <h2 className="startPage-portfolio-description">
                   오픈 1개월 만에 방문자수 4만명 돌파
-                </div>
+                </h2>
               </div>
             </div>
             {/* 4번------------ */}
@@ -122,12 +122,12 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                   height={1000}
                 />
               </div>
-              <h2 className="startPage-portfolio-title">
+              <h1 className="startPage-portfolio-title">
                 헬스 친구 매칭, 커머스 앱
-              </h2>
-              <div className="startPage-portfolio-description">
+              </h1>
+              <h2 className="startPage-portfolio-description">
                 3억 무상 지원금 획득
-              </div>
+              </h2>
             </div>
 
             {/* 5번------------ */}
@@ -150,12 +150,12 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                     height={1000}
                   />
                 </div>
-                <h2 className="startPage-portfolio-title">
+                <h1 className="startPage-portfolio-title">
                   중고 거래, 매칭 앱 개발
-                </h2>
-                <div className="startPage-portfolio-description">
+                </h1>
+                <h2 className="startPage-portfolio-description">
                   다른 개발사에서 실패한 프로젝트 심폐소생술
-                </div>
+                </h2>
               </div>
             </div>
             {/* 6번------------ */}
@@ -171,10 +171,10 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                   height={1000}
                 />
               </div>
-              <h2 className="startPage-portfolio-title">스마트워치 앱 개발</h2>
-              <div className="startPage-portfolio-description">
+              <h1 className="startPage-portfolio-title">스마트워치 앱 개발</h1>
+              <h2 className="startPage-portfolio-description">
                 해외 바이어 대상 수출 성공
-              </div>
+              </h2>
             </div>
           </div>
         </div>

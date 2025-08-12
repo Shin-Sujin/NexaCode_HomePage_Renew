@@ -12,10 +12,10 @@ export default function Footer() {
           <div>사업자등록번호 : 326-87-03313</div>
           <div>대표 김남정</div>
         </div>
-        <div className="pt-8 text-center space-y-1">
+        <h2 className="pt-8 text-center space-y-1">
           <div>서울시 금천구 디지털로 178 가산 퍼블릭 A동 1515~1516호</div>
           <div>M : nexacode@nexacode.co.kr, C : 010-4009-2398</div>
-        </div>
+        </h2>
       </div>
     </footer>
   );

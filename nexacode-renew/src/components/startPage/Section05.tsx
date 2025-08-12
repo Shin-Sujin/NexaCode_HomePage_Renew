@@ -30,15 +30,15 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
           </div>
         </div>
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title ">
-            <div className="section-title-line text-white">
+          <div ref={sectionTitleRef} className="startPage-title ">
+            <h1 className="section-title-line text-white">
               고객이 말하는 넥사코드는
               <br className="xl:hidden" />
               <span className="font-bold ">
                 &quot;함께 일하고 싶은 개발사&quot;
               </span>{" "}
-            </div>
-          </h2>
+            </h1>
+          </div>
         </div>
 
         <div className="relative w-full pt-5 max-xxxl:pt-10">

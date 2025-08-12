@@ -35,13 +35,13 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
           </div>
         </div>
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title">
-            <div className="section-title-line ">
+          <div ref={sectionTitleRef} className="startPage-title">
+            <h1 className="section-title-line ">
               <span className="font-bold ">개발사 선정에 </span>
               고민이 많으시죠?
               <br />
-            </div>
-          </h2>
+            </h1>
+          </div>
           <span
             ref={textRef}
             className="textGradient__header mt-20 text-gray-500 text-center lg:mt-2 xxl:text-4xl lg:text-3xl  "
