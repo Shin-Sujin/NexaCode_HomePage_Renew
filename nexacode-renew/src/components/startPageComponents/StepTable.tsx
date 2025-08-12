@@ -91,17 +91,17 @@ export default function StepTable() {
           }
         `}
       </style>
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse mt-10 lg:mt-0">
         <tbody>
           {steps.map((step, index) => (
             <tr
               key={step.id}
-              className="reveal-row animated-border-b border-[#e5e5e5] flex max-md:flex-col"
+              className="reveal-row animated-border-b border-[#e5e5e5] flex max-md:flex-col my-5 lg:my-0"
             >
-              <td className="text-left text-2xl font-semibold w-[180px] lg:w-[200px] xxl:py-7 lg:py-4 lg:text-lg xxl:text-xl xxl:w-[200px]">
+              <td className="text-left text-lg  font-semibold w-[180px] lg:w-[200px] xxl:py-7 lg:py-4 xxl:text-xl xxl:w-[200px]">
                 {index + 1}.&nbsp;{step.title}
               </td>
-              <td className="px-6 text-left text-2xl xxl:py-7 lg:text-lg lg:py-4 xxl:text-xl max-xl:px-3 max-lg:whitespace-pre-line">
+              <td className="px-6 text-left text-base  xxl:py-7  lg:py-4 xxl:text-xl max-xl:px-3 max-lg:whitespace-pre-line  my-5 lg:my-0">
                 {step.description}
               </td>
             </tr>

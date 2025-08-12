@@ -63,7 +63,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             }}
             className="flex items-center justify-center mt-40 mb-40 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0"
           >
-            <div className="flex flex-col items-end w-[500px]">
+            <div className="flex flex-col items-center lg:items-end w-[500px]">
               <div className="flex testimonial-count font-bold tracking-[-0.1em]   md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
                 <CounterUp targetNumber={2500} duration={10000} />
                 <span>k</span>
@@ -160,7 +160,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </p>
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
-            <div className="flex flex-col items-start text-6xl font-semibold text-gray-700 leading-2 lg:text-4xl">
+            <div className="flex flex-col items-start text-3xl font-semibold text-gray-700 leading-2 lg:text-4xl">
               넥사코드가 진행한 프로젝트
             </div>
           </div>
@@ -171,9 +171,9 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 4] = el;
               }
             }}
-            className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center max-xxxl:ml-20 max-md:ml-0"
+            className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center "
           >
-            <div className="flex flex-col items-end w-[400px] max-md:items-center">
+            <div className="flex flex-col items-center lg:items-end w-[400px]">
               <div className="flex testimonial-count font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
                 <CounterUp targetNumber={100} duration={2500} />
                 <span>+</span>

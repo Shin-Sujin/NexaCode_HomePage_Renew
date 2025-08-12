@@ -1,10 +1,32 @@
-import React from "react";
+import ButtonContents02 from "./ButtonContents02";
 
-export default function ButtonPage02() {
+interface ButtonPage02Props {
+  sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  startIndex: number;
+}
+
+export default function ButtonPage02({
+  sectionRefs,
+  startIndex,
+}: ButtonPage02Props) {
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="pb-32 text-green-500 font-black text-8xl">
-        그렇다면 누구에게 맡겨야 할까?
+    <div
+      ref={(el) => {
+        if (sectionRefs.current) {
+          sectionRefs.current[startIndex] = el;
+        }
+      }}
+    >
+      <div className="flex justify-center h-screen">
+        <div
+          ref={(el) => {
+            if (sectionRefs.current) {
+              sectionRefs.current[startIndex + 1] = el;
+            }
+          }}
+        >
+          <ButtonContents02 />
+        </div>
       </div>
     </div>
   );

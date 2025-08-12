@@ -25,7 +25,7 @@ export default function FooterArea() {
           </div>
           <div
             ref={animatedTextRef}
-            className="text-9xl font-normal mt-8 lg:text-6xl max-lg:text-5xl max-md:text-4xl"
+            className="text-3xl xxl:text-9xl font-normal mt-8 lg:text-6xl"
           >
             당신만의 개발 파트너
             <br className="max-md:block hidden" />{" "}
