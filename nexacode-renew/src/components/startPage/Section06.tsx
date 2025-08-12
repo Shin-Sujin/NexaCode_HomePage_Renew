@@ -14,7 +14,7 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
   return (
-    <div className="container relative justify-center  items-center py-36">
+    <div className="container relative justify-center  items-center py-20">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           <div
@@ -30,13 +30,13 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
           </div>
         </div>
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title">
-            <div className="section-title-line ">
+          <div ref={sectionTitleRef} className="startPage-title">
+            <h1 className="section-title-line ">
               <span className="font-bold ">처음부터 끝까지, </span>
               <br className="max-md:block hidden" />
               넥사코드가 함께합니다
-            </div>
-          </h2>
+            </h1>
+          </div>
         </div>
         <div className="relative w-full flex justify-center items-center">
           {/* 제목 밑 내용 */}

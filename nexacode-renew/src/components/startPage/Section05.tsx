@@ -14,7 +14,7 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
   return (
-    <div className="container relative justify-center items-center lg:py-36 py-20">
+    <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col max-lg:gap-10 w-full mx-2">
         <div className="section-number text-white ">
           <div
@@ -30,14 +30,15 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
           </div>
         </div>
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title ">
-            <div className="section-title-line text-white">
+          <div ref={sectionTitleRef} className="startPage-title ">
+            <h1 className="section-title-line text-white">
               고객이 말하는 넥사코드는
+              <br className="xl:hidden" />
               <span className="font-bold ">
                 &quot;함께 일하고 싶은 개발사&quot;
               </span>{" "}
-            </div>
-          </h2>
+            </h1>
+          </div>
         </div>
 
         <div className="relative w-full pt-5 max-xxxl:pt-10">

@@ -112,7 +112,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   ];
 
   return (
-    <div className="container relative justify-center items-center py-36">
+    <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           <div
@@ -127,11 +127,11 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
         </div>
 
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title">
-            <div className="section-title-line ">
+          <div ref={sectionTitleRef} className="startPage-title">
+            <h1 className="section-title-line ">
               <span className="font-bold ">개발 이상의 가치</span>를 약속합니다
-            </div>
-          </h2>
+            </h1>
+          </div>
         </div>
 
         <div className="relative w-full pt-5 h-[60vh] p-0 m-0">

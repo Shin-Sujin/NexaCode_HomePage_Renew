@@ -55,7 +55,7 @@ export function useStartPageScroll(
   // 휠 이벤트 등록(데스크탑)/해제(모바일 대응)
   useEffect(() => {
     const handleResize = (): void => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 1366) {
         window.removeEventListener("wheel", wheelHandler);
       } else {
         window.addEventListener("wheel", wheelHandler, { passive: false });

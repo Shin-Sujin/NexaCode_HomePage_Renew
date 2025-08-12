@@ -22,7 +22,9 @@ export default function StartPage() {
     window.scrollTo({ top: 0, behavior: "auto" });
 
     const preventScroll = (e: WheelEvent) => {
-      e.preventDefault();
+      if (window.innerWidth > 1366) {
+        e.preventDefault();
+      }
     };
 
     window.addEventListener("wheel", preventScroll, { passive: false });

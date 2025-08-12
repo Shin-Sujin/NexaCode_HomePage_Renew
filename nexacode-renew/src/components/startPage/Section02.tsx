@@ -29,7 +29,7 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
   useBounceSection3(bounceRef3);
 
   return (
-    <div className="container relative justify-center  items-center py-36">
+    <div className="container relative justify-center  items-center py-20">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="section-number">
           <div
@@ -45,17 +45,17 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
           </div>
         </div>
         <div className="startPage-title-height">
-          <h2 ref={sectionTitleRef} className="startPage-title">
-            <div className="section-title-line ">
+          <div ref={sectionTitleRef} className="startPage-title">
+            <h1 className="section-title-line ">
               고민의 끝에서 마주하는 <br className="lg:hidden" />
               진짜 파트너,&nbsp;
-              <br className="lg:hidden" />
+              <br className="xl:hidden" />
               <span className="font-bold ">넥사코드 </span>
               입니다
-            </div>
-          </h2>
+            </h1>
+          </div>
         </div>
-        <div className="w-full h-[60vh] flex items-center justify-center max-lg:pt-24 max-md:h-auto ">
+        <div className="w-full flex items-center justify-center max-lg:pt-24 max-md:h-auto ">
           <div className="flex gap-2 max-xl:mt-10 max-md:flex-col max-md:mt-0">
             {/* 1번 항목 */}
             <div className="text-center w-full flex-1" ref={bounceRef1}>

@@ -42,7 +42,7 @@ const StaticContent = memo(() => {
           /5
         </span>
       </div>
-      <p
+      <h1
         className="has_fade_anim w-full text-[#999999] text-m font-bold text-2xl  xxl:mb-20 lg:mb-10 mb-5"
         data-fade-from="bottom"
         style={{
@@ -50,7 +50,7 @@ const StaticContent = memo(() => {
         }}
       >
         넥사코드 만족도 설문조사
-      </p>
+      </h1>
       <hr className="w-full my-8 border-[#2e2e2e]" />
       <h3 className="name text-4xl text-white mt-20 mb-1 w-full lg:mt-10">
         고객의 말이 증명합니다
