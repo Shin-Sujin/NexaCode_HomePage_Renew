@@ -11,7 +11,7 @@ export function useStartPageScroll(
   const { currentIndex, setCurrentIndex, isScrolling, scrollToSection } =
     useStartPageStore();
   // 휠 연속 감지를 위한 ref
-  const wheelCountRef = useRef(0);
+  // const wheelCountRef = useRef(0);
   const wheelTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // 휠 이벤트 핸들러
@@ -22,7 +22,7 @@ export function useStartPageScroll(
     const direction: "up" | "down" = deltaY > 0 ? "down" : "up";
 
     // 휠 강도 계산
-    const intensity: number = Math.abs(deltaY);
+    // const intensity: number = Math.abs(deltaY);
     // 연속 휠 감지
     // wheelCountRef.current += 1;
     // wheelCount 초기화 타이머
@@ -31,7 +31,7 @@ export function useStartPageScroll(
     //   wheelCountRef.current = 0;
     // }, 300); // 300ms 이내 휠 이벤트가 들어오면 연속으로 간주
     // deltaY의 크기에 따라 jump 수 조정
-    let jump: number = 1;
+    const jump: number = 1;
     // if (intensity > 250 && wheelCountRef.current >= 3) {
     //   jump = 3;
     // }
