@@ -113,7 +113,7 @@ const CardSlider: React.FC<CardSliderProps> = ({ portfolios }) => {
                         />
                       </div>
                       <div className="py-4  select-none">
-                        <h3 className="list-title  text-2xl text-gray-700 font-500 mb-2">
+                        <h3 className="list-title  text-xl text-gray-700 font-500 mb-2">
                           {item.title}
                         </h3>
                         <p className="text-gray-500 text-sm xs:ml-1">

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import "@/src/styles/blog.css"; // 스타일 분리해서 이 경로에 저장한다고 가정
 import PortfolioComponent from "@/src/components/portfolio/PortfolioComponent";
 import { fetchPortfolioDetail } from "@/src/apis";
-
+import Lenis from "@/src/app/lenis";
 interface PortfolioDetail {
   id: number;
   title: string;
@@ -37,5 +37,9 @@ export default async function ContactPage({
   };
   const portfolio = res.data;
 
-  return <PortfolioComponent portfolio={portfolio} />;
+  return (
+    <Lenis>
+      <PortfolioComponent portfolio={portfolio} />
+    </Lenis>
+  );
 }
