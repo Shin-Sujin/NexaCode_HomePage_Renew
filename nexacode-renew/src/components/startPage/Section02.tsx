@@ -55,7 +55,7 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
             </h1>
           </div>
         </div>
-        <div className="w-full h-[60vh] flex items-center justify-center max-lg:pt-24 max-md:h-auto ">
+        <div className="w-full flex items-center justify-center max-lg:pt-24 max-md:h-auto ">
           <div className="flex gap-2 max-xl:mt-10 max-md:flex-col max-md:mt-0">
             {/* 1번 항목 */}
             <div className="text-center w-full flex-1" ref={bounceRef1}>

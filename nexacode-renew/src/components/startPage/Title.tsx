@@ -43,7 +43,7 @@ export default function Title() {
   useFadeInOnScroll({ targetRef });
 
   return (
-    <div className="h-screen">
+    <div>
       <div className="relative h-[90vh] flex items-center justify-center max-lg:h-[45rem] max-md:h-[55rem] max-sm:h-[45rem]  max-xl:h-[50rem] ">
         <video
           src="/videoes/production_id.mp4"

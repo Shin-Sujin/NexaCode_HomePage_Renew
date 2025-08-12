@@ -49,7 +49,7 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
             무엇을 만들지보다, 누구와 함께할지가 더 중요한 고민일지도 모릅니다.
           </span>
         </div>
-        <div className="w-full h-[60vh] lg:h-[65vh]">
+        <div className="w-full h-auto">
           <div className="relative w-full pt-20 flex flex-col items-center justify-center gap-10">
             <Image
               src="/images/startPage/Container.svg"

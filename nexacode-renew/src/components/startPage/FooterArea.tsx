@@ -17,7 +17,7 @@ export default function FooterArea() {
   useRotatingAnimation(rotatingRef, animatedTextRef);
 
   return (
-    <div className="container xl:h-screen h-full max-md:mx-10 mb-10">
+    <div className="container xxl:h-screen h-full max-md:mx-10 mb-10">
       <section className={styles.footerAreaWrapper}>
         <div className={styles.inner}>
           <div className="lg:text-4xl font-normal max-md:pt-10">

@@ -160,7 +160,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </h1>
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
-            <h1 className="flex flex-col items-start w-[15rem] xl:w-auto text-2xl font-semibold text-gray-700 leading-2 xl:text-4xl">
+            <h1 className="flex flex-col lg:items-start items-center text-center lg:text-left w-[15rem] xl:w-auto text-2xl font-semibold text-gray-700 leading-2 xl:text-4xl">
               넥사코드가 <br className="xl:hidden" /> 진행한
               <br className="xl:hidden" /> 프로젝트
             </h1>
