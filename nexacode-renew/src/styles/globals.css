@@ -381,7 +381,7 @@ body {
 
 .grid-container-portfolio {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* 그리드 아이템 간의 간격 */
   column-gap: 40px; /* 열 간의 간격 */
   row-gap: 20px; /* 행 간의 간격 */
