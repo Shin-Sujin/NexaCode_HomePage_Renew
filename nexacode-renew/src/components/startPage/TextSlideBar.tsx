@@ -9,31 +9,15 @@ import "splitting/dist/splitting.css";
 
 export default function TextSlideBar() {
   const fadeRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const creativeRef = useRef<HTMLDivElement>(null);
-  const studioRef = useRef<HTMLDivElement>(null);
+  const creativeRef = useRef<HTMLDivElement>(null); // Digital Starts Here
   const slideRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
-  const whoWeAreRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
-  const workTitleRef = useRef<HTMLDivElement>(null);
-  const recentPostTitleRef = useRef<HTMLDivElement>(null);
-  const whetherRef = useRef<HTMLDivElement>(null);
-  const ourTeamRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
 
   useStartPageAnimations({
     fadeRef,
-    textRef,
     creativeRef,
-    studioRef,
-    whoWeAreRef,
     sectionTitleRef,
-    workTitleRef,
-    recentPostTitleRef,
-    whetherRef,
-    ourTeamRef,
-    imgRef,
   });
   useTextSlide({ slideRef });
   useFadeInOnScroll({ targetRef });
