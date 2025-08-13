@@ -17,7 +17,7 @@ const $all = <T extends Element = HTMLElement>(selector: string): T[] =>
 const clamp = (val: number, min: number, max: number) =>
   Math.min(Math.max(val, min), max);
 
-export function initSlides(): void {
+export function initSlides(): (() => void) | void {
   // ✅ SSR 가드: 서버에서는 DOM이 없으므로 조기 종료
   if (typeof window === "undefined" || typeof document === "undefined") return;
 
@@ -25,11 +25,8 @@ export function initSlides(): void {
 
   // 요소 수집 (타입 명시)
   const sections = $all<HTMLElement>(".slide"); // 각 슬라이드 섹션
-  const images = $all<HTMLImageElement>(".image").reverse(); // 오버레이 큰 이미지(역순)
-  const slideImages = $all<HTMLImageElement>(".slide__img"); // 슬라이드 내부(작은) 이미지
   const outerWrappers = $all<HTMLElement>(".slide__outer");
   const innerWrappers = $all<HTMLElement>(".slide__inner");
-  const count = document.querySelector<HTMLElement>(".count"); // 0,1,2 표시 숫자
 
   if (sections.length === 0) return; // 안전장치
 
@@ -42,10 +39,20 @@ export function initSlides(): void {
   gsap.set(".slide:nth-of-type(1) .slide__outer", { xPercent: 0 });
   gsap.set(".slide:nth-of-type(1) .slide__inner", { xPercent: 0 });
 
+  // 1번 슬라이드를 제외한 나머지 슬라이드의 리뷰/카운트 초기에 숨기기
+  sections.forEach((section, index) => {
+    if (index > 0) {
+      gsap.set(
+        section.querySelectorAll(".overlay__count, .overlay__img-cont"),
+        {
+          autoAlpha: 0,
+        }
+      );
+    }
+  });
+
   // 전환의 핵심
   function gotoSection(index: number, direction: 1 | -1): void {
-    // 루프가 아니라 **끝에서 멈추기**를 원해서 clamp 사용
-    // (루프 원하면 아래 두 줄을 주석 처리하고 wrap 사용)
     index = clamp(index, 0, sections.length - 1);
     if (index === currentIndex) return;
 
@@ -61,51 +68,31 @@ export function initSlides(): void {
     const currentSection = sections[currentIndex];
     const nextSection = sections[index];
 
-    // 첫 번째 슬라이드(index 0)일 경우 오버레이 숨기기
-    const isFirstSlide = index === 0;
-    const overlayElements = [...images, ...(count ? [count] : [])].filter(
-      Boolean
-    );
-
-    gsap.to(overlayElements, {
-      autoAlpha: isFirstSlide ? 0 : 1,
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
-
     // 레이어 가시성/쌓임순서 정리
-    gsap.set([sections], { zIndex: 0, autoAlpha: 0 }); // 이미지는 여기서 제외
-    gsap.set(sections[currentIndex], { zIndex: 1, autoAlpha: 1 });
-    gsap.set(sections[index], { zIndex: 2, autoAlpha: 1 });
-
-    if (!isFirstSlide) {
-      gsap.set([images], { zIndex: 0, autoAlpha: 0 });
-      gsap.set(images[index], { zIndex: 1, autoAlpha: 1 });
-      gsap.set(images[currentIndex], { zIndex: 2, autoAlpha: 1 });
-    }
+    gsap.set(sections, { zIndex: 0, autoAlpha: 0 });
+    gsap.set(currentSection, { zIndex: 1, autoAlpha: 1 });
+    gsap.set(nextSection, { zIndex: 2, autoAlpha: 1 });
 
     const heading =
       currentSection.querySelector<HTMLElement>(".slide__heading");
     const nextHeading =
       nextSection.querySelector<HTMLElement>(".slide__heading");
 
-    // 타임라인 구성
-    if (count && !isFirstSlide) {
-      // TextPlugin 사용 (문자열로 캐스팅해도 OK)
-      tl.set(count, { text: String(index + 1) }, 0.32);
-    }
-
     // 새 슬라이드 래퍼들 들어오기
-    const outer = outerWrappers[index];
-    const inner = innerWrappers[index];
-    if (outer) {
-      tl.fromTo(outer, { xPercent: 100 * direction }, { xPercent: 0 }, 0);
-    }
-    if (inner) {
-      tl.fromTo(inner, { xPercent: -100 * direction }, { xPercent: 0 }, 0);
-    }
+    tl.fromTo(
+      outerWrappers[index],
+      { xPercent: 100 * direction },
+      { xPercent: 0 },
+      0
+    );
+    tl.fromTo(
+      innerWrappers[index],
+      { xPercent: -100 * direction },
+      { xPercent: 0 },
+      0
+    );
 
-    // 현재/다음 제목 타이포 효과(Variable Font wdth + 슬라이드)
+    // 현재/다음 제목 타이포 효과
     if (heading) {
       tl.to(heading, { "--width": 800, xPercent: 30 * direction }, 0);
     }
@@ -117,43 +104,48 @@ export function initSlides(): void {
         0
       );
     }
+    // 리뷰 이미지와 카운트 애니메이션
+    const currentReviewElements = currentSection.querySelectorAll(
+      ".overlay__count, .overlay__img-cont"
+    );
+    const nextReviewElements = nextSection.querySelectorAll(
+      ".overlay__count, .overlay__img-cont"
+    );
 
-    // 오버레이 큰 이미지 교차 전환(새 이미지 인, 이전 이미지 아웃)
-    if (!isFirstSlide) {
-      const nextImage = images[index];
-      const currImage = images[currentIndex];
-
-      if (nextImage) {
-        tl.fromTo(
-          nextImage,
-          { xPercent: 125 * direction, scaleX: 1.5, scaleY: 1.3 },
-          { xPercent: 0, scaleX: 1, scaleY: 1, duration: 1 },
-          0
-        );
-      }
-      if (currImage) {
-        tl.fromTo(
-          currImage,
-          { xPercent: 0, scaleX: 1, scaleY: 1 },
-          { xPercent: -125 * direction, scaleX: 1.5, scaleY: 1.3 },
-          0
-        );
-      }
+    if (currentIndex > 0) {
+      tl.to(
+        currentReviewElements,
+        {
+          xPercent: -125 * direction,
+          scale: 1.5,
+          autoAlpha: 0,
+        },
+        0
+      );
     }
 
-    // 슬라이드 내부 "작은" 이미지(figure 안) 살짝 줌아웃
-    const smallImg = slideImages[index];
+    if (index > 0) {
+      tl.fromTo(
+        nextReviewElements,
+        { xPercent: 125 * direction, scale: 1.5, autoAlpha: 0 },
+        { xPercent: 0, scale: 1, autoAlpha: 1, duration: 1, stagger: 0.1 },
+        0
+      );
+    }
+
+    // "photo" 이미지 (slide__img)
+    const smallImg = nextSection.querySelector(".slide__img");
     if (smallImg) {
       tl.fromTo(smallImg, { scale: 2 }, { scale: 1 }, 0);
     }
 
-    tl.timeScale(0.8); // 전체 타임라인 속도 80%
+    tl.timeScale(0.8);
 
     currentIndex = index;
   }
 
   // 입력(스크롤/터치/포인터)
-  Observer.create({
+  const observer = Observer.create({
     type: "wheel,touch,pointer",
     preventDefault: true,
     wheelSpeed: -1,
@@ -180,10 +172,9 @@ export function initSlides(): void {
 
   document.addEventListener("keydown", logKey);
 
-  // 선택: 언마운트/페이지 전환 시 정리 함수 반환하고 싶으면 여기서 반환 핸들러 구성
-  // (이 파일을 React 훅에서 호출한다면, 훅의 cleanup에서 아래를 수행)
-  // return () => {
-  //   Observer.getAll().forEach(o => o.kill());
-  //   document.removeEventListener("keydown", logKey);
-  // };
+  // 선택: 언마운트/페이지 전환 시 정리 함수 반환
+  return () => {
+    observer.kill();
+    document.removeEventListener("keydown", logKey);
+  };
 }
