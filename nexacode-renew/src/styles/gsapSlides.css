@@ -1,0 +1,210 @@
+/* 폰트 설정 */
+@font-face {
+  font-family: "Bandeins Sans & Strange Variable";
+  src: url("https://res.cloudinary.com/dldmpwpcp/raw/upload/v1566406079/BandeinsStrangeVariable_esetvq.ttf");
+}
+/* Google Fonts의 Sora 폰트를 불러옴. */
+@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+
+* {
+  box-sizing: border-box; /* padding, border가 width/height에 포함 */
+  user-select: none; /* 텍스트 드래그 불가 */
+}
+
+/* 크롬, 사파리에서 스크롤바 숨김 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* <figure> 기본 여백 제거, 넘치는 이미지 잘라냄 */
+figure {
+  margin: 0;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+body.gsap-slides-active {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  height: -webkit-fill-available; /* ios safari에서 가용 높이 채움 */
+  color: #fff; /* 기본 글씨 흰색 */
+  background: #4361ee; /* 배경 파란색 */
+  font-family: "Sora", sans-serif; /* Sora 폰트 적용 */
+}
+
+a {
+  color: #fff;
+}
+
+.slide {
+  height: 100%; /* 모든 .slide는 화면 전체를 덮음 (fixed) */
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden; /* 현재 활성화된 슬라이드만 보임 */
+}
+
+/* 애니메이션 시 슬라이드 이미지나 콘텐츠를 바깥 래퍼/안쪽 래퍼로 감싸 이중 이동 가능 */
+.slide__outer,
+.slide__inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* 슬라이드 전체 배경을 차지하며 중앙 정렬 */
+.slide__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding-top: 150px;
+}
+
+/* 최대 1400px, 그리드 10x10 구조. */
+.slide__container {
+  position: relative;
+  max-width: 1400px;
+  width: 100vw;
+  margin: 0 auto;
+  height: 90vh;
+  margin-bottom: 10vh;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 0 1rem;
+}
+
+/* 슬라이드 제목 */
+.slide__heading {
+  --width: 200;
+  display: block;
+  text-align: left;
+  font-family: "Bandeins Sans & Strange Variable";
+  font-size: clamp(5rem, 15vw, 15rem);
+  font-weight: 900;
+  font-variation-settings: "wdth" var(--width); /* 글자 폭 조절 가능 */
+  margin: 0;
+  padding: 0;
+  color: #f2f1fc;
+  z-index: 999;
+  mix-blend-mode: difference; /* 배경과 반전된 색으로 표시. */
+  grid-area: 2 / 2 / 3 / 10;
+  align-self: end;
+}
+
+/* 슬라이드 이미지 */
+.slide__img-cont {
+  margin-top: 4rem;
+  grid-area: 2 / 1 / 7 / 8;
+}
+
+.slide__img-cont img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 슬라이드 별로 배경 색 다르게 */
+.slide:nth-of-type(1) {
+  visibility: visible;
+}
+.slide:nth-of-type(1) .slide__content {
+  background-color: #6d597a;
+}
+
+.slide:nth-of-type(2) .slide__content {
+  background-color: #355070;
+}
+
+.slide:nth-of-type(3) .slide__content {
+  background-color: #b56576;
+}
+
+.slide:nth-of-type(4) .slide__content {
+  background-color: #9a8c98;
+}
+
+/* 오버레이 - 슬라이드 컨테이너와 동일한 10 x 10 그리드 */
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.overlay__content {
+  max-width: 1400px;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 90vh;
+  margin-bottom: 10vh;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/* 특정 위치에 이미지 배치, 비율 유지 */
+.overlay__img-cont {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  grid-area: 6 / 4 / 11 / 11;
+}
+
+.overlay__img-cont img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* 페이지/슬라이드 번호 표시 */
+.overlay__count {
+  grid-area: 3 / 10 / 4 / 10;
+  font-size: clamp(3rem, 4vw, 15rem);
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  border-bottom: 7px white solid;
+}
+
+/* 900px 이상 미디어 쿼리 */
+@media screen and (min-width: 900px) {
+  .overlay__content,
+  .slide__container {
+    padding: 0 3rem;
+    margin-top: 10vh;
+    height: 80vh;
+  }
+
+  .overlay__img-cont {
+    grid-area: 6 / 4 / 11 / 11;
+  }
+
+  .overlay__count {
+    grid-area: 3 / 10 / 4 / 11;
+  }
+
+  .slide__img-cont {
+    margin-top: 0;
+    grid-area: 3 / 2 / 8 / 7;
+  }
+
+  .slide__heading {
+    grid-area: 1 / 1 / 4 / 10;
+  }
+}
