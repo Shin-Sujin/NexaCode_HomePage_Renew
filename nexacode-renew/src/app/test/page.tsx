@@ -150,7 +150,7 @@ export default function GsapSlides() {
           <div className="slide__inner">
             <div className="slide__content">
               <div className="slide__container">
-                <h2 className="slide__heading">CONTACT</h2>
+                <h2 className="slide__heading">QUALITY</h2>
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"
@@ -183,7 +183,7 @@ export default function GsapSlides() {
           <div className="slide__inner">
             <div className="slide__content">
               <div className="slide__container">
-                <h2 className="slide__heading">TIME</h2>
+                <h2 className="slide__heading">USER-CENTRIC</h2>
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"
@@ -216,7 +216,7 @@ export default function GsapSlides() {
           <div className="slide__inner">
             <div className="slide__content">
               <div className="slide__container">
-                <h2 className="slide__heading">REVIEW</h2>
+                <h2 className="slide__heading">VALUE-DRIVEN</h2>
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"

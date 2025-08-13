@@ -88,7 +88,7 @@ a {
   display: block;
   text-align: left;
   font-family: "Bandeins Sans & Strange Variable";
-  font-size: clamp(5rem, 15vw, 15rem);
+  font-size: clamp(5rem, 15vw, 10rem);
   font-weight: 900;
   font-variation-settings: "wdth" var(--width); /* 글자 폭 조절 가능 */
   margin: 0;
@@ -98,6 +98,8 @@ a {
   mix-blend-mode: difference; /* 배경과 반전된 색으로 표시. */
   grid-area: 2 / 2 / 3 / 10;
   align-self: end;
+  white-space: nowrap;
+  margin-bottom: 3rem;
 }
 .slide__heading_title {
   --width: 200;
@@ -118,7 +120,7 @@ a {
 /* 슬라이드 이미지 */
 .slide__img-cont {
   margin-top: 4rem;
-  grid-area: 2 / 1 / 7 / 8;
+  grid-area: 2 / 1 / 8 / 8;
 }
 
 .slide__img-cont img {
@@ -155,7 +157,7 @@ a {
   position: relative;
   overflow: hidden;
   margin: 0;
-  grid-area: 6 / 4 / 11 / 11;
+  grid-area: 6 / 5 / 11 / 11;
 }
 
 .overlay__img-cont .image {
@@ -172,7 +174,7 @@ a {
   font-size: clamp(3rem, 4vw, 15rem);
   margin: 0;
   padding: 0;
-  text-align: right;
+  text-align: center;
   border-bottom: 7px white solid;
 }
 
@@ -185,7 +187,7 @@ a {
   }
 
   .overlay__img-cont {
-    grid-area: 6 / 4 / 11 / 11;
+    grid-area: 5 / 5 / 10 / 11;
   }
 
   .overlay__count {
@@ -194,7 +196,7 @@ a {
 
   .slide__img-cont {
     margin-top: 0;
-    grid-area: 3 / 2 / 8 / 7;
+    grid-area: 3 / 2 / 9 / 7;
   }
 
   .slide__heading {
