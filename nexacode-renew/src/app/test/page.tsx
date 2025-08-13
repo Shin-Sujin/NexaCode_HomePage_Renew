@@ -20,10 +20,13 @@ export default function GsapSlides() {
   useSectionTitleAnimation(sectionTitleRef);
   useEffect(() => {
     document.body.classList.add("gsap-slides-active");
-    initSlides();
+    const cleanup = initSlides();
 
     return () => {
       document.body.classList.remove("gsap-slides-active");
+      if (cleanup) {
+        cleanup();
+      }
     };
   }, []);
 
@@ -118,8 +121,20 @@ export default function GsapSlides() {
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"
-                    src="/images/test/photo2.png"
-                    alt=""
+                    src="/images/test/photo1.png"
+                    alt="Trust"
+                    width={1000}
+                    height={1000}
+                  />
+                </figure>
+                <p className="overlay__count">
+                  0<span className="count">1</span>
+                </p>
+                <figure className="overlay__img-cont">
+                  <Image
+                    className="image"
+                    alt="review 1"
+                    src="/images/test/review1.png"
                     width={1000}
                     height={1000}
                   />
@@ -135,12 +150,24 @@ export default function GsapSlides() {
           <div className="slide__inner">
             <div className="slide__content">
               <div className="slide__container">
-                <h2 className="slide__heading">CONTACT</h2>
+                <h2 className="slide__heading">QUALITY</h2>
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"
-                    src="/images/test/photo3.png"
-                    alt=""
+                    src="/images/test/photo2.png"
+                    alt="Contact"
+                    width={1000}
+                    height={1000}
+                  />
+                </figure>
+                <p className="overlay__count">
+                  0<span className="count">2</span>
+                </p>
+                <figure className="overlay__img-cont">
+                  <Image
+                    className="image"
+                    alt="review 2"
+                    src="/images/test/review2.png"
                     width={1000}
                     height={1000}
                   />
@@ -156,12 +183,24 @@ export default function GsapSlides() {
           <div className="slide__inner">
             <div className="slide__content">
               <div className="slide__container">
-                <h2 className="slide__heading">TIME</h2>
+                <h2 className="slide__heading">USER-CENTRIC</h2>
                 <figure className="slide__img-cont">
                   <Image
                     className="slide__img"
-                    src="/images/test/photo4.png"
-                    alt=""
+                    src="/images/test/photo1.png"
+                    alt="Time"
+                    width={1000}
+                    height={1000}
+                  />
+                </figure>
+                <p className="overlay__count">
+                  0<span className="count">3</span>
+                </p>
+                <figure className="overlay__img-cont">
+                  <Image
+                    className="image"
+                    alt="review 3"
+                    src="/images/test/review1.png"
                     width={1000}
                     height={1000}
                   />
@@ -171,42 +210,37 @@ export default function GsapSlides() {
           </div>
         </div>
       </section>
-      {/* 오버레이 : 배경 전체를 덮고 있고, 요소 하나하나씩 바뀜*/}
-      <section className="overlay">
-        <div className="overlay__content">
-          <p className="overlay__count">
-            0<span className="count">1</span>
-          </p>
-          <figure className="overlay__img-cont">
-            <Image
-              className="image"
-              alt=""
-              src="/images/test/review4.png"
-              width={1000}
-              height={1000}
-            />
-            <Image
-              className="image"
-              alt=""
-              src="/images/test/review3.png"
-              width={1000}
-              height={1000}
-            />
-            <Image
-              className="image"
-              alt=""
-              src="/images/test/review2.png"
-              width={1000}
-              height={1000}
-            />
-            <Image
-              className="image"
-              alt=""
-              src="/images/test/review1.png"
-              width={1000}
-              height={1000}
-            />
-          </figure>
+      {/* 5번 슬라이드 */}
+      <section className="slide">
+        <div className="slide__outer">
+          <div className="slide__inner">
+            <div className="slide__content">
+              <div className="slide__container">
+                <h2 className="slide__heading">VALUE-DRIVEN</h2>
+                <figure className="slide__img-cont">
+                  <Image
+                    className="slide__img"
+                    src="/images/test/photo2.png"
+                    alt="Review"
+                    width={1000}
+                    height={1000}
+                  />
+                </figure>
+                <p className="overlay__count">
+                  0<span className="count">4</span>
+                </p>
+                <figure className="overlay__img-cont">
+                  <Image
+                    className="image"
+                    alt="review 4"
+                    src="/images/test/review2.png"
+                    width={1000}
+                    height={1000}
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
