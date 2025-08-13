@@ -16,9 +16,9 @@ type Params = {
 };
 
 export const useStartPageAnimations = ({
-  fadeRef,
-  creativeRef,
-  sectionTitleRef,
+  fadeRef, //Title의 화살표
+  creativeRef, //Digital Starts Here
+  sectionTitleRef, //Section들의 타이틀
 }: Params) => {
   // 기본 애니메이션들
   useEffect(() => {
