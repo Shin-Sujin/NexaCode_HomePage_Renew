@@ -1,4 +1,5 @@
 // slides.ts
+// text 페이지에 들어가는 자바스크립트들
 // ✅ Next.js(브라우저)에서만 실행되도록 보호 + GSAP 타입 안전 적용
 
 import gsap from "gsap";
