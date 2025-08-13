@@ -8,30 +8,14 @@ import {
 } from "@/src/animations/animations_StartPage";
 export default function FooterVideo() {
   const fadeRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const creativeRef = useRef<HTMLDivElement>(null);
-  const studioRef = useRef<HTMLDivElement>(null);
-  const whoWeAreRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
-  const workTitleRef = useRef<HTMLDivElement>(null);
-  const recentPostTitleRef = useRef<HTMLDivElement>(null);
-  const whetherRef = useRef<HTMLDivElement>(null);
-  const ourTeamRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
   const backgroundImageRef = useRef<HTMLDivElement>(null);
 
   useStartPageAnimations({
     fadeRef,
-    textRef,
     creativeRef,
-    studioRef,
-    whoWeAreRef,
     sectionTitleRef,
-    workTitleRef,
-    recentPostTitleRef,
-    whetherRef,
-    ourTeamRef,
-    imgRef,
   });
 
   // 스크롤 클리핑 효과 훅 사용

@@ -1,3 +1,5 @@
+// 위에서 뚝 떨어지는 애니메이션
+// 넥사코드 텍스트 애니메이션 (FooterArea)
 import { useEffect } from "react";
 import gsap from "gsap";
 
