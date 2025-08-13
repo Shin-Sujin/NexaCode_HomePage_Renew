@@ -35,7 +35,7 @@ export default function StartPage() {
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
-    new Array(19).fill(null)
+    new Array(18).fill(null)
   );
 
   useStartPageScroll(sectionRefs);
@@ -74,21 +74,21 @@ export default function StartPage() {
 
       <div className="w-full bg-[#17171B]">
         <div className="flex justify-center">
-          <Section05 sectionRefs={sectionRefs} startIndex={14} />
+          <Section05 sectionRefs={sectionRefs} startIndex={13} />
         </div>
       </div>
 
       <div className="flex justify-center">
-        <Section06 sectionRefs={sectionRefs} startIndex={15} />
+        <Section06 sectionRefs={sectionRefs} startIndex={14} />
       </div>
 
       <div className="flex justify-center">
-        <Section07 sectionRefs={sectionRefs} startIndex={16} />
+        <Section07 sectionRefs={sectionRefs} startIndex={15} />
       </div>
 
       <div
         ref={(el) => {
-          sectionRefs.current[17] = el;
+          sectionRefs.current[16] = el;
         }}
         className="w-full"
       >
@@ -99,7 +99,7 @@ export default function StartPage() {
 
       <div
         ref={(el) => {
-          sectionRefs.current[18] = el;
+          sectionRefs.current[17] = el;
         }}
       >
         <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">

@@ -80,34 +80,25 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
                 5억 투자 유치 성공
               </h2>
             </div>
-            {/* 인덱스 번호: startIndex + 1 */}
             {/* 3번------------ */}
             <div
-              ref={(el) => {
-                if (sectionRefs.current) {
-                  sectionRefs.current[startIndex + 1] = el;
-                }
-              }}
+              ref={imageRef2}
+              className="startPage-portfolio-image-container"
             >
-              <div
-                ref={imageRef2}
-                className="startPage-portfolio-image-container"
-              >
-                <div>
-                  <Image
-                    src="/images/portfolio/nexaPortfolio6.webp"
-                    alt="리워드, 모바일 쿠폰 플랫폼 개발"
-                    width={1000}
-                    height={1000}
-                  />
-                </div>
-                <h1 className="startPage-portfolio-title">
-                  리워드, 모바일 쿠폰 플랫폼 개발
-                </h1>
-                <h2 className="startPage-portfolio-description">
-                  오픈 1개월 만에 방문자수 4만명 돌파
-                </h2>
+              <div>
+                <Image
+                  src="/images/portfolio/nexaPortfolio6.webp"
+                  alt="리워드, 모바일 쿠폰 플랫폼 개발"
+                  width={1000}
+                  height={1000}
+                />
               </div>
+              <h1 className="startPage-portfolio-title">
+                리워드, 모바일 쿠폰 플랫폼 개발
+              </h1>
+              <h2 className="startPage-portfolio-description">
+                오픈 1개월 만에 방문자수 4만명 돌파
+              </h2>
             </div>
             {/* 4번------------ */}
             <div
@@ -134,7 +125,7 @@ export default function Section04({ sectionRefs, startIndex }: Section04Props) {
             <div
               ref={(el) => {
                 if (sectionRefs.current) {
-                  sectionRefs.current[startIndex + 2] = el;
+                  sectionRefs.current[startIndex + 1] = el;
                 }
               }}
             >
