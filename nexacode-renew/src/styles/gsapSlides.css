@@ -99,7 +99,22 @@ a {
   grid-area: 2 / 2 / 3 / 10;
   align-self: end;
 }
-
+.slide__heading_title {
+  --width: 200;
+  display: block;
+  text-align: left;
+  font-family: "Bandeins Sans & Strange Variable";
+  font-size: clamp(2rem, 13vw, 5rem);
+  font-weight: 900;
+  font-variation-settings: "wdth" var(--width); /* 글자 폭 조절 가능 */
+  margin: 0;
+  padding: 0;
+  color: #f2f1fc;
+  z-index: 999;
+  mix-blend-mode: difference; /* 배경과 반전된 색으로 표시. */
+  grid-area: 1 / 1 / 2 / 10;
+  align-self: end;
+}
 /* 슬라이드 이미지 */
 .slide__img-cont {
   margin-top: 4rem;
@@ -117,7 +132,7 @@ a {
   visibility: visible;
 }
 .slide:nth-of-type(1) .slide__content {
-  background-color: #6d597a;
+  background-color: #000000;
 }
 
 .slide:nth-of-type(2) .slide__content {

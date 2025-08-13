@@ -61,24 +61,36 @@ export function initSlides(): void {
     const currentSection = sections[currentIndex];
     const nextSection = sections[index];
 
+    // 첫 번째 슬라이드(index 0)일 경우 오버레이 숨기기
+    const isFirstSlide = index === 0;
+    const overlayElements = [...images, ...(count ? [count] : [])].filter(
+      Boolean
+    );
+
+    gsap.to(overlayElements, {
+      autoAlpha: isFirstSlide ? 0 : 1,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+
+    // 레이어 가시성/쌓임순서 정리
+    gsap.set([sections], { zIndex: 0, autoAlpha: 0 }); // 이미지는 여기서 제외
+    gsap.set(sections[currentIndex], { zIndex: 1, autoAlpha: 1 });
+    gsap.set(sections[index], { zIndex: 2, autoAlpha: 1 });
+
+    if (!isFirstSlide) {
+      gsap.set([images], { zIndex: 0, autoAlpha: 0 });
+      gsap.set(images[index], { zIndex: 1, autoAlpha: 1 });
+      gsap.set(images[currentIndex], { zIndex: 2, autoAlpha: 1 });
+    }
+
     const heading =
       currentSection.querySelector<HTMLElement>(".slide__heading");
     const nextHeading =
       nextSection.querySelector<HTMLElement>(".slide__heading");
 
-    // 레이어 가시성/쌓임순서 정리
-    gsap.set([sections, images], { zIndex: 0, autoAlpha: 0 });
-    gsap.set([sections[currentIndex], images[index]], {
-      zIndex: 1,
-      autoAlpha: 1,
-    });
-    gsap.set([sections[index], images[currentIndex]], {
-      zIndex: 2,
-      autoAlpha: 1,
-    });
-
     // 타임라인 구성
-    if (count) {
+    if (count && !isFirstSlide) {
       // TextPlugin 사용 (문자열로 캐스팅해도 OK)
       tl.set(count, { text: String(index + 1) }, 0.32);
     }
@@ -107,24 +119,26 @@ export function initSlides(): void {
     }
 
     // 오버레이 큰 이미지 교차 전환(새 이미지 인, 이전 이미지 아웃)
-    const nextImage = images[index];
-    const currImage = images[currentIndex];
+    if (!isFirstSlide) {
+      const nextImage = images[index];
+      const currImage = images[currentIndex];
 
-    if (nextImage) {
-      tl.fromTo(
-        nextImage,
-        { xPercent: 125 * direction, scaleX: 1.5, scaleY: 1.3 },
-        { xPercent: 0, scaleX: 1, scaleY: 1, duration: 1 },
-        0
-      );
-    }
-    if (currImage) {
-      tl.fromTo(
-        currImage,
-        { xPercent: 0, scaleX: 1, scaleY: 1 },
-        { xPercent: -125 * direction, scaleX: 1.5, scaleY: 1.3 },
-        0
-      );
+      if (nextImage) {
+        tl.fromTo(
+          nextImage,
+          { xPercent: 125 * direction, scaleX: 1.5, scaleY: 1.3 },
+          { xPercent: 0, scaleX: 1, scaleY: 1, duration: 1 },
+          0
+        );
+      }
+      if (currImage) {
+        tl.fromTo(
+          currImage,
+          { xPercent: 0, scaleX: 1, scaleY: 1 },
+          { xPercent: -125 * direction, scaleX: 1.5, scaleY: 1.3 },
+          0
+        );
+      }
     }
 
     // 슬라이드 내부 "작은" 이미지(figure 안) 살짝 줌아웃
