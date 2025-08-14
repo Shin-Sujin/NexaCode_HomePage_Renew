@@ -11,7 +11,8 @@ import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
 import ButtonPage02 from "./startPageComponents/ButtonPage02";
-import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
+// import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
+import { useStartPageObserver } from "@/src/hooks/useStartPageObserver";
 import { useStartPageStore } from "@/src/stores/startPageStore";
 
 export default function StartPage() {
@@ -46,10 +47,10 @@ export default function StartPage() {
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
-    new Array(18).fill(null)
+    new Array(20).fill(null)
   );
 
-  useStartPageScroll(sectionRefs);
+  useStartPageObserver(sectionRefs);
 
   return (
     <div className="flex flex-col">
@@ -85,21 +86,21 @@ export default function StartPage() {
 
       <div className="w-full bg-[#17171B]">
         <div className="flex justify-center">
-          <Section05 sectionRefs={sectionRefs} startIndex={13} />
+          <Section05 sectionRefs={sectionRefs} startIndex={13} slides={3} />
         </div>
       </div>
 
       <div className="flex justify-center">
-        <Section06 sectionRefs={sectionRefs} startIndex={14} />
+        <Section06 sectionRefs={sectionRefs} startIndex={16} />
       </div>
 
       <div className="flex justify-center">
-        <Section07 sectionRefs={sectionRefs} startIndex={15} />
+        <Section07 sectionRefs={sectionRefs} startIndex={17} />
       </div>
 
       <div
         ref={(el) => {
-          sectionRefs.current[16] = el;
+          sectionRefs.current[18] = el;
         }}
         className="w-full"
       >
@@ -110,7 +111,7 @@ export default function StartPage() {
 
       <div
         ref={(el) => {
-          sectionRefs.current[17] = el;
+          sectionRefs.current[19] = el;
         }}
       >
         <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">

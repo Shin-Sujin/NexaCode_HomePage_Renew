@@ -68,7 +68,7 @@ export default function GsapSlides() {
                       <div className="flex flex-row max-lg:flex-col items-center gap-10 text-white mt-16 mb-32">
                         {/* Left Part */}
                         <div className="flex-shrink-0 ">
-                          <div className="flex items-end testimonial-count font-black text-9xl leading-none mb-4 max-md:items-start">
+                          <div className="flex items-end  font-black text-9xl leading-none mb-4 max-md:items-start">
                             <CounterUp targetNumber={5} duration={1000} />
                             <span className="text-8xl max-md:text-7xl max-md:mt-4">
                               /5

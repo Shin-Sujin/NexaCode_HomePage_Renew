@@ -83,20 +83,6 @@ export default function FooterArea() {
             </div>
           </div>
         </div>
-        <div className={`${styles.footerLinks} max-md:flex max-md:flex-col `}>
-          <div className="max-lg:hidden">
-            <p>
-              © 2022 – 2025 | All rights reserved <br /> by{" "}
-              <strong>crowdyTheme</strong>
-            </p>
-            <div className={`${styles.linkList} max-md:mt-10`}>
-              <a href="#">About Us</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Career</a>
-              <a href="#">Sitemap</a>
-            </div>
-          </div>
-        </div>
       </section>
     </div>
   );
