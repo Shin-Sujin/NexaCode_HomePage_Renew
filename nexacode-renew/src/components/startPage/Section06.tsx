@@ -41,7 +41,7 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
             </h1>
           </div>
         </div>
-        <div className="relative w-full flex justify-center items-center">
+        <div className="relative w-full flex justify-center items-center mt-10">
           {/* 제목 밑 내용 */}
           <StepTable />
         </div>
