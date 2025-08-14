@@ -278,11 +278,11 @@ export default function Section05({
 
         <div className="relative w-full pt-5 max-xxxl:pt-10">
           <div className="flex flex-row justify-center items-center w-full ">
-            <div className="flex lg:flex-row w-full flex-col mt-5">
+            <div className="flex xl:flex-row w-full flex-col mt-5">
               {/* 좌측 메타 */}
-              <div className="meta-info relative md:static lg:w-[45%] lg:flex-shrink-0 w-full ml-36 mr-10 max-lg:mx-auto ">
+              <div className="meta-info relative md:static lg:w-[45%] xl:flex-shrink-0 w-full  mr-10 max-lg:mx-auto ">
                 <div>
-                  <div className="flex items-end font-black text-9xl leading-none mb-4 w-full max-md:items-start text-white">
+                  <div className="flex items-center lg:items-end font-black text-9xl leading-none mb-4 w-full text-white">
                     <CounterUp targetNumber={5} duration={1000} />
                     <span className="text-white text-8xl max-md:text-7xl max-md:mt-4">
                       /5
@@ -307,7 +307,7 @@ export default function Section05({
                 </div>
 
                 {/* 페이지 표시 */}
-                <div className="max-lg:hidden">
+                <div className="hidden xl:block">
                   <div>
                     <div className="flex items-center justify-items-start w-full mt-16">
                       <span
@@ -327,30 +327,52 @@ export default function Section05({
               </div>
 
               {/* 오른쪽 슬라이드 영역 */}
-              <div className="flex-1 relative">
-                <div
-                  ref={viewportRef}
-                  className="overflow-hidden outline-none"
-                  tabIndex={-1}
-                >
+              <div className=" hidden xl:block">
+                <div className="flex-1 relative ">
                   <div
-                    ref={trackRef}
-                    className="flex flex-row will-change-transform space-x-5"
+                    ref={viewportRef}
+                    className="overflow-hidden outline-none"
+                    tabIndex={-1}
                   >
-                    {testimonials.slice(0, slides).map((t, i) => (
-                      <div
-                        key={i}
-                        className="flex-shrink-0 xxl:h-[40rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[26rem] lg:w-[17rem] xl:h-[26rem] xl:w-[20rem]"
-                      >
-                        <Image
-                          src={t.imageSrc}
-                          alt={`testimonial ${t.number}`}
-                          fill
-                          style={{ objectFit: "cover" }}
-                        />
-                      </div>
-                    ))}
+                    <div
+                      ref={trackRef}
+                      className="flex flex-row will-change-transform space-x-5"
+                    >
+                      {testimonials.slice(0, slides).map((t, i) => (
+                        <div
+                          key={i}
+                          className="flex-shrink-0 xxl:h-[40rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[26rem] lg:w-[17rem] xl:h-[26rem] xl:w-[20rem]"
+                        >
+                          <Image
+                            src={t.imageSrc}
+                            alt={`testimonial ${t.number}`}
+                            fill
+                            style={{ objectFit: "cover" }}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                </div>
+              </div>
+
+              {/* 모바일용 세로 이미지 리스트 */}
+              <div className="xl:hidden w-full mt-10">
+                <div className="flex flex-col items-center gap-5 px-4">
+                  {testimonials.slice(0, slides).map((t) => (
+                    <div
+                      key={`mobile-${t.number}`}
+                      className="w-full max-w-sm h-96 relative"
+                    >
+                      <Image
+                        src={t.imageSrc}
+                        alt={`testimonial ${t.number}`}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        className="rounded-lg"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
