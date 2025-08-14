@@ -21,7 +21,7 @@ export const useRotatingAnimation = (
           scrollTrigger: {
             trigger: triggerRef.current,
             start: "top 85%",
-            toggleActions: "play none none reset",
+            toggleActions: "play none none none",
           },
           rotation: 0,
           y: 0,

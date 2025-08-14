@@ -14,17 +14,17 @@ const testimonials: Testimonial[] = [
   {
     number: "01",
     total: "03",
-    imageSrc: "/images/startPage/testimonial.png",
+    imageSrc: "/images/test/photo1.png",
   },
   {
     number: "02",
     total: "03",
-    imageSrc: "/images/startPage/testimonial.png",
+    imageSrc: "/images/test/photo2.png",
   },
   {
     number: "03",
     total: "03",
-    imageSrc: "/images/startPage/testimonial.png",
+    imageSrc: "/images/test/review1.png",
   },
 ];
 
@@ -38,8 +38,8 @@ DynamicContent.displayName = "DynamicContent";
 export default function TestimonialRotator() {
   return (
     <>
-      <div className="flex lg:flex-row w-full flex-col mt-5 ">
-        <div className="meta-info relative md:static w-full ml-36 mr-10 max-lg:mx-auto ">
+      <div className="flex lg:flex-row w-full flex-col mt-5">
+        <div className="meta-info relative md:static lg:w-[45%] lg:flex-shrink-0 w-full ml-36 mr-10 max-lg:mx-auto ">
           <div>
             <div
               className="flex items-end font-black text-9xl leading-none 
@@ -80,15 +80,23 @@ export default function TestimonialRotator() {
             </div>
           </div>
         </div>
-        <div>
-          {/* 이미지 */}
-          <div className="xxl:h-[45rem] xxl:w-[30rem] h-[30rem] flex w-[30rem] overflow-hidden relative lg:h-[28rem] lg:w-[17rem]">
-            <Image
-              src={testimonials[0].imageSrc}
-              alt={`testimonial ${testimonials[0].number}`}
-              fill
-              style={{ objectFit: "cover" }}
-            />
+        <div className="flex-1">
+          <div className="flex flex-row">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className={`flex-shrink-0 xxl:h-[45rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[28rem] lg:w-[17rem] ${
+                  index > 0 ? "ml-5" : ""
+                }`}
+              >
+                <Image
+                  src={testimonial.imageSrc}
+                  alt={`testimonial ${testimonial.number}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

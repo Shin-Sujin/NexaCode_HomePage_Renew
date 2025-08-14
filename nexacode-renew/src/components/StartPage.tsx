@@ -11,7 +11,8 @@ import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
 import ButtonPage02 from "./startPageComponents/ButtonPage02";
-import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
+// import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
+import { useStartPageObserver } from "@/src/hooks/useStartPageObserver";
 import { useStartPageStore } from "@/src/stores/startPageStore";
 
 export default function StartPage() {
@@ -49,7 +50,7 @@ export default function StartPage() {
     new Array(18).fill(null)
   );
 
-  useStartPageScroll(sectionRefs);
+  useStartPageObserver(sectionRefs);
 
   return (
     <div className="flex flex-col">

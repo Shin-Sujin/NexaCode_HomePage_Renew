@@ -62,7 +62,7 @@ export default function StepTable() {
       scrollTrigger: {
         trigger: rows[0], // 첫 번째 행을 트리거로 설정
         start: "top 80%", // 뷰포트의 80% 지점에서 시작
-        toggleActions: "play none none reset", // 스크롤 시 타임라인 재생
+        toggleActions: "play none none none", // 스크롤 시 타임라인 재생
       },
     });
     // 모든 행을 타임라인에 순차적으로 추가

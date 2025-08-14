@@ -32,7 +32,7 @@ export const useSectionNumberAnimation = (
           start: "bottom 95%",
           end: "top 20%",
           scroller: "body",
-          toggleActions: "play none none reset",
+          toggleActions: "play none none none",
           markers: false,
         },
       });
