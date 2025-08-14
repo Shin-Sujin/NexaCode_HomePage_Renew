@@ -41,13 +41,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </div>
           </div>
         </div>
-        <div className="startPage-title-height">
-          <div ref={sectionTitleRef} className="startPage-title">
-            <h1 className="section-title-line">
-              우리는 당신의&nbsp;
-              <span className="font-bold">IT 개발팀이 되어드립니다</span>
-            </h1>
-          </div>
+        <div ref={sectionTitleRef} className="startPage-title">
+          <h1 className="section-title-line">
+            우리는 당신의&nbsp;
+            <span className="font-bold">IT 개발팀이 되어드립니다</span>
+          </h1>
         </div>
         <div className="w-full flex items-center justify-center">
           <div className="relative mt-24 w-full flex justify-center items-center h-full">

@@ -434,14 +434,14 @@ body {
 }
 @layer utilities {
   .startPage-title {
-    @apply mt-12 lg:mb-2 lg:text-5xl text-center text-2xl font-normal xxl:text-6xl xxl:mt-24 text-[#17171B];
+    @apply mt-10 mb-6 lg:mb-2 lg:text-5xl text-center text-2xl font-normal xxl:text-6xl xxl:mt-20 text-[#17171B];
   }
   .section-number {
     @apply text-base lg:text-lg xxl:text-xl;
   }
-  .startPage-title-height {
+  /* .startPage-title-height {
     @apply w-full h-[20vh] text-center max-xxxl:h-[15vh] max-lg:h-[10vh] max-md:h-auto;
-  }
+  } */
   .startPage-portfolio-image-container {
     @apply max-md:mx-0;
   }

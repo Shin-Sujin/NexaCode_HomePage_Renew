@@ -25,8 +25,8 @@ export default function Title({ title, date }: TitleProps) {
       {/* 텍스트 영역 */}
       <div className="relative z-10 flex flex-col items-center justify-end w-full h-full pb-20 max-sm:px-10">
         <h1
-          className="text-7xl md:text-5xl font-semibold text-white drop-shadow-lg mb-6 
-        text-center max-sm:text-5xl max-xs:text-3xl"
+          className="xl:text-7xl lg:text-5xl font-semibold text-white drop-shadow-lg mb-6 
+        text-center sm:text-5xl text-3xl"
         >
           {title}
         </h1>

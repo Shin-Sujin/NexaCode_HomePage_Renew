@@ -44,18 +44,16 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
             </div>
           </div>
         </div>
-        <div className="startPage-title-height">
-          <div ref={sectionTitleRef} className="startPage-title">
-            <h1 className="section-title-line ">
-              고민의 끝에서 마주하는 <br className="lg:hidden" />
-              진짜 파트너,&nbsp;
-              <br className="xl:hidden" />
-              <span className="font-bold ">넥사코드 </span>
-              입니다
-            </h1>
-          </div>
+        <div ref={sectionTitleRef} className="startPage-title">
+          <h1 className="section-title-line ">
+            고민의 끝에서 마주하는 <br className="lg:hidden" />
+            진짜 파트너,&nbsp;
+            <br className="xl:hidden" />
+            <span className="font-bold ">넥사코드 </span>
+            입니다
+          </h1>
         </div>
-        <div className="w-full flex items-center justify-center max-lg:pt-24 max-md:h-auto ">
+        <div className="w-full flex items-center justify-center pt-10 pb-16">
           <div className="flex gap-2 max-xl:mt-10 max-md:flex-col max-md:mt-0">
             {/* 1번 항목 */}
             <div className="text-center w-full flex-1" ref={bounceRef1}>
