@@ -1,15 +1,20 @@
-// Section05.tsx
+// src/app/startPage/Section05.tsx
 "use client";
+
 import CounterUp from "../startPageComponents/CounterUp";
 import Image from "next/image";
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 import gsap from "gsap";
+import { useStartPageStore } from "@/src/stores/startPageStore";
 
 interface Section05Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  /** 이 섹션이 차지하는 첫 전역 인덱스 (예: 13) */
   startIndex: number;
+  /** 슬라이드 개수(기본 3) */
+  slides?: number;
 }
 
 type Testimonial = {
@@ -24,93 +29,91 @@ const testimonials: Testimonial[] = [
   { number: "03", total: "03", imageSrc: "/images/test/review1.png" },
 ];
 
-export default function Section05({ sectionRefs, startIndex }: Section05Props) {
+export default function Section05({
+  sectionRefs,
+  startIndex,
+  slides = 3,
+}: Section05Props) {
   const sectionNumberRef = useRef<HTMLDivElement>(null);
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
 
-  // ---- 슬라이더 refs/state ----
-  const trackRef = useRef<HTMLDivElement | null>(null); // x 이동할 트랙
-  const slideIndexRef = useRef(0); // 현재 슬라이드 (0..N-1)
-  const animatingRef = useRef(false); // 중복 애니 방지
+  // 전역 인덱스 → 로컬 슬라이드 동기화용
+  const { currentIndex } = useStartPageStore();
 
-  // 트랙 이동 함수
-  const goToSlide = useCallback((idx: number) => {
+  // ---- 슬라이더 refs/state ----
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null); // x 이동/재배치 대상
+  const animatingRef = useRef(false); // 중복 애니 방지
+  // 현재 DOM에서 첫 번째/두 번째/세 번째 카드가 어떤 원본 인덱스를 가리키는지
+  // 예) [0,1,2]가 기본. nextSlide() 후에는 [1,2,0].
+  const orderRef = useRef<number[]>([0, 1, 2]);
+
+  // gap/폭 계산
+  const calcStep = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const a = track.children[0] as HTMLElement | undefined;
+    const b = track.children[1] as HTMLElement | undefined;
+    if (!a) return 0;
+    const w = a.getBoundingClientRect().width;
+    const gap = b ? parseFloat(getComputedStyle(b).marginLeft || "0") || 0 : 0;
+    return w + gap;
+  }, []);
+
+  // DOM 재배치 유틸: 왼쪽 회전(첫 요소 → 맨 뒤), 오른쪽 회전(마지막 → 맨 앞)
+  const rotateLeftNoAnim = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
-
-    const first = track.children[0] as HTMLElement | undefined;
-    const second = track.children[1] as HTMLElement | undefined;
+    const first = track.children[0];
     if (!first) return;
-
-    const cardW = first.getBoundingClientRect().width;
-    const gap = second
-      ? parseFloat(getComputedStyle(second).marginLeft || "0") || 0
-      : 0;
-    const offset = -(cardW + gap) * idx;
-
-    animatingRef.current = true;
-    gsap.to(track, {
-      x: offset,
-      duration: 0.6,
-      ease: "power3.inOut",
-      onComplete: () => {
-        animatingRef.current = false;
-      },
-    });
+    track.appendChild(first);
+    // 순서 배열도 회전
+    orderRef.current.push(orderRef.current.shift()!);
+    gsap.set(track, { x: 0 });
   }, []);
 
-  // 이미지 슬라이드 트랙
-  const nextSlide = useCallback(() => {
-    if (animatingRef.current || !trackRef.current) return;
+  const rotateRightNoAnim = useCallback(() => {
     const track = trackRef.current;
+    if (!track) return;
+    const children = track.children;
+    const last = children[children.length - 1];
+    if (!last) return;
+    track.insertBefore(last, children[0]);
+    // 순서 배열도 회전(오른쪽)
+    orderRef.current.unshift(orderRef.current.pop()!);
+    gsap.set(track, { x: 0 });
+  }, []);
 
-    const first = track.children[0] as HTMLElement | undefined;
-    if (!first) return;
-
-    const cardW = first.getBoundingClientRect().width;
-    const gap = track.children[1]
-      ? parseFloat(
-          getComputedStyle(track.children[1] as HTMLElement).marginLeft || "0"
-        ) || 0
-      : 0;
-    const moveX = -(cardW + gap);
+  // 애니메이션 포함한 회전
+  const nextSlide = useCallback(() => {
+    const track = trackRef.current;
+    if (!track || animatingRef.current) return;
+    const step = calcStep();
+    if (step === 0) return;
 
     animatingRef.current = true;
     gsap.to(track, {
-      x: moveX,
+      x: -step,
       duration: 0.6,
       ease: "power3.inOut",
       onComplete: () => {
-        // 첫 번째 요소를 맨 뒤로 이동
-        track.appendChild(first);
-        gsap.set(track, { x: 0 });
+        rotateLeftNoAnim();
         animatingRef.current = false;
       },
     });
-  }, []);
+  }, [calcStep, rotateLeftNoAnim]);
 
   const prevSlide = useCallback(() => {
-    if (animatingRef.current || !trackRef.current) return;
     const track = trackRef.current;
+    if (!track || animatingRef.current) return;
+    const step = calcStep();
+    if (step === 0) return;
 
-    const children = track.children;
-    const last = children[children.length - 1] as HTMLElement | undefined;
-    if (!last) return;
-
-    const cardW = last.getBoundingClientRect().width;
-    const gap =
-      children.length > 1
-        ? parseFloat(
-            getComputedStyle(children[1] as HTMLElement).marginLeft || "0"
-          ) || 0
-        : 0;
-    const moveX = -(cardW + gap);
-
-    // 마지막 요소를 맨 앞으로 이동하고 위치 세팅
-    track.insertBefore(last, children[0]);
-    gsap.set(track, { x: moveX });
+    // 선회전(마지막을 앞으로), x를 -step에서 0으로
+    rotateRightNoAnim();
+    gsap.set(track, { x: -step });
 
     animatingRef.current = true;
     gsap.to(track, {
@@ -121,28 +124,47 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
         animatingRef.current = false;
       },
     });
-  }, []);
+  }, [calcStep, rotateRightNoAnim]);
 
-  // 트랙 초기 위치 & 리사이즈 반영
+  // 전역 인덱스 → 로컬 슬라이드(0..slides-1) 동기화
   useEffect(() => {
-    goToSlide(slideIndexRef.current);
-    const onResize = () => goToSlide(slideIndexRef.current);
+    // currentIndex가 이 섹션 범위(예: 13~15)에 있을 때만 동기화
+    const local = currentIndex - startIndex;
+    if (local < 0 || local > slides - 1) return;
+
+    // 현재 DOM의 첫 카드가 무엇인지(orderRef[0]) 확인 후,
+    // 원하는 첫 카드(local)가 올 때까지 좌회전(무애니) 반복
+    const wantFirst = local % slides; // 0,1,2
+    let guard = 0;
+    while (orderRef.current[0] !== wantFirst && guard < slides + 1) {
+      rotateLeftNoAnim();
+      guard++;
+    }
+    // x는 항상 0 상태 유지
+    gsap.set(trackRef.current, { x: 0 });
+  }, [currentIndex, startIndex, slides, rotateLeftNoAnim]);
+
+  // 리사이즈 시 현재 정렬/위치 유지
+  useEffect(() => {
+    const onResize = () => {
+      // x 보정
+      gsap.set(trackRef.current, { x: 0 });
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [goToSlide]);
+  }, []);
 
-  // 트랙 위에서만 휠로 슬라이드 (페이지 전체 스크롤 막지 않음)
-  const onWheelOverTrack = useCallback(
+  // 뷰포트 위에서만 휠로 슬라이드(페이지 전체 스크롤 방지 X를 원하면 preventDefault 추가)
+  const onWheelOverViewport = useCallback(
     (e: React.WheelEvent) => {
-      // 트랙 위에서만 동작하게 하고, 트랙 내부 스크롤 대신 슬라이드로 소비
-      e.preventDefault();
+      e.preventDefault(); // 슬라이드 영역에서 기본 스크롤 방지(선택)
       if (e.deltaY > 0) nextSlide();
       else prevSlide();
     },
     [nextSlide, prevSlide]
   );
 
-  // 키보드 접근성 (트랙 포커스 시 ←/→로 이동)
+  // 키보드 접근성: ←/→
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "ArrowRight") {
@@ -159,11 +181,13 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
   return (
     <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col max-lg:gap-10 w-full mx-2">
+        {/* 인덱스 등록: 이 섹션의 모든 단계(예: 13,14,15)를 같은 DOM에 매핑 */}
         <div className="section-number text-white ">
           <div
             ref={(el) => {
-              if (sectionRefs.current) {
-                sectionRefs.current[startIndex] = el;
+              if (!sectionRefs.current) return;
+              for (let i = 0; i < slides; i++) {
+                sectionRefs.current[startIndex + i] = el;
               }
             }}
           >
@@ -188,7 +212,7 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
         <div className="relative w-full pt-5 max-xxxl:pt-10">
           <div className="flex flex-row justify-center items-center w-full ">
             <div className="flex lg:flex-row w-full flex-col mt-5">
-              {/* 왼쪽 메타 */}
+              {/* 좌측 메타 */}
               <div className="meta-info relative md:static lg:w-[45%] lg:flex-shrink-0 w-full ml-36 mr-10 max-lg:mx-auto ">
                 <div>
                   <div className="flex items-end font-black text-9xl leading-none mb-4 w-full max-md:items-start text-white">
@@ -215,16 +239,17 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
                   </p>
                 </div>
 
-                {/* 페이지 수(선택 사항): 현재 인덱스를 보여주고 싶다면 상태를 상태관리로 노출 */}
+                {/* 페이지 표시(선택) */}
                 <div className="max-lg:hidden">
                   <div>
                     <div className="flex items-center justify-items-start w-full mt-52 max-xxxl:mt-20">
                       <span className="text-white text-sm font-bold font-nKKU">
-                        {String(slideIndexRef.current + 1).padStart(2, "0")}
+                        {/* orderRef 기준으로 현재 첫 카드의 원본 번호 */}
+                        {String(orderRef.current[0] + 1).padStart(2, "0")}
                       </span>
                       <div className="w-1/4 h-px bg-white mx-4" />
                       <span className="text-white text-sm font-bold font-nKKU">
-                        {String(testimonials.length).padStart(2, "0")}
+                        {String(slides).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -233,24 +258,40 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
 
               {/* 오른쪽 슬라이드 영역 */}
               <div className="flex-1 relative">
-                {/* 뷰포트: 여기서만 휠로 슬라이드 */}
+                {/* 좌우 버튼 */}
+                <button
+                  aria-label="이전 슬라이드"
+                  onClick={prevSlide}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 px-3 py-2 bg-black/40 text-white rounded-md backdrop-blur-sm hover:bg-black/60"
+                >
+                  ←
+                </button>
+                <button
+                  aria-label="다음 슬라이드"
+                  onClick={nextSlide}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 px-3 py-2 bg-black/40 text-white rounded-md backdrop-blur-sm hover:bg-black/60"
+                >
+                  →
+                </button>
+
+                {/* 뷰포트: 여기서만 휠/키보드로 슬라이드 */}
                 <div
+                  ref={viewportRef}
                   className="overflow-hidden outline-none"
                   tabIndex={0}
-                  onWheel={onWheelOverTrack}
+                  onWheel={onWheelOverViewport}
                   onKeyDown={onKeyDown}
                 >
-                  {/* 트랙: x 이동 */}
+                  {/* 트랙: 형제 간격은 space-x로 부여(재배치해도 gap 유지) */}
                   <div
                     ref={trackRef}
                     className="flex flex-row will-change-transform space-x-5"
                   >
-                    {testimonials.map((t, i) => (
+                    {/* 초기 렌더 순서는 testimonials 순서. 이후 DOM 재배치로 무한 루프 */}
+                    {testimonials.slice(0, slides).map((t, i) => (
                       <div
                         key={i}
-                        className={`flex-shrink-0 xxl:h-[45rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[28rem] lg:w-[17rem] ${
-                          i > 0 ? "ml-5" : ""
-                        }`}
+                        className="flex-shrink-0 xxl:h-[45rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[28rem] lg:w-[17rem]"
                       >
                         <Image
                           src={t.imageSrc}
@@ -263,14 +304,14 @@ export default function Section05({ sectionRefs, startIndex }: Section05Props) {
                   </div>
                 </div>
 
-                {/* 하단 도트 네비(옵션) */}
+                {/* 도트 네비(선택) */}
                 <div className="mt-4 flex justify-center gap-2">
-                  {testimonials.map((_, i) => (
+                  {Array.from({ length: slides }).map((_, i) => (
                     <span
                       key={i}
-                      className="inline-block w-2 h-2 rounded-full bg-white/40"
-                      // 도트 활성 표시를 쓰고 싶다면, 상태를 Zustand로 빼거나
-                      // forceUpdate 트릭을 넣어도 됨. 우선은 단순 표시.
+                      className={`inline-block w-2 h-2 rounded-full ${
+                        orderRef.current[0] === i ? "bg-white" : "bg-white/40"
+                      }`}
                     />
                   ))}
                 </div>

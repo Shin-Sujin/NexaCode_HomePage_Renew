@@ -10,6 +10,7 @@ import { useStartPageStore } from "@/src/stores/startPageStore";
 
 gsap.registerPlugin(Observer);
 
+type Dir = "up" | "down";
 type DivArrayRef = React.RefObject<(HTMLDivElement | null)[]>;
 
 export function useStartPageObserver(sectionRefs: DivArrayRef): void {
@@ -20,24 +21,26 @@ export function useStartPageObserver(sectionRefs: DivArrayRef): void {
 
   // --- 인덱스별 전환 함수들(0~17) ---
   // 필요 시 18 이상도 동일 패턴으로 추가
-  const moveFrom0 = (dir: "up" | "down") => (dir === "down" ? 1 : 0);
-  const moveFrom1 = (dir: "up" | "down") => (dir === "down" ? 2 : 0);
-  const moveFrom2 = (dir: "up" | "down") => (dir === "down" ? 3 : 1);
-  const moveFrom3 = (dir: "up" | "down") => (dir === "down" ? 4 : 2);
-  const moveFrom4 = (dir: "up" | "down") => (dir === "down" ? 5 : 3);
-  const moveFrom5 = (dir: "up" | "down") => (dir === "down" ? 6 : 4);
-  const moveFrom6 = (dir: "up" | "down") => (dir === "down" ? 7 : 5);
-  const moveFrom7 = (dir: "up" | "down") => (dir === "down" ? 8 : 6);
-  const moveFrom8 = (dir: "up" | "down") => (dir === "down" ? 9 : 7);
-  const moveFrom9 = (dir: "up" | "down") => (dir === "down" ? 10 : 8);
-  const moveFrom10 = (dir: "up" | "down") => (dir === "down" ? 11 : 9);
-  const moveFrom11 = (dir: "up" | "down") => (dir === "down" ? 12 : 10);
-  const moveFrom12 = (dir: "up" | "down") => (dir === "down" ? 13 : 11);
-  const moveFrom13 = (dir: "up" | "down") => (dir === "down" ? 14 : 12);
-  const moveFrom14 = (dir: "up" | "down") => (dir === "down" ? 15 : 13);
-  const moveFrom15 = (dir: "up" | "down") => (dir === "down" ? 16 : 14);
-  const moveFrom16 = (dir: "up" | "down") => (dir === "down" ? 17 : 15);
-  const moveFrom17 = (dir: "up" | "down") => (dir === "down" ? 17 : 16);
+  const moveFrom0 = (d: Dir) => (d === "down" ? 1 : 0); // 0  → 1 / stay
+  const moveFrom1 = (d: Dir) => (d === "down" ? 2 : 0); // 1  → 2 / 0
+  const moveFrom2 = (d: Dir) => (d === "down" ? 3 : 1); // 2  → 3 / 1
+  const moveFrom3 = (d: Dir) => (d === "down" ? 4 : 2); // 3  → 4 / 2
+  const moveFrom4 = (d: Dir) => (d === "down" ? 5 : 3); // 4  → 5 / 3
+  const moveFrom5 = (d: Dir) => (d === "down" ? 6 : 4); // 5  → 6 / 4
+  const moveFrom6 = (d: Dir) => (d === "down" ? 7 : 5); // 6  → 7 / 5
+  const moveFrom7 = (d: Dir) => (d === "down" ? 8 : 6); // 7  → 8 / 6
+  const moveFrom8 = (d: Dir) => (d === "down" ? 9 : 7); // 8  → 9 / 7
+  const moveFrom9 = (d: Dir) => (d === "down" ? 10 : 8); // 9  → 10 / 8
+  const moveFrom10 = (d: Dir) => (d === "down" ? 11 : 9); // 10 → 11 / 9
+  const moveFrom11 = (d: Dir) => (d === "down" ? 12 : 10); // 11 → 12 / 10
+  const moveFrom12 = (d: Dir) => (d === "down" ? 13 : 11); // 12 → 13 / 11
+  const moveFrom13 = (d: Dir) => (d === "down" ? 14 : 12); // 13 → 14 / 12 (Section05 슬라이드1)
+  const moveFrom14 = (d: Dir) => (d === "down" ? 15 : 13); // 14 → 15 / 13 (Section05 슬라이드2)
+  const moveFrom15 = (d: Dir) => (d === "down" ? 16 : 14); // 15 → 16 / 14 (Section05 슬라이드3)
+  const moveFrom16 = (d: Dir) => (d === "down" ? 17 : 15); // 16 → 17 / 15
+  const moveFrom17 = (d: Dir) => (d === "down" ? 18 : 16); // 17 → 18 / 16
+  const moveFrom18 = (d: Dir) => (d === "down" ? 19 : 17); // 18 → 19 / 17
+  const moveFrom19 = (d: Dir) => (d === "down" ? 19 : 18); // 19 → stay / 18
 
   // currentIndex → 다음 인덱스 결정 (명시적 스위치)
   const resolveNextIndex = (idx: number, dir: "up" | "down") => {
@@ -78,8 +81,12 @@ export function useStartPageObserver(sectionRefs: DivArrayRef): void {
         return moveFrom16(dir);
       case 17:
         return moveFrom17(dir);
+      case 18:
+        return moveFrom18(dir);
+      case 19:
+        return moveFrom19(dir);
       default:
-        return idx; // 안전장치
+        return idx;
     }
   };
 
