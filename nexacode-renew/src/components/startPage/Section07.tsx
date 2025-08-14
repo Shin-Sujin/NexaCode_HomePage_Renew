@@ -127,14 +127,14 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
         </div>
 
         <div className="startPage-title-height">
-          <div ref={sectionTitleRef} className="startPage-title">
+          <div ref={sectionTitleRef} className="startPage-title xl:mt-8">
             <h1 className="section-title-line ">
               <span className="font-bold ">개발 이상의 가치</span>를 약속합니다
             </h1>
           </div>
         </div>
 
-        <div className="relative w-full pt-5 xxl:h-[60vh] xl:h-[50vh] lg:h-[30vh] h-[20vh]  p-0 m-0">
+        <div className="relative w-full pt-5 xxl:h-[37rem] xl:h-[27rem] lg:h-[20rem] h-[15rem] mt-16 p-0 m-0">
           <div className="cardContainer">
             {cards.map((c, idx) => {
               const pos = order[idx]; // idx번째 카드의 위치
