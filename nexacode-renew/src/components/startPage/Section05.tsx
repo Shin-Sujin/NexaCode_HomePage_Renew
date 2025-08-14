@@ -46,12 +46,12 @@ export default function Section05({
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null); // x 이동/재배치 대상
   const animatingRef = useRef(false); // 중복 애니 방지
-  // 현재 DOM에서 첫 번째/두 번째/세 번째 카드가 어떤 원본 인덱스를 가리키는지
-  // 예) [0,1,2]가 기본. nextSlide() 후에는 [1,2,0].
   const orderRef = useRef<number[]>([0, 1, 2]);
   const prevIndexRef = useRef<number | null>(null);
 
-  // gap/폭 계산
+  // 슬라이드 한 칸이 정확히 몇 픽셀인지" 계산하는 함수.
+  // 슬라이드 하나의 가로 크기 + 간격(gap) 을 계산해서 반환
+  // 이 값이 다음 슬라이드로 이동할 때 얼마나 움직여야 하는지 기준
   const calcStep = useCallback(() => {
     const track = trackRef.current;
     if (!track) return 0;
@@ -63,7 +63,7 @@ export default function Section05({
     return w + gap;
   }, []);
 
-  // DOM 재배치 유틸: 왼쪽 회전(첫 요소 → 맨 뒤), 오른쪽 회전(마지막 → 맨 앞)
+  // 왼쪽으로 한 칸 넘겼다고 치고, 실제로 DOM 순서를 바꿔서 무한 루프처럼 보이게 하는 함수.
   const rotateLeftNoAnim = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -75,6 +75,7 @@ export default function Section05({
     gsap.set(track, { x: 0 });
   }, []);
 
+  // 오른쪽으로 한 칸 넘겼다고 치고, 마지막 카드를 앞으로 빼오는 함수.
   const rotateRightNoAnim = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -87,7 +88,7 @@ export default function Section05({
     gsap.set(track, { x: 0 });
   }, []);
 
-  // 애니메이션 포함한 회전
+  // 슬라이드 한 칸 왼쪽으로 부드럽게 넘기고, 끝나면 순서 재정렬.
   const nextSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
@@ -106,6 +107,7 @@ export default function Section05({
     });
   }, [calcStep, rotateLeftNoAnim]);
 
+  //한 칸 오른쪽으로 부드럽게 넘기기.
   const prevSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
@@ -126,9 +128,8 @@ export default function Section05({
       },
     });
   }, [calcStep, rotateRightNoAnim]);
-  // ✅ 전역 인덱스 전이 기반 슬라이드 제어
 
-  // ✅ 전역 인덱스 전이 기반 슬라이드 제어
+  // 전역 인덱스 변화 감지
   useEffect(() => {
     const now = currentIndex;
     const prev = prevIndexRef.current;
@@ -250,13 +251,13 @@ export default function Section05({
                     </span>
                   </div>
                   <h1
-                    className="has_fade_anim w-full text-[#999999] text-m font-bold text-2xl xxl:mb-20 lg:mb-10 mb-5"
+                    className="has_fade_anim w-full text-[#999999] text-m font-bold text-2xl xxl:mb-16 lg:mb-8 mb-5"
                     data-fade-from="bottom"
                   >
                     넥사코드 만족도 설문조사
                   </h1>
                   <hr className="w-full my-8 border-[#2e2e2e]" />
-                  <h3 className="name text-4xl text-white mt-10 mb-1 w-full lg:mt-10">
+                  <h3 className="name text-3xl text-white mt-10 mb-1 w-full lg:mt-10">
                     고객의 말이 증명합니다
                   </h3>
                   <p className="text-lg text-[#999999] leading-relaxed w-full mt-5 max-xxxl:text-base pr-10 whitespace-normal break-keep">
@@ -270,7 +271,7 @@ export default function Section05({
                 {/* 페이지 표시(선택) */}
                 <div className="max-lg:hidden">
                   <div>
-                    <div className="flex items-center justify-items-start w-full mt-52 max-xxxl:mt-20">
+                    <div className="flex items-center justify-items-start w-full mt-16">
                       <span className="text-white text-sm font-bold font-nKKU">
                         {/* orderRef 기준으로 현재 첫 카드의 원본 번호 */}
                         {String(orderRef.current[0] + 1).padStart(2, "0")}
@@ -286,22 +287,6 @@ export default function Section05({
 
               {/* 오른쪽 슬라이드 영역 */}
               <div className="flex-1 relative">
-                {/* 좌우 버튼 */}
-                <button
-                  aria-label="이전 슬라이드"
-                  onClick={prevSlide}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 px-3 py-2 bg-black/40 text-white rounded-md backdrop-blur-sm hover:bg-black/60"
-                >
-                  ←
-                </button>
-                <button
-                  aria-label="다음 슬라이드"
-                  onClick={nextSlide}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 px-3 py-2 bg-black/40 text-white rounded-md backdrop-blur-sm hover:bg-black/60"
-                >
-                  →
-                </button>
-
                 {/* 뷰포트: 여기서만 휠/키보드로 슬라이드 */}
                 <div
                   ref={viewportRef}
@@ -317,7 +302,7 @@ export default function Section05({
                     {testimonials.slice(0, slides).map((t, i) => (
                       <div
                         key={i}
-                        className="flex-shrink-0 xxl:h-[45rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[28rem] lg:w-[17rem]"
+                        className="flex-shrink-0 xxl:h-[40rem] xxl:w-[30rem] h-[30rem] w-[30rem] overflow-hidden relative lg:h-[26rem] lg:w-[17rem] xl:h-[26rem] xl:w-[20rem]"
                       >
                         <Image
                           src={t.imageSrc}

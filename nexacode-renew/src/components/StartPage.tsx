@@ -84,16 +84,7 @@ export default function StartPage() {
         <Section04 sectionRefs={sectionRefs} startIndex={11} />
       </div>
 
-      <div
-        ref={(el) => {
-          if (sectionRefs.current) {
-            sectionRefs.current[13] = el; // slide 1
-            sectionRefs.current[14] = el; // slide 2
-            sectionRefs.current[15] = el; // slide 3
-          }
-        }}
-        className="w-full bg-[#17171B]"
-      >
+      <div className="w-full bg-[#17171B]">
         <div className="flex justify-center">
           <Section05 sectionRefs={sectionRefs} startIndex={13} slides={3} />
         </div>
