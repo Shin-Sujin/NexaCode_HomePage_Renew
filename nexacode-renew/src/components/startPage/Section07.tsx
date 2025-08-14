@@ -1,12 +1,15 @@
+// src/app/startPage/Section07.tsx
 "use client";
 import OverlapCard from "../startPageComponents/OverlapCard";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 import "../../styles/section07.css";
+import { useStartPageStore } from "@/src/stores/startPageStore";
 
 interface Section07Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  /** 이 섹션이 차지하는 첫 전역 인덱스 (이번 표 기준 17) */
   startIndex: number;
 }
 
@@ -18,18 +21,23 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   useSectionTitleAnimation(sectionTitleRef);
   useSectionNumberAnimation(sectionNumberRef);
 
-  // 각 카드의 위치 상태
+  // 전역 인덱스
+  const { currentIndex } = useStartPageStore();
+  const prevIndexRef = useRef<number | null>(null);
+
+  // 각 카드의 위치 상태 (idx: 0,1,2 → pos: left/center/right)
+  // 기본: 카드0=left, 카드1=center, 카드2=right
   const [order, setOrder] = useState<Pos[]>(["left", "center", "right"]);
   const isAnimatingRef = useRef(false);
-  const DURATION = 500; // transition과 맞춤
+  const DURATION = 500; // CSS transition
 
   const lockDuringAnimation = () => {
     isAnimatingRef.current = true;
     setTimeout(() => (isAnimatingRef.current = false), DURATION);
   };
 
+  // 회전 애니메이션 (오른쪽 카드가 가운데로 옴) : 17→18, 18→19일 때 사용
   const rotateFromRight = useCallback(() => {
-    // right -> center, center -> left, left -> right
     if (isAnimatingRef.current) return;
     setOrder((prev) =>
       prev.map((p) =>
@@ -39,8 +47,8 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     lockDuringAnimation();
   }, []);
 
+  // 회전 애니메이션 (왼쪽 카드가 가운데로 옴) : 19→18, 18→17일 때 사용
   const rotateFromLeft = useCallback(() => {
-    // left -> center, center -> right, right -> left
     if (isAnimatingRef.current) return;
     setOrder((prev) =>
       prev.map((p) =>
@@ -50,34 +58,22 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     lockDuringAnimation();
   }, []);
 
-  const handleClick = (pos: Pos) => {
-    if (pos === "left") rotateFromLeft();
-    else if (pos === "right") rotateFromRight();
-  };
+  // 스냅(애니 없이 즉시 정렬): center로 만들 카드 index를 지정
+  // centerIdx: 0/1/2 중 하나
+  const snapToCenter = useCallback((centerIdx: number) => {
+    // 원형으로: centerIdx-1 → left, centerIdx → center, centerIdx+1 → right
+    const leftIdx = (centerIdx + 3 - 1) % 3;
+    const rightIdx = (centerIdx + 1) % 3;
+    const next: Pos[] = ["left", "left", "left"];
+    next[centerIdx] = "center";
+    next[rightIdx] = "right";
+    next[leftIdx] = "left";
+    setOrder(next);
+  }, []);
 
-  const handleKeyDown =
-    (pos: Pos) => (e: React.KeyboardEvent<HTMLDivElement>) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        handleClick(pos);
-      }
-      if (e.key === "ArrowLeft" && pos !== "center") {
-        e.preventDefault();
-        rotateFromLeft();
-      }
-      if (e.key === "ArrowRight" && pos !== "center") {
-        e.preventDefault();
-        rotateFromRight();
-      }
-    };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      rotateFromRight();
-    }, 3000);
+  // 자동 3초 타이머는 제거 (요청대로 스크롤/인덱스 전이로만 제어)
 
-    return () => clearInterval(interval);
-  }, [rotateFromRight]);
-
+  // 이 섹션의 카드 데이터
   const cards = [
     {
       id: 0,
@@ -111,13 +107,61 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     },
   ];
 
+  // 전역 인덱스 전이 기반 슬라이드 구동
+  useEffect(() => {
+    const now = currentIndex;
+    const prev = prevIndexRef.current;
+    prevIndexRef.current = now;
+
+    const first = startIndex; // 17
+    const second = startIndex + 1; // 18
+    const third = startIndex + 2; // 19
+    const inRange = (i: number) => i >= first && i <= third;
+
+    // 초기 세팅 또는 첫 렌더
+    if (prev === null) {
+      if (inRange(now)) {
+        // 17/18/19 각각 center가 0/1/2가 되도록 스냅
+        const wantCenter = now - startIndex; // 0,1,2
+        snapToCenter(wantCenter);
+      }
+      return;
+    }
+
+    // 범위 밖 → 범위 안 "점프": 스냅 정렬(애니X)
+    if (!inRange(prev) && inRange(now)) {
+      snapToCenter(now - startIndex);
+      return;
+    }
+
+    // 범위 안 → 범위 밖: 아무 것도 하지 않음(슬라이드 애니 없음)
+    if (inRange(prev) && !inRange(now)) {
+      return;
+    }
+
+    // 범위 내부 인접 전이만 애니메이션
+    if (prev === first && now === second) return rotateFromRight(); // 17→18
+    if (prev === second && now === third) return rotateFromRight(); // 18→19
+    if (prev === third && now === second) return rotateFromLeft(); // 19→18
+    if (prev === second && now === first) return rotateFromLeft(); // 18→17
+
+    // 비인접 점프(예: 17↔19)는 스냅
+    if (inRange(prev) && inRange(now)) {
+      snapToCenter(now - startIndex);
+    }
+  }, [currentIndex, startIndex, rotateFromRight, rotateFromLeft, snapToCenter]);
+
   return (
     <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           <div
             ref={(el) => {
-              if (sectionRefs.current) sectionRefs.current[startIndex] = el;
+              if (!sectionRefs.current) return;
+              // 17,18,19 모두 같은 DOM에 매핑
+              sectionRefs.current[startIndex] = el;
+              sectionRefs.current[startIndex + 1] = el;
+              sectionRefs.current[startIndex + 2] = el;
             }}
           >
             <div ref={sectionNumberRef} data-stagger="0.05">
@@ -143,8 +187,12 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
                 <div
                   key={c.id}
                   className={`slide pos-${pos}`}
-                  onClick={() => !isCenter && handleClick(pos)}
-                  onKeyDown={handleKeyDown(pos)}
+                  // 클릭/키보드로도 넘기고 싶다면 아래 두 줄 유지,
+                  // 전역 인덱스만으로 제어하고 싶다면 주석 처리해도 됨.
+                  onClick={() =>
+                    !isCenter &&
+                    (pos === "left" ? rotateFromLeft() : rotateFromRight())
+                  }
                   role={isCenter ? "img" : "button"}
                   aria-label={
                     isCenter

@@ -40,7 +40,9 @@ export function useStartPageObserver(sectionRefs: DivArrayRef): void {
   const moveFrom16 = (d: Dir) => (d === "down" ? 17 : 15); // 16 → 17 / 15
   const moveFrom17 = (d: Dir) => (d === "down" ? 18 : 16); // 17 → 18 / 16
   const moveFrom18 = (d: Dir) => (d === "down" ? 19 : 17); // 18 → 19 / 17
-  const moveFrom19 = (d: Dir) => (d === "down" ? 19 : 18); // 19 → stay / 18
+  const moveFrom19 = (d: Dir) => (d === "down" ? 20 : 18); // 19 → 20 / 18
+  const moveFrom20 = (d: Dir) => (d === "down" ? 21 : 19); // 20 → 21 / 19
+  const moveFrom21 = (d: Dir) => (d === "down" ? 21 : 20); // 21 → stay / 20
 
   // currentIndex → 다음 인덱스 결정 (명시적 스위치)
   const resolveNextIndex = (idx: number, dir: "up" | "down") => {
@@ -85,6 +87,10 @@ export function useStartPageObserver(sectionRefs: DivArrayRef): void {
         return moveFrom18(dir);
       case 19:
         return moveFrom19(dir);
+      case 20:
+        return moveFrom20(dir);
+      case 21:
+        return moveFrom21(dir);
       default:
         return idx;
     }
