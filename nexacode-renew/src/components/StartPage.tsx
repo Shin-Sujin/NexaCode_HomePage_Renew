@@ -94,16 +94,8 @@ export default function StartPage() {
         <Section06 sectionRefs={sectionRefs} startIndex={16} />
       </div>
 
-      <div
-        ref={(el) => {
-          sectionRefs.current[17] = el;
-          sectionRefs.current[18] = el;
-          sectionRefs.current[19] = el;
-        }}
-      >
-        <div className="flex justify-center">
-          <Section07 sectionRefs={sectionRefs} startIndex={17} />
-        </div>
+      <div className="flex justify-center">
+        <Section07 sectionRefs={sectionRefs} startIndex={17} />
       </div>
 
       <div
