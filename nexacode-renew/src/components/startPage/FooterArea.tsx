@@ -17,7 +17,7 @@ export default function FooterArea() {
   useRotatingAnimation(rotatingRef, animatedTextRef);
 
   return (
-    <div className="container xxl:h-screen h-full max-md:mx-10">
+    <div className="container max-h-screen h-full max-md:mx-3 pb-20">
       <section className={styles.footerAreaWrapper}>
         <div className={styles.inner}>
           <div className="lg:text-4xl font-normal max-md:pt-10">
@@ -25,7 +25,7 @@ export default function FooterArea() {
           </div>
           <div
             ref={animatedTextRef}
-            className="text-3xl xxl:text-8xl font-normal mt-8 lg:text-5xl"
+            className="text-3xl xxl:text-8xl font-normal mt-8 xl:text-7xl lg:text-6xl"
           >
             당신만의 개발 파트너
             <br className="lg:block hidden" />{" "}
@@ -37,33 +37,31 @@ export default function FooterArea() {
 
           <p
             ref={textRef}
-            className="textGradient__header text-xl text-gray-400 mt-5 mb-40 lg:text-3xl 
+            className="textGradient__header text-xl text-gray-400 mt-5 lg:mb-16 xxl:mb-24 xl:mb-20 lg:text-3xl 
              max-lg:mt-5"
           >
             처음의 기대가 끝까지 이어지도록,{" "}
             <br className="lg:block xl:hidden" />
             넥사코드는
-            <strong> 끝까지 책임지는 개발</strong>을{" "}
-            <br className="max-md:block hidden" />
-            약속드립니다.
+            <strong> 끝까지 책임지는 개발</strong>을 약속드립니다.
           </p>
 
           <div className={styles.ctaArea}>
             <div>
-              <h3 className="text-2xl text-gray-200 mb-5 max-xxxl:text-xl">
+              <h3 className="xl:text-2xl text-gray-200 mb-5 text-xl">
                 오시는 길
               </h3>
-              <p className="text-lg text-gray-400 max-xxxl:text-base">
+              <p className=" xl:text-lg text-gray-400 text-base">
                 서울시 금천구 디지털로 178
                 <br />
                 가산 퍼블릭 A동 1515~1516호
               </p>
             </div>
             <div>
-              <h3 className="text-2xl text-gray-200 mb-5 max-xxxl:text-xl">
+              <h3 className="xl:text-2xl text-gray-200 mb-5 text-xl">
                 CONTACT
               </h3>
-              <p className="text-lg text-gray-400 max-xxxl:text-base">
+              <p className=" xl:text-lg text-gray-400 text-base">
                 전화번호: 010-4009-2398
                 <br />
                 Email: nexacode@nexacode.co.kr

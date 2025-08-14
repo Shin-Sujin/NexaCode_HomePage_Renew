@@ -46,6 +46,11 @@ export function useStartPageScroll(
       } else {
         window.addEventListener("wheel", wheelHandler, { passive: false });
       }
+      if (window.innerHeight < 1200) {
+        window.removeEventListener("wheel", wheelHandler);
+      } else {
+        window.addEventListener("wheel", wheelHandler, { passive: false });
+      }
     };
 
     handleResize();
