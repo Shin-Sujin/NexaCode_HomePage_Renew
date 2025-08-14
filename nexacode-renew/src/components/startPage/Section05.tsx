@@ -132,7 +132,7 @@ export default function Section05({
     animatingRef.current = true;
     gsap.to(track, {
       x: -step,
-      duration: 0.6,
+      duration: 0.2,
       ease: "power3.inOut",
       onComplete: () => {
         rotateLeftNoAnim();
@@ -155,7 +155,7 @@ export default function Section05({
     animatingRef.current = true;
     gsap.to(track, {
       x: 0,
-      duration: 0.6,
+      duration: 0.2,
       ease: "power3.inOut",
       onComplete: () => {
         animatingRef.current = false;
