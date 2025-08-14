@@ -1,6 +1,6 @@
 "use client";
 
-// import "@/src/styles/blog.css";
+// import "@/src/styles/blog.css";f
 import Footer from "@/src/components/blog/Footer";
 import Link from "next/link";
 import Lenis from "@/src/app/lenis";
