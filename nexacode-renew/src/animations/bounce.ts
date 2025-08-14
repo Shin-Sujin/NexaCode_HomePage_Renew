@@ -23,7 +23,7 @@ export const useBounceSection1 = (bounceRef: React.RefObject<HTMLElement>) => {
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
-            toggleActions: "play none none reset",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -46,7 +46,7 @@ export const useBounceSection2 = (bounceRef: React.RefObject<HTMLElement>) => {
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
-            toggleActions: "play none none reset",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -69,7 +69,7 @@ export const useBounceSection3 = (bounceRef: React.RefObject<HTMLElement>) => {
           scrollTrigger: {
             trigger: bounceRef.current,
             start: "top 80%",
-            toggleActions: "play none none reset",
+            toggleActions: "play none none none",
           },
         }
       );

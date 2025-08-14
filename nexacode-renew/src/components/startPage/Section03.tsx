@@ -22,6 +22,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
   });
   return (
     <div
+      id="strengths"
       className="container relative justify-center items-center py-20"
       data-index="2"
     >

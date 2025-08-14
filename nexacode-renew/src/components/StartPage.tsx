@@ -18,8 +18,31 @@ export default function StartPage() {
   const setCurrentIndex = useStartPageStore((state) => state.setCurrentIndex);
 
   useEffect(() => {
-    setCurrentIndex(0);
-    window.scrollTo({ top: 0, behavior: "auto" });
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#strengths") {
+        setCurrentIndex(5);
+      } else if (hash === "#process") {
+        setCurrentIndex(14);
+      }
+    };
+
+    // 페이지 로드 시 초기 해시 값 확인
+    handleHashChange();
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [setCurrentIndex]);
+
+  useEffect(() => {
+    // URL에 해시가 없는 경우에만 최상단으로 스크롤
+    if (!window.location.hash) {
+      setCurrentIndex(0);
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
