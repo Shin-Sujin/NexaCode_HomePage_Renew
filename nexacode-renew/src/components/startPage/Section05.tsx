@@ -26,7 +26,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   { number: "01", total: "03", imageSrc: "/images/test/photo1.png" },
   { number: "02", total: "03", imageSrc: "/images/test/photo2.png" },
-  { number: "03", total: "03", imageSrc: "/images/test/review1.png" },
+  { number: "03", total: "03", imageSrc: "/images/test/photo3.png" },
 ];
 
 export default function Section05({
@@ -49,6 +49,7 @@ export default function Section05({
   // 현재 DOM에서 첫 번째/두 번째/세 번째 카드가 어떤 원본 인덱스를 가리키는지
   // 예) [0,1,2]가 기본. nextSlide() 후에는 [1,2,0].
   const orderRef = useRef<number[]>([0, 1, 2]);
+  const prevIndexRef = useRef<number | null>(null);
 
   // gap/폭 계산
   const calcStep = useCallback(() => {
@@ -125,59 +126,86 @@ export default function Section05({
       },
     });
   }, [calcStep, rotateRightNoAnim]);
+  // ✅ 전역 인덱스 전이 기반 슬라이드 제어
 
-  // 전역 인덱스 → 로컬 슬라이드(0..slides-1) 동기화
+  // ✅ 전역 인덱스 전이 기반 슬라이드 제어
   useEffect(() => {
-    // currentIndex가 이 섹션 범위(예: 13~15)에 있을 때만 동기화
-    const local = currentIndex - startIndex;
-    if (local < 0 || local > slides - 1) return;
+    const now = currentIndex;
+    const prev = prevIndexRef.current;
+    prevIndexRef.current = now;
 
-    // 현재 DOM의 첫 카드가 무엇인지(orderRef[0]) 확인 후,
-    // 원하는 첫 카드(local)가 올 때까지 좌회전(무애니) 반복
-    const wantFirst = local % slides; // 0,1,2
-    let guard = 0;
-    while (orderRef.current[0] !== wantFirst && guard < slides + 1) {
-      rotateLeftNoAnim();
-      guard++;
-    }
-    // x는 항상 0 상태 유지
-    gsap.set(trackRef.current, { x: 0 });
-  }, [currentIndex, startIndex, slides, rotateLeftNoAnim]);
+    // 이 섹션의 범위
+    const first = startIndex; // 13
+    const second = startIndex + 1; // 14
+    const third = startIndex + 2; // 15
 
-  // 리사이즈 시 현재 정렬/위치 유지
-  useEffect(() => {
-    const onResize = () => {
-      // x 보정
-      gsap.set(trackRef.current, { x: 0 });
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+    const inRange = (i: number) => i >= first && i <= third;
 
-  // 뷰포트 위에서만 휠로 슬라이드(페이지 전체 스크롤 방지 X를 원하면 preventDefault 추가)
-  const onWheelOverViewport = useCallback(
-    (e: React.WheelEvent) => {
-      e.preventDefault(); // 슬라이드 영역에서 기본 스크롤 방지(선택)
-      if (e.deltaY > 0) nextSlide();
-      else prevSlide();
-    },
-    [nextSlide, prevSlide]
-  );
-
-  // 키보드 접근성: ←/→
-  const onKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        nextSlide();
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        prevSlide();
+    // 최초 마운트/초기값
+    if (prev === null) {
+      // 범위 안에서 시작했다면 스냅 정렬
+      if (inRange(now)) {
+        const want = now - startIndex; // 0,1,2
+        let guard = 0;
+        while (orderRef.current[0] !== want && guard < 4) {
+          rotateLeftNoAnim();
+          guard++;
+        }
       }
-    },
-    [nextSlide, prevSlide]
-  );
+      return;
+    }
 
+    // --- 케이스 분기 ---
+
+    // 1) 범위 밖 → 범위 안으로 "점프" 진입: 스냅 정렬(애니X)
+    if (!inRange(prev) && inRange(now)) {
+      const want = now - startIndex; // 0,1,2
+      let guard = 0;
+      while (orderRef.current[0] !== want && guard < 4) {
+        rotateLeftNoAnim();
+        guard++;
+      }
+      gsap.set(trackRef.current, { x: 0 });
+      return;
+    }
+
+    // 2) 범위 안 → 범위 밖: 그냥 종료 (슬라이드 애니 없음)
+    if (inRange(prev) && !inRange(now)) {
+      // 필요 시 정리 로직 추가 가능
+      return;
+    }
+
+    // 3) 범위 내부에서 인접 전이만 애니메이션:
+    //    13→14, 14→15 → nextSlide()
+    //    15→14, 14→13 → prevSlide()
+    if (prev === first && now === second) {
+      nextSlide();
+      return;
+    }
+    if (prev === second && now === third) {
+      nextSlide();
+      return;
+    }
+    if (prev === third && now === second) {
+      prevSlide();
+      return;
+    }
+    if (prev === second && now === first) {
+      prevSlide();
+      return;
+    }
+
+    // 4) 그 외(비인접 점프 13→15, 15→13 같은 경우): 스냅 정렬
+    if (inRange(prev) && inRange(now)) {
+      const want = now - startIndex;
+      let guard = 0;
+      while (orderRef.current[0] !== want && guard < 4) {
+        rotateLeftNoAnim();
+        guard++;
+      }
+      gsap.set(trackRef.current, { x: 0 });
+    }
+  }, [currentIndex, startIndex, rotateLeftNoAnim, nextSlide, prevSlide]);
   return (
     <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col max-lg:gap-10 w-full mx-2">
@@ -279,8 +307,6 @@ export default function Section05({
                   ref={viewportRef}
                   className="overflow-hidden outline-none"
                   tabIndex={0}
-                  onWheel={onWheelOverViewport}
-                  onKeyDown={onKeyDown}
                 >
                   {/* 트랙: 형제 간격은 space-x로 부여(재배치해도 gap 유지) */}
                   <div
