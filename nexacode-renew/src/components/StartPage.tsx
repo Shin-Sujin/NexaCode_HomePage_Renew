@@ -47,7 +47,7 @@ export default function StartPage() {
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
-    new Array(20).fill(null)
+    new Array(22).fill(null)
   );
 
   useStartPageObserver(sectionRefs);
@@ -94,13 +94,21 @@ export default function StartPage() {
         <Section06 sectionRefs={sectionRefs} startIndex={16} />
       </div>
 
-      <div className="flex justify-center">
-        <Section07 sectionRefs={sectionRefs} startIndex={17} />
+      <div
+        ref={(el) => {
+          sectionRefs.current[17] = el;
+          sectionRefs.current[18] = el;
+          sectionRefs.current[19] = el;
+        }}
+      >
+        <div className="flex justify-center">
+          <Section07 sectionRefs={sectionRefs} startIndex={17} />
+        </div>
       </div>
 
       <div
         ref={(el) => {
-          sectionRefs.current[18] = el;
+          sectionRefs.current[20] = el;
         }}
         className="w-full"
       >
@@ -111,7 +119,7 @@ export default function StartPage() {
 
       <div
         ref={(el) => {
-          sectionRefs.current[19] = el;
+          sectionRefs.current[21] = el;
         }}
       >
         <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">
