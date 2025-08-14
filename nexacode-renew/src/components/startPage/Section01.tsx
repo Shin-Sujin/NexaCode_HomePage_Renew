@@ -44,7 +44,7 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
           </div>
           <span
             ref={textRef}
-            className="textGradient__header mt-20 text-gray-500 text-center lg:mt-2 xxl:text-4xl lg:text-3xl  "
+            className="block textGradient__header mt-20 text-gray-500 text-center lg:mt-2 xxl:text-4xl lg:text-3xl "
           >
             무엇을 만들지보다, 누구와 함께할지가 더 중요한 고민일지도 모릅니다.
           </span>

@@ -28,7 +28,7 @@ export default function OverlapCard({
 
         {/* 앞에 겹쳐진 텍스트 박스 */}
         <div
-          className={`absolute bottom-0 translate-x-[8rem] translate-y-[1rem] xxl:px-10 xxl:py-12 xxl:w-[28rem] 
+          className={`absolute bottom-0 translate-x-[8rem] translate-y-[1rem] xxl:px-10 xxl:py-12 xxl:w-[26rem] 
         xxl:h-[22rem] xl:px-7 xl:py-10 xl:w-[20rem] xl:h-[16rem] w-[25rem] h-[20rem]
         ${className}`}
         >
@@ -36,7 +36,7 @@ export default function OverlapCard({
             {category}
           </p>
           <h2
-            className="xxl:mb-10 xl:mb-5 xxl:text-2xl xl:text-lg text-gray-800 leading-relaxed "
+            className="xxl:mb-10 xl:mb-5 xxl:text-2xl xl:text-lg text-gray-800 leading-relaxed break-keep"
             dangerouslySetInnerHTML={{ __html: title }}
           />
           <hr className="mb-5" />
