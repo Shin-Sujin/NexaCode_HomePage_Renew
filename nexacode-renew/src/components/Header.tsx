@@ -9,8 +9,8 @@ export default function Header() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const menuItems = [
     { label: "서비스 특징", href: "/" },
-    { label: "강점", href: "/" },
-    { label: "진행과정", href: "/" },
+    { label: "강점", href: "/#strengths" },
+    { label: "진행과정", href: "/#process" },
     { label: "포트폴리오", href: "/portfolio" },
     { label: "블로그", href: "/blog" },
     { label: "문의하기", href: "/contact" },
