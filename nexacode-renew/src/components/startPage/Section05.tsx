@@ -122,47 +122,93 @@ export default function Section05({
     gsap.set(track, { x: 0 });
   }, []);
 
-  // 왼쪽으로 한 칸(=다음) 부드럽게 넘기기
+  // ★ 교체: nextSlide (왼쪽 이동 = 다음)
   const nextSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
+
     const step = calcStep();
     if (step === 0) return;
 
+    const first = track.children[0] as HTMLElement | undefined;
+    if (!first) return;
+
+    // 1) 첫 카드 사본을 뒤에 미리 붙여서 "뒤에서 들어오는" 비주얼 확보
+    const clone = first.cloneNode(true) as HTMLElement;
+    track.appendChild(clone);
+    gsap.set(clone, { opacity: 0, scale: 0.98 });
+
     animatingRef.current = true;
-    gsap.to(track, {
-      x: -step,
-      duration: 0.2,
-      ease: "power3.inOut",
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.inOut" },
       onComplete: () => {
-        rotateLeftNoAnim();
+        // 3) 애니 끝나면 원래 첫 카드를 제거하고 위치 리셋
+        first.remove();
+        gsap.set(track, { x: 0 });
         animatingRef.current = false;
-        updatePageDisplay(true); // ✅ 슬라이드 후 페이지 숫자 애니메이션
+
+        // 순서 배열 갱신(왼쪽 회전)
+        orderRef.current.push(orderRef.current.shift()!);
+
+        // 페이지 숫자 자연스러운 전환
+        updatePageDisplay(true);
       },
     });
-  }, [calcStep, rotateLeftNoAnim, updatePageDisplay]);
 
-  // 오른쪽으로 한 칸(=이전) 부드럽게 넘기기
+    // 2) 트랙을 -step 만큼 이동시키는 동안, 뒤에 붙인 clone을 자연스럽게 등장
+    tl.to(track, { x: -step, duration: 0.35 }, 0).to(
+      clone,
+      { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+      0.05
+    );
+  }, [calcStep, updatePageDisplay]);
+
+  // ★ 교체: prevSlide (오른쪽 이동 = 이전)
   const prevSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
+
     const step = calcStep();
     if (step === 0) return;
 
-    rotateRightNoAnim();
+    const children = track.children;
+    const last = children[children.length - 1] as HTMLElement | undefined;
+    if (!last) return;
+
+    // 1) 마지막 카드 사본을 앞에 미리 붙여서 "앞에서 들어오는" 비주얼 확보
+    const clone = last.cloneNode(true) as HTMLElement;
+    track.insertBefore(clone, children[0]);
+    gsap.set(clone, { opacity: 0, scale: 0.98 });
+
+    // 트랙을 -step에서 시작(왼쪽으로 한 칸 밀어둔 상태)
     gsap.set(track, { x: -step });
 
     animatingRef.current = true;
-    gsap.to(track, {
-      x: 0,
-      duration: 0.2,
-      ease: "power3.inOut",
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.inOut" },
       onComplete: () => {
+        // 3) 애니 끝나면 원래 마지막 카드를 제거하고 위치 리셋
+        last.remove();
+        gsap.set(track, { x: 0 });
         animatingRef.current = false;
-        updatePageDisplay(true); // ✅ 슬라이드 후 페이지 숫자 애니메이션
+
+        // 순서 배열 갱신(오른쪽 회전)
+        orderRef.current.unshift(orderRef.current.pop()!);
+
+        // 페이지 숫자 자연스러운 전환
+        updatePageDisplay(true);
       },
     });
-  }, [calcStep, rotateRightNoAnim, updatePageDisplay]);
+
+    // 2) 트랙을 0으로 되돌리는 동안, 앞에 붙인 clone을 자연스럽게 등장
+    tl.to(track, { x: 0, duration: 0.35 }, 0).to(
+      clone,
+      { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+      0.05
+    );
+  }, [calcStep, updatePageDisplay]);
 
   // 전역 인덱스 변화 감지 → Section05 구간(13~15)에서만 애니 구동
   useEffect(() => {
