@@ -39,7 +39,7 @@ export function useStartPageScroll(
     console.log(window.innerHeight);
 
     const handleResize = (): void => {
-      if (window.innerHeight <= 900) {
+      if (window.innerWidth <= 1366) {
         window.removeEventListener("wheel", wheelHandler);
       } else {
         window.addEventListener("wheel", wheelHandler, { passive: false });

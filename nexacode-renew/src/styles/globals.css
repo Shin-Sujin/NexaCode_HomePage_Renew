@@ -320,16 +320,6 @@ body {
       display: none;
     }
   }
-
-  .testimonial-count {
-    font-family: "BeatriceTRIAL-Regular-BF64829e8f591fb";
-    @media (max-width: 1279px) {
-      font-size: 100px;
-    }
-    @media (max-width: 639px) {
-      font-size: 70px;
-    }
-  }
 }
 
 /* nKKU 폰트 등록 */
