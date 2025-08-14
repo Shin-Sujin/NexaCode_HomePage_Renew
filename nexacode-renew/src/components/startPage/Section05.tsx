@@ -11,7 +11,6 @@ import { useStartPageStore } from "@/src/stores/startPageStore";
 
 interface Section05Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
-  /** 이 섹션이 차지하는 첫 전역 인덱스 (예: 13) */
   startIndex: number;
   /** 슬라이드 개수(기본 3) */
   slides?: number;
@@ -46,12 +45,49 @@ export default function Section05({
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null); // x 이동/재배치 대상
   const animatingRef = useRef(false); // 중복 애니 방지
-  const orderRef = useRef<number[]>([0, 1, 2]);
+  const orderRef = useRef<number[]>([0, 1, 2]); // 현재 DOM 순서(첫 카드가 어떤 원본 인덱스인지)
   const prevIndexRef = useRef<number | null>(null);
 
-  // 슬라이드 한 칸이 정확히 몇 픽셀인지" 계산하는 함수.
-  // 슬라이드 하나의 가로 크기 + 간격(gap) 을 계산해서 반환
-  // 이 값이 다음 슬라이드로 이동할 때 얼마나 움직여야 하는지 기준
+  // 페이지 표시 애니메이션(현재 페이지 숫자)
+  const pageCurrentRef = useRef<HTMLSpanElement | null>(null);
+  const animatePageTo = useCallback((n: number) => {
+    const el = pageCurrentRef.current;
+    if (!el) return;
+    const text = String(n).padStart(2, "0");
+    gsap.to(el, {
+      y: -8,
+      opacity: 0,
+      duration: 0.18,
+      ease: "power2.out",
+      onComplete: () => {
+        el.textContent = text;
+        gsap.fromTo(
+          el,
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.24, ease: "power2.out" }
+        );
+      },
+    });
+  }, []);
+
+  // 현재 페이지 숫자 갱신 헬퍼 (애니메이션 여부 선택)
+  const updatePageDisplay = useCallback(
+    (animate = true) => {
+      const currentPage = orderRef.current[0] + 1; // 1..slides
+      if (!pageCurrentRef.current) return;
+      if (animate) {
+        animatePageTo(currentPage);
+      } else {
+        pageCurrentRef.current.textContent = String(currentPage).padStart(
+          2,
+          "0"
+        );
+      }
+    },
+    [animatePageTo]
+  );
+
+  // 슬라이드 한 칸 픽셀(step) 계산
   const calcStep = useCallback(() => {
     const track = trackRef.current;
     if (!track) return 0;
@@ -63,19 +99,18 @@ export default function Section05({
     return w + gap;
   }, []);
 
-  // 왼쪽으로 한 칸 넘겼다고 치고, 실제로 DOM 순서를 바꿔서 무한 루프처럼 보이게 하는 함수.
+  // DOM 순서 회전(왼쪽): 첫 요소 → 맨 뒤
   const rotateLeftNoAnim = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
     const first = track.children[0];
     if (!first) return;
     track.appendChild(first);
-    // 순서 배열도 회전
     orderRef.current.push(orderRef.current.shift()!);
     gsap.set(track, { x: 0 });
   }, []);
 
-  // 오른쪽으로 한 칸 넘겼다고 치고, 마지막 카드를 앞으로 빼오는 함수.
+  // DOM 순서 회전(오른쪽): 마지막 → 맨 앞
   const rotateRightNoAnim = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -83,12 +118,11 @@ export default function Section05({
     const last = children[children.length - 1];
     if (!last) return;
     track.insertBefore(last, children[0]);
-    // 순서 배열도 회전(오른쪽)
     orderRef.current.unshift(orderRef.current.pop()!);
     gsap.set(track, { x: 0 });
   }, []);
 
-  // 슬라이드 한 칸 왼쪽으로 부드럽게 넘기고, 끝나면 순서 재정렬.
+  // 왼쪽으로 한 칸(=다음) 부드럽게 넘기기
   const nextSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
@@ -98,53 +132,51 @@ export default function Section05({
     animatingRef.current = true;
     gsap.to(track, {
       x: -step,
-      duration: 0.6,
+      duration: 0.2,
       ease: "power3.inOut",
       onComplete: () => {
         rotateLeftNoAnim();
         animatingRef.current = false;
+        updatePageDisplay(true); // ✅ 슬라이드 후 페이지 숫자 애니메이션
       },
     });
-  }, [calcStep, rotateLeftNoAnim]);
+  }, [calcStep, rotateLeftNoAnim, updatePageDisplay]);
 
-  //한 칸 오른쪽으로 부드럽게 넘기기.
+  // 오른쪽으로 한 칸(=이전) 부드럽게 넘기기
   const prevSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track || animatingRef.current) return;
     const step = calcStep();
     if (step === 0) return;
 
-    // 선회전(마지막을 앞으로), x를 -step에서 0으로
     rotateRightNoAnim();
     gsap.set(track, { x: -step });
 
     animatingRef.current = true;
     gsap.to(track, {
       x: 0,
-      duration: 0.6,
+      duration: 0.2,
       ease: "power3.inOut",
       onComplete: () => {
         animatingRef.current = false;
+        updatePageDisplay(true); // ✅ 슬라이드 후 페이지 숫자 애니메이션
       },
     });
-  }, [calcStep, rotateRightNoAnim]);
+  }, [calcStep, rotateRightNoAnim, updatePageDisplay]);
 
-  // 전역 인덱스 변화 감지
+  // 전역 인덱스 변화 감지 → Section05 구간(13~15)에서만 애니 구동
   useEffect(() => {
     const now = currentIndex;
     const prev = prevIndexRef.current;
     prevIndexRef.current = now;
 
-    // 이 섹션의 범위
     const first = startIndex; // 13
     const second = startIndex + 1; // 14
     const third = startIndex + 2; // 15
-
     const inRange = (i: number) => i >= first && i <= third;
 
-    // 최초 마운트/초기값
+    // 최초 마운트
     if (prev === null) {
-      // 범위 안에서 시작했다면 스냅 정렬
       if (inRange(now)) {
         const want = now - startIndex; // 0,1,2
         let guard = 0;
@@ -152,51 +184,37 @@ export default function Section05({
           rotateLeftNoAnim();
           guard++;
         }
+        // 초기 숫자 세팅은 애니 없이
+        updatePageDisplay(false);
       }
       return;
     }
 
-    // --- 케이스 분기 ---
-
-    // 1) 범위 밖 → 범위 안으로 "점프" 진입: 스냅 정렬(애니X)
+    // 범위 밖 → 범위 안 점프: 스냅 정렬(애니X) + 숫자 즉시 반영
     if (!inRange(prev) && inRange(now)) {
-      const want = now - startIndex; // 0,1,2
+      const want = now - startIndex;
       let guard = 0;
       while (orderRef.current[0] !== want && guard < 4) {
         rotateLeftNoAnim();
         guard++;
       }
       gsap.set(trackRef.current, { x: 0 });
+      updatePageDisplay(false);
       return;
     }
 
-    // 2) 범위 안 → 범위 밖: 그냥 종료 (슬라이드 애니 없음)
+    // 범위 안 → 범위 밖: 아무 것도 안 함
     if (inRange(prev) && !inRange(now)) {
-      // 필요 시 정리 로직 추가 가능
       return;
     }
 
-    // 3) 범위 내부에서 인접 전이만 애니메이션:
-    //    13→14, 14→15 → nextSlide()
-    //    15→14, 14→13 → prevSlide()
-    if (prev === first && now === second) {
-      nextSlide();
-      return;
-    }
-    if (prev === second && now === third) {
-      nextSlide();
-      return;
-    }
-    if (prev === third && now === second) {
-      prevSlide();
-      return;
-    }
-    if (prev === second && now === first) {
-      prevSlide();
-      return;
-    }
+    // 범위 내부 인접 전이만 애니
+    if (prev === first && now === second) return nextSlide(); // 13→14
+    if (prev === second && now === third) return nextSlide(); // 14→15
+    if (prev === third && now === second) return prevSlide(); // 15→14
+    if (prev === second && now === first) return prevSlide(); // 14→13
 
-    // 4) 그 외(비인접 점프 13→15, 15→13 같은 경우): 스냅 정렬
+    // 비인접 점프(13↔15): 스냅 + 숫자 즉시 반영
     if (inRange(prev) && inRange(now)) {
       const want = now - startIndex;
       let guard = 0;
@@ -205,8 +223,28 @@ export default function Section05({
         guard++;
       }
       gsap.set(trackRef.current, { x: 0 });
+      updatePageDisplay(false);
     }
-  }, [currentIndex, startIndex, rotateLeftNoAnim, nextSlide, prevSlide]);
+  }, [
+    currentIndex,
+    startIndex,
+    rotateLeftNoAnim,
+    rotateRightNoAnim,
+    nextSlide,
+    prevSlide,
+    updatePageDisplay,
+  ]);
+
+  // 리사이즈 시 현재 정렬 유지 + 숫자는 그대로
+  useEffect(() => {
+    const onResize = () => {
+      gsap.set(trackRef.current, { x: 0 });
+      // 숫자는 orderRef 기준이므로 재세팅 불필요
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <div className="container relative justify-center items-center py-20">
       <div className="flex flex-col max-lg:gap-10 w-full mx-2">
@@ -268,13 +306,16 @@ export default function Section05({
                   </p>
                 </div>
 
-                {/* 페이지 표시(선택) */}
+                {/* 페이지 표시 */}
                 <div className="max-lg:hidden">
                   <div>
                     <div className="flex items-center justify-items-start w-full mt-16">
-                      <span className="text-white text-sm font-bold font-nKKU">
-                        {/* orderRef 기준으로 현재 첫 카드의 원본 번호 */}
-                        {String(orderRef.current[0] + 1).padStart(2, "0")}
+                      <span
+                        ref={pageCurrentRef}
+                        className="text-white text-sm font-bold font-nKKU inline-block"
+                      >
+                        {/* 초기값은 mount 시 updatePageDisplay(false)로 채워짐 */}
+                        01
                       </span>
                       <div className="w-1/4 h-px bg-white mx-4" />
                       <span className="text-white text-sm font-bold font-nKKU">
@@ -287,18 +328,15 @@ export default function Section05({
 
               {/* 오른쪽 슬라이드 영역 */}
               <div className="flex-1 relative">
-                {/* 뷰포트: 여기서만 휠/키보드로 슬라이드 */}
                 <div
                   ref={viewportRef}
                   className="overflow-hidden outline-none"
-                  tabIndex={0}
+                  tabIndex={-1}
                 >
-                  {/* 트랙: 형제 간격은 space-x로 부여(재배치해도 gap 유지) */}
                   <div
                     ref={trackRef}
                     className="flex flex-row will-change-transform space-x-5"
                   >
-                    {/* 초기 렌더 순서는 testimonials 순서. 이후 DOM 재배치로 무한 루프 */}
                     {testimonials.slice(0, slides).map((t, i) => (
                       <div
                         key={i}
@@ -314,20 +352,7 @@ export default function Section05({
                     ))}
                   </div>
                 </div>
-
-                {/* 도트 네비(선택) */}
-                <div className="mt-4 flex justify-center gap-2">
-                  {Array.from({ length: slides }).map((_, i) => (
-                    <span
-                      key={i}
-                      className={`inline-block w-2 h-2 rounded-full ${
-                        orderRef.current[0] === i ? "bg-white" : "bg-white/40"
-                      }`}
-                    />
-                  ))}
-                </div>
               </div>
-              {/* /슬라이드 영역 */}
             </div>
           </div>
         </div>

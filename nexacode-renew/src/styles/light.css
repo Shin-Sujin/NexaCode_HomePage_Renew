@@ -13,7 +13,7 @@ span.who {
 
 span.who:not(.light) {
   opacity: 0;
-  animation: flashText 1s ease-out alternate infinite;
+  animation: flashText 0.5s ease-out alternate infinite;
 }
 
 span.light {
@@ -30,7 +30,7 @@ span.light {
     filter: blur(10px);
     content: "";
     opacity: 0;
-    animation: flash 1s ease-out alternate infinite;
+    animation: flash 0.5s ease-out alternate infinite;
   }
 }
 

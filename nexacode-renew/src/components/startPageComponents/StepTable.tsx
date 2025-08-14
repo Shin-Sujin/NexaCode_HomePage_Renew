@@ -98,7 +98,7 @@ export default function StepTable() {
               key={step.id}
               className="reveal-row animated-border-b border-[#e5e5e5] flex max-md:flex-col my-5 lg:my-0"
             >
-              <td className="text-left text-lg  font-semibold w-[180px] lg:w-[200px] xxl:py-7 lg:py-4 xxl:text-xl xxl:w-[200px]">
+              <td className="text-left text-lg  font-semibold w-[180px] lg:w-[200px] xxl:py-7 lg:py-4 xxl:text-xl xxl:w-[200px] max-lg:my-auto">
                 {index + 1}.&nbsp;{step.title}
               </td>
               <td className="px-6 text-left text-base  xxl:py-7  lg:py-4 xxl:text-xl max-xl:px-3 max-lg:whitespace-pre-line  my-5 lg:my-0">
