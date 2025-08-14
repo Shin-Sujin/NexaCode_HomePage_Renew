@@ -20,18 +20,6 @@ export default function StartPage() {
   useEffect(() => {
     setCurrentIndex(0);
     window.scrollTo({ top: 0, behavior: "auto" });
-
-    const preventScroll = (e: WheelEvent) => {
-      if (window.innerWidth > 1366) {
-        e.preventDefault();
-      }
-    };
-
-    window.addEventListener("wheel", preventScroll, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", preventScroll);
-    };
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
