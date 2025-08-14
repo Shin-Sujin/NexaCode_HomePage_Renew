@@ -424,7 +424,7 @@ body {
 }
 @layer utilities {
   .startPage-title {
-    @apply mt-10 mb-6 lg:mb-2 lg:text-5xl text-center text-2xl font-normal xxl:text-6xl xxl:mt-20 text-[#17171B];
+    @apply mt-10 mb-6 lg:mb-2 lg:text-5xl text-center text-2xl font-normal xxl:text-5xl xxl:mt-20 text-[#17171B];
   }
   .section-number {
     @apply text-base lg:text-lg xxl:text-xl;
