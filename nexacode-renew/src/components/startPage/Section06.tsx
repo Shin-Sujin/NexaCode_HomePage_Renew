@@ -16,7 +16,7 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
   return (
     <div
       id="process"
-      className="container relative justify-center  items-center py-20"
+      className="container relative justify-center  items-center lg:py-20 py-10"
     >
       <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
@@ -41,7 +41,7 @@ export default function Section06({ sectionRefs, startIndex }: Section06Props) {
             </h1>
           </div>
         </div>
-        <div className="relative w-full flex justify-center items-center mt-10">
+        <div className="relative w-full flex justify-center items-center lg:mt-10 mt-0">
           {/* 제목 밑 내용 */}
           <StepTable />
         </div>

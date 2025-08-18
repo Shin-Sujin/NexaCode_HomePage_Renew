@@ -28,8 +28,8 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
   // 각 카드의 위치 상태 (idx: 0,1,2 → pos: left/center/right)
   // 기본: 카드0=left, 카드1=center, 카드2=right
   const [order, setOrder] = useState<Pos[]>(["left", "center", "right"]);
-  const isAnimatingRef = useRef(false);
-  const DURATION = 500; // CSS transition
+  const isAnimatingRef = useRef(false); //애니메이션 잠금용
+  const DURATION = 500; // 연속 입력 시 중복 방지
 
   const lockDuringAnimation = () => {
     isAnimatingRef.current = true;
@@ -64,7 +64,8 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
     // 원형으로: centerIdx-1 → left, centerIdx → center, centerIdx+1 → right
     const leftIdx = (centerIdx + 3 - 1) % 3;
     const rightIdx = (centerIdx + 1) % 3;
-    const next: Pos[] = ["left", "left", "left"];
+    //
+    const next: Pos[] = ["left", "left", "left"]; //각 카드의 위치를 담당, 이 값이 변하면 카드에 pos-left, pos-center, pos-right 클래스가 css 트랜지션으로 움직임.
     next[centerIdx] = "center";
     next[rightIdx] = "right";
     next[leftIdx] = "left";
@@ -178,7 +179,7 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
           </div>
         </div>
 
-        <div className="relative w-full pt-5 xxl:h-[37rem] xl:h-[27rem] lg:h-[20rem] h-[15rem] mt-16 p-0 m-0">
+        <div className="hidden lg:block relative w-full pt-5 xxl:h-[37rem] xl:h-[27rem] lg:h-[20rem] h-[15rem] mt-16 p-0 m-0">
           <div className="cardContainer">
             {cards.map((c, idx) => {
               const pos = order[idx]; // idx번째 카드의 위치
@@ -215,6 +216,29 @@ export default function Section07({ sectionRefs, startIndex }: Section07Props) {
               );
             })}
           </div>
+        </div>
+        {/* 모바일용 */}
+        <div className="lg:hidden flex flex-col w-full justify-center items-center px-auto py-auto mt-16 space-y-8">
+          {cards.map((card) => (
+            <div
+              key={card.id}
+              className="bg-white flex flex-col py-10 px-2 w-[20rem] h-[20rem] text-2xl text-center shadow-lg"
+            >
+              <div>
+                <p className="text-sm text-[#555555] mb-8">{card.category}</p>
+                <h2
+                  className="text-lg text-gray-800 leading-relaxed break-keep"
+                  dangerouslySetInnerHTML={{ __html: card.title }}
+                />
+              </div>
+              <div className="mt-auto">
+                <hr className="mb-5" />
+                <p className="text-base font-black text-gray-700">
+                  {card.sentence}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

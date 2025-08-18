@@ -19,7 +19,7 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
   useSectionTitleAnimation(sectionTitleRef);
 
   return (
-    <div className="container relative justify-center  items-center py-20">
+    <div className="container relative justify-center  items-center lg:py-20 py-10">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="section-number">
           <div
@@ -44,13 +44,13 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
           </div>
           <span
             ref={textRef}
-            className="block textGradient__header mt-20 text-gray-500 text-center lg:mt-2 xxl:text-4xl lg:text-3xl "
+            className="block textGradient__header text-gray-500 text-center lg:mt-2 xxl:text-4xl lg:text-3xl "
           >
             무엇을 만들지보다, 누구와 함께할지가 더 중요한 고민일지도 모릅니다.
           </span>
         </div>
         <div className="w-full h-auto">
-          <div className="relative w-full pt-20 flex flex-col items-center justify-center gap-10">
+          <div className="relative w-full pt-10 lg:pt-20 flex flex-col items-center justify-center gap-10">
             <Image
               src="/images/startPage/Container.svg"
               alt="section01"
