@@ -48,11 +48,11 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
           </h1>
         </div>
         <div className="w-full flex items-center justify-center">
-          <div className="relative mt-24 w-full flex justify-center items-center h-full">
+          <div className="relative lg:mt-24 w-full flex justify-center items-center h-full px-5 lg:px-0">
             <TableSection03 />
           </div>
         </div>
-        <div className="relative w-full pt-20 mx-auto">
+        <div className="relative w-full lg:pt-20 mx-auto">
           {/* 인덱스 번호: startIndex + 1 */}
           <div
             ref={(el) => {
@@ -60,10 +60,10 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 1] = el;
               }
             }}
-            className="flex items-center justify-center mt-40 mb-40 max-xl:mt-20 max-xl:mb-40 max-md:flex-col max-md:mt-0"
+            className="flex items-center justify-center lg:mt-80 lg:mb-40 mt-20 mb-10 max-md:flex-col max-md:mt-0"
           >
-            <div className="flex flex-col items-center lg:items-end w-[500px]">
-              <div className="flex  font-bold tracking-[-0.1em]   md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
+            <div className="flex flex-col items-center lg:items-end w-[500px] mt-20 lg:mt-0">
+              <div className="flex  font-bold tracking-[-0.1em]  md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
                 <CounterUp targetNumber={2500} duration={10000} />
                 <span>k</span>
               </div>
@@ -90,9 +90,9 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 2] = el;
               }
             }}
-            className="flex my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
+            className="flex lg:my-80 my-20  max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
           >
-            <div className="w-1/2 flex flex-col items-center">
+            <div className="xl:w-1/2 w-full flex flex-col items-center">
               <div className="h-[250px] w-[300px] flex items-center justify-center">
                 <Image
                   src="/images/startPage/section03_01.png"
@@ -115,7 +115,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 <li>음악 카테고리 7위 (구글스토어)</li>
               </ul>
             </div>
-            <div className="w-1/2 flex flex-col items-center">
+            <div className="xl:w-1/2 w-full flex flex-col items-center">
               <div className="h-[250px] flex items-center justify-center">
                 <Image
                   src="/images/startPage/section03_02.png"
@@ -141,13 +141,15 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 3] = el;
               }
             }}
-            className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
+            className="flex items-center justify-center lg:my-80 my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
           >
             <h1
               ref={typingRef}
               className="startPage-section03-description-text text-right"
             >
-              1개월 내 기획·디자인·개발까지 정교하게 완료합니다.
+              1개월 내 기획·디자인·개발까지
+              <br className="block lg:hidden" />
+              정교하게 완료합니다.
               <br />
               수많은 프로젝트를 안정적으로 완수하며,{" "}
               <br className="max-lg:block hidden" />
@@ -160,8 +162,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
             <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
             <h1 className="flex flex-col lg:items-start items-center text-center lg:text-left w-[15rem] xl:w-auto text-2xl font-semibold text-gray-700 leading-2 xl:text-4xl">
-              넥사코드가 <br className="xl:hidden" /> 진행한
-              <br className="xl:hidden" /> 프로젝트
+              넥사코드가 진행한 프로젝트
             </h1>
           </div>
           {/* 인덱스 번호: startIndex + 4 */}
@@ -171,7 +172,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 4] = el;
               }
             }}
-            className="flex items-center justify-center my-80 max-xxl:my-40 max-xl:my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center "
+            className="flex items-center justify-center lg:my-80 max-md:flex-col mt-0 max-md:justify-center gap-10"
           >
             <div className="flex flex-col items-center lg:items-end w-[400px]">
               <div className="flex  font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
@@ -200,7 +201,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 5] = el;
               }
             }}
-            className="flex flex-col items-center justify-center mt-80 mb-20 max-xxl:mt-40 max-xxl:mb-10 max-xl:mt-20 max-xl:mb-10"
+            className="flex flex-col items-center justify-center lg:mt-80 lg:mb-20 mt-20 mb-20"
           >
             <h2 className="text-4xl text-gray-800 mb-20 max-xxl:text-3xl max-lg:mb-10">
               주요 클라이언트
@@ -208,8 +209,8 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             <Image
               src="/images/startPage/client.png"
               alt="주요 클라이언트"
-              width={1200}
-              height={1200}
+              width={1000}
+              height={1000}
             />
           </div>
         </div>

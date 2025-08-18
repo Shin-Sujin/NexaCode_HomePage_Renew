@@ -28,7 +28,7 @@ export default function FooterArea() {
             className="text-3xl xxl:text-7xl font-normal mt-8 xl:text-6xl lg:text-5xl"
           >
             당신만의 개발 파트너
-            <br className="lg:block hidden" />{" "}
+            <br className="xxl:hidden" />{" "}
             <span className="rotating-word" ref={rotatingRef}>
               <strong>넥사코드</strong>
             </span>
@@ -37,7 +37,7 @@ export default function FooterArea() {
 
           <p
             ref={textRef}
-            className="textGradient__header text-xl text-gray-400 mt-5 lg:mb-16 xxl:mb-24 xl:mb-20 lg:text-3xl 
+            className="textGradient__header text-xl text-gray-400 mt-5 mb-5 lg:mb-16 xxl:mb-24 xl:mb-20 lg:text-3xl 
              max-lg:mt-5"
           >
             처음의 기대가 끝까지 이어지도록,{" "}

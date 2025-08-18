@@ -49,25 +49,6 @@ export default function OverlapCard({
           </div>
         </div>
       </div>
-      {/* 모바일에서는 따로 컴포넌트 작성 */}
-      <div className="xl:hidden flex flex-col w-full max-w-xl justify-center items-center px-auto py-auto">
-        {/* 앞에 겹쳐진 흰색 텍스트 박스 */}
-        <div className="bg-white flex flex-col lg:py-20 py-10 px-2 lg:w-[20rem] w-[15rem] lg:h-[23.75rem] h-[20rem] text-2xl  text-center">
-          <div>
-            <p className="text-sm text-[#555555] mb-8">{category}</p>
-            <h2
-              className="text-lg text-gray-800 leading-relaxed break-keep"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          </div>
-          <div className="mt-auto">
-            <hr className="lg:mb-8 mb-5" />
-            <p className="lg:text-lg text-base font-black text-gray-700">
-              {sentence}
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

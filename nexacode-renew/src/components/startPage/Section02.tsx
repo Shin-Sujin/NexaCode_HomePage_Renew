@@ -29,7 +29,7 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
   useBounceSection3(bounceRef3);
 
   return (
-    <div className="container relative justify-center  items-center py-20">
+    <div className="container relative justify-center  items-center lg:py-20 py-10">
       <div className="flex flex-col  w-full max-md:mx-10">
         <div className="section-number">
           <div
@@ -53,7 +53,7 @@ export default function Section02({ sectionRefs, startIndex }: Section02Props) {
             입니다
           </h1>
         </div>
-        <div className="w-full flex items-center justify-center pt-10 pb-16 xxl:mt-10">
+        <div className="w-full flex items-center justify-center lg:pt-10 lg:pb-16 xxl:mt-10">
           <div className="flex gap-2 max-xl:mt-10 max-md:flex-col max-md:mt-0">
             {/* 1번 항목 */}
             <div className="text-center w-full flex-1" ref={bounceRef1}>

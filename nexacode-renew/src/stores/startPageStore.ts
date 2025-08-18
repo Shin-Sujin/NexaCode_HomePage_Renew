@@ -4,6 +4,10 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 interface StartPageState {
   currentIndex: number; // 현재 섹션 인덱스
@@ -32,23 +36,18 @@ export const useStartPageStore = create<StartPageState>()(
       ) => {
         const target = sectionRefs[index];
         if (!target) return;
-        //상단 여백 offset=100px을 반영해 window.scrollTo({behavior:"smooth"})
         set({ isScrolling: true });
-        if (target) {
-          const offset = 100;
-          const top =
-            target.getBoundingClientRect().top + window.pageYOffset - offset;
 
-          window.scrollTo({
-            top,
-            behavior: "smooth",
-          });
-        }
-
-        // 500ms 뒤 isScrolling=false로 풀어줌(중복 스크롤 방지)
-        setTimeout(() => {
-          set({ isScrolling: false });
-        }, 500);
+        gsap.to(window, {
+          scrollTo: {
+            y: target,
+            offsetY: 100,
+          },
+          duration: 0.7, // 숫자를 조절해 스크롤 속도를 제어할 수 있습니다. (단위: 초)
+          onComplete: () => {
+            set({ isScrolling: false });
+          },
+        });
       },
     }),
     {

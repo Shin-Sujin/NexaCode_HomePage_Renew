@@ -84,19 +84,14 @@ body {
     @apply text-[#676262] text-base font-semibold uppercase leading-4 font-kanit;
   }
 
-  .service-item {
-    @apply border-b border-black/80 pb-5 mb-5 text-2xl font-medium tracking-wide
-    max-md:mb-3 max-md:pb-3 max-md:text-xl max-lg:text-lg;
-  }
-
   .service-item-top {
     @apply lg:border-t border-black/80 border-b mt-6 pb-5 pt-5 mb-5 
-    max-md:mb-3 max-md:pb-3 max-md:pt-3  text-lg font-bold tracking-wide xl:text-xl xxl:text-2xl;
+    max-md:mb-3 max-md:pb-3 max-md:pt-3  text-base font-bold tracking-wide xl:text-xl xxl:text-2xl;
   }
 
   .service-item {
     @apply border-b border-black/80 pb-5 mb-5
-    max-md:mb-3 max-md:pb-3 text-lg font-bold tracking-wide xl:text-xl xxl:text-2xl;
+    max-md:mb-3 max-md:pb-3 text-base font-bold tracking-wide xl:text-xl xxl:text-2xl;
   }
 
   .section-subtitle-white {
@@ -448,7 +443,7 @@ body {
     @apply mt-5 xxl:mt-20 font-medium text-2xl xxl:text-3xl max-lg:mt-10 lg:mt-10;
   }
   .startPage-section02-description {
-    @apply mt-4 xxl:text-xl font-light  lg:text-lg whitespace-normal  break-keep;
+    @apply mt-4 xxl:text-xl font-light  lg:text-lg whitespace-normal  break-keep mb-20 lg:mb-0;
   }
   .startPage-section02-image {
     @apply rounded-full xxl:w-60 xxl:h-60 w-48 h-48 object-cover mx-auto text-center;
@@ -466,7 +461,6 @@ body {
     @apply w-full xxl:text-2xl  text-gray-700 leading-relaxed  max-xl:text-xl text-lg max-md:text-center whitespace-normal  break-keep;
   }
 }
-/* globals.css */
 
 .type-char {
   opacity: 0;
