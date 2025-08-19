@@ -19,7 +19,10 @@ type BlogListItem = {
 
 interface BlogApiResponse {
   data: BlogListItem[];
-  totalCount?: number;
+  meta: {
+    total: number;
+    last_page: number;
+  };
 }
 
 // useDebounce 커스텀 훅 구현
@@ -38,11 +41,11 @@ function useDebounce<T>(value: T, delay: number): T {
 
 export default function BlogListPage() {
   const [blogList, setBlogList] = useState<BlogListItem[]>([]);
-  const [totalCount, setTotalCount] = useState(0);
+  const [last_page, setLastPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
+  // const pageSize = 10;
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
   const handleSearch = () => {
@@ -60,11 +63,15 @@ export default function BlogListPage() {
     try {
       const res = (await fetchPublicBlogs(page, searchValue)) as {
         data: BlogApiResponse;
+        meta: {
+          total: number;
+          last_page: number;
+        };
       };
       const items = res.data?.data || [];
       setBlogList(items);
-      if (typeof res.data?.totalCount === "number") {
-        setTotalCount(res.data.totalCount);
+      if (typeof res.data.meta?.last_page === "number") {
+        setLastPage(res.data.meta.last_page);
       }
     } catch {
       setError("블로그 데이터를 불러오지 못했습니다.");
@@ -77,9 +84,9 @@ export default function BlogListPage() {
     fetchData(currentPage, debouncedSearch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, debouncedSearch]);
-
-  const totalPages = totalCount ? Math.ceil(totalCount / pageSize) : 7;
-  console.log(blogList);
+  useEffect(() => {
+    // last_page가 업데이트 된 후 실행하고 싶은 코드를 여기에 작성하세요.
+  }, [last_page]);
   return (
     <Lenis>
       <div>
@@ -121,7 +128,7 @@ export default function BlogListPage() {
         </main>
         <Pagination
           currentPage={currentPage}
-          totalPages={totalPages}
+          totalPages={last_page}
           setCurrentPage={setCurrentPage}
         />
         <Footer />
