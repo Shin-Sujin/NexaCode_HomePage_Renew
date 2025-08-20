@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import Header from "@/src/components/Header";
-// import Lenis from "./lenis";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import type { Metadata } from "next";
@@ -101,10 +100,7 @@ export default function RootLayout({
         className={`${ibm.className} ${montserrat.className}${chiron.variable}`}
       >
         <Header />
-        <main>
-          {/* <Lenis>{children}</Lenis> */}
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
