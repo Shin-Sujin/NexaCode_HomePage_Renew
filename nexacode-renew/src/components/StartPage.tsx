@@ -11,7 +11,6 @@ import Section07 from "./startPage/Section07";
 import FooterVideo from "./startPage/FooterVideo";
 import FooterArea from "./startPage/FooterArea";
 import ButtonPage02 from "./startPageComponents/ButtonPage02";
-// import { useStartPageScroll } from "@/src/hooks/useStartPageScroll";
 import { useStartPageObserver } from "@/src/hooks/useStartPageObserver";
 import { useStartPageStore } from "@/src/stores/startPageStore";
 
@@ -22,9 +21,9 @@ export default function StartPage() {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash === "#strengths") {
-        setCurrentIndex(5);
+        setCurrentIndex(4);
       } else if (hash === "#process") {
-        setCurrentIndex(14);
+        setCurrentIndex(13);
       }
     };
 
@@ -47,7 +46,7 @@ export default function StartPage() {
   }, [setCurrentIndex]);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>(
-    new Array(22).fill(null)
+    new Array(21).fill(null)
   );
 
   useStartPageObserver(sectionRefs);
@@ -73,34 +72,34 @@ export default function StartPage() {
       </div>
 
       <div className="flex justify-center">
-        <Section02 sectionRefs={sectionRefs} startIndex={4} />
+        <Section02 sectionRefs={sectionRefs} startIndex={3} />
       </div>
 
       <div className="flex justify-center">
-        <Section03 sectionRefs={sectionRefs} startIndex={5} />
+        <Section03 sectionRefs={sectionRefs} startIndex={4} />
       </div>
 
       <div className="flex justify-center">
-        <Section04 sectionRefs={sectionRefs} startIndex={11} />
+        <Section04 sectionRefs={sectionRefs} startIndex={10} />
       </div>
 
       <div className="w-full bg-[#17171B]">
         <div className="flex justify-center">
-          <Section05 sectionRefs={sectionRefs} startIndex={13} slides={3} />
+          <Section05 sectionRefs={sectionRefs} startIndex={12} slides={3} />
         </div>
       </div>
 
       <div className="flex justify-center">
-        <Section06 sectionRefs={sectionRefs} startIndex={16} />
+        <Section06 sectionRefs={sectionRefs} startIndex={15} />
       </div>
 
       <div className="flex justify-center">
-        <Section07 sectionRefs={sectionRefs} startIndex={17} />
+        <Section07 sectionRefs={sectionRefs} startIndex={16} />
       </div>
 
       <div
         ref={(el) => {
-          sectionRefs.current[20] = el;
+          sectionRefs.current[19] = el;
         }}
         className="w-full"
       >
@@ -111,7 +110,7 @@ export default function StartPage() {
 
       <div
         ref={(el) => {
-          sectionRefs.current[21] = el;
+          sectionRefs.current[20] = el;
         }}
       >
         <div className="bg-[#17171B] flex justify-center max-xxxl:pt-10">
