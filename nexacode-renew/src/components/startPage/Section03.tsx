@@ -5,6 +5,35 @@ import { useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 import { useTypewriterOnView } from "../../animations/useTypewriterOnView";
+
+const clientImages = [
+  "1kt.png",
+  "2lgu+.png",
+  "3한국산업인력공단.png",
+  "4숏뜨.png",
+  "5독립생활.png",
+  "6고려대.png",
+  "7시밀래.png",
+  "8프롬더레드.png",
+  "9gk337.png",
+  "10모티.png",
+  "11경희대.png",
+  "12로킷.png",
+  "13뉴아인.png",
+  "14헤이골프.png",
+  "15스몰스.png",
+  "16북팔.png",
+  "17어반플레이스.png",
+  "18크르릉.png",
+  "19자꾸다꾸.png",
+  "20ydns.png",
+  "21대구보건대.png",
+  "22jw.png",
+  "23스파르타.png",
+  "24서울과기대.png",
+  "25모어.png",
+];
+
 interface Section03Props {
   sectionRefs: React.RefObject<(HTMLDivElement | null)[]>;
   startIndex: number;
@@ -206,12 +235,22 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             <h2 className="text-4xl text-gray-800 mb-20 max-xxl:text-3xl max-lg:mb-10">
               주요 클라이언트
             </h2>
-            <Image
-              src="/images/startPage/client.png"
-              alt="주요 클라이언트"
-              width={1000}
-              height={1000}
-            />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
+              {clientImages.map((src, index) => (
+                <div
+                  key={index}
+                  className="flex justify-center items-center p-4 h-20 md:h-32"
+                >
+                  <Image
+                    src={`/images/clients/${src}`}
+                    alt={`client-${index}`}
+                    width={100}
+                    height={80}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
