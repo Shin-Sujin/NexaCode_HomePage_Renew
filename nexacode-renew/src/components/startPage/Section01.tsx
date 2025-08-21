@@ -50,13 +50,27 @@ export default function Section01({ sectionRefs, startIndex }: Section01Props) {
           </span>
         </div>
         <div className="w-full h-auto">
-          <div className="relative w-full pt-10 lg:pt-20 flex flex-col items-center justify-center gap-10">
+          <div className="relative w-full pt-10 lg:pt-20 flex flex-col lg:flex-row items-center justify-center gap-10">
             <Image
-              src="/images/startPage/Container.svg"
+              src="/images/cardImage.png"
               alt="section01"
               width={800}
               height={800}
-              className="w-[80%]"
+              className="w-[80%] lg:w-[20%] xl:w-[30%]"
+            />
+            <Image
+              src="/images/cardImage.png"
+              alt="section01"
+              width={800}
+              height={800}
+              className="w-[80%] lg:w-[20%] xl:w-[30%]"
+            />
+            <Image
+              src="/images/cardImage.png"
+              alt="section01"
+              width={800}
+              height={800}
+              className="w-[80%] lg:w-[20%] xl:w-[30%]"
             />
           </div>
         </div>

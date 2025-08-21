@@ -232,14 +232,14 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             }}
             className="flex flex-col items-center justify-center lg:mt-80 lg:mb-20 mt-20 mb-20"
           >
-            <h2 className="text-4xl text-gray-800 mb-20 max-xxl:text-3xl max-lg:mb-10">
+            <h2 className="text-2xl text-gray-800 mb-20 xl:text-3xl max-lg:mb-10">
               주요 클라이언트
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
               {clientImages.map((src, index) => (
                 <div
                   key={index}
-                  className="flex justify-center items-center p-4 h-20 md:h-32"
+                  className="flex justify-center items-center lg:p-4 h-32"
                 >
                   <Image
                     src={`/images/clients/${src}`}
