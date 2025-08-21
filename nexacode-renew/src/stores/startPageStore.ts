@@ -43,7 +43,7 @@ export const useStartPageStore = create<StartPageState>()(
             y: target,
             offsetY: 100,
           },
-          duration: 0.7, // 숫자를 조절해 스크롤 속도를 제어할 수 있습니다. (단위: 초)
+          duration: 0.5, // 숫자를 조절해 스크롤 속도를 제어할 수 있습니다. (단위: 초)
           onComplete: () => {
             set({ isScrolling: false });
           },

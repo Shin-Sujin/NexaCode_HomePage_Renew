@@ -18,15 +18,7 @@ export default function ButtonPage02({
       }}
     >
       <div className="flex justify-center lg:h-screen h-auto">
-        <div
-          ref={(el) => {
-            if (sectionRefs.current) {
-              sectionRefs.current[startIndex + 1] = el;
-            }
-          }}
-        >
-          <ButtonContents02 />
-        </div>
+        <ButtonContents02 />
       </div>
     </div>
   );
