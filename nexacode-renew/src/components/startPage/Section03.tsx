@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import CounterUp from "../startPageComponents/CounterUp";
 import TableSection03 from "./TableSection03";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSectionNumberAnimation } from "../../animations/sectionNumber";
 import { useSectionTitleAnimation } from "../../animations/sectionTitle";
 import { useTypewriterOnView } from "../../animations/useTypewriterOnView";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const clientImages = [
   "1kt.png",
@@ -44,18 +48,66 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   useSectionNumberAnimation(sectionNumberRef);
   useSectionTitleAnimation(sectionTitleRef);
+
   const typingRef = useTypewriterOnView<HTMLParagraphElement>({
-    speed: 24, // 숫자 낮출수록 더 빨라짐
+    speed: 24,
     rootMargin: "0px 0px -15% 0px",
     threshold: 0.1,
   });
+
+  // 클라이언트 로고 그리드 컨테이너
+  const clientGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 레이아웃/이미지 로딩 이후 트리거 위치 재계산
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLDivElement>(".client-item");
+
+      // 배치로 한 번에 트리거 + 순차 등장
+      ScrollTrigger.batch(items, {
+        start: "top 85%",
+        once: true,
+        // markers: true, // 디버그 필요하면 주석 해제
+        onEnter: (batch) => {
+          gsap.fromTo(
+            batch as HTMLDivElement[],
+            { opacity: 0, y: 16 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power2.out",
+              stagger: 0.07,
+              overwrite: "auto",
+            }
+          );
+        },
+        // 이미지가 매우 늦게 로드되는 케이스 보정
+        onRefreshInit: () => gsap.set(items, { opacity: 0, y: 16 }),
+      });
+
+      // 혹시 초기 계산 타이밍 이슈 보정
+      setTimeout(() => ScrollTrigger.refresh(), 0);
+    }, clientGridRef);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("load", refresh);
+    };
+  }, []);
+
   return (
     <div
       id="strengths"
       className="container relative justify-center items-center py-20"
       data-index="2"
     >
-      <div className="flex flex-col  w-full max-md:mx-10">
+      <div className="flex flex-col w-full max-md:mx-10">
         <div className="section-number">
           {/* 인덱스 번호: startIndex */}
           <div
@@ -70,17 +122,20 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             </div>
           </div>
         </div>
+
         <div ref={sectionTitleRef} className="startPage-title">
           <h1 className="section-title-line">
             우리는 당신의&nbsp;
             <span className="font-bold">IT 개발팀이 되어드립니다</span>
           </h1>
         </div>
+
         <div className="w-full flex items-center justify-center">
           <div className="relative lg:mt-24 w-full flex justify-center items-center h-full px-5 lg:px-0">
             <TableSection03 />
           </div>
         </div>
+
         <div className="relative w-full lg:pt-20 mx-auto">
           {/* 인덱스 번호: startIndex + 1 */}
           <div
@@ -92,7 +147,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             className="flex items-center justify-center lg:mt-80 lg:mb-40 mt-20 mb-10 max-md:flex-col max-md:mt-0"
           >
             <div className="flex flex-col items-center lg:items-end w-[500px] mt-20 lg:mt-0">
-              <div className="flex  font-bold tracking-[-0.1em]  md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
+              <div className="flex font-bold tracking-[-0.1em] md:text-[100px] max-lg:text-[120px] leading-none max-md:items-start">
                 <CounterUp targetNumber={2500} duration={10000} />
                 <span>k</span>
               </div>
@@ -100,8 +155,8 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 자사 서비스 250만 다운로드 / 매각
               </p>
             </div>
-            <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
-            <hr className="h-[1px] mx-10 w-full my-10 bg-gray-200 hidden max-md:block"></hr>
+            <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden" />
+            <hr className="h-[1px] mx-10 w-full my-10 bg-gray-200 hidden max-md:block" />
             <h1 className="startPage-section03-description-text">
               직접 운영해본 적, 성공시켜본 적 없는 개발사가{" "}
               <br className="max-lg:block hidden" />
@@ -112,6 +167,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
               당신의 프로젝트에 그대로 전합니다.
             </h1>
           </div>
+
           {/* 인덱스 번호: startIndex + 2 */}
           <div
             ref={(el) => {
@@ -119,7 +175,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 sectionRefs.current[startIndex + 2] = el;
               }
             }}
-            className="flex lg:my-80 my-20  max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
+            className="flex lg:my-80 my-20 max-md:flex-col max-md:mt-0 max-md:justify-center max-md:gap-10 max-md:items-center"
           >
             <div className="xl:w-1/2 w-full flex flex-col items-center">
               <div className="h-[250px] w-[300px] flex items-center justify-center">
@@ -163,6 +219,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
               </ul>
             </div>
           </div>
+
           {/* 인덱스 번호: startIndex + 3 */}
           <div
             ref={(el) => {
@@ -188,12 +245,13 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
               퀄리티와 속도, <br className="max-md:block hidden" />
               고객의 만족까지 모두 챙기는 개발사입니다.
             </h1>
-            <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden"></div>
-            <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
+            <div className="w-[3px] mx-10 h-36 bg-gray-200 max-md:hidden" />
+            <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block" />
             <h1 className="flex flex-col lg:items-start items-center text-center lg:text-left w-[15rem] xl:w-auto text-2xl font-semibold text-gray-700 leading-2 xl:text-4xl">
               넥사코드가 진행한 프로젝트
             </h1>
           </div>
+
           {/* 인덱스 번호: startIndex + 4 */}
           <div
             ref={(el) => {
@@ -204,7 +262,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             className="flex items-center justify-center lg:my-80 max-md:flex-col mt-0 max-md:justify-center gap-10"
           >
             <div className="flex flex-col items-center lg:items-end w-[400px]">
-              <div className="flex  font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
+              <div className="flex font-bold tracking-[-0.1em] text-9xl max-xxl:text-9xl">
                 <CounterUp targetNumber={100} duration={2500} />
                 <span>+</span>
               </div>
@@ -212,8 +270,8 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                 넥사코드와 함께한 브랜드
               </h2>
             </div>
-            <div className="w-[3px] mx-12 h-36 bg-gray-200 max-md:hidden"></div>
-            <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block"></hr>
+            <div className="w-[3px] mx-12 h-36 bg-gray-200 max-md:hidden" />
+            <hr className="h-[1px] mx-10 w-full my-5 bg-gray-200 hidden max-md:block" />
             <h1 className="startPage-section03-description-text">
               수많은 후속 투자 유치와 정부 지원금 획득 경험,
               <br />
@@ -223,6 +281,7 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
               우리의 실력을 말해주는 가장 확실한 증거입니다.
             </h1>
           </div>
+
           {/* 인덱스 번호: startIndex + 5 */}
           <div
             ref={(el) => {
@@ -235,11 +294,16 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
             <h2 className="text-2xl text-gray-800 mb-20 xl:text-3xl max-lg:mb-10">
               주요 클라이언트
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
+
+            {/* 애니메이션 대상 그리드 */}
+            <div
+              ref={clientGridRef}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full"
+            >
               {clientImages.map((src, index) => (
                 <div
                   key={index}
-                  className="flex justify-center items-center lg:p-4 h-32"
+                  className="client-item flex justify-center items-center lg:p-4 h-32 opacity-0 will-change-transform"
                 >
                   <Image
                     src={`/images/clients/${src}`}
@@ -247,11 +311,13 @@ export default function Section03({ sectionRefs, startIndex }: Section03Props) {
                     width={100}
                     height={80}
                     className="object-contain w-full h-full"
+                    loading="lazy"
                   />
                 </div>
               ))}
             </div>
           </div>
+          {/* /인덱스 번호: startIndex + 5 */}
         </div>
       </div>
     </div>
