@@ -146,13 +146,13 @@ export default function Section05({
                 </div>
               </div>
 
-              {/* 모바일용 세로 이미지 리스트 */}
+              {/* 모바일용 가로 이미지 리스트 */}
               <div className="xl:hidden w-full mt-10">
-                <div className="flex flex-col items-center gap-5 px-4">
+                <div className="flex flex-row overflow-x-auto gap-5 px-4 no-scrollbar">
                   {testimonials.slice(0, slides).map((t) => (
                     <div
                       key={`mobile-${t.number}`}
-                      className="w-full max-w-sm h-96 relative"
+                      className="flex-shrink-0 w-[90%] h-96 relative"
                     >
                       <Image
                         src={t.imageSrc}
